@@ -128,17 +128,17 @@ def upload_builder_asset():
 		frappe.throw("Failed to upload asset to storage", frappe.ValidationError)
 
 	# Frappe stores metadata only (references the S3 URL).
-	file_doc = frappe.get_doc(
-		{
-			"doctype": "File",
-			"file_name": filename,
-			"file_url": file_url,
-			"content_hash": None,
-			"is_private": 0,
-			"attached_to_doctype": frappe.form_dict.get("doctype"),
-			"attached_to_name": frappe.form_dict.get("docname"),
-		}
-	).insert(ignore_permissions=True)
+	file_doc_data = {
+		"doctype": "File",
+		"file_name": filename,
+		"file_url": file_url,
+		"content_hash": None,
+		"is_private": 0,
+	}
+	if frappe.form_dict.get("doctype") and frappe.form_dict.get("docname"):
+		file_doc_data["attached_to_doctype"] = frappe.form_dict.get("doctype")
+		file_doc_data["attached_to_name"] = frappe.form_dict.get("docname")
+	file_doc = frappe.get_doc(file_doc_data).insert(ignore_permissions=True)
 
 	return {"file_name": filename, "file_url": file_url, "name": file_doc.name}
 
