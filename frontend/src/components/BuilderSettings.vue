@@ -113,13 +113,13 @@ const pageSettings = {
 			title: "Meta",
 			icon: "lucide-square-dashed-bottom-code",
 		},
-		{
-			label: "Analytics",
-			value: "page_analytics",
-			component: PageAnalytics,
-			title: "Page Analytics",
-			icon: "lucide-chart-bar",
-		},
+		// {
+		// 	label: "Analytics",
+		// 	value: "page_analytics",
+		// 	component: PageAnalytics,
+		// 	title: "Page Analytics",
+		// 	icon: "lucide-chart-bar",
+		// },
 	],
 };
 
@@ -134,13 +134,13 @@ const globalSettings = {
 			icon: "lucide-settings",
 			disabled: false,
 		},
-		{
-			label: "Users",
-			value: "global_users",
-			component: GlobalUsers,
-			title: "Users",
-			icon: "lucide-users",
-		},
+		// {
+		// 	label: "Users",
+		// 	value: "global_users",
+		// 	component: GlobalUsers,
+		// 	title: "Users",
+		// 	icon: "lucide-users",
+		// },
 		{ label: "Code", value: "global_code", component: GlobalCode, title: "Global Code", icon: "lucide-code" },
 		{
 			label: "Redirects",
@@ -167,13 +167,13 @@ const globalSettings = {
 					},
 				]
 			: []),
-		{
-			label: "Analytics",
-			value: "global_analytics",
-			component: GlobalAnalytics,
-			title: "Site Analytics",
-			icon: "lucide-chart-bar",
-		},
+		// {
+		// 	label: "Analytics",
+		// 	value: "global_analytics",
+		// 	component: GlobalAnalytics,
+		// 	title: "Site Analytics",
+		// 	icon: "lucide-chart-bar",
+		// },
 		{
 			label: "Developer",
 			value: "global_developer",

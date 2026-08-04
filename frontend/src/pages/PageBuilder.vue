@@ -1,6 +1,6 @@
 <template>
 	<div v-show="isSmallScreen" class="grid h-screen w-screen place-content-center gap-4 text-ink-gray-9">
-		<img src="/builder_logo.png" alt="logo" class="h-10" />
+		<img src="/builder_logo.png" alt="logo" class="h-10 rounded-lg" />
 		<div class="flex flex-col">
 			<h1 class="text-p-3xl-semibold">Screen too small</h1>
 			<p class="text-p-base">Please switch to a larger screen to edit</p>
@@ -129,6 +129,7 @@ import Dialog from "@/components/Controls/Dialog.vue";
 import PageListModal from "@/components/Modals/PageListModal.vue";
 import TemplatesDialog from "@/components/Templates/TemplatesDialog.vue";
 import { webPages } from "@/data/webPage";
+import builderProjectFolder from "@/data/builderProjectFolder";
 import { sessionUser } from "@/router";
 import useBuilderStore from "@/stores/builderStore";
 import useCanvasStore from "@/stores/canvasStore";
@@ -418,16 +419,27 @@ onActivated(async () => {
 	}
 });
 
+async function ensureSectionFolder(folderName: string) {
+	const exists = (builderProjectFolder.data || []).some(
+		(f: { folder_name: string }) => f.folder_name === folderName,
+	);
+	if (!exists) {
+		await builderProjectFolder.insert.submit({ folder_name: folderName });
+		builderProjectFolder.reload();
+	}
+}
+
 watch(
 	route,
-	(to, from) => {
+	async (to, from) => {
 		if (to.name === "builder" && to.params.pageId === "new") {
 			const pageInfo = {
 				page_title: "My Page",
 				draft_blocks: [getRootBlockTemplate()],
 			} as BuilderPage;
-			if (builderStore.activeFolder) {
-				pageInfo["project_folder"] = builderStore.activeFolder;
+			if (builderStore.sectionFolder) {
+				pageInfo["project_folder"] = builderStore.sectionFolder;
+				await ensureSectionFolder(builderStore.sectionFolder);
 			}
 			webPages.insert.submit(pageInfo).then((data: BuilderPage) => {
 				router.push({ name: "builder", params: { pageId: data.name }, force: true });

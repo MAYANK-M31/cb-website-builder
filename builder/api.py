@@ -30,6 +30,24 @@ def get_versioned_doc(snapshot: str) -> dict:
 
 
 @frappe.whitelist()
+@has_page_write("You do not have permission to delete a redirect.")
+def delete_route_redirect(name: str) -> None:
+	"""Remove a Website Route Redirect (a child row of Website Settings).
+
+	Child-table rows can't be deleted via frappe.client.delete unless their real
+	row name exists in the DB. The client may optimistically pass a temp id, so
+	this is idempotent: it no-ops when the row is missing instead of crashing.
+	"""
+	settings = frappe.get_doc("Website Settings")
+	redirects = settings.get("route_redirects") or []
+	row = next((r for r in redirects if str(r.name) == str(name)), None)
+	if not row:
+		return
+	settings.remove(row)
+	settings.save(ignore_permissions=True)
+
+
+@frappe.whitelist()
 def is_site_read_only() -> bool:
 	return bool(frappe.flags.read_only)
 
@@ -431,6 +449,8 @@ def create_page_from_bundle(bundle: dict, project_folder: str | None = None) -> 
 			"project_folder": project_folder or None,
 		}
 	)
+	if project_folder:
+		get_or_create_folder(project_folder)
 	for cs in bundle.get("client_scripts") or []:
 		new_script = frappe.get_doc(
 			{
@@ -500,6 +520,13 @@ def import_template_group(template_group: str, project_folder: str | None = None
 		frappe.throw(frappe._("Could not import any pages from this template group."))
 
 	return created
+
+
+def get_or_create_folder(folder_name: str) -> str:
+	frappe.get_doc(
+		{"doctype": "Builder Project Folder", "folder_name": folder_name},
+	).insert(ignore_if_duplicate=True, ignore_permissions=True)
+	return folder_name
 
 
 @frappe.whitelist()

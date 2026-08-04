@@ -34,19 +34,33 @@ def _resolve_site_subdomain() -> str | None:
 
 def _get_or_create_user(email: str, full_name: str) -> str:
 	user = frappe.db.exists("User", email)
-	if user:
-		return email
+	if not user:
+		frappe.get_doc(
+			{
+				"doctype": "User",
+				"email": email,
+				"first_name": full_name or email,
+				"enabled": 1,
+				"send_welcome_email": 0,
+				"roles": [
+					{"role": "System Manager"},
+					{"role": "Website Manager"},
+				],
+			}
+		).insert(ignore_permissions=True)
 
-	frappe.get_doc(
-		{
-			"doctype": "User",
-			"email": email,
-			"first_name": full_name or email,
-			"enabled": 1,
-			"send_welcome_email": 0,
-			"roles": [{"role": "System Manager"}],
-		}
-	).insert(ignore_permissions=True)
+	# Ensure the creator keeps the roles the builder + Website Settings need,
+	# even when their User doc already exists (created before those roles, or
+	# provisioned from CreatorBase without them).
+	required_roles = ["System Manager", "Website Manager"]
+	user_doc = frappe.get_doc("User", email)
+	existing = {r.role for r in user_doc.roles}
+	for role in required_roles:
+		if role not in existing:
+			user_doc.append("roles", {"role": role})
+			user_doc.flags.ignore_permissions = True
+			user_doc.flags.ignore_validate = True
+			user_doc.save(ignore_permissions=True, ignore_version=True)
 	return email
 
 
@@ -102,7 +116,47 @@ def _do_login(token: str) -> dict:
 	frappe.local.login_manager.post_login()
 	frappe.db.commit()
 
-	return {"ok": True, "subdomain": site_sub, "email": email}
+	return {
+		"ok": True,
+		"subdomain": site_sub,
+		"email": email,
+		"user_id": user,
+		"full_name": payload.get("name") or payload.get("email"),
+		"sid": frappe.session.sid,
+	}
+
+
+def authenticate_via_creatorbase_bearer():
+	"""Per-request bearer auth for the embedded builder.
+
+	Called from Frappe's `auth_hooks` (via validate_auth_via_hooks) BEFORE the
+	API method runs. Cookies are blocked inside the cross-site dashboard iframe,
+	so the frontend sends the CreatorBase JWT in `Authorization: Bearer` on every
+	request. We decode it (signed with the shared secret) and set the session
+	user — no cookie needed. If no bearer header is present this is a no-op.
+	"""
+	try:
+		authorization = frappe.get_request_header("Authorization", "")
+		if not authorization.startswith("Bearer "):
+			return
+		token = authorization[len("Bearer "):].strip()
+		if not token:
+			return
+		payload = _decode_token(token)
+		if not payload:
+			return
+		email = (payload.get("email") or "").strip().lower()
+		if not email:
+			return
+		user = _get_or_create_user(email, payload.get("name") or payload.get("email"))
+		if user and frappe.session.user in ("", "Guest"):
+			# frappe.set_user resets form_dict — preserve it like Frappe's own
+			# api-key auth path does, so the method still receives its args.
+			form_dict = frappe.local.form_dict
+			frappe.set_user(user)
+			frappe.local.form_dict = form_dict
+	except Exception as e:
+		frappe.log_error(f"creatorbase bearer auth failed: {e}", "creatorbase.auth")
 
 
 def sso_before_request():
@@ -126,8 +180,14 @@ def sso_before_request():
 
 @frappe.whitelist(allow_guest=True)
 def login_via_creatorbase(token: str):
-	"""SSO: validate a CreatorBase JWT and log the creator into THIS site."""
+	"""SSO: validate a CreatorBase JWT and log the creator into THIS site.
+
+	Also returns the freshly-created session so the embedded iframe can re-inject
+	it same-origin. When the builder is embedded cross-site, the browser may block
+	the Set-Cookie header on the SSO response, so the JS copies these onto
+	document.cookie (first-party) to keep Frappe API calls authenticated.
+	"""
 	result = _do_login(token)
-	frappe.response["message"] = "Logged In"
+	frappe.response["message"] = result
 	frappe.response["home_page"] = "/builder"
 	return result

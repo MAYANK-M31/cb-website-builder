@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:docker": "FRAPPE_WEB_SERVER_PORT=8008 vite",
     "build": "vite build",
     "build:reset": "tailwindcss -c ./tailwind.reset.config.js -i ./src/reset.css -o ../builder/public/reset.css --minify && node ./scripts/strip-css-comments.js",
     "generate:css-metadata": "node ./scripts/generate-css-property-metadata.mjs",

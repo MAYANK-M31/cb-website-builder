@@ -45,6 +45,7 @@ const useBuilderStore = defineStore("builderStore", {
 		viewers: <UserInfo[]>[],
 		isFCSite: window.is_fc_site === "True" ? true : false,
 		activeFolder: useStorage("activeFolder", ""),
+		activeSection: useStorage("activeSection", "all"),
 		isDark: useDark({
 			attribute: "data-theme",
 		}),
@@ -57,6 +58,13 @@ const useBuilderStore = defineStore("builderStore", {
 	getters: {
 		isAIEnabled(): boolean {
 			return !!builderSettings.doc?.ai_api_key;
+		},
+		// folder a newly created page should be filed under based on the active
+		// section (Funnel Pages are tagged with a project folder; home/all are not)
+		sectionFolder(): string {
+			if (this.activeFolder) return this.activeFolder;
+			if (this.activeSection === "funnel") return "Funnel Pages";
+			return "";
 		},
 	},
 	actions: {

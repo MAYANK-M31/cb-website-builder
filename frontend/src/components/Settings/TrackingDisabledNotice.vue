@@ -11,9 +11,9 @@
 			</p>
 		</div>
 		<div class="flex items-center gap-3">
-			<Button variant="solid" :loading="websiteSettings.setValue?.loading" @click="enableTracking">
+			<!-- <Button variant="solid" :loading="websiteSettings.setValue?.loading" @click="enableTracking">
 				Enable View Tracking
-			</Button>
+			</Button> -->
 			<Button v-if="selectSettingsTab" variant="ghost" @click="selectSettingsTab('global_general')">
 				Open Global Settings
 			</Button>

@@ -12,7 +12,8 @@ export default defineConfig({
 		frappeui({
 			frontendRoute: "/_builder",
 			frappeProxy: {
-				port: 8080,
+				// Dev server port is derived from FRAPPE_WEB_SERVER_PORT
+				// (8008 → 8088), avoiding the Docker container's own 8080.
 				source: "^/(app|desk|login|api|assets|files|pages|builder_assets)",
 			},
 			lucideIcons: true,
@@ -57,5 +58,8 @@ export default defineConfig({
 	},
 	optimizeDeps: {
 		include: ["frappe-ui > feather-icons", "engine.io-client", "interactjs", "highlight.js/lib/core"],
+		// frappe-ui imports ~icons/lucide/* virtual modules resolved by its own
+		// vite plugin; exclude it from esbuild pre-bundling so dev resolves them.
+		exclude: ["frappe-ui"],
 	},
 });

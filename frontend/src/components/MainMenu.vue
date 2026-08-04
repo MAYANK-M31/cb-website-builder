@@ -2,13 +2,11 @@
 	<Dropdown :options="mainMenuOptions" size="sm" placement="left" :offset="18">
 		<template v-slot="{ open }">
 			<div class="flex cursor-pointer items-center gap-2">
-				<img src="/builder_logo.png" alt="logo" class="h-7" />
-				<span
-					:class="[
-						open ? 'lucide-chevron-up' : 'lucide-chevron-down',
-						'h-4 w-4 !text-gray-700 dark:!text-gray-200',
-					]"
-					aria-hidden="true" />
+				<img src="/builder_logo.png" alt="logo" class="h-7 rounded-4" />
+				<span :class="[
+					open ? 'lucide-chevron-up' : 'lucide-chevron-down',
+					'h-4 w-4 !text-gray-700 dark:!text-gray-200',
+				]" aria-hidden="true" />
 			</div>
 		</template>
 	</Dropdown>
@@ -93,14 +91,14 @@ const mainMenuOptions = [
 			},
 			{ label: "Settings", onClick: () => emit("showSettings"), icon: "lucide-settings" },
 			{ label: "Shortcuts", onClick: () => emit("showShortcuts"), icon: "lucide-command" },
-			{
-				label: "Help",
-				onClick: () => {
-					// @ts-ignore
-					window.open("https://t.me/frappebuilder");
-				},
-				icon: "lucide-info",
-			},
+			// {
+			// 	label: "Help",
+			// 	onClick: () => {
+			// 		// @ts-ignore
+			// 		window.open("https://t.me/frappebuilder");
+			// 	},
+			// 	icon: "lucide-info",
+			// },
 		],
 	},
 ];

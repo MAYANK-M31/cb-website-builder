@@ -2,6 +2,8 @@ import { createResource } from "frappe-ui";
 import { ref } from "vue";
 import { NavigationGuardNext, RouteLocationNormalized, createRouter, createWebHistory } from "vue-router";
 
+const TOKEN_KEY = "creatorbase_accessToken";
+
 let hasPermission: null | boolean = null;
 let sessionUser = ref("Guest");
 
@@ -46,11 +48,18 @@ const validateVisit = async function (
 };
 
 function isUserLoggedIn() {
+	// Cookies may be blocked inside the cross-site iframe — the CreatorBase JWT
+	// stored in localStorage (and sent as a bearer header on every request) is
+	// the source of truth for authentication.
+	if (typeof localStorage !== "undefined" && localStorage.getItem(TOKEN_KEY)) return true;
 	return document.cookie.includes("user_id") && !document.cookie.includes("user_id=Guest");
 }
 
 function getSessionUser() {
-	return decodeURIComponent(document.cookie.split("user_id=")[1].split(";")[0]) || "Guest";
+	const parts = document.cookie.split("user_id=");
+	if (parts.length < 2) return "Guest";
+	const value = (parts[1] || "").split(";")[0];
+	return decodeURIComponent(value) || "Guest";
 }
 
 const routes = [

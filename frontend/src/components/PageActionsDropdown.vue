@@ -22,11 +22,11 @@
 						icon: 'lucide-globe-x',
 						condition: () => Boolean(props.page.published),
 					},
-					{
-						label: 'View in Desk',
-						onClick: () => openInDesk(props.page),
-						icon: 'lucide-arrow-up-right',
-					},
+					// {
+					// 	label: 'View in Desk',
+					// 	onClick: () => openInDesk(props.page),
+					// 	icon: 'lucide-arrow-up-right',
+					// },
 					{
 						label: 'Delete',
 						onClick: () => pageStore.deletePage(props.page),

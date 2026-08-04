@@ -9,29 +9,22 @@ import "./setupFrappeUIResource";
 
 import App from "@/App.vue";
 import Input from "@/components/Controls/Input.vue";
-import { initCreatorbase } from "@/creatorbase";
+import { initCreatorbase, frappeSsoLogin } from "@/creatorbase";
 
 initCreatorbase();
 
 // SSO bootstrap: the dashboard embeds the builder with ?creatorbase_token=<jwt>.
 // We authenticate against THIS origin (same-origin → cookie is always set) before
 // the app mounts, so the router guard never sees a guest session / login screen.
-// Always re-login when a token is present — it is idempotent and guarantees a
-// fresh session even if an old (expired) cookie exists.
+// frappeSsoLogin also re-injects the session cookie same-origin, which is what
+// keeps this working when the frame is embedded cross-site and Set-Cookie is
+// blocked. Always re-login when a token is present — it is idempotent and
+// guarantees a fresh session even if an old (expired) cookie exists.
 async function ssoBootstrap() {
 	const params = new URLSearchParams(window.location.search);
 	const token = params.get("creatorbase_token");
 	if (token) {
-		try {
-			await fetch("/api/method/builder.auth.login_via_creatorbase", {
-				method: "POST",
-				credentials: "include",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ token }),
-			});
-		} catch (e) {
-			console.warn("[builder] SSO bootstrap failed", e);
-		}
+		await frappeSsoLogin(token);
 		// Remove the token from the URL so it isn't left in history/referrer.
 		const clean = window.location.pathname + window.location.hash;
 		window.history.replaceState({}, "", clean);

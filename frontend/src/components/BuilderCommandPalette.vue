@@ -260,14 +260,14 @@ const allSettingsCommands: SettingsCommand[] = [
 		section: "page",
 		action: () => openSettings("page_meta"),
 	},
-	{
-		name: "page_analytics",
-		title: "Analytics",
-		description: "Settings",
-		icon: "lucide-chart-bar",
-		section: "page",
-		action: () => openSettings("page_analytics"),
-	},
+	// {
+	// 	name: "page_analytics",
+	// 	title: "Analytics",
+	// 	description: "Settings",
+	// 	icon: "lucide-chart-bar",
+	// 	section: "page",
+	// 	action: () => openSettings("page_analytics"),
+	// },
 	// Global settings
 	{
 		name: "global_general",

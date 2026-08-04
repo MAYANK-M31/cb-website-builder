@@ -17,7 +17,7 @@
 	<div v-else class="flex h-screen flex-col items-center overflow-y-auto p-5">
 		<!-- top-anchored so the logo/heading never move between steps -->
 		<div class="mt-[28vh] flex w-full max-w-sm flex-col gap-5">
-			<img src="/builder_logo.png" alt="Builder" class="h-8 self-start" />
+			<img src="/builder_logo.png" alt="Builder" class="h-8 self-start rounded-lg" />
 			<div class="relative flex flex-col gap-1.5">
 				<!-- kept mounted (invisible on step 1) so nothing shifts when it appears -->
 				<Button

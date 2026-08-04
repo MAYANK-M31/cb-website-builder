@@ -128,7 +128,7 @@
 import routeRedirects from "@/data/routeRedirects";
 import { confirm } from "@/utils/helpers";
 import { highlightSource, highlightTarget } from "@/utils/redirectSyntax";
-import { Dialog, FormControl, Switch, toast } from "frappe-ui";
+import { Dialog, FormControl, Switch, toast, createResource } from "frappe-ui";
 import { computed, nextTick, onMounted, ref } from "vue";
 
 type Field = "from" | "to";
@@ -274,7 +274,10 @@ const deleteRedirect = async (id: string) => {
 	const index = findIndex(id);
 	const backup = index !== -1 ? { ...routeRedirects.data![index] } : null;
 	performOptimisticUpdate(
-		() => routeRedirects.delete.submit(id),
+		() =>
+			createResource({ url: "builder.api.delete_route_redirect", method: "POST" }).submit({
+				name: id,
+			}),
 		() => index !== -1 && routeRedirects.data!.splice(index, 1),
 		() => backup && routeRedirects.data!.splice(index, 0, backup),
 		{ loading: "Deleting redirect...", success: "Redirect deleted", error: "Error deleting redirect" },

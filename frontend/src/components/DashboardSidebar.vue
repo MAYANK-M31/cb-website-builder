@@ -4,7 +4,22 @@
 
 		<ScrollArea class="min-h-0 flex-1" viewport-class="px-2 pt-0.5 pb-2">
 			<nav class="space-y-0.5">
-				<SidebarItem label="All Pages" :active="!builderStore.activeFolder" @click="setFolderActive('')">
+				<SidebarItem
+					label="Home Pages"
+					:active="!builderStore.activeFolder && builderStore.activeSection === 'home'"
+					@click="setSection('home')">
+					<template #prefix><HomeIcon class="size-4" /></template>
+				</SidebarItem>
+				<SidebarItem
+					label="Funnel Pages"
+					:active="!builderStore.activeFolder && builderStore.activeSection === 'funnel'"
+					@click="setSection('funnel')">
+					<template #prefix><FilterIcon class="size-4" /></template>
+				</SidebarItem>
+				<SidebarItem
+					label="All Pages"
+					:active="!builderStore.activeFolder && builderStore.activeSection === 'all'"
+					@click="setSection('all')">
 					<template #prefix><FilesIcon class="size-4" /></template>
 				</SidebarItem>
 				<SidebarItem label="Settings" @click="showSettingsDialog = true">
@@ -99,6 +114,8 @@ import builderLogo from "/builder_logo.png";
 import EditableSpan from "@/components/EditableSpan.vue";
 import FilesIcon from "@/components/Icons/Files.vue";
 import SettingsIcon from "@/components/Icons/SettingsGear.vue";
+import FilterIcon from "~icons/lucide/filter";
+import HomeIcon from "~icons/lucide/house";
 import { useDashboardState } from "@/composables/useDashboardState";
 import builderProjectFolder from "@/data/builderProjectFolder";
 import useBuilderStore from "@/stores/builderStore";
@@ -107,6 +124,7 @@ import { promptCreateFolder } from "@/utils/dialogs";
 import { confirm } from "@/utils/helpers";
 import { useDark, useToggle } from "@vueuse/core";
 import {
+	Button,
 	createResource,
 	Dialog,
 	Dropdown,
@@ -164,11 +182,11 @@ const appMenuItems = computed(
 				group: "Options",
 				hideLabel: true,
 				items: [
-					{
-						label: "Apps",
-						icon: "lucide-grid",
-						submenu: appsSubmenu.value,
-					},
+					// {
+					// 	label: "Apps",
+					// 	icon: "lucide-grid",
+					// 	submenu: appsSubmenu.value,
+					// },
 					{
 						label: "Toggle Theme",
 						onClick: () => toggleDark(),
@@ -181,22 +199,26 @@ const appMenuItems = computed(
 					},
 				],
 			},
-			{
-				group: "Help",
-				hideLabel: true,
-				items: [
-					{
-						label: "Help",
-						onClick: () => window.open("https://t.me/frappebuilder"),
-						icon: "lucide-info",
-					},
-				],
-			},
+			// {
+			// 	group: "Help",
+			// 	hideLabel: true,
+			// 	items: [
+			// 		{
+			// 			label: "Help",
+			// 			onClick: () => window.open("https://t.me/frappebuilder"),
+			// 			icon: "lucide-info",
+			// 		},
+			// 	],
+			// },
 		] as unknown as SidebarHeaderProps["menuItems"],
 );
 
 const isFolderActive = (folderName: string) => {
 	return builderStore.activeFolder === folderName;
+};
+const setSection = (section: string) => {
+	builderStore.activeFolder = "";
+	builderStore.activeSection = section;
 };
 const setFolderActive = (folderName: string) => {
 	builderStore.activeFolder = folderName;
@@ -225,7 +247,7 @@ const renameFolder = async (newFolderName: string, targetFolder: BuilderProjectF
 
 const deleteFolder = async (folderName: string) => {
 	const confirmed = await confirm(
-		'Are you sure you want to delete this folder? All the pages under this folder will be visible under "All Pages"',
+		"Are you sure you want to delete this folder? All the pages under this folder will be visible under \"All Pages\"",
 	);
 	if (!confirmed) return;
 	await createResource({

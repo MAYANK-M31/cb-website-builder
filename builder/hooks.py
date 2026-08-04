@@ -196,6 +196,11 @@ scheduler_events = {
 # API calls are already authenticated (no "you do not have permission" race).
 before_request = ["builder.auth.sso_before_request"]
 
+# Per-request bearer auth: cookies are blocked inside the cross-site dashboard
+# iframe, so authenticate each API call from the Authorization header using the
+# CreatorBase JWT instead. Runs inside Frappe's validate_auth (validate_auth_via_hooks).
+auth_hooks = ["builder.auth.authenticate_via_creatorbase_bearer"]
+
 # auth_hooks = [
 # "builder.auth.validate"
 # ]

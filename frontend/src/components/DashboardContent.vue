@@ -125,6 +125,11 @@ watch(
 	() => fetchPages(),
 );
 
+watch(
+	() => builderStore.activeSection,
+	() => fetchPages(),
+);
+
 watch(displayType, () => fetchPages());
 
 // remove selection mode when the escape key is pressed
@@ -142,6 +147,11 @@ const fetchPages = () => {
 	const filters = {
 		is_template: 0,
 	} as any;
+	if (builderStore.activeSection === "funnel") {
+		filters["project_folder"] = "Funnel Pages";
+	} else if (builderStore.activeSection === "home") {
+		filters["project_folder"] = ["!=", "Funnel Pages"];
+	}
 	if (typeFilter.value && displayType.value !== "tree") {
 		if (typeFilter.value === "published") {
 			filters["published"] = true;

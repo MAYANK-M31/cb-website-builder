@@ -1,7 +1,7 @@
 <template>
 	<div class="m-auto flex w-3/4 max-w-6xl items-center justify-between bg-surface-base px-3.5 py-5 pt-8">
 		<h1 class="text-2xl-semibold text-ink-gray-9">
-			{{ builderStore.activeFolder || "All Pages" }}
+			{{ sectionTitle }}
 		</h1>
 		<div class="flex gap-2">
 			<div>
@@ -9,6 +9,7 @@
 					Move To Folder
 				</Button>
 			</div>
+		
 			<div class="relative flex" v-show="!selectionMode">
 				<BuilderInput
 					class="w-48"
@@ -92,6 +93,13 @@
 					]"
 					v-model="displayType"></OptionToggle>
 			</div>
+				<Button
+				variant="solid"
+				iconLeft="lucide-plus"
+				class="bg-surface-gray-10 !text-ink-base hover:bg-surface-gray-9"
+				@click="showTemplatesDialog = true">
+				Create New Page
+			</Button>
 		</div>
 	</div>
 </template>
@@ -103,8 +111,16 @@ import useBuilderStore from "@/stores/builderStore";
 import { promptSelectFolder } from "@/utils/dialogs";
 import { Button, Select } from "frappe-ui";
 import ListTreeIcon from "~icons/lucide/list-tree";
+import { computed } from "vue";
 
 const builderStore = useBuilderStore();
+const sectionTitle = computed(() => {
+	if (builderStore.activeFolder) return builderStore.activeFolder;
+	const section = builderStore.activeSection;
+	if (section === "home") return "Home Pages";
+	if (section === "funnel") return "Funnel Pages";
+	return "All Pages";
+});
 const {
 	searchFilter,
 	selectionMode,
@@ -115,5 +131,7 @@ const {
 	orderBy,
 	expandTreeFn,
 	collapseTreeFn,
+	showTemplatesDialog
 } = useDashboardState();
+
 </script>

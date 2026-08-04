@@ -1,7 +1,8 @@
 <template>
 	<FileUploader
 		ref="fileUploaderRef"
-		@success="(file: FileDoc) => setImageURL(file.file_url)"
+		@success="onUploadSuccess"
+		@failure="() => toast.dismiss('image-upload')"
 		fileTypes="image/*"
 		:uploadArgs="{
 			private: false,
@@ -61,7 +62,7 @@
 									'!grid': !currentImageURL,
 									'group-hover:grid': currentImageURL,
 								}">
-								<Button variant="subtle" @click="openFileSelector">Upload</Button>
+								<Button variant="subtle" @click="startUpload(openFileSelector)">Upload</Button>
 							</div>
 						</div>
 						<InlineInput
@@ -87,7 +88,7 @@ import ImageUploader from "@/components/Controls/ImageUploader.vue";
 import InlineInput from "@/components/Controls/InlineInput.vue";
 import InputLabel from "@/components/Controls/InputLabel.vue";
 import useBuilderStore from "@/stores/builderStore";
-import { FileUploader, Popover } from "frappe-ui";
+import { FileUploader, Popover, toast } from "frappe-ui";
 import { computed, ref, watch } from "vue";
 
 const props = withDefaults(
@@ -127,6 +128,18 @@ const emit = defineEmits(["update:imageFit", "update:modelValue"]);
 
 const setImageURL = (fileURL: string) => {
 	emit("update:modelValue", fileURL);
+};
+
+const startUpload = (openFileSelector: () => void) => {
+	toast.loading("Uploading...", {
+		id: "image-upload",
+	});
+	openFileSelector();
+};
+
+const onUploadSuccess = (file: FileDoc) => {
+	toast.dismiss("image-upload");
+	setImageURL(file.file_url);
 };
 
 const setImageFit = (fit: string) => {

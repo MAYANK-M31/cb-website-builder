@@ -48,7 +48,7 @@
 			</div>
 		</div>
 		<hr class="w-full border-outline-gray-2" />
-		<Switch
+		<!-- <Switch
 			size="sm"
 			label="Enable View Tracking"
 			description="Track the number of views on each page of your website"
@@ -59,7 +59,7 @@
 						enable_view_tracking: val,
 					});
 				}
-			" />
+			" /> -->
 		<Switch
 			size="sm"
 			label="Auto convert images to WebP"

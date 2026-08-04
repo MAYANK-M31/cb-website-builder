@@ -180,7 +180,7 @@ const usePageStore = defineStore("pageStore", {
 			}
 		},
 
-		async publishPage(openInBrowser = true) {
+		async publishPage(openInBrowser = false) {
 			await this.waitTillPageIsSaved();
 			return webPages.runDocMethod
 				.submit({

@@ -191,7 +191,7 @@ const useTemplate = (page: TemplatePageSummary) => {
 	})
 		.submit({
 			template_page: page.name,
-			project_folder: builderStore.activeFolder || undefined,
+			project_folder: builderStore.sectionFolder || undefined,
 		})
 		.then((newPageName: string) => {
 			capture("builder_page_template_used", {
@@ -222,7 +222,7 @@ const importAll = () => {
 	})
 		.submit({
 			template_group: activeGroup.value.name,
-			project_folder: builderStore.activeFolder || undefined,
+			project_folder: builderStore.sectionFolder || undefined,
 		})
 		.then((pageNames: string[]) => {
 			capture("builder_template_group_imported", {

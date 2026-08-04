@@ -32,6 +32,11 @@
 					@update:modelValue="(val: string) => pageStore.setRouteVariable(variable, val)" />
 			</CollapsibleSection>
 		</div>
+		<div class="mt-4 flex justify-end">
+			<Button variant="solid" iconLeft="lucide-save" :disabled="builderStore.readOnlyMode" @click="save">
+				Save
+			</Button>
+		</div>
 	</div>
 </template>
 <script setup lang="ts">
@@ -41,7 +46,12 @@ import { BuilderPage } from "@/types/doctypes";
 import { getRouteVariables } from "@/utils/helpers";
 import { useDebounceFn } from "@vueuse/core";
 import { computed } from "vue";
+import { Button } from "frappe-ui";
 import CollapsibleSection from "./CollapsibleSection.vue";
+
+const props = defineProps<{
+	close?: () => void;
+}>();
 
 const builderStore = useBuilderStore();
 const pageStore = usepageStore();
@@ -59,5 +69,19 @@ const updateActivePage = (key: keyof BuilderPage, val: string) => {
 		pageStore.activePage[key] = val as never;
 	}
 	debouncedUpdateActivePage(key, val);
+};
+
+const save = () => {
+	try {
+		debouncedUpdateActivePage.cancel();
+		const page = pageStore.activePage;
+		if (page) {
+			pageStore.updateActivePage("page_title", page.page_title);
+			pageStore.updateActivePage("route", page.route);
+		}
+		pageStore.savePage();
+	} finally {
+		props.close?.();
+	}
 };
 </script>
