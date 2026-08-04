@@ -17,6 +17,7 @@ import {
 import { createDocumentResource, createListResource, createResource, toast } from "frappe-ui";
 import { defineStore } from "pinia";
 import { nextTick } from "vue";
+import { getCreatorAuth, getWebappPageUrl } from "@/creatorbase";
 
 const usePageStore = defineStore("pageStore", {
 	state: () => ({
@@ -190,10 +191,28 @@ const usePageStore = defineStore("pageStore", {
 				.then(async () => {
 					this.activePage = await this.fetchActivePage(this.selectedPage as string);
 					this.snapshotsVersion++;
+					this.showPublishedWebappLink();
 					if (openInBrowser) {
 						this.openPageInBrowser(this.activePage as BuilderPage);
 					}
 				});
+		},
+
+		// After publish, surface the live CreatorBase webapp link (requires the
+		// dashboard to have handed over auth via postMessage).
+		showPublishedWebappLink() {
+			const { subdomain } = getCreatorAuth();
+			if (!subdomain) return;
+			const url = getWebappPageUrl(this.activePage?.route || this.route, subdomain);
+			if (!url) return;
+			toast.success("Published successfully", {
+				description: url,
+				duration: 8000,
+				action: {
+					label: "Open live page",
+					onClick: () => window.open(url, "_blank"),
+				},
+			});
 		},
 
 		async revertChanges() {
@@ -353,7 +372,12 @@ const usePageStore = defineStore("pageStore", {
 		},
 
 		openPageInBrowser(page: BuilderPage) {
-			const pageURL = this.getResolvedPageURL(true, page);
+			const route = page?.route || this.route;
+			// Prefer the CreatorBase webapp (SSR of the S3-published HTML) so the
+			// preview opens at the real public URL instead of the builder host.
+			const { subdomain } = getCreatorAuth();
+			const webappUrl = subdomain ? getWebappPageUrl(route, subdomain) : "";
+			const pageURL = webappUrl || this.getResolvedPageURL(true, page);
 			const targetWindow = window.open(pageURL, "builder-preview");
 			if (targetWindow?.location.pathname === pageURL) {
 				targetWindow?.location.reload();

@@ -9,6 +9,9 @@ import "./setupFrappeUIResource";
 
 import App from "@/App.vue";
 import Input from "@/components/Controls/Input.vue";
+import { initCreatorbase } from "@/creatorbase";
+
+initCreatorbase();
 
 const app = createApp(App);
 const pinia = createPinia();

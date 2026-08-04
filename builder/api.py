@@ -609,3 +609,46 @@ def get_component_data(
 	)
 
 	return _get_component_data(component_name, props, script)
+
+
+@frappe.whitelist()
+@has_page_write("You do not have permission to publish this page")
+def publish_to_creatorbase(page: str, salespage_uuid: str | None = None, slug: str | None = None, title: str | None = None):
+	"""Render a Builder Page to standalone HTML and push it to the CreatorBase API,
+	which uploads it to S3 and wires it into the sales page's offer route."""
+	import os
+
+	from builder.builder.doctype.builder_page.builder_page import BuilderPage
+
+	page_doc = frappe.get_doc("Builder Page", page)
+	html = page_doc.get_preview_html()
+
+	endpoint = os.environ.get("CREATORBASE_API_URL", "").rstrip("/")
+	token = os.environ.get("CREATORBASE_API_TOKEN", "")
+	if not endpoint or not token:
+		frappe.log_error("CreatorBase API not configured", "builder.publish_to_creatorbase")
+		return {"ok": False, "error": "CREATORBASE_API_URL/TOKEN not set"}
+
+	if not salespage_uuid:
+		salespage_uuid = page_doc.name
+
+	url = f"{endpoint}/sales-pages/{salespage_uuid}/import-html"
+	resp = requests.post(
+		url,
+		headers={
+			"Authorization": f"Bearer {token}",
+			"Content-Type": "application/json",
+		},
+		json={
+			"html": html,
+			"slug": slug or page_doc.route or "index",
+			"title": title or page_doc.page_title or page_doc.name,
+		},
+		timeout=60,
+	)
+
+	if not resp.ok:
+		frappe.log_error(f"CreatorBase import failed {resp.status_code}: {resp.text[:500]}", "builder.publish_to_creatorbase")
+		return {"ok": False, "error": f"HTTP {resp.status_code}"}
+
+	return {"ok": True, "url": resp.json().get("publishedHtmlUrl")}

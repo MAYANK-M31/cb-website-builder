@@ -291,7 +291,32 @@ class BuilderPage(WebsiteGenerator):
 			enqueue_after_commit=True,
 		)
 
+		# Optionally sync the published page to CreatorBase (S3 + offer route).
+		self._sync_to_creatorbase()
+
 		return self.route
+
+	def _sync_to_creatorbase(self):
+		import os
+
+		endpoint = os.environ.get("CREATORBASE_API_URL", "").rstrip("/")
+		token = os.environ.get("CREATORBASE_API_TOKEN", "")
+		if not endpoint or not token:
+			return
+		import requests
+		try:
+			html = self.get_preview_html()
+			uuid = self.name
+			resp = requests.post(
+				f"{endpoint}/sales-pages/{uuid}/import-html",
+				headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+				json={"html": html, "slug": self.route or "index", "title": self.page_title or self.name},
+				timeout=60,
+			)
+			if not resp.ok:
+				frappe.log_error(f"CreatorBase import failed {resp.status_code}: {resp.text[:500]}", "builder.publish")
+		except Exception as e:
+			frappe.log_error(f"CreatorBase import error: {e}", "builder.publish")
 
 	@frappe.whitelist()
 	def unpublish(self):
