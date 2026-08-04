@@ -191,6 +191,11 @@ scheduler_events = {
 # Authentication and authorization
 # --------------------------------
 
+# Server-side SSO: when the builder page is requested with ?creatorbase_token=,
+# log the creator in before the response is served so the embedded iframe's first
+# API calls are already authenticated (no "you do not have permission" race).
+before_request = ["builder.auth.sso_before_request"]
+
 # auth_hooks = [
 # "builder.auth.validate"
 # ]

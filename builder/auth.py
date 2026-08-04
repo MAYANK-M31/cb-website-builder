@@ -50,14 +50,11 @@ def _get_or_create_user(email: str, full_name: str) -> str:
 	return email
 
 
-@frappe.whitelist(allow_guest=True)
-def login_via_creatorbase(token: str):
-	"""SSO: validate a CreatorBase JWT and log the creator into THIS site.
+def _do_login(token: str) -> dict:
+	"""Validate a CreatorBase JWT and establish a session for this site.
 
-	Isolation guarantee: the request Host must resolve to this site's own
-	subdomain (site named {sub}.creatorbase.live / {sub}.localhost). The token's
-	creator is resolved against CreatorBase and must match the requested
-	subdomain, otherwise the request is rejected.
+	Returns a dict with the resolved identity. Raises AuthenticationError on any
+	invalid/mismatched token so callers can treat failure as a hard rejection.
 	"""
 	payload = _decode_token(token)
 	if not payload:
@@ -105,7 +102,32 @@ def login_via_creatorbase(token: str):
 	frappe.local.login_manager.post_login()
 	frappe.db.commit()
 
+	return {"ok": True, "subdomain": site_sub, "email": email}
+
+
+def sso_before_request():
+	"""Server-side SSO for the embedded builder.
+
+	When the builder page is requested with `?creatorbase_token=`, log the creator
+	in BEFORE the page/API responds so the very first client call is already
+	authenticated. This avoids the client-side race that otherwise surfaces a
+	"you do not have permission" alert inside the dashboard iframe.
+	"""
+	try:
+		token = frappe.local.form_dict.get("creatorbase_token") or ""
+		if not token:
+			return
+		if frappe.session.user != "Guest":
+			return  # already authenticated
+		_do_login(token)
+	except Exception as e:
+		frappe.log_error(f"creatorbase before-request SSO failed: {e}", "creatorbase.auth")
+
+
+@frappe.whitelist(allow_guest=True)
+def login_via_creatorbase(token: str):
+	"""SSO: validate a CreatorBase JWT and log the creator into THIS site."""
+	result = _do_login(token)
 	frappe.response["message"] = "Logged In"
 	frappe.response["home_page"] = "/builder"
-	frappe.response["full_name"] = payload.get("name") or email
-	return {"ok": True, "subdomain": site_sub, "email": email}
+	return result
