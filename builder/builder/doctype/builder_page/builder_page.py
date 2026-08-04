@@ -309,8 +309,13 @@ class BuilderPage(WebsiteGenerator):
 			host = frappe.local.request.host if frappe.local.request else None
 			scheme = "https" if host and "creatorbase.live" in host else "http"
 			base = f"{scheme}://{host}" if host else ""
+			# Dev sites run on a non-443 port (8008) — include it when the host
+			# header doesn't already carry one.
+			if base and scheme == "http" and ":" not in host:
+				base = f"{base}:8008"
 			route = self.route or "/"
-			published_url = f"{base}{route}" if base else None
+			normalized_route = route if route.startswith("/") else f"/{route}"
+			published_url = f"{base}{normalized_route}" if base else None
 			resp = requests.post(
 				f"{endpoint}/sales-pages/{uuid}/publish",
 				headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
