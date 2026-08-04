@@ -291,7 +291,7 @@ class BuilderPage(WebsiteGenerator):
 			enqueue_after_commit=True,
 		)
 
-		# Optionally sync the published page to CreatorBase (S3 + offer route).
+		# Optionally sync the published page to CreatorBase (publish status + URL).
 		self._sync_to_creatorbase()
 
 		return self.route
@@ -305,18 +305,22 @@ class BuilderPage(WebsiteGenerator):
 			return
 		import requests
 		try:
-			html = self.get_preview_html()
 			uuid = self.name
+			host = frappe.local.request.host if frappe.local.request else None
+			scheme = "https" if host and "creatorbase.live" in host else "http"
+			base = f"{scheme}://{host}" if host else ""
+			route = self.route or "/"
+			published_url = f"{base}{route}" if base else None
 			resp = requests.post(
-				f"{endpoint}/sales-pages/{uuid}/import-html",
+				f"{endpoint}/sales-pages/{uuid}/publish",
 				headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
-				json={"html": html, "slug": self.route or "index", "title": self.page_title or self.name},
+				json={"publishedUrl": published_url},
 				timeout=60,
 			)
 			if not resp.ok:
-				frappe.log_error(f"CreatorBase import failed {resp.status_code}: {resp.text[:500]}", "builder.publish")
+				frappe.log_error(f"CreatorBase publish sync failed {resp.status_code}: {resp.text[:500]}", "builder.publish")
 		except Exception as e:
-			frappe.log_error(f"CreatorBase import error: {e}", "builder.publish")
+			frappe.log_error(f"CreatorBase publish sync error: {e}", "builder.publish")
 
 	@frappe.whitelist()
 	def unpublish(self):

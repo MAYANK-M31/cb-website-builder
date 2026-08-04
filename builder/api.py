@@ -2,6 +2,7 @@ import ipaddress
 import os
 import socket
 from io import BytesIO
+from mimetypes import guess_type
 from types import FunctionType, MethodType, ModuleType
 from typing import Any
 from urllib.parse import unquote, urlparse
@@ -61,16 +62,85 @@ def get_page_preview_html(page: str, **kwargs) -> Response:
 @frappe.whitelist()
 @has_page_write("You do not have permission to upload assets.")
 def upload_builder_asset():
-	from frappe.handler import upload_file
+	"""Upload a builder asset directly to CreatorBase S3 (no frappe local files).
 
-	image_file = upload_file()
+	Returns the same shape the frontend expects: `{ file_name, file_url }`.
+	"""
+	import io as _io
+
+	files = frappe.request.files or {}
+	file = files.get("file")
+	if not file:
+		frappe.throw("No file provided", frappe.ValidationError)
+
+	filename = file.filename or "asset.bin"
+	content_type = guess_type(filename)[0] or "application/octet-stream"
+	content = file.stream.read()
+
+	# Optional webp conversion for raster images (re-uploaded to S3).
 	if (
-		image_file
-		and image_file.file_url.endswith((".png", ".jpeg", ".jpg"))
+		content_type.startswith("image/")
+		and content_type not in ("image/webp", "image/svg+xml", "image/gif")
 		and frappe.get_cached_value("Builder Settings", "Builder Settings", "auto_convert_images_to_webp")
 	):
-		convert_to_webp(file_doc=image_file)
-	return image_file
+		try:
+			img = Image.open(_io.BytesIO(content))
+			buf = _io.BytesIO()
+			img.save(buf, "WEBP", quality=85)
+			content = buf.getvalue()
+			filename = os.path.splitext(filename)[0] + ".webp"
+			content_type = "image/webp"
+		except Exception:
+			pass  # keep original if conversion fails
+
+	# Ask CreatorBase for a presigned S3 PUT + return its public URL.
+	endpoint = os.environ.get("CREATORBASE_API_URL", "").rstrip("/")
+	token = os.environ.get("CREATORBASE_API_TOKEN", "")
+	asset_base = os.environ.get("CREATORBASE_ASSET_BASE", "").rstrip("/")
+	if not endpoint or not token:
+		frappe.throw("CreatorBase API not configured", frappe.ValidationError)
+
+	try:
+		signed_resp = requests.post(
+			f"{endpoint}/media/supabase/signed-url",
+			headers={"Authorization": f"Bearer {token}"},
+			json={"mimetype": content_type, "bucket": "creatorbase-content", "folder": "builder-uploads", "isPublic": True},
+			timeout=30,
+		)
+		signed_resp.raise_for_status()
+		signed = signed_resp.json()
+		signed_url = signed.get("signedUrl")
+		path = signed.get("path")
+		if not signed_url or not path:
+			frappe.throw("Failed to get signed URL", frappe.ValidationError)
+
+		put_resp = requests.put(
+			signed_url,
+			data=content,
+			headers={"Content-Type": content_type},
+			timeout=120,
+		)
+		put_resp.raise_for_status()
+
+		file_url = f"{asset_base}/{path}" if asset_base else signed_url.split("?")[0]
+	except Exception as e:
+		frappe.log_error(f"CreatorBase asset upload failed: {e}", "builder.upload_builder_asset")
+		frappe.throw("Failed to upload asset to storage", frappe.ValidationError)
+
+	# Frappe stores metadata only (references the S3 URL).
+	file_doc = frappe.get_doc(
+		{
+			"doctype": "File",
+			"file_name": filename,
+			"file_url": file_url,
+			"content_hash": None,
+			"is_private": 0,
+			"attached_to_doctype": frappe.form_dict.get("doctype"),
+			"attached_to_name": frappe.form_dict.get("docname"),
+		}
+	).insert(ignore_permissions=True)
+
+	return {"file_name": filename, "file_url": file_url, "name": file_doc.name}
 
 
 @frappe.whitelist()
