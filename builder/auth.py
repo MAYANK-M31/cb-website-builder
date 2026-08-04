@@ -67,31 +67,35 @@ def login_via_creatorbase(token: str):
 	if not email:
 		frappe.throw("Token missing email", frappe.AuthenticationError)
 
-	# Host-match isolation: the requested subdomain's creator (resolved via the
-	# CreatorBase API, the source of truth) must own the token's email. Otherwise
-	# a creator could log into another creator's site.
+	# Host-match isolation: resolve the creator's own subdomain from CreatorBase
+	# using THEIR token (source of truth), then require it to match the request
+	# Host's subdomain. A creator can only ever log into their own site.
 	site_sub = _resolve_site_subdomain()
 	api_url = os.environ.get("CREATORBASE_API_URL", "").rstrip("/")
 	api_token = os.environ.get("CREATORBASE_API_TOKEN", "")
 
-	creator_email = None
-	if site_sub and api_url and api_token:
+	token_subdomain = None
+	api_reachable = False
+	if site_sub and api_url and token:
 		try:
 			resp = requests.get(
-				f"{api_url}/user/subdomain/{site_sub}",
-				headers={"Authorization": f"Bearer {api_token}"},
+				f"{api_url}/user",
+				headers={"Authorization": f"Bearer {token}"},
 				timeout=20,
 			)
+			api_reachable = True
 			if resp.ok:
-				creator_email = (resp.json().get("email") or "").strip().lower()
+				token_subdomain = (resp.json().get("subDomain") or "").strip().lower()
 		except Exception:
-			creator_email = None
+			api_reachable = False
 
-	# When CreatorBase is reachable, the host's creator email must equal the token
-	# email (hard isolation). If unreachable, fall back to allowing the host match
-	# by subdomain only (dev resilience) — still scoped to this site's host.
-	if creator_email and creator_email != email:
-		frappe.throw("Account does not belong to this storefront", frappe.AuthenticationError)
+	if api_reachable:
+		if not token_subdomain:
+			frappe.throw("Account has no storefront subdomain", frappe.AuthenticationError)
+		if token_subdomain != site_sub:
+			frappe.throw("Account does not belong to this storefront", frappe.AuthenticationError)
+	# Only when CreatorBase is unreachable do we fall back to host match alone
+	# (dev resilience) — still scoped to this site's host.
 
 	user = _get_or_create_user(email, payload.get("name") or payload.get("email"))
 
