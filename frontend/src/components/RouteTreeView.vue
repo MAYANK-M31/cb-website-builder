@@ -132,9 +132,18 @@ onBeforeUpdate(() => {
 	nodeEls.value.clear();
 });
 
-function buildTrie(pageList: BuilderPage[]): Map<string, TrieNode> {
+// Pages whose route resolves to the site root ("/", "", or "index"). Routes have
+// no path segments, so buildTrie would drop them entirely; surface them as a
+// top-level "/" node so the homepage stays visible and clickable in the tree.
+function isRootRoute(route: string | null | undefined): boolean {
+	const trimmed = (route || "").replace(/^\/+/, "");
+	return trimmed === "" || trimmed === "index";
+}
+
+function buildTrie(pageNodes: BuilderPage[]): Map<string, TrieNode> {
 	const root: Map<string, TrieNode> = new Map();
-	for (const page of pageList) {
+	for (const page of pageNodes) {
+		if (isRootRoute(page.route)) continue;
 		const segments = (page.route || "").split("/").filter(Boolean);
 		let current = root;
 		for (let i = 0; i < segments.length; i++) {
@@ -156,6 +165,39 @@ function getLimit(nodeId: string): number {
 	return loadedCounts.value.get(nodeId) ?? PAGE_LIMIT_PER_NODE;
 }
 
+function buildNode(
+	label: string,
+	trieNode: TrieNode,
+	depth: number,
+	parentPath: string,
+	parentId: string | null,
+	stickyStackDepth: number,
+): Node {
+	const fullPath = parentPath ? `${parentPath}/${label}` : label;
+	const hasChildren = trieNode.children.size > 0;
+	const expanded = !!props.searchFilter || !collapsedNodes.value.has(fullPath);
+	const children =
+		hasChildren && expanded
+			? buildNodes(trieNode.children, depth + 1, fullPath, fullPath, stickyStackDepth + 1)
+			: [];
+
+	return {
+		id: fullPath,
+		label,
+		fullPath,
+		depth,
+		stickyStackDepth,
+		page: trieNode.page,
+		hasChildren,
+		expanded,
+		parentId,
+		children,
+		hasMore: hasChildren && trieNode.children.size > getLimit(fullPath),
+		loadedCount: hasChildren ? Math.min(getLimit(fullPath), trieNode.children.size) : 0,
+		totalCount: hasChildren ? trieNode.children.size : 0,
+	};
+}
+
 const treeState = computed(() => {
 	const trie = buildTrie(pages.value);
 
@@ -171,37 +213,32 @@ const treeState = computed(() => {
 		const limit = getLimit(limitKey);
 		const visible = entries.slice(0, limit);
 
-		return visible.map(([label, trieNode]) => {
-			const fullPath = parentPath ? `${parentPath}/${label}` : label;
-			const hasChildren = trieNode.children.size > 0;
-			const expanded = !!props.searchFilter || !collapsedNodes.value.has(fullPath);
-			const children =
-				hasChildren && expanded
-					? buildNodes(trieNode.children, depth + 1, fullPath, fullPath, stickyStackDepth + 1)
-					: [];
-
-			return {
-				id: fullPath,
-				label,
-				fullPath,
-				depth,
-				stickyStackDepth,
-				page: trieNode.page,
-				hasChildren,
-				expanded,
-				parentId,
-				children,
-				hasMore: hasChildren && trieNode.children.size > getLimit(fullPath),
-				loadedCount: hasChildren ? Math.min(getLimit(fullPath), trieNode.children.size) : 0,
-				totalCount: hasChildren ? trieNode.children.size : 0,
-			};
-		});
+		return visible.map(([label, trieNode]) => buildNode(label, trieNode, depth, parentPath, parentId, stickyStackDepth));
 	}
 
 	const rootEntries = Array.from(trie.entries());
 	const rootLimit = getLimit("__root__");
+	// The homepage (route "/") has no path segments and never appears in the trie;
+	// add it as a leading "/" node so it remains visible and clickable.
+	const rootPageNodes: Node[] = pages.value
+		.filter((p) => isRootRoute(p.route))
+		.map((page) => ({
+			id: `__home__:${page.name}`,
+			label: "",
+			fullPath: "",
+			depth: 0,
+			stickyStackDepth: 0,
+			page,
+			hasChildren: false,
+			expanded: false,
+			parentId: null,
+			children: [],
+			hasMore: false,
+			loadedCount: 0,
+			totalCount: 0,
+		}));
 	return {
-		nodes: buildNodes(trie, 0, "", null, 0),
+		nodes: [...rootPageNodes, ...buildNodes(trie, 0, "", null, 0)],
 		rootLoadMore: {
 			hasMore: rootEntries.length > rootLimit,
 			loadedCount: Math.min(rootLimit, rootEntries.length),

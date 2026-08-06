@@ -48,7 +48,9 @@ export default defineConfig({
 	server: {
 		allowedHosts: true,
 		proxy: {
-			"^/(?!(?:builder|_builder|app|desk|login|api|assets|files|private|pages|builder_assets|src|node_modules)(?:[/?#]|$)|@|__)(?![^?]*\\.)[^/?#].*":
+			// Forward site routes (including the bare root "/", which is the published
+			// homepage) to Frappe, but keep the builder SPA and its reserved paths local.
+			"^/(?!(?:builder|_builder|app|desk|login|api|assets|files|private|pages|public|builder_assets|src|node_modules)(?:[/?#]|$)|@|__)(?![^?]*\\.).*":
 				{
 					target: `http://127.0.0.1:${process.env.FRAPPE_WEB_SERVER_PORT || 8000}`,
 					router: (req) =>
