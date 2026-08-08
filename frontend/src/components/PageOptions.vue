@@ -7,6 +7,7 @@
 				class="w-full text-sm [&>label]:w-[60%] [&>label]:min-w-[180px]"
 				:modelValue="pageStore.activePage?.page_title"
 				:disabled="builderStore.readOnlyMode"
+				@input="(val: string) => updateActivePage('page_title', val)"
 				@update:modelValue="(val: string) => updateActivePage('page_title', val)" />
 			<BuilderInput
 				type="text"
@@ -16,6 +17,7 @@
 				:modelValue="pageStore.activePage?.route"
 				:disabled="builderStore.readOnlyMode"
 				:hideClearButton="true"
+				@input="(val: string) => updateActivePage('route', val)"
 				@update:modelValue="(val: string) => updateActivePage('route', val)" />
 			<!-- Dynamic Route Variables -->
 			<CollapsibleSection
@@ -44,8 +46,7 @@ import useBuilderStore from "@/stores/builderStore";
 import usepageStore from "@/stores/pageStore";
 import { BuilderPage } from "@/types/doctypes";
 import { getRouteVariables } from "@/utils/helpers";
-import { useDebounceFn } from "@vueuse/core";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { Button } from "frappe-ui";
 import CollapsibleSection from "./CollapsibleSection.vue";
 
@@ -60,26 +61,30 @@ const dynamicVariables = computed(() => {
 	return getRouteVariables(pageStore.activePage?.route || "");
 });
 
-const debouncedUpdateActivePage = useDebounceFn((key: keyof BuilderPage, val: any) => {
-	pageStore.updateActivePage(key, val);
-}, 300);
+const updateActivePageTimer = ref<ReturnType<typeof setTimeout> | undefined>();
 
 const updateActivePage = (key: keyof BuilderPage, val: string) => {
 	if (pageStore.activePage) {
 		pageStore.activePage[key] = val as never;
 	}
-	debouncedUpdateActivePage(key, val);
+	clearTimeout(updateActivePageTimer.value);
+	updateActivePageTimer.value = setTimeout(() => {
+		pageStore.updateActivePage(key, val);
+	}, 300);
 };
 
 const save = () => {
 	try {
-		debouncedUpdateActivePage.cancel();
+		clearTimeout(updateActivePageTimer.value);
 		const page = pageStore.activePage;
 		if (page) {
-			pageStore.updateActivePage("page_title", page.page_title);
-			pageStore.updateActivePage("route", page.route);
+			pageStore.savePage({
+				page_title: page.page_title,
+				route: page.route,
+			});
+		} else {
+			pageStore.savePage();
 		}
-		pageStore.savePage();
 	} finally {
 		props.close?.();
 	}

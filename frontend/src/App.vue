@@ -5,20 +5,23 @@
 				<component :is="Component" />
 			</keep-alive>
 		</router-view>
-		<UseDark attribute="data-theme"></UseDark>
 		<FrappeUIProvider />
 	</div>
 </template>
 <script setup lang="ts">
 import useBuilderStore from "@/stores/builderStore";
 import usePageStore from "@/stores/pageStore";
-import { UseDark } from "@vueuse/components";
 import { useTitle } from "@vueuse/core";
 import { useSiteReadOnlyNotice } from "@/utils/useSiteReadOnlyNotice";
 import { FrappeUIProvider } from "frappe-ui";
 import { computed, provide } from "vue";
 import { useRoute } from "vue-router";
 import { sessionUser } from "./router";
+
+// The builder is always dark mode. Force data-theme and the vueuse storage key
+// before render so every useDark() instance resolves to dark.
+localStorage.setItem("vueuse-color-scheme", "dark");
+document.documentElement.setAttribute("data-theme", "dark");
 
 // do not remove this
 const builderStore = useBuilderStore();

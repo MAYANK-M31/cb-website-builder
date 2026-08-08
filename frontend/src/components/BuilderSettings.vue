@@ -156,17 +156,17 @@ const globalSettings = {
 			title: "Robots.txt",
 			icon: "lucide-bot",
 		},
-		...(window.is_fc_site || window.is_developer_mode
-			? [
-					{
-						label: "Domains",
-						value: "global_domains",
-						component: GlobalDomains,
-						title: "Custom Domains",
-						icon: "lucide-globe",
-					},
-				]
-			: []),
+		// ...(window.is_fc_site || window.is_developer_mode
+		// 	? [
+		// 			{
+		// 				label: "Domains",
+		// 				value: "global_domains",
+		// 				component: GlobalDomains,
+		// 				title: "Custom Domains",
+		// 				icon: "lucide-globe",
+		// 			},
+		// 		]
+		// 	: []),
 		// {
 		// 	label: "Analytics",
 		// 	value: "global_analytics",

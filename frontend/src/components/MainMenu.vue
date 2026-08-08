@@ -1,15 +1,24 @@
 <template>
-	<Dropdown :options="mainMenuOptions" size="sm" placement="left" :offset="18">
-		<template v-slot="{ open }">
-			<div class="flex cursor-pointer items-center gap-2">
-				<img src="/builder_logo.png" alt="logo" class="h-7 rounded-4" />
-				<span :class="[
-					open ? 'lucide-chevron-up' : 'lucide-chevron-down',
-					'h-4 w-4 !text-gray-700 dark:!text-gray-200',
-				]" aria-hidden="true" />
-			</div>
-		</template>
-	</Dropdown>
+	<div class="flex items-center gap-1.5">
+		<Button
+			variant="ghost"
+			size="sm"
+			icon="lucide-arrow-left"
+			tooltip="Back to Dashboard"
+			@click="goBackToDashboard" />
+		<Dropdown :options="mainMenuOptions" size="sm" placement="left" :offset="18">
+			<template v-slot="{ open }">
+				<div class="flex cursor-pointer items-center gap-2">
+					<img src="/builder_logo.png" alt="logo" class="h-7 rounded-4" />
+
+					<span :class="[
+						open ? 'lucide-chevron-up' : 'lucide-chevron-down',
+						'h-4 w-4 !text-gray-700 dark:!text-gray-200',
+					]" aria-hidden="true" />
+				</div>
+			</template>
+		</Dropdown>
+	</div>
 </template>
 <script setup lang="ts">
 import { useDashboardState } from "@/composables/useDashboardState";
@@ -18,7 +27,7 @@ import usePageStore from "@/stores/pageStore";
 import { BuilderPage } from "@/types/doctypes";
 import { triggerCopyEvent } from "@/utils/helpers";
 import { useDark, useToggle } from "@vueuse/core";
-import { Dropdown } from "frappe-ui";
+import { Button, Dropdown } from "frappe-ui";
 import { useRouter } from "vue-router";
 
 const { showTemplatesDialog } = useDashboardState();
@@ -32,6 +41,10 @@ const canvasStore = useCanvasStore();
 
 const emit = defineEmits(["showSettings", "showShortcuts"]);
 
+const goBackToDashboard = () => {
+	router.push({ name: "home" });
+};
+
 const handleCopyPage = () => {
 	if (!pageStore.activePage) return;
 	canvasStore.copyEntirePage = true;
@@ -44,7 +57,7 @@ const mainMenuOptions = [
 		group: "Builder",
 		hideLabel: true,
 		items: [
-			{ label: "Back to Dashboard", onClick: () => router.push({ name: "home" }), icon: "lucide-arrow-left" },
+			{ label: "Back to Dashboard", onClick: goBackToDashboard, icon: "lucide-arrow-left" },
 		],
 	},
 	{

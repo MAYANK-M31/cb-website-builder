@@ -19,6 +19,16 @@ import { defineStore } from "pinia";
 import { nextTick } from "vue";
 import { getCreatorAuth, getWebappPageUrl } from "@/creatorbase";
 
+// Serialize all set_value/save calls for the active page so concurrent writes to
+// the same document can't trip Frappe's TimestampMismatchError (read-modify-write
+// races) and so a debounced field edit always lands before publish.
+let pendingSave: Promise<unknown> = Promise.resolve();
+const serializeSave = (task: () => Promise<unknown>) => {
+	const next = pendingSave.then(task, task);
+	pendingSave = next.catch(() => undefined);
+	return next;
+};
+
 const usePageStore = defineStore("pageStore", {
 	state: () => ({
 		routeVariables: <{ [key: string]: string }>{},
@@ -181,6 +191,15 @@ const usePageStore = defineStore("pageStore", {
 		},
 
 		async publishPage(openInBrowser = false) {
+			// Flush any pending field edits (route, page_title, ...) so the doc that
+			// gets published carries the values shown in the toolbar, and do it in the
+			// same serialized save chain to avoid timestamp mismatches.
+			const page = this.activePage;
+			if (page) {
+				await this.savePage({ route: page.route, page_title: page.page_title });
+			} else {
+				await this.savePage();
+			}
 			await this.waitTillPageIsSaved();
 			return webPages.runDocMethod
 				.submit({
@@ -203,7 +222,7 @@ const usePageStore = defineStore("pageStore", {
 		showPublishedWebappLink() {
 			const { subdomain } = getCreatorAuth();
 			if (!subdomain) return;
-			const url = getWebappPageUrl(this.activePage?.route || this.route, subdomain);
+			const url = getWebappPageUrl(this.activePage?.route ?? this.route, subdomain);
 			if (!url) return;
 			toast.success("Published successfully", {
 				description: url,
@@ -281,17 +300,19 @@ const usePageStore = defineStore("pageStore", {
 
 		updateActivePage(key: keyof BuilderPage, value: any) {
 			if (!this.activePage) {
-				return;
+				return Promise.resolve(null);
 			}
 			// Optimistically update in-place so reactive bindings stay consistent
 			this.activePage[key] = value;
-			return webPages.setValue.submit({
-				name: this.activePage.name as string,
-				[key]: value,
-			});
+			return serializeSave(() =>
+				webPages.setValue.submit({
+					name: this.activePage?.name as string,
+					[key]: value,
+				}),
+			);
 		},
 
-		savePage() {
+		savePage(extraFields: Partial<BuilderPage> = {}) {
 			const builderStore = useBuilderStore();
 			if (builderStore.readOnlyMode) {
 				// callers may have optimistically set this before invoking savePage
@@ -299,7 +320,7 @@ const usePageStore = defineStore("pageStore", {
 				return;
 			}
 
-			// Own the flag here (not only in the editor watch) so every caller —
+			// Own the saving flag here (not only in the editor watch) so every caller —
 			// including direct savePage() calls — keeps waitTillPageIsSaved reliable.
 			this.savingPage = true;
 
@@ -317,30 +338,33 @@ const usePageStore = defineStore("pageStore", {
 			const args = {
 				name: this.selectedPage,
 				draft_blocks: pageData,
+				...extraFields,
 			};
-			return webPages.setValue
-				.submit(args)
-				.then((page: BuilderPage) => {
-					if (this.activePage) {
-						Object.assign(this.activePage, page);
-					} else {
-						this.activePage = page;
-					}
-				})
-				.catch((e: { exc_type?: string }) => {
-					if (e?.exc_type === "InReadOnlyMode") {
-						builderStore.isSiteInReadOnlyMode = true;
-						return;
-					}
-					throw e;
-				})
-				.finally(() => {
-					if (this.saveId === saveId) {
-						this.saveId = null;
-						this.savingPage = false;
-					}
-					canvasStore.activeCanvas?.toggleDirty(false);
-				});
+			return serializeSave(() =>
+				webPages.setValue
+					.submit(args)
+					.then((page: BuilderPage) => {
+						if (this.activePage) {
+							Object.assign(this.activePage, page);
+						} else {
+							this.activePage = page;
+						}
+					})
+					.catch((e: { exc_type?: string }) => {
+						if (e?.exc_type === "InReadOnlyMode") {
+							builderStore.isSiteInReadOnlyMode = true;
+							return;
+						}
+						throw e;
+					})
+					.finally(() => {
+						if (this.saveId === saveId) {
+							this.saveId = null;
+							this.savingPage = false;
+						}
+						canvasStore.activeCanvas?.toggleDirty(false);
+					}),
+			);
 		},
 
 		setPageData(page?: BuilderPage) {
@@ -372,25 +396,33 @@ const usePageStore = defineStore("pageStore", {
 		},
 
 		openPageInBrowser(page: BuilderPage) {
-			const route = page?.route || this.route;
+			// Empty/"/" route = homepage. Don't treat it as falsy and fall back to a
+			// derived path — reuse the stored route as-is and let the resolvers map
+			// "" (or "/") to the site root.
+			const route = page?.route ?? this.activePage?.route ?? this.route ?? "/";
 			// Prefer the CreatorBase webapp (SSR of the S3-published HTML) so the
 			// preview opens at the real public URL instead of the builder host.
 			const { subdomain } = getCreatorAuth();
 			const webappUrl = subdomain ? getWebappPageUrl(route, subdomain) : "";
 			const pageURL = webappUrl || this.getResolvedPageURL(true, page);
-			const targetWindow = window.open(pageURL, "builder-preview");
-			if (targetWindow?.location.pathname === pageURL) {
-				targetWindow?.location.reload();
-			} else {
-				setTimeout(() => {
-					// wait for the page to load
-					targetWindow?.location.reload();
-				}, 50);
-			}
+			// Never hand an invalid URL to window.open (a scheme-only "http:" from a
+			// broken/webapp base crashes the click) — fall back to the resolved page.
+			const hasValidUrl = (() => {
+				try {
+					const parsed = new URL(pageURL, window.location.origin);
+					return Boolean(parsed.protocol && (/^https?:$/.test(parsed.protocol) || parsed.hostname));
+				} catch {
+					return false;
+				}
+			})();
+			const safeUrl = hasValidUrl ? pageURL : this.getResolvedPageURL(true, page) || "/";
+			// Open in a fresh tab every click (window name "builder-preview" would
+			// reuse the same tab).
+			window.open(safeUrl, "_blank", "noopener,noreferrer");
 		},
 
 		getResolvedPageURL(prependSlash = true, page: BuilderPage | null = null) {
-			let route = page?.route || this.activePage?.route || "/";
+			let route = page?.route ?? this.activePage?.route ?? "";
 			if (this.pageData) {
 				const routeVariables = getRouteVariables(route || "");
 				routeVariables.forEach((variable: string) => {
@@ -404,7 +436,9 @@ const usePageStore = defineStore("pageStore", {
 					}
 				});
 			}
-			return `${prependSlash ? "/" : ""}${route}`;
+			const normalizedRoute = (route || "").trim().replace(/^\/+/, "");
+			// Empty (or "/") route resolves to the site root.
+			return normalizedRoute ? `${prependSlash ? "/" : ""}${normalizedRoute}` : "/";
 		},
 
 		async waitTillPageIsSaved() {

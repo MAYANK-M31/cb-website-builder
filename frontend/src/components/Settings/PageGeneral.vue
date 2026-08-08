@@ -7,14 +7,14 @@
 						type="text"
 						label="Page Title"
 						:modelValue="pageStore.activePage?.page_title"
-						:hideClearButton="true"
+						:hideClearButtonArrowsSmall="true"
 						@update:modelValue="(val: string) => pageStore.updateActivePage('page_title', val)" />
 					<BuilderInput
 						type="text"
 						label="Page Route"
 						class="[&>p]:text-p-xs"
 						:modelValue="pageStore.activePage?.route"
-						:hideClearButton="true"
+						:hideClearButtonArrowsSmall="true"
 						@update:modelValue="(val: string) => pageStore.updateActivePage('route', val)" />
 				</div>
 				<div class="flex flex-col gap-3 text-base">

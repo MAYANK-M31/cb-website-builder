@@ -67,6 +67,18 @@ function reinjectSession(data: { sid?: string; user_id?: string; full_name?: str
 	if (data.full_name) document.cookie = `full_name=${encodeURIComponent(data.full_name)}; path=/; max-age=${MAX_AGE}; SameSite=Lax`;
 }
 
+// Frappe enforces CSRF on POSTs from a non-Guest session. The SSO page GET
+// already logs the creator in (sso_before_request), so this login POST carries
+// an authenticated sid cookie and needs the token — without it Frappe raises
+// CSRFTokenError. The token is rendered into the page by _builder.py as
+// window.csrf_token; under the vite dev server it stays the literal
+// "{{ csrf_token }}" (ignore_csrf is set there), so skip it in that case.
+function csrfToken(): string | null {
+	const t = (window as unknown as { csrf_token?: string }).csrf_token;
+	if (!t || typeof t !== "string" || t.includes("{{")) return null;
+	return t;
+}
+
 export interface SsoResult {
 	ok: boolean;
 	error?: unknown;
@@ -79,10 +91,13 @@ export async function frappeSsoLogin(token: string): Promise<SsoResult> {
 	if (!token) return { ok: false };
 	persistToken(token);
 	try {
+		const headers: Record<string, string> = { "Content-Type": "application/json" };
+		const csrf = csrfToken();
+		if (csrf) headers["X-Frappe-CSRF-Token"] = csrf;
 		const res = await fetch("/api/method/builder.auth.login_via_creatorbase", {
 			method: "POST",
 			credentials: "include",
-			headers: { "Content-Type": "application/json" },
+			headers,
 			body: JSON.stringify({ token }),
 		});
 		if (!res.ok) return { ok: false, error: res.status };
@@ -180,10 +195,16 @@ export async function creatorFetch(path: string, init: RequestInit = {}, signal?
 export function getWebappBaseUrl(sub: string | null = auth.subdomain): string {
 	// The dashboard passes its PUBLIC_WEBAPP_URL (e.g. http://localhost:3000 in
 	// dev, or https://{sub}.creatorbase.live in prod) — prefer it directly.
-	if (auth.webappUrl) return auth.webappUrl.replace(/\/+$/, "");
+	const candidates: Array<string | null | undefined> = [auth.webappUrl, import.meta.env.VITE_CREATORBASE_WEBAPP_OVERRIDE as string | undefined];
+	for (const candidate of candidates) {
+		if (!candidate) continue;
+		const cleaned = candidate.trim().replace(/\/+$/, "");
+		// A scheme-only string like "http:" (or "/") can never be a valid base —
+		// skip it instead of letting window.open throw.
+		if (/^(https?:\/{0,2}|javascript:)$/i.test(cleaned) || !/^https?:\/\//i.test(cleaned)) continue;
+		return cleaned;
+	}
 	if (!sub) return "";
-	const override = import.meta.env.VITE_CREATORBASE_WEBAPP_OVERRIDE as string | undefined;
-	if (override) return override.replace(/\/+$/, "");
 	return `https://${sub}.${WEBAPP_DOMAIN}`;
 }
 

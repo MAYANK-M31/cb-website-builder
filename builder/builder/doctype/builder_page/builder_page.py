@@ -182,6 +182,18 @@ class BuilderPage(WebsiteGenerator):
 				self.autoname()
 			self.route = f"pages/{self.name}"
 
+	def set_route(self):
+		# WebsiteGenerator.set_route() auto-generates a route from the page title for
+		# any published page with an empty route, and strips "/" to empty. Builder
+		# pages must be able to serve the site root, so an explicit empty route or
+		# "/" means "home" and must not be rewritten. Only sanitize non-empty routes.
+		if self.route:
+			self.route = self.route.strip("/.")[:254]
+		elif self.is_website_published() and self.route is None:
+			# Only derive a default when the route was never set (brand-new raw doc),
+			# never for an intentional empty/root route.
+			self.route = self.make_route() if self.is_website_published() else None
+
 	def validate(self):
 		super().validate()  # WebsiteGenerator route normalization
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="overscroll-none">
+<html lang="en" class="overscroll-none" style="background: #0f0f0f;">
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="icon" href="/assets/builder/frontend/builder_logo.png" />
@@ -7,8 +7,68 @@
 		<!-- <script src="https://cdn.tailwindcss.com"></script> -->
 		<title>CB Builder</title>
 	</head>
-	<body class="overscroll-none bg-surface-base no-scrollbar selection:bg-gray-500/30" style="scrollbar-width: auto;">
-		<div id="app"></div>
+	<body
+		class="overscroll-none bg-surface-base no-scrollbar selection:bg-gray-500/30"
+		style="margin: 0; background: #0f0f0f; scrollbar-width: auto;">
+		<div id="app">
+			<div
+				style="
+					height: 100vh;
+					width: 100vw;
+					background: #0f0f0f;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					font-family: system-ui, -apple-system, sans-serif;
+				">
+				<div
+					style="
+						display: flex;
+						align-items: center;
+						gap: 8px;
+						font-weight: 500;
+						font-size: 30px;
+						color: #e5e7eb;
+					">
+					<div
+						style="
+							background: #7c3aed;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							width: 40px;
+							height: 40px;
+							border-radius: 8px;
+							overflow: hidden;
+						">
+						<img
+							alt="creatorbase"
+							src="https://d3gdjkyaspo4gq.cloudfront.net/static/logos/cb.webp"
+							style="height: 100%; object-fit: contain;" />
+					</div>
+					CreatorBase
+				</div>
+				<div
+					class="builder-loader"
+					style="
+						margin-top: 12px;
+						width: 20px;
+						height: 20px;
+						border-radius: 50%;
+						border: 2px solid rgba(124, 58, 237, 0.3);
+						border-top-color: #7c3aed;
+						animation: builder-spin 0.8s linear infinite;
+					"></div>
+			</div>
+			<style>
+				@keyframes builder-spin {
+					to {
+						transform: rotate(360deg);
+					}
+				}
+			</style>
+		</div>
 		<div id="popovers"></div>
 
 		<script>

@@ -1,6 +1,10 @@
 <template>
 	<Sidebar class="border-r border-outline-gray-1">
-		<SidebarHeader title="Builder" :logo="builderLogo" :menuItems="appMenuItems" class="px-1.5" />
+		<div class="flex h-12 shrink-0 items-center px-1">
+			<SidebarItem label="Back to Dashboard" class="w-full" @click="goBackToDashboard">
+				<template #prefix><ArrowLeftIcon class="size-4" /></template>
+			</SidebarItem>
+		</div>
 
 		<ScrollArea class="min-h-0 flex-1" viewport-class="px-2 pt-0.5 pb-2">
 			<nav class="space-y-0.5">
@@ -110,19 +114,17 @@
 	</Dialog>
 </template>
 <script lang="ts" setup>
-import builderLogo from "/builder_logo.png";
 import EditableSpan from "@/components/EditableSpan.vue";
 import FilesIcon from "@/components/Icons/Files.vue";
 import SettingsIcon from "@/components/Icons/SettingsGear.vue";
 import FilterIcon from "~icons/lucide/filter";
 import HomeIcon from "~icons/lucide/house";
-import { useDashboardState } from "@/composables/useDashboardState";
+import ArrowLeftIcon from "~icons/lucide/arrow-left";
 import builderProjectFolder from "@/data/builderProjectFolder";
 import useBuilderStore from "@/stores/builderStore";
 import { BuilderProjectFolder } from "@/types/doctypes";
 import { promptCreateFolder } from "@/utils/dialogs";
 import { confirm } from "@/utils/helpers";
-import { useDark, useToggle } from "@vueuse/core";
 import {
 	Button,
 	createResource,
@@ -130,88 +132,24 @@ import {
 	Dropdown,
 	ScrollArea,
 	Sidebar,
-	SidebarHeader,
-	SidebarHeaderProps,
 	SidebarItem,
 	SidebarLabel,
 } from "frappe-ui";
 import { TrialBanner } from "frappe-ui/frappe";
 import { DialogDescription, DialogTitle } from "reka-ui";
-import { computed, defineAsyncComponent, h, ref } from "vue";
+import { defineAsyncComponent, ref } from "vue";
 
 const BuilderSettings = defineAsyncComponent(() => import("@/components/BuilderSettings.vue"));
-const isDark = useDark({
-	attribute: "data-theme",
-});
-const toggleDark = useToggle(isDark);
 const builderStore = useBuilderStore();
-const { showTemplatesDialog } = useDashboardState();
 const renamingFolder = ref("");
 
-const apps = createResource({
-	url: "builder.api.get_apps",
-	cache: "other_apps",
-	auto: true,
-});
-
-const appsSubmenu = computed(() => {
-	return (apps.data || []).map((app: { route: string; logo: string; title: string }) => ({
-		label: app.title,
-		icon: h("img", { src: app.logo }),
-		onClick: () => window.open(app.route, "_self"),
-	}));
-});
-
-// grouped options render fine (the header hands them to Dropdown), but its prop
-// type only describes a flat list
-const appMenuItems = computed(
-	() =>
-		[
-			{
-				group: "Builder",
-				hideLabel: true,
-				items: [
-					{
-						label: "New Page",
-						onClick: () => (showTemplatesDialog.value = true),
-						icon: "lucide-plus",
-					},
-				],
-			},
-			{
-				group: "Options",
-				hideLabel: true,
-				items: [
-					// {
-					// 	label: "Apps",
-					// 	icon: "lucide-grid",
-					// 	submenu: appsSubmenu.value,
-					// },
-					{
-						label: "Toggle Theme",
-						onClick: () => toggleDark(),
-						icon: isDark.value ? "lucide-sun" : "lucide-moon",
-					},
-					{
-						label: "Settings",
-						onClick: () => (showSettingsDialog.value = true),
-						icon: "lucide-settings",
-					},
-				],
-			},
-			// {
-			// 	group: "Help",
-			// 	hideLabel: true,
-			// 	items: [
-			// 		{
-			// 			label: "Help",
-			// 			onClick: () => window.open("https://t.me/frappebuilder"),
-			// 			icon: "lucide-info",
-			// 		},
-			// 	],
-			// },
-		] as unknown as SidebarHeaderProps["menuItems"],
-);
+const goBackToDashboard = () => {
+	if (window.parent !== window) {
+		window.parent.postMessage({ type: "creatorbase:back-to-dashboard" }, "*");
+	} else {
+		window.location.href = (window as any).builder_path || "/builder";
+	}
+};
 
 const isFolderActive = (folderName: string) => {
 	return builderStore.activeFolder === folderName;
