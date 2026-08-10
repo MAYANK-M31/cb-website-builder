@@ -86,18 +86,37 @@ def sync_builder_templates(app="builder", publish=False):
 		# isolate each group so one group's failure (e.g. a stale document lock
 		# from clear_page_cache) can't abort the rest of the catalog
 		try:
-			make_records(os.path.join(group_path, "variables"))
-			make_records(os.path.join(group_path, "components"))
-			make_records(os.path.join(group_path, "client_scripts"))
-			import_fonts(os.path.join(group_path, "fonts"))
-			groups_pages[group] = import_template_pages(
-				os.path.join(group_path, "pages"), group, publish=publish
-			)
+			groups_pages[group] = sync_builder_template_group(group, app=app, publish=publish)
 		except Exception:
 			frappe.log_error(title=f"Failed to sync template group {group}")
 			print(f"  ! skipped template group {group} (see error log)")
 
 	reconcile_deleted_templates(groups_pages)
+
+
+def sync_builder_template_group(group, app="builder", publish=False):
+	"""Import one template group's fixtures from disk into the site DB.
+
+	Mirrors one iteration of `sync_builder_templates` so a page's group can be
+	synced on demand — sites provisioned before a group was added have the on-disk
+	manifest (and thus the picker entry) but not the DB page."""
+	group_path = os.path.join(get_templates_root(app), safe_segment(group))
+	if not os.path.isdir(group_path):
+		return []
+	make_records(os.path.join(group_path, "variables"))
+	make_records(os.path.join(group_path, "components"))
+	make_records(os.path.join(group_path, "client_scripts"))
+	import_fonts(os.path.join(group_path, "fonts"))
+	return import_template_pages(os.path.join(group_path, "pages"), group, publish=publish)
+
+
+def get_group_for_page(page_name, app="builder"):
+	"""Return the template group whose manifest lists `page_name`, or None."""
+	for group, manifest in get_all_group_manifests(app=app).items():
+		for page in manifest.get("pages") or []:
+			if isinstance(page, dict) and page.get("name") == page_name:
+				return group
+	return None
 
 
 def import_template_pages(pages_path, group, publish=False):

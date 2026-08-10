@@ -36,6 +36,7 @@
 </template>
 <script setup lang="ts">
 import { TemplatePageSummary } from "@/types/template";
+import { getCreatorToken } from "@/creatorbase";
 import { useElementSize } from "@vueuse/core";
 import { Button } from "frappe-ui";
 import { computed, ref } from "vue";
@@ -71,10 +72,15 @@ const frameStyle = computed(() => ({
 }));
 
 // remote hub templates carry an absolute live_url; local "My Templates" render
-// through the preview-html endpoint (same one the builder's preview mode embeds)
-const src = computed(
-	() =>
-		props.page.live_url ||
-		`/api/method/builder.api.get_page_preview_html?page=${encodeURIComponent(props.page.name)}`,
-);
+// through the preview-html endpoint (same one the builder's preview mode embeds).
+// An iframe navigation can't send the bearer header the API calls use, so pass
+// the creator JWT as creatorbase_token for the before-request SSO hook to
+// authenticate the load (fixes the "Not permitted" Guest error).
+const src = computed(() => {
+	if (props.page.live_url) return props.page.live_url;
+	const query = new URLSearchParams({ page: props.page.name });
+	const token = getCreatorToken();
+	if (token) query.set("creatorbase_token", token);
+	return `/api/method/builder.api.get_page_preview_html?${query.toString()}`;
+});
 </script>

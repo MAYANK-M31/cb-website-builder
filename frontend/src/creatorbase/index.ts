@@ -20,7 +20,8 @@ export interface CreatorAuth {
 	webappUrl: string | null;
 }
 
-export const WEBAPP_DOMAIN = "creatorbase.live";
+export const WEBAPP_DOMAIN =
+	(import.meta.env.VITE_CREATORBASE_WEBAPP_DOMAIN as string | undefined)?.trim() || "creatorbase.live";
 
 let auth: CreatorAuth = { accessToken: null, subdomain: null, apiUrl: null, webappUrl: null };
 let listeners = new Set<(auth: CreatorAuth) => void>();
@@ -168,6 +169,13 @@ export function getCreatorAuth(): CreatorAuth {
 	return auth;
 }
 
+export function getCreatorToken(): string {
+	return (
+		auth.accessToken ||
+		(typeof localStorage === "undefined" ? "" : (localStorage.getItem(TOKEN_KEY) || ""))
+	);
+}
+
 export function onCreatorAuth(cb: (auth: CreatorAuth) => void) {
 	listeners.add(cb);
 	if (auth.accessToken || auth.subdomain) cb(auth);
@@ -193,9 +201,13 @@ export async function creatorFetch(path: string, init: RequestInit = {}, signal?
 }
 
 export function getWebappBaseUrl(sub: string | null = auth.subdomain): string {
-	// The dashboard passes its PUBLIC_WEBAPP_URL (e.g. http://localhost:3000 in
-	// dev, or https://{sub}.creatorbase.live in prod) — prefer it directly.
-	const candidates: Array<string | null | undefined> = [auth.webappUrl, import.meta.env.VITE_CREATORBASE_WEBAPP_OVERRIDE as string | undefined];
+	// The builder may run on a subdomain host ({sub}.{domain}:{builderPort}) while
+	// the live webapp lives on the WEBAPP_DOMAIN env host. Derive the webapp URL
+	// from the subdomain + WEBAPP_DOMAIN first so the preview opens at the real
+	// public site — never the builder host or a bare window.location.origin.
+	// The dashboard's PUBLIC_WEBAPP_URL (http://localhost:3000 dev,
+	// https://creatorbase.live prod) is only used as a fallback.
+	const candidates: Array<string | null | undefined> = [buildSubdomainBaseUrl(sub), auth.webappUrl, import.meta.env.VITE_CREATORBASE_WEBAPP_OVERRIDE as string | undefined];
 	for (const candidate of candidates) {
 		if (!candidate) continue;
 		const cleaned = candidate.trim().replace(/\/+$/, "");
@@ -205,7 +217,45 @@ export function getWebappBaseUrl(sub: string | null = auth.subdomain): string {
 		return cleaned;
 	}
 	if (!sub) return "";
-	return `https://${sub}.${WEBAPP_DOMAIN}`;
+	return `https://${sub}.creatorbase.live`;
+}
+
+// The current host is authoritatively a subdomain host when auth is unavailable
+// (e.g. embedded dev): "mayank.localhost:8088" → "mayank". IP-style hosts have no
+// subdomain label.
+export function getCurrentSubdomain(): string {
+	if (typeof window === "undefined") return "";
+	const parts = window.location.hostname.split(".");
+	if (parts.length < 2) return "";
+	const label = parts[0];
+	return /^\d+$/.test(label) ? "" : label;
+}
+
+// Normalize the WEBAPP_DOMAIN env to a scheme-less host, tolerating a
+// dot-separated port ("{{subdomain}}.localhost.3000" → "{{subdomain}}.localhost:3000").
+function normalizeWebappDomain(domain: string): string {
+	return domain.trim().replace(/^https?:\/\//i, "");
+}
+
+// Build the subdomain-scoped webapp origin from the WEBAPP_DOMAIN env template
+// (may carry a "{{subdomain}}" placeholder; a bare domain gets the subdomain
+// prepended), using the current page's scheme.
+function buildSubdomainBaseUrl(sub: string | null | undefined): string {
+	const s = sub?.trim();
+	if (!s || typeof window === "undefined") return "";
+	let domain = normalizeWebappDomain(WEBAPP_DOMAIN);
+	if (!domain) return "";
+	if (domain.includes("{{subdomain}}")) {
+		domain = domain.replace("{{subdomain}}", s);
+	} else if (domain.includes("{subdomain}")) {
+		domain = domain.replace("{subdomain}", s);
+	} else {
+		domain = `${s}.${domain}`;
+	}
+	// Tolerate a dot-separated port ("mayank.localhost.3000" → "mayank.localhost:3000").
+	domain = domain.replace(/\.(\d{2,5})$/, ":$1");
+	const scheme = window.location.protocol === "https:" ? "https" : "http";
+	return `${scheme}://${domain}`;
 }
 
 export function getWebappPageUrl(route: string | null | undefined, sub?: string | null): string {
@@ -213,9 +263,9 @@ export function getWebappPageUrl(route: string | null | undefined, sub?: string 
 	if (!base) return "";
 	const r = route || "/";
 	const normalized = r === "/" || r === "/index" ? "/" : `/${String(r).replace(/^\/+/, "")}`;
-	// The webapp resolves a specific page via hash routing (`#/about`), while the
-	// homepage renders at the bare subdomain URL.
-	return normalized === "/" ? base : `${base}#${normalized}`;
+	// The webapp serves pages at real path routes (`/about`), not hash routes —
+	// the homepage renders at the bare subdomain URL.
+	return normalized === "/" ? base : `${base}${normalized}`;
 }
 
 export async function fetchCreatorWebsite(sub: string | null = auth.subdomain, signal?: AbortSignal) {

@@ -76,6 +76,7 @@
 <script lang="ts" setup>
 import PanelResizer from "@/components/PanelResizer.vue";
 import PublishButton from "@/components/PublishButton.vue";
+import { getCreatorToken } from "@/creatorbase";
 import router from "@/router";
 import useBuilderStore from "@/stores/builderStore";
 import usePageStore from "@/stores/pageStore";
@@ -224,6 +225,11 @@ const setPreviewURL = () => {
 		...pageStore.routeVariables,
 		prefers_color_scheme: isDark.value ? "dark" : "light",
 	};
+	// iframe navigations can't send the bearer header API calls use, so pass the
+	// creator JWT as creatorbase_token for the before-request SSO hook to
+	// authenticate the preview load.
+	const token = getCreatorToken();
+	if (token) queryParams.creatorbase_token = token;
 	previewRoute.value = `/api/method/builder.api.get_page_preview_html?${Object.entries(queryParams)
 		.map(([key, value]) => `${key}=${value}`)
 		.join("&")}`;

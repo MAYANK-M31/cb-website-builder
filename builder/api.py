@@ -406,16 +406,46 @@ def hub_get(method: str, **params):
 	return hub_get_cached(method, tuple(sorted(params.items())))
 
 
+def local_template_groups() -> list[dict]:
+	"""Template groups shipped in this site's app (builder_templates/ dir), stamped
+	into the site DB by sync_builder_templates. Local first so self-hosted installs
+	work without the hub."""
+	from builder.template_sync import get_all_group_manifests
+
+	groups = []
+	for folder, manifest in get_all_group_manifests().items():
+		groups.append(
+			{
+				"name": folder,
+				"title": manifest.get("title") or folder,
+				"description": manifest.get("description") or "",
+				"preview": manifest.get("preview"),
+				"categories": manifest.get("categories") or [],
+				"pages": [
+					{
+						"name": page.get("name"),
+						"page_title": page.get("page_title") or page.get("name"),
+						"preview": page.get("preview"),
+					}
+					for page in manifest.get("pages") or []
+					if isinstance(page, dict) and page.get("name")
+				],
+			}
+		)
+	return groups
+
+
 @frappe.whitelist()
 @has_page_read("You do not have permission to view templates.")
 def get_template_groups() -> list[dict]:
-	"""Template groups for the picker, fetched live from the hub. Empty (just
-	Blank page) if the hub is unreachable."""
+	"""Template groups for the picker: local shipped groups first, then the hub
+	catalog (skipped if the hub is unreachable)."""
+	groups = local_template_groups()
 	try:
-		return hub_get("get_catalog") or []  # type: ignore[return-value]
+		groups += hub_get("get_catalog") or []  # type: ignore[operator]
 	except Exception:
 		frappe.log_error("Failed to fetch templates from hub")
-		return []
+	return groups
 
 
 def create_page_from_bundle(bundle: dict, project_folder: str | None = None) -> str:
@@ -475,10 +505,61 @@ def create_page_from_bundle(bundle: dict, project_folder: str | None = None) -> 
 	return new_page.name or ""
 
 
+def create_page_from_local_template(template_page: str, project_folder: str | None = None) -> str:
+	"""Create an editable page from a local (same-site) template page."""
+	template = frappe.get_doc("Builder Page", template_page)
+	if not template.is_template:
+		frappe.throw(frappe._("Page {0} is not a template.").format(template_page))
+
+	blocks = frappe.parse_json(template.draft_blocks or template.blocks or "[]")
+	new_page = frappe.get_doc(
+		{
+			"doctype": "Builder Page",
+			"page_title": template.page_title or "My Page",
+			"preview": template.preview or None,
+			"draft_blocks": compact_json(blocks),
+			"page_data_script": template.page_data_script,
+			"head_html": template.head_html,
+			"body_html": template.body_html,
+			"meta_description": template.meta_description,
+			"project_folder": project_folder or None,
+		}
+	)
+	if project_folder:
+		get_or_create_folder(project_folder)
+	clone_client_scripts(template, new_page)
+	new_page.insert()
+	if not template.preview:
+		frappe.enqueue_doc(
+			"Builder Page",
+			new_page.name,
+			"generate_page_preview_image",
+			queue="short",
+			enqueue_after_commit=True,
+		)
+	return new_page.name or ""
+
+
 @frappe.whitelist()
 @has_page_write("You do not have permission to create a page.")
 def create_page_from_template(template_page: str, project_folder: str | None = None) -> str:
-	"""Create an editable page from a hub template and return its name."""
+	"""Create an editable page from a template and return its name. Local shipped
+	templates are copied from this site's DB; anything else is fetched as a bundle
+	from the hub."""
+	if frappe.db.get_value("Builder Page", template_page, "is_template"):
+		return create_page_from_local_template(template_page, project_folder)
+
+	# The picker lists groups from the on-disk manifests, but a site provisioned
+	# before a group was added has the manifest without the DB page. Sync that
+	# group on first use so shipped templates work even though no hub is configured.
+	from builder.template_sync import get_group_for_page, sync_builder_template_group
+
+	group = get_group_for_page(template_page)
+	if group:
+		sync_builder_template_group(group)
+		if frappe.db.get_value("Builder Page", template_page, "is_template"):
+			return create_page_from_local_template(template_page, project_folder)
+
 	try:
 		bundle = hub_get("get_template_bundle", page=template_page)
 	except Exception:
@@ -507,13 +588,10 @@ def import_template_group(template_group: str, project_folder: str | None = None
 	created = []
 	for page in pages:
 		try:
-			bundle = hub_get("get_template_bundle", page=page.get("name"))
+			name = create_page_from_template(page.get("name"), project_folder)
 		except Exception:
-			frappe.log_error(f"Failed to fetch template bundle for {page.get('name')}")
+			frappe.log_error(f"Failed to import template page {page.get('name')}")
 			continue
-		if not bundle or not bundle.get("page"):
-			continue
-		name = create_page_from_bundle(bundle, project_folder)
 		created.append(name)
 
 	if not created:

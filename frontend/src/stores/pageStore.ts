@@ -17,7 +17,7 @@ import {
 import { createDocumentResource, createListResource, createResource, toast } from "frappe-ui";
 import { defineStore } from "pinia";
 import { nextTick } from "vue";
-import { getCreatorAuth, getWebappPageUrl } from "@/creatorbase";
+import { getCreatorAuth, getCurrentSubdomain, getWebappPageUrl } from "@/creatorbase";
 
 // Serialize all set_value/save calls for the active page so concurrent writes to
 // the same document can't trip Frappe's TimestampMismatchError (read-modify-write
@@ -400,22 +400,18 @@ const usePageStore = defineStore("pageStore", {
 			// derived path — reuse the stored route as-is and let the resolvers map
 			// "" (or "/") to the site root.
 			const route = page?.route ?? this.activePage?.route ?? this.route ?? "/";
-			// Prefer the CreatorBase webapp (SSR of the S3-published HTML) so the
-			// preview opens at the real public URL instead of the builder host.
+			// The builder can run on the creator's subdomain host ({sub}.{domain}:
+			// {builderPort}), while the live webapp lives on the WEBAPP_DOMAIN env.
+			// Extract the subdomain (auth subdomain, else from the current URL) and
+			// let getWebappPageUrl rebuild the public webapp URL — never fall back to
+			// window.location.origin (the builder host).
 			const { subdomain } = getCreatorAuth();
-			const webappUrl = subdomain ? getWebappPageUrl(route, subdomain) : "";
-			const pageURL = webappUrl || this.getResolvedPageURL(true, page);
-			// Never hand an invalid URL to window.open (a scheme-only "http:" from a
-			// broken/webapp base crashes the click) — fall back to the resolved page.
-			const hasValidUrl = (() => {
-				try {
-					const parsed = new URL(pageURL, window.location.origin);
-					return Boolean(parsed.protocol && (/^https?:$/.test(parsed.protocol) || parsed.hostname));
-				} catch {
-					return false;
-				}
-			})();
-			const safeUrl = hasValidUrl ? pageURL : this.getResolvedPageURL(true, page) || "/";
+			const sub = subdomain || getCurrentSubdomain();
+			const pageURL = getWebappPageUrl(route, sub) || this.getResolvedPageURL(true, page);
+			// getWebappPageUrl returns "" only when no webapp base resolved; a real
+			// URL from it always carries a scheme. Anything else is a relative path
+			// on the current host.
+			const safeUrl = /^https?:\/\//i.test(pageURL) ? pageURL : this.getResolvedPageURL(true, page) || "/";
 			// Open in a fresh tab every click (window name "builder-preview" would
 			// reuse the same tab).
 			window.open(safeUrl, "_blank", "noopener,noreferrer");
