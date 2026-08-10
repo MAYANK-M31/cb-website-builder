@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f1ea"/>
+      <stop offset="1" stop-color="#e6e0d4"/>
+    </linearGradient>
+    <linearGradient id="suit" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a241f"/>
+      <stop offset="1" stop-color="#191512"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#page)"/>
+  <g>
+    <path d="M450 300 Q570 300 600 380 Q600 430 560 460 Q470 470 340 460 Q300 430 300 380 Q330 300 450 300 Z" fill="#d9b893"/>
+    <path d="M610 360 Q620 400 430 400 Q430 400 360 400 Q330 400 300 420 Q290 360 360 330 Q420 330 610 360 Z" fill="#231c16"/>
+    <path d="M350 470 Q450 470 560 470 L600 850 L520 1180 L380 1180 L300 850 Z" fill="url(#suit)"/>
+    <path d="M350 470 L560 470 L900 700 L900 1180 L600 1180 L520 860 Z" fill="#241e19"/>
+    <path d="M120 470 L350 470 L300 850 L520 1180 L200 1180 L180 700 Z" fill="#201a16"/>
+    <path d="M300 470 Q440 560 560 470 L540 900 L380 1000 L300 860 Z" fill="#ffffff" opacity="0.9"/>
+    <path d="M300 470 L450 540 L560 470 L520 820 L380 860 L300 820 Z" fill="#c29b57" opacity="0.85"/>
+  </g>
+  <rect x="0" y="0" width="900" height="14" fill="#c29b57"/>
+  <text x="700" y="960" font-family="Georgia,serif" font-style="italic" font-size="56" fill="#c29b57">Julian Vance</text>
+</svg>

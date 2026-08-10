@@ -1,0 +1,13 @@
+{
+  "title": "Executive Advisory",
+  "description": "A calibred, high-end advisory sales page for founders — announcement bar, editorial hero with VSL, press logos, the Success Paradox diagnosis, the three-pillar methodology, advisor bio, metric case studies, two-tier application and FAQ.",
+  "preview": "/builder_assets/executive/preview.svg",
+  "categories": ["Coaching & Advisory", "Business"],
+  "pages": [
+    {
+      "name": "executive",
+      "page_title": "Executive Advisory",
+      "preview": "/builder_assets/executive/preview.svg"
+    }
+  ]
+}

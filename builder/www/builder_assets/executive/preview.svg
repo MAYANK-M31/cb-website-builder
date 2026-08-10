@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#fafaf9"/>
+  <rect x="0" y="0" width="1600" height="56" fill="#1c1917"/>
+  <text x="800" y="38" text-anchor="middle" font-family="Inter,sans-serif" font-size="20" fill="#c29b57" letter-spacing="3">ACCEPTING 3 NEW PRIVATE ADVISORY CLIENTS</text>
+  <text x="200" y="240" font-family="Georgia,serif" font-size="88" fill="#292524">Scale Your Company.</text>
+  <text x="200" y="340" font-family="Georgia,serif" font-style="italic" font-size="88" fill="#c29b57">Reclaim Your Life.</text>
+  <rect x="200" y="400" width="640" height="360" fill="#e7e5e4"/>
+  <circle cx="520" cy="580" r="54" fill="#1c1917"/>
+  <path d="M500 555l52 25-52 25Z" fill="#c29b57"/>
+  <rect x="1000" y="430" width="460" height="330" fill="#ffffff"/>
+  <rect x="1000" y="430" width="460" height="10" fill="#c29b57"/>
+  <text x="1020" y="500" font-family="Georgia,serif" font-size="34" fill="#292524">The Success Paradox.</text>
+  <rect x="1020" y="540" width="380" height="14" rx="7" fill="#e7e5e4"/>
+  <rect x="1020" y="570" width="330" height="14" rx="7" fill="#e7e5e4"/>
+  <rect x="1020" y="600" width="360" height="14" rx="7" fill="#e7e5e4"/>
+  <text x="1020" y="660" font-family="Georgia,serif" font-size="30" fill="#57534e">✦ The Delegation Illusion</text>
+  <text x="1020" y="700" font-family="Georgia,serif" font-size="30" fill="#57534e">✦ Profit vs. Peace</text>
+  <rect x="200" y="800" width="1320" height="3" fill="#c29b57" opacity="0.5"/>
+</svg>

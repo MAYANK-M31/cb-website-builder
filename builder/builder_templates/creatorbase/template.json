@@ -1,0 +1,13 @@
+{
+  "title": "Creatorbase",
+  "description": "Premium dark sales page for a digital course — gradient headlines, animated ambience, video hero, framework steps, split features, curriculum, testimonials, pricing, FAQ, rotating CTA box and sticky countdown bar.",
+  "preview": "/builder_assets/creatorbase/preview.svg",
+  "categories": ["SaaS & Digital Products", "Marketing"],
+  "pages": [
+    {
+      "name": "creatorbase",
+      "page_title": "Creatorbase",
+      "preview": "/builder_assets/creatorbase/preview.svg"
+    }
+  ]
+}

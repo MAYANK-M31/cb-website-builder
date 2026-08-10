@@ -1,0 +1,1045 @@
+{
+  "doctype": "Builder Page",
+  "name": "personal-help",
+  "page_title": "Personal Help",
+  "page_name": "Personal Help",
+  "route": null,
+  "published": 0,
+  "published_at": null,
+  "is_template": 1,
+  "template_group": "personal_help",
+  "preview": "/builder_assets/personal_help/preview.svg",
+  "head_html": "<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap\" rel=\"stylesheet\" />",
+  "blocks": [
+    {
+      "blockId": "root",
+      "element": "div",
+      "originalElement": "body",
+      "baseStyles": {
+        "display": "flex",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "width": "100%",
+        "backgroundColor": "#fdfbf7",
+        "fontFamily": "Inter, sans-serif",
+        "color": "#2c2a28",
+        "overflowX": "hidden",
+        "paddingBottom": "80px",
+        "lineHeight": "1.6"
+      },
+      "children": [
+        {
+          "blockId": "hero",
+          "element": "section",
+          "blockName": "hero",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "row",
+            "alignItems": "center",
+            "justifyContent": "space-between",
+            "gap": "50px",
+            "minHeight": "90vh",
+            "padding": "60px 24px 0",
+            "width": "100%",
+            "maxWidth": "1200px",
+            "margin": "0 auto"
+          },
+          "tabletStyles": {
+            "flexDirection": "column",
+            "textAlign": "center",
+            "paddingTop": "40px",
+            "gap": "40px"
+          },
+          "mobileStyles": {
+            "minHeight": "auto",
+            "padding": "32px 20px",
+            "gap": "32px"
+          },
+          "children": [
+            {
+              "blockId": "hero_content",
+              "element": "div",
+              "baseStyles": {
+                "flexGrow": "1",
+                "flexBasis": "0%",
+                "maxWidth": "520px",
+                "display": "flex",
+                "flexDirection": "column",
+                "alignItems": "flexStart"
+              },
+              "tabletStyles": { "alignItems": "center" },
+              "children": [
+                {
+                  "blockId": "hero_tag",
+                  "element": "span",
+                  "innerHTML": "Personal Health Coaching",
+                  "baseStyles": {
+                    "color": "#b28451",
+                    "fontFamily": "Inter, sans-serif",
+                    "fontWeight": 600,
+                    "fontSize": "0.9rem",
+                    "textTransform": "uppercase",
+                    "letterSpacing": "3px",
+                    "marginBottom": "24px",
+                    "display": "inlineBlock"
+                  }
+                },
+                {
+                  "blockId": "hero_title",
+                  "element": "h1",
+                  "innerHTML": "<p>Feel like yourself <i style=\"color:#8a9a86\">again</i></p>",
+                  "baseStyles": {
+                    "fontFamily": "Playfair Display, serif",
+                    "fontWeight": 700,
+                    "fontSize": "clamp(3rem, 5vw, 4.5rem)",
+                    "lineHeight": "1.1",
+                    "color": "#2c2a28",
+                    "margin": "0 0 24px"
+                  }
+                },
+                {
+                  "blockId": "hero_sub",
+                  "element": "p",
+                  "innerHTML": "One-on-one health coaching that meets you where you are — no scripts, no pressure, no judgment.",
+                  "baseStyles": {
+                    "fontFamily": "Inter, sans-serif",
+                    "fontSize": "1.2rem",
+                    "lineHeight": "1.6",
+                    "color": "#6b6863",
+                    "margin": "0 0 40px"
+                  }
+                },
+                {
+                  "blockId": "hero_cta",
+                  "element": "a",
+                  "blockName": "cta",
+                  "attributes": { "href": "#apply" },
+                  "baseStyles": {
+                    "display": "inlineFlex",
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "backgroundColor": "#b28451",
+                    "color": "#ffffff",
+                    "fontFamily": "Inter, sans-serif",
+                    "fontSize": "1.1rem",
+                    "fontWeight": 500,
+                    "padding": "18px 40px",
+                    "borderRadius": "999px",
+                    "textDecoration": "none",
+                    "boxShadow": "rgba(178, 132, 81, 0.2) 0px 4px 15px 0px",
+                    "hover:backgroundColor": "#9a7142",
+                    "hover:transform": "translateY(-2px)",
+                    "hover:boxShadow": "rgba(178, 132, 81, 0.3) 0px 8px 25px 0px"
+                  },
+                  "tabletStyles": { "alignSelf": "center" },
+                  "children": [
+                    {
+                      "blockId": "hero_cta_t",
+                      "element": "span",
+                      "innerHTML": "Book a free intro call",
+                      "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#ffffff" }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "blockId": "hero_image",
+              "element": "div",
+              "baseStyles": {
+                "flexGrow": "1",
+                "flexBasis": "0%",
+                "position": "relative",
+                "display": "flex",
+                "justifyContent": "center"
+              },
+              "tabletStyles": { "justifyContent": "center" },
+              "children": [
+                {
+                  "blockId": "hero_halo",
+                  "element": "div",
+                  "baseStyles": {
+                    "position": "absolute",
+                    "top": "-20px",
+                    "left": "-20px",
+                    "width": "100%",
+                    "height": "100%",
+                    "border": "1px solid #b28451",
+                    "borderRadius": "200px 200px 20px 20px",
+                    "boxSizing": "borderBox"
+                  }
+                },
+                {
+                  "blockId": "hero_arch",
+                  "element": "img",
+                  "attributes": {
+                    "src": "/builder_assets/personal_help/images/hero.svg",
+                    "alt": "Calm arch photo"
+                  },
+                  "baseStyles": {
+                    "width": "100%",
+                    "maxWidth": "400px",
+                    "height": "600px",
+                    "objectFit": "cover",
+                    "borderRadius": "200px 200px 20px 20px",
+                    "boxShadow": "rgba(0, 0, 0, 0.05) 0px 20px 50px 0px"
+                  },
+                  "mobileStyles": { "height": "420px", "maxWidth": "320px" }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "social_proof",
+          "element": "section",
+          "blockName": "social-proof",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#f3efea",
+            "padding": "40px 24px",
+            "textAlign": "center"
+          },
+          "children": [
+            {
+              "blockId": "social_title",
+              "element": "p",
+              "innerHTML": "Trusted by creators and families",
+              "baseStyles": {
+                "fontFamily": "Inter, sans-serif",
+                "fontSize": "0.9rem",
+                "textTransform": "uppercase",
+                "letterSpacing": "3px",
+                "color": "#6b6863",
+                "margin": "0 0 20px"
+              }
+            },
+            {
+              "blockId": "social_logos",
+              "element": "div",
+              "baseStyles": {
+                "display": "flex",
+                "gap": "40px",
+                "alignItems": "center",
+                "flexWrap": "wrap",
+                "justifyContent": "center",
+                "opacity": 0.5
+              },
+              "tabletStyles": { "gap": "24px" },
+              "children": [
+                {
+                  "blockId": "lg1",
+                  "element": "span",
+                  "innerHTML": "InnerWell",
+                  "baseStyles": { "fontFamily": "Playfair Display, serif", "fontSize": "1.2rem", "fontWeight": 700, "color": "#2c2a28" }
+                },
+                {
+                  "blockId": "lg2",
+                  "element": "span",
+                  "innerHTML": "CalmWeek",
+                  "baseStyles": { "fontFamily": "Playfair Display, serif", "fontSize": "1.2rem", "fontWeight": 700, "color": "#2c2a28" }
+                },
+                {
+                  "blockId": "lg3",
+                  "element": "span",
+                  "innerHTML": "Sage+Co",
+                  "baseStyles": { "fontFamily": "Playfair Display, serif", "fontSize": "1.2rem", "fontWeight": 700, "color": "#2c2a28" }
+                },
+                {
+                  "blockId": "lg4",
+                  "element": "span",
+                  "innerHTML": "Hearth",
+                  "baseStyles": { "fontFamily": "Playfair Display, serif", "fontSize": "1.2rem", "fontWeight": 700, "color": "#2c2a28" }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "problem",
+          "element": "section",
+          "blockName": "problem",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#fdfbf7",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "64px 0" },
+          "children": [
+            {
+              "blockId": "problem_wrap",
+              "element": "div",
+              "baseStyles": {
+                "width": "100%",
+                "maxWidth": "1200px",
+                "margin": "0 auto",
+                "padding": "0 24px",
+                "display": "grid",
+                "gridTemplateColumns": "1fr 1fr",
+                "gap": "40px",
+                "alignItems": "center"
+              },
+              "tabletStyles": { "display": "flex", "flexDirection": "column", "gap": "40px" },
+              "children": [
+                {
+                  "blockId": "problem_left",
+                  "element": "div",
+                  "baseStyles": { "display": "flex", "flexDirection": "column", "alignItems": "flexStart" },
+                  "tabletStyles": { "alignItems": "center", "textAlign": "center" },
+                  "children": [
+                    {
+                      "blockId": "problem_title",
+                      "element": "h2",
+                      "innerHTML": "Feeling stuck in the same loop?",
+                      "baseStyles": {
+                        "fontFamily": "Playfair Display, serif",
+                        "fontWeight": 600,
+                        "fontSize": "2.5rem",
+                        "lineHeight": "1.2",
+                        "color": "#2c2a28",
+                        "textAlign": "left",
+                        "margin": "0 0 24px"
+                      }
+                    },
+                    {
+                      "blockId": "problem_sub",
+                      "element": "p",
+                      "innerHTML": "Life takes a left turn and no one hands you the map. Let us talk it through, one step at a time.",
+                      "baseStyles": {
+                        "fontFamily": "Inter, sans-serif",
+                        "color": "#6b6863",
+                        "fontSize": "1.1rem",
+                        "lineHeight": "1.6",
+                        "margin": "0 0 32px"
+                      }
+                    },
+                    {
+                      "blockId": "problem_cta",
+                      "element": "a",
+                      "blockName": "cta",
+                      "attributes": { "href": "#apply" },
+                      "baseStyles": {
+                        "display": "inlineFlex",
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "backgroundColor": "#b28451",
+                        "color": "#ffffff",
+                        "fontFamily": "Inter, sans-serif",
+                        "fontSize": "1.1rem",
+                        "fontWeight": 500,
+                        "padding": "18px 40px",
+                        "borderRadius": "999px",
+                        "textDecoration": "none",
+                        "boxShadow": "rgba(178, 132, 81, 0.2) 0px 4px 15px 0px",
+                        "hover:backgroundColor": "#9a7142",
+                        "hover:transform": "translateY(-2px)"
+                      },
+                      "children": [{ "blockId": "problem_cta_t", "element": "span", "innerHTML": "Book a free call", "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#ffffff" } }]
+                    }
+                  ]
+                },
+                {
+                  "blockId": "problem_right",
+                  "element": "div",
+                  "baseStyles": { "flexGrow": "1", "flexBasis": "0%", "width": "100%" },
+                  "children": [
+                    {
+                      "blockId": "problem_box",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#f3efea",
+                        "padding": "40px",
+                        "borderRadius": "20px"
+                      },
+                      "children": [
+                        {
+                          "blockId": "problem_check",
+                          "element": "ul",
+                          "baseStyles": { "listStyle": "none", "margin": "0", "padding": "0" },
+                          "children": [
+                            {
+                              "blockId": "pc0",
+                              "element": "li",
+                              "baseStyles": { "display": "flex", "gap": "12px", "alignItems": "baseline", "margin": "0 0 15px", "fontSize": "1.1rem" },
+                              "children": [
+                                { "blockId": "pc0_i", "element": "span", "innerHTML": "〰 ", "baseStyles": { "color": "#b28451", "fontSize": "1.3rem" } },
+                                { "blockId": "pc0_t", "element": "span", "innerHTML": "Repeating the same arguments with yourself", "baseStyles": { "color": "#6b6863", "fontSize": "1.1rem" } }
+                              ]
+                            },
+                            {
+                              "blockId": "pc1",
+                              "element": "li",
+                              "baseStyles": { "display": "flex", "gap": "12px", "alignItems": "baseline", "margin": "0 0 15px", "fontSize": "1.1rem" },
+                              "children": [
+                                { "blockId": "pc1_i", "element": "span", "innerHTML": "〰 ", "baseStyles": { "color": "#b28451", "fontSize": "1.3rem" } },
+                                { "blockId": "pc1_t", "element": "span", "innerHTML": "Burning out between family, work and yourself", "baseStyles": { "color": "#6b6863", "fontSize": "1.1rem" } }
+                              ]
+                            },
+                            {
+                              "blockId": "pc2",
+                              "element": "li",
+                              "baseStyles": { "display": "flex", "gap": "12px", "alignItems": "baseline", "margin": "0", "fontSize": "1.1rem" },
+                              "children": [
+                                { "blockId": "pc2_i", "element": "span", "innerHTML": "〰 ", "baseStyles": { "color": "#b28451", "fontSize": "1.3rem" } },
+                                { "blockId": "pc2_t", "element": "span", "innerHTML": "Feeling fine on paper but not in your body", "baseStyles": { "color": "#6b6863", "fontSize": "1.1rem" } }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "framework",
+          "element": "section",
+          "blockName": "framework",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#f3efea",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "64px 0" },
+          "children": [
+            {
+              "blockId": "fw_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "1200px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "fw_title",
+                  "element": "h2",
+                  "innerHTML": "A clearer path, one step at a time",
+                  "baseStyles": {
+                    "fontFamily": "Playfair Display, serif",
+                    "fontWeight": 600,
+                    "fontSize": "2.8rem",
+                    "lineHeight": "1.2",
+                    "color": "#2c2a28",
+                    "textAlign": "center",
+                    "margin": "0 0 15px"
+                  },
+                  "mobileStyles": { "fontSize": "2rem" }
+                },
+                {
+                  "blockId": "fw_sub",
+                  "element": "p",
+                  "innerHTML": "Simple methods, tested in practice, made for your year.",
+                  "baseStyles": {
+                    "fontFamily": "Inter, sans-serif",
+                    "textAlign": "center",
+                    "color": "#6b6863",
+                    "fontSize": "1.1rem",
+                    "lineHeight": "1.6",
+                    "margin": "0 auto 50px",
+                    "maxWidth": "600px"
+                  }
+                },
+                {
+                  "blockId": "fw_grid",
+                  "element": "div",
+                  "baseStyles": { "display": "grid", "gridTemplateColumns": "1fr 1fr 1fr", "gap": "30px", "marginTop": "0" },
+                  "tabletStyles": { "gridTemplateColumns": "1fr", "gap": "24px" },
+                  "children": [
+                    {
+                      "blockId": "step1",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": "20px",
+                        "padding": "40px 30px",
+                        "textAlign": "center",
+                        "border": "1px solid #ece7db",
+                        "hover:transform": "translateY(-5px)",
+                        "hover:boxShadow": "rgba(0, 0, 0, 0.06) 0px 10px 30px 0px"
+                      },
+                      "children": [
+                        {
+                          "blockId": "s1_num",
+                          "element": "div",
+                          "innerHTML": "01",
+                          "baseStyles": {
+                            "width": "50px", "height": "50px", "display": "flex", "alignItems": "center",
+                            "justifyContent": "center", "backgroundColor": "#f3efea", "color": "#b28451",
+                            "fontFamily": "Playfair Display, serif", "fontSize": "1.5rem", "fontWeight": 700,
+                            "borderRadius": "50%", "margin": "0 0 20px"
+                          }
+                        },
+                        { "blockId": "s1_title", "element": "h3", "innerHTML": "Name it", "baseStyles": { "fontFamily": "Playfair Display, serif", "fontSize": "1.5rem", "fontWeight": 600, "color": "#2c2a28", "margin": "0 0 15px" } },
+                        { "blockId": "s1_desc", "element": "p", "innerHTML": "We spend the first session putting words to what is really going on.", "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#6b6863", "fontSize": "1rem", "lineHeight": "1.6" } }
+                      ]
+                    },
+                    {
+                      "blockId": "step2",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": "20px",
+                        "padding": "40px 30px",
+                        "textAlign": "center",
+                        "border": "1px solid #ece7db",
+                        "hover:transform": "translateY(-5px)",
+                        "hover:boxShadow": "rgba(0, 0, 0, 0.06) 0px 10px 30px 0px"
+                      },
+                      "children": [
+                        {
+                          "blockId": "s2_num",
+                          "element": "div",
+                          "innerHTML": "02",
+                          "baseStyles": {
+                            "width": "50px", "height": "50px", "display": "flex", "alignItems": "center",
+                            "justifyContent": "center", "backgroundColor": "#f3efea", "color": "#b28451",
+                            "fontFamily": "Playfair Display, serif", "fontSize": "1.5rem", "fontWeight": 700,
+                            "borderRadius": "50%", "margin": "0 0 20px"
+                          }
+                        },
+                        { "blockId": "s2_t", "element": "h3", "innerHTML": "Untangle it", "baseStyles": { "fontFamily": "Playfair Display, serif", "fontSize": "1.5rem", "fontWeight": 600, "color": "#2c2a28", "margin": "0 0 15px" } },
+                        { "blockId": "s2_desc", "element": "p", "innerHTML": "You learn the thought and behaviour loop that keeps you stuck.", "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#6b6863", "fontSize": "1rem", "lineHeight": "1.6" } }
+                      ]
+                    },
+                    {
+                      "blockId": "step3",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": "20px",
+                        "padding": "40px 30px",
+                        "textAlign": "center",
+                        "border": "1px solid #ece7db",
+                        "hover:transform": "translateY(-5px)",
+                        "hover:boxShadow": "rgba(0, 0, 0, 0.06) 0px 10px 30px 0px"
+                      },
+                      "children": [
+                        {
+                          "blockId": "s3_num",
+                          "element": "div",
+                          "innerHTML": "03",
+                          "baseStyles": {
+                            "width": "50px", "height": "50px", "display": "flex", "alignItems": "center",
+                            "justifyContent": "center", "backgroundColor": "#f3efea", "color": "#b28451",
+                            "fontFamily": "Playfair Display, serif", "fontSize": "1.5rem", "fontWeight": 700,
+                            "borderRadius": "50%", "margin": "0 0 20px"
+                          }
+                        },
+                        { "blockId": "s3_t", "element": "h3", "innerHTML": "Live it", "baseStyles": { "fontFamily": "Playfair Display, serif", "fontSize": "1.5rem", "fontWeight": 600, "color": "#2c2a28", "margin": "0 0 15px" } },
+                        { "blockId": "s3_desc", "element": "p", "innerHTML": "Small daily tools that build calm, energy and belonging.", "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#6b6863", "fontSize": "1rem", "lineHeight": "1.6" } }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "about",
+          "element": "section",
+          "blockName": "about",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#fdfbf7",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "64px 0" },
+          "children": [
+            {
+              "blockId": "about_wrap",
+              "element": "div",
+              "baseStyles": {
+                "width": "100%",
+                "maxWidth": "1200px",
+                "margin": "0 auto",
+                "padding": "0 24px",
+                "display": "flex",
+                "gap": "60px",
+                "alignItems": "center"
+              },
+              "tabletStyles": { "flexDirection": "column", "gap": "40px" },
+              "children": [
+                {
+                  "blockId": "about_media",
+                  "element": "div",
+                  "baseStyles": { "flexGrow": "1", "flexBasis": "0%", "width": "100%" },
+                  "children": [
+                    {
+                      "blockId": "about_img",
+                      "element": "img",
+                      "attributes": { "src": "/builder_assets/personal_help/images/about.svg", "alt": "About the host" },
+                      "baseStyles": {
+                        "width": "100%",
+                        "aspectRatio": "4 / 5",
+                        "objectFit": "cover",
+                        "borderRadius": "20px",
+                        "boxShadow": "-20px 20px 0px 0px #f3efea"
+                      },
+                      "tabletStyles": { "maxWidth": "360px", "margin": "0 auto", "display": "block" }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "about_content",
+                  "element": "div",
+                  "baseStyles": { "flexGrow": "1", "flexBasis": "0%" },
+                  "children": [
+                    {
+                      "blockId": "about_tag",
+                      "element": "span",
+                      "innerHTML": "Your host",
+                      "baseStyles": {
+                        "color": "#b28451", "fontFamily": "Inter, sans-serif", "fontSize": "0.9rem",
+                        "fontWeight": 600, "textTransform": "uppercase", "letterSpacing": "3px",
+                        "marginBottom": "24px", "display": "inlineBlock"
+                      }
+                    },
+                    {
+                      "blockId": "about_title",
+                      "element": "h2",
+                      "innerHTML": "A counsellor who started where you are",
+                      "baseStyles": {
+                        "fontFamily": "Playfair Display, serif", "fontWeight": 600, "fontSize": "2.5rem",
+                        "lineHeight": "1.2", "color": "#2c2a28", "margin": "0 0 20px"
+                      }
+                    },
+                    {
+                      "blockId": "about_p1",
+                      "element": "p",
+                      "innerHTML": "I have sat on both sides of this chair. That is still the reason I do this work.",
+                      "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#6b6863", "fontSize": "1.05rem", "lineHeight": "1.6", "margin": "0 0 20px" }
+                    },
+                    {
+                      "blockId": "about_p2",
+                      "element": "p",
+                      "innerHTML": "Licensed, warm, and very present. The intro call is free and there is never a push to sign up.",
+                      "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#6b6863", "fontSize": "1.05rem", "lineHeight": "1.6", "margin": "0 0 32px" }
+                    },
+                    {
+                      "blockId": "about_sign",
+                      "element": "div",
+                      "innerHTML": "Lily Moreau",
+                      "baseStyles": {
+                        "fontFamily": "Playfair Display, serif", "fontStyle": "italic", "fontSize": "1.5rem",
+                        "color": "#b28451"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "testimonials",
+          "element": "section",
+          "blockName": "testimonials",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#f3efea",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "64px 0" },
+          "children": [
+            {
+              "blockId": "ts_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "1200px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "ts_title",
+                  "element": "h2",
+                  "innerHTML": "What went through in their own words",
+                  "baseStyles": {
+                    "fontFamily": "Playfair Display, serif", "fontWeight": 600, "fontSize": "2.8rem",
+                    "textAlign": "center", "color": "#2c2a28", "margin": "0 0 50px"
+                  },
+                  "mobileStyles": { "fontSize": "2rem" }
+                },
+                {
+                  "blockId": "test_grid",
+                  "element": "div",
+                  "baseStyles": { "display": "grid", "gridTemplateColumns": "1fr 1fr", "gap": "30px" },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    {
+                      "blockId": "tc1",
+                      "element": "div",
+                      "classes": ["test-card"],
+                      "clientScript": {
+                        "css": ".test-card::before{content:\"\\201D\";position:absolute;top:10px;right:20px;font-size:5rem;color:#f3efea;font-family:serif;line-height:1;}"
+                      },
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff", "borderRadius": "20px", "padding": "40px",
+                        "border": "1px solid #ece7db", "position": "relative"
+                      },
+                      "children": [
+                        {
+                          "blockId": "tt1",
+                          "element": "p",
+                          "innerHTML": "The first person sessions finally gave me space to breathe. I feel unbelievably lighter.",
+                          "baseStyles": {
+                            "fontFamily": "Inter, sans-serif", "fontSize": "1.1rem", "fontStyle": "italic",
+                            "color": "#6b6863", "position": "relative", "zIndex": 1, "margin": "0 0 20px", "lineHeight": "1.6"
+                          }
+                        },
+                        {
+                          "blockId": "ta1",
+                          "element": "div",
+                          "baseStyles": { "display": "flex", "alignItems": "center", "gap": "14px" },
+                          "children": [
+                            {
+                              "blockId": "ap1",
+                              "element": "div",
+                              "customAttributes": { "style": "background-image:url(/builder_assets/personal_help/images/avatar1.svg);background-size:cover;background-position:center;" },
+                              "baseStyles": { "width": "50px", "height": "50px", "borderRadius": "50%", "flex": "0 0 auto" }
+                            },
+                            {
+                              "blockId": "au1",
+                              "element": "div",
+                              "baseStyles": { "display": "flex", "flexDirection": "column" },
+                              "children": [
+                                { "blockId": "ah1", "element": "h4", "innerHTML": "Maya R.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1rem", "fontWeight": 600, "color": "#2c2a28", "margin": "0" } },
+                                { "blockId": "ar1", "element": "p", "innerHTML": "teacher", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "0.8rem", "color": "#6b6863", "margin": "3px 0 0" } }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "tc2",
+                      "element": "div",
+                      "classes": ["test-card"],
+                      "clientScript": {
+                        "css": ".test-card::before{content:\"\\201D\";position:absolute;top:10px;right:20px;font-size:5rem;color:#f3efea;font-family:serif;line-height:1;}"
+                      },
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff", "borderRadius": "20px", "padding": "40px",
+                        "border": "1px solid #ece7db", "position": "relative"
+                      },
+                      "children": [
+                        {
+                          "blockId": "tt2",
+                          "element": "p",
+                          "innerHTML": "I was sceptical about online support. Six weeks in, I sleep through the night again.",
+                          "baseStyles": {
+                            "fontFamily": "Inter, sans-serif", "fontSize": "1.1rem", "fontStyle": "italic",
+                            "color": "#6b6863", "position": "relative", "zIndex": 1, "margin": "0 0 20px", "lineHeight": "1.6"
+                          }
+                        },
+                        {
+                          "blockId": "ta2",
+                          "element": "div",
+                          "baseStyles": { "display": "flex", "alignItems": "center", "gap": "14px" },
+                          "children": [
+                            {
+                              "blockId": "ap2",
+                              "element": "div",
+                              "customAttributes": { "style": "background-image:url(/builder_assets/personal_help/images/avatar2.svg);background-size:cover;background-position:center;" },
+                              "baseStyles": { "width": "50px", "height": "50px", "borderRadius": "50%", "flex": "0 0 auto" }
+                            },
+                            {
+                              "blockId": "au2",
+                              "element": "div",
+                              "baseStyles": { "display": "flex", "flexDirection": "column" },
+                              "children": [
+                                { "blockId": "ah2", "element": "h4", "innerHTML": "Jasper T.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1rem", "fontWeight": 600, "color": "#2c2a28", "margin": "0" } },
+                                { "blockId": "ar2", "element": "p", "innerHTML": "engineer", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "0.8rem", "color": "#6b6863", "margin": "3px 0 0" } }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "pricing",
+          "element": "section",
+          "blockName": "pricing",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#fdfbf7",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "64px 0" },
+          "children": [
+            {
+              "blockId": "pr_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "1200px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "pr_title",
+                  "element": "h2",
+                  "innerHTML": "Simple, human pricing",
+                  "baseStyles": {
+                    "fontFamily": "Playfair Display, serif", "fontWeight": 600, "fontSize": "2.8rem",
+                    "textAlign": "center", "color": "#2c2a28", "margin": "0 0 15px"
+                  },
+                  "mobileStyles": { "fontSize": "2rem" }
+                },
+                {
+                  "blockId": "pr_sub",
+                  "element": "p",
+                  "innerHTML": "Clear numbers, no surprises, cancel any time.",
+                  "baseStyles": {
+                    "fontFamily": "Inter, sans-serif", "textAlign": "center", "color": "#6b6863",
+                    "fontSize": "1.1rem", "lineHeight": "1.6", "margin": "0 auto 40px", "maxWidth": "600px"
+                  }
+                },
+                {
+                  "blockId": "price_grid",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "grid", "gridTemplateColumns": "1fr 1fr", "gap": "30px",
+                    "maxWidth": "900px", "margin": "0 auto"
+                  },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    {
+                      "blockId": "card0",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff", "borderRadius": "20px", "padding": "50px 40px",
+                        "textAlign": "center", "border": "1px solid #ece7db",
+                        "hover:transform": "translateY(-4px)"
+                      },
+                      "children": [
+                        { "blockId": "pc00", "element": "h3", "innerHTML": "Personal Sessions", "baseStyles": { "fontFamily": "Playfair Display, serif", "fontWeight": 600, "fontSize": "1.4rem", "color": "#2c2a28", "margin": "0" } },
+                        { "blockId": "pd0", "element": "p", "innerHTML": "Weekly 1:1 coaching, ready at your own pace.", "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#6b6863", "fontSize": "0.95rem", "lineHeight": "1.6", "margin": "10px 0 0" } },
+                        {
+                          "blockId": "price0",
+                          "element": "div",
+                          "baseStyles": { "margin": "20px 0", "display": "flex", "alignItems": "baseline", "justifyContent": "center", "gap": "8px" },
+                          "children": [
+                            { "blockId": "pv0", "element": "span", "innerHTML": "$79", "baseStyles": { "fontFamily": "Playfair Display, serif", "fontSize": "3.5rem", "color": "#2c2a28" } },
+                            { "blockId": "ps0", "element": "span", "innerHTML": "/week", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1.2rem", "color": "#6b6863" } }
+                          ]
+                        },
+                        {
+                          "blockId": "feat0",
+                          "element": "ul",
+                          "baseStyles": { "listStyle": "none", "margin": "30px 0", "padding": "0", "textAlign": "left" },
+                          "children": [
+                            { "blockId": "f0_0", "element": "li", "innerHTML": "✦ Private weekly sessions", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "12px 0", "borderBottom": "1px solid #f3efea", "color": "#6b6863", "display": "flex", "gap": "10px", "fontSize": "0.95rem" } },
+                            { "blockId": "f0_1", "element": "li", "innerHTML": "✦ Unlimited voice notes", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "12px 0", "borderBottom": "1px solid #f3efea", "color": "#6b6863", "display": "flex", "gap": "10px", "fontSize": "0.95rem" } },
+                            { "blockId": "f0_2", "element": "li", "innerHTML": "✦ Simple scheduling", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "12px 0", "color": "#6b6863", "display": "flex", "gap": "10px", "fontSize": "0.95rem" } }
+                          ]
+                        },
+                        {
+                          "blockId": "cta0",
+                          "element": "a",
+                          "blockName": "cta",
+                          "attributes": { "href": "#apply" },
+                          "baseStyles": {
+                            "display": "flex", "alignItems": "center", "justifyContent": "center",
+                            "width": "100%", "backgroundColor": "transparent", "color": "#b28451",
+                            "border": "1px solid #b28451", "fontFamily": "Inter, sans-serif",
+                            "fontSize": "1.1rem", "fontWeight": 500, "padding": "14px 40px",
+                            "borderRadius": "999px", "textDecoration": "none",
+                            "hover:backgroundColor": "#b28451", "hover:color": "#ffffff"
+                          },
+                          "children": [{ "blockId": "cta0_t", "element": "span", "innerHTML": "Start weekly", "baseStyles": { "fontFamily": "Inter, sans-serif" } }]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "card1",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff", "borderRadius": "20px", "padding": "50px 40px",
+                        "textAlign": "center", "border": "1px solid #ece7db",
+                        "borderTop": "5px solid #b28451",
+                        "boxShadow": "rgba(0, 0, 0, 0.05) 0px 15px 40px 0px",
+                        "transform": "scale(1.02)"
+                      },
+                      "children": [
+                        { "blockId": "badge1", "element": "span", "innerHTML": "Most loved", "baseStyles": { "display": "block", "color": "#b28451", "fontFamily": "Inter, sans-serif", "fontSize": "0.8rem", "textTransform": "uppercase", "letterSpacing": "2px", "margin": "0 0 10px", "fontWeight": 700 } },
+                        { "blockId": "pc1", "element": "h3", "innerHTML": "Intensive Coaching", "baseStyles": { "fontFamily": "Playfair Display, serif", "fontWeight": 600, "fontSize": "1.4rem", "color": "#2c2a28", "margin": "0" } },
+                        { "blockId": "pd1", "element": "p", "innerHTML": "Deep-dive program with chat support behind it.", "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#6b6863", "fontSize": "0.95rem", "lineHeight": "1.6", "margin": "10px 0 0" } },
+                        {
+                          "blockId": "price1",
+                          "element": "div",
+                          "baseStyles": { "margin": "20px 0", "display": "flex", "alignItems": "baseline", "justifyContent": "center", "gap": "8px" },
+                          "children": [
+                            { "blockId": "pv1", "element": "span", "innerHTML": "$149", "baseStyles": { "fontFamily": "Playfair Display, serif", "fontSize": "3.5rem", "color": "#2c2a28" } },
+                            { "blockId": "ps1", "element": "span", "innerHTML": "/week", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1.2rem", "color": "#6b6863" } }
+                          ]
+                        },
+                        {
+                          "blockId": "feat1",
+                          "element": "ul",
+                          "baseStyles": { "listStyle": "none", "margin": "30px 0", "padding": "0", "textAlign": "left" },
+                          "children": [
+                            { "blockId": "f1_0", "element": "li", "innerHTML": "✦ All of Personal Care", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "12px 0", "borderBottom": "1px solid #f3efea", "color": "#6b6863", "display": "flex", "gap": "10px", "fontSize": "0.95rem" } },
+                            { "blockId": "f1_1", "element": "li", "innerHTML": "✦ Chat support every day", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "12px 0", "borderBottom": "1px solid #f3efea", "color": "#6b6863", "display": "flex", "gap": "10px", "fontSize": "0.95rem" } },
+                            { "blockId": "f1_2", "element": "li", "innerHTML": "✦ Quarterly review + plan", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "12px 0", "borderBottom": "1px solid #f3efea", "color": "#6b6863", "display": "flex", "gap": "10px", "fontSize": "0.95rem" } },
+                            { "blockId": "f1_3", "element": "li", "innerHTML": "✦ Priority rebooking", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "12px 0", "color": "#6b6863", "display": "flex", "gap": "10px", "fontSize": "0.95rem" } }
+                          ]
+                        },
+                        {
+                          "blockId": "cta1",
+                          "element": "a",
+                          "blockName": "cta",
+                          "attributes": { "href": "#apply" },
+                          "baseStyles": {
+                            "display": "flex", "alignItems": "center", "justifyContent": "center",
+                            "width": "100%", "backgroundColor": "#b28451", "color": "#ffffff",
+                            "fontFamily": "Inter, sans-serif", "fontSize": "1.1rem", "fontWeight": 500,
+                            "padding": "14px 40px", "borderRadius": "999px", "textDecoration": "none",
+                            "boxShadow": "rgba(178, 132, 81, 0.2) 0px 4px 15px 0px",
+                            "hover:backgroundColor": "#9a7142"
+                          },
+                          "children": [{ "blockId": "cta1_t", "element": "span", "innerHTML": "Go intensive", "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#ffffff" } }]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "faq",
+          "element": "section",
+          "blockName": "faq",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#f3efea",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "64px 0" },
+          "children": [
+            {
+              "blockId": "faq_wrap",
+              "element": "div",
+              "clientScript": {
+                "css": "summary::-webkit-details-marker{display:none}summary::after{content:\"+\";font-size:1.5rem;color:#b28451;margin-left:12px}details[open] summary::after{content:\"-\"}"
+              },
+              "baseStyles": { "width": "100%", "maxWidth": "800px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "faq_title",
+                  "element": "h2",
+                  "innerHTML": "The corner stones, answered",
+                  "baseStyles": {
+                    "fontFamily": "Playfair Display, serif", "fontWeight": 600, "fontSize": "2.5rem",
+                    "textAlign": "center", "color": "#2c2a28", "margin": "0 0 40px"
+                  },
+                  "mobileStyles": { "fontSize": "2rem" }
+                },
+                {
+                  "blockId": "d0",
+                  "element": "details",
+                  "baseStyles": { "backgroundColor": "#ffffff", "border": "1px solid #ece7db", "borderRadius": "12px", "margin": "0 0 15px" },
+                  "children": [
+                    { "blockId": "ds0", "element": "summary", "innerHTML": "How is online different from in person?", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "20px 25px", "fontWeight": 500, "cursor": "pointer", "color": "#2c2a28", "listStyle": "none", "display": "flex", "justifyContent": "space-between", "alignItems": "center" } },
+                    { "blockId": "dd0", "element": "div", "innerHTML": "All sessions happen over a safe video call at a time that works for you.", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "0 25px 25px", "color": "#6b6863", "lineHeight": "1.6" } }
+                  ]
+                },
+                {
+                  "blockId": "d1",
+                  "element": "details",
+                  "baseStyles": { "backgroundColor": "#ffffff", "border": "1px solid #ece7db", "borderRadius": "12px", "margin": "0 0 15px" },
+                  "children": [
+                    { "blockId": "ds1", "element": "summary", "innerHTML": "What if I am not sure it helps?", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "20px 25px", "fontWeight": 500, "cursor": "pointer", "color": "#2c2a28", "listStyle": "none", "display": "flex", "justifyContent": "space-between", "alignItems": "center" } },
+                    { "blockId": "dd1", "element": "div", "innerHTML": "That is why the first call is free and there is zero obligation to continue.", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "0 25px 25px", "color": "#6b6863", "lineHeight": "1.6" } }
+                  ]
+                },
+                {
+                  "blockId": "d2",
+                  "element": "details",
+                  "baseStyles": { "backgroundColor": "#ffffff", "border": "1px solid #ece7db", "borderRadius": "12px", "margin": "0 0 15px", "position": "static" },
+                  "children": [
+                    { "blockId": "ds2", "element": "summary", "innerHTML": "Can my family or partner join?", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "20px 25px", "fontWeight": 500, "cursor": "pointer", "color": "#2c2a28", "listStyle": "none", "display": "flex", "justifyContent": "space-between", "alignItems": "center" } },
+                    { "blockId": "dd2", "element": "div", "innerHTML": "Of course. Some sessions welcome a partner or family member at the same price.", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "0 25px 25px", "color": "#6b6863", "lineHeight": "1.6" } }
+                  ]
+                },
+                {
+                  "blockId": "d3",
+                  "element": "details",
+                  "baseStyles": { "backgroundColor": "#ffffff", "border": "1px solid #ece7db", "borderRadius": "12px", "margin": "0" },
+                  "children": [
+                    { "blockId": "ds3", "element": "summary", "innerHTML": "How fast do people feel a difference?", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "20px 25px", "fontWeight": 500, "cursor": "pointer", "color": "#2c2a28", "listStyle": "none", "display": "flex", "justifyContent": "space-between", "alignItems": "center" } },
+                    { "blockId": "dd3", "element": "div", "innerHTML": "Most people feel a shift within six weeks of consistent, weekly work together.", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "0 25px 25px", "color": "#6b6863", "lineHeight": "1.6" } }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "sticky",
+          "element": "div",
+          "blockName": "sticky-cta",
+          "baseStyles": {
+            "position": "fixed",
+            "bottom": "0",
+            "left": "0",
+            "width": "100%",
+            "backgroundColor": "rgba(253, 251, 247, 0.95)",
+            "backdropFilter": "blur(10px)",
+            "borderTop": "1px solid #ece7db",
+            "padding": "15px 24px",
+            "zIndex": 1000,
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "gap": "20px"
+          },
+          "tabletStyles": { "flexDirection": "column", "gap": "10px", "textAlign": "center" },
+          "children": [
+            {
+              "blockId": "st_text",
+              "element": "span",
+              "innerHTML": "Still undecided? Try the free intro call.",
+              "baseStyles": { "fontFamily": "Inter, sans-serif", "fontWeight": 500, "color": "#2c2a28" }
+            },
+            {
+              "blockId": "st_btn",
+              "element": "a",
+              "blockName": "cta",
+              "attributes": { "href": "#apply" },
+              "baseStyles": {
+                "display": "inlineFlex", "alignItems": "center", "justifyContent": "center",
+                "backgroundColor": "#b28451", "color": "#ffffff", "fontFamily": "Inter, sans-serif",
+                "fontSize": "1rem", "fontWeight": 500, "padding": "12px 26px", "borderRadius": "999px",
+                "textDecoration": "none", "hover:backgroundColor": "#9a7142"
+              },
+              "children": [{ "blockId": "st_btn_t", "element": "span", "innerHTML": "Book it", "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#ffffff" } }]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

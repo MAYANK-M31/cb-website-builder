@@ -1,0 +1,1097 @@
+{
+  "doctype": "Builder Page",
+  "name": "masterclass",
+  "page_title": "Masterclass",
+  "page_name": "Masterclass",
+  "route": null,
+  "published": 0,
+  "published_at": null,
+  "is_template": 1,
+  "template_group": "masterclass",
+  "preview": "/builder_assets/masterclass/preview.svg",
+  "head_html": "<link href=\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap\" rel=\"stylesheet\" />\n<style>\n.mc-grad{background:linear-gradient(135deg,#4f46e5,#0ea5e9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}\n.mc-reveal{opacity:0;transform:translateY(24px);transition:all .7s cubic-bezier(.16,1,.3,1)}\n.mc-reveal.mc-on{opacity:1;transform:translateY(0)}\n.mc-btn{position:relative;overflow:hidden;z-index:1}\n.mc-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);transition:left .6s ease;z-index:-1}\n.mc-btn:hover::before{left:100%}\n@keyframes mc-pulse{0%{box-shadow:0 0 0 0 rgba(79,70,229,.35)}70%{box-shadow:0 0 0 18px rgba(79,70,229,0)}100%{box-shadow:0 0 0 0 rgba(79,70,229,0)}}\n.mc-pulse{animation:mc-pulse 2.2s cubic-bezier(.4,0,.6,1) infinite}\n.mc-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;background:#4f46e5;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.3s;z-index:3;box-shadow:0 0 0 12px rgba(79,70,229,.2)}\n.mc-wrapper:hover .mc-play{transform:translate(-50%,-50%) scale(1.08);box-shadow:0 0 0 18px rgba(79,70,229,.2)}\n.mc-tick{color:#10b981;font-size:1.15rem;font-weight:700}\n.mc-cross{color:#ef4444;font-size:1.15rem;font-weight:700}\n@keyframes mc-slide-up{to{transform:translateY(0)}}\n.mc-sticky{transform:translateY(100%);animation:mc-slide-up .8s cubic-bezier(.16,1,.3,1) forwards 1.4s}\n.mc-faq{background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;margin-bottom:15px;overflow:hidden}\n.mc-faq-q{padding:20px 25px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;list-style:none;font-size:1.05rem;font-weight:700;color:#0f172a;text-align:left;font-family:'Plus Jakarta Sans',sans-serif}\n.mc-faq-q::-webkit-details-marker{display:none}\n.mc-faq-q::after{content:'\u2193';color:#4f46e5;font-size:20px;line-height:1;transition:transform .3s;margin-left:16px}\ndetails[open].mc-faq .mc-faq-q::after{transform:rotate(180deg)}\n.mc-faq-a{color:#475569;font-size:.95rem;line-height:1.6;padding:0 25px 20px;font-family:'Plus Jakarta Sans',sans-serif}\n</style>",
+  "body_html": "<script>\ndocument.addEventListener('DOMContentLoaded',function(){\n var r=document.querySelectorAll('.mc-reveal');\n if(!('IntersectionObserver'in window)){r.forEach(function(e){e.classList.add('mc-on');});}\n else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('mc-on');io.unobserve(en.target);}});},{threshold:0.12});\n r.forEach(function(e){io.observe(e);});}\n});\n</script>",
+  "blocks": [
+    {
+      "blockId": "root",
+      "element": "div",
+      "originalElement": "body",
+      "baseStyles": {
+        "display": "flex",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "width": "100%",
+        "backgroundColor": "#f8fafc",
+        "color": "#0f172a",
+        "fontFamily": "Plus Jakarta Sans, sans-serif",
+        "lineHeight": "1.6",
+        "overflowX": "hidden",
+        "paddingBottom": "90px"
+      },
+      "children": [
+        {
+          "blockId": "top_banner",
+          "element": "div",
+          "blockName": "top-banner",
+          "innerHTML": "\ud83d\ude80 Spring Cohort Registration is currently OPEN. <span style=\"color:#f59e0b;margin-left:10px;\">Closes in 3 Days.</span>",
+          "classes": ["mc-reveal"],
+          "baseStyles": {
+            "backgroundColor": "#0f172a",
+            "color": "#ffffff",
+            "textAlign": "center",
+            "padding": "12px 20px",
+            "fontSize": "0.95rem",
+            "fontWeight": 600,
+            "width": "100%",
+            "fontFamily": "Plus Jakarta Sans, sans-serif"
+          }
+        },
+        {
+          "blockId": "hero",
+          "element": "section",
+          "blockName": "hero",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "padding": "80px 0 60px",
+            "textAlign": "center"
+          },
+          "mobileStyles": { "padding": "56px 0 48px" },
+          "children": [
+            {
+              "blockId": "hero_wrap",
+              "element": "div",
+              "baseStyles": {
+                "width": "100%",
+                "maxWidth": "1100px",
+                "margin": "0 auto",
+                "padding": "0 24px"
+              },
+              "children": [
+                {
+                  "blockId": "hero_badge",
+                  "element": "div",
+                  "classes": ["mc-reveal"],
+                  "innerHTML": "The Complete Masterclass",
+                  "baseStyles": {
+                    "display": "inlineBlock",
+                    "backgroundColor": "rgba(79, 70, 229, 0.1)",
+                    "color": "#4f46e5",
+                    "padding": "8px 16px",
+                    "borderRadius": "50px",
+                    "fontWeight": 700,
+                    "fontSize": "0.9rem",
+                    "marginBottom": "24px",
+                    "textTransform": "uppercase",
+                    "letterSpacing": "1px",
+                    "fontFamily": "Plus Jakarta Sans, sans-serif"
+                  }
+                },
+                {
+                  "blockId": "hero_title",
+                  "element": "h1",
+                  "classes": ["mc-reveal"],
+                  "innerHTML": "Stop Guessing. Start Building.<br/>Become a <span class=\"mc-grad\">Top 1% Creator.</span>",
+                  "baseStyles": {
+                    "fontFamily": "Plus Jakarta Sans, sans-serif",
+                    "fontSize": "clamp(2.8rem, 6vw, 4.5rem)",
+                    "fontWeight": 800,
+                    "lineHeight": "1.2",
+                    "letterSpacing": "-0.02em",
+                    "marginBottom": "24px"
+                  },
+                  "mobileStyles": { "fontSize": "2.2rem" }
+                },
+                {
+                  "blockId": "hero_sub",
+                  "element": "p",
+                  "classes": ["mc-reveal"],
+                  "innerHTML": "A proven, step-by-step curriculum to master high-income skills, build an irresistible portfolio, and land premium clients without spending years figuring it out alone.",
+                  "baseStyles": {
+                    "fontFamily": "Plus Jakarta Sans, sans-serif",
+                    "fontSize": "1.2rem",
+                    "color": "#475569",
+                    "maxWidth": "800px",
+                    "margin": "0 auto 40px",
+                    "lineHeight": "1.6"
+                  }
+                },
+                {
+                  "blockId": "hero_video_wrap",
+                  "element": "div",
+                  "classes": ["mc-wrapper", "mc-reveal"],
+                  "baseStyles": {
+                    "maxWidth": "850px",
+                    "margin": "0 auto 40px",
+                    "aspectRatio": "16 / 9",
+                    "backgroundColor": "#0f172a",
+                    "borderRadius": "20px",
+                    "boxShadow": "rgba(0, 0, 0, 0.25) 0px 25px 50px -12px",
+                    "position": "relative",
+                    "overflow": "hidden",
+                    "border": "1px solid rgba(255, 255, 255, 0.1)"
+                  },
+                  "children": [
+                    {
+                      "blockId": "video_img",
+                      "element": "img",
+                      "attributes": { "src": "/builder_assets/masterclass/images/video.svg", "alt": "Masterclass preview" },
+                      "baseStyles": { "width": "100%", "height": "100%", "objectFit": "cover" }
+                    },
+                    {
+                      "blockId": "palys_btn",
+                      "element": "div",
+                      "classes": ["mc-play"],
+                      "innerHTML": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"#ffffff\"><path d=\"M8 5v14l11-7z\"/></svg>"
+                    }
+                  ]
+                },
+                {
+                  "blockId": "hero_cta_wrap",
+                  "element": "div",
+                  "classes": ["mc-reveal"],
+                  "baseStyles": { "display": "flex", "justifyContent": "center" },
+                  "children": [
+                    {
+                      "blockId": "hero_cta",
+                      "element": "a",
+                      "blockName": "cta",
+                      "attributes": { "href": "#enroll" },
+                      "classes": ["mc-btn", "mc-pulse"],
+                      "baseStyles": {
+                        "display": "inlineFlex",
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "background": "linear-gradient(135deg, #4f46e5, #0ea5e9)",
+                        "color": "#ffffff",
+                        "padding": "18px 40px",
+                        "fontSize": "1.1rem",
+                        "fontWeight": 700,
+                        "textDecoration": "none",
+                        "borderRadius": "12px",
+                        "boxShadow": "rgba(79, 70, 229, 0.3) 0px 10px 25px",
+                        "border": "none",
+                        "cursor": "pointer",
+                        "transition": "all .3s ease",
+                        "fontFamily": "Plus Jakarta Sans, sans-serif",
+                        "hover:transform": "translateY(-3px)",
+                        "hover:boxShadow": "rgba(79, 70, 229, 0.4) 0px 15px 35px"
+                      },
+                      "children": [
+                        { "blockId": "hero_cta_t", "element": "span", "innerHTML": "Enroll In The Masterclass", "baseStyles": { "position": "relative", "zIndex": 1, "fontFamily": "Plus Jakarta Sans, sans-serif" } }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "blockId": "hero_note",
+                  "element": "p",
+                  "classes": ["mc-reveal"],
+                  "innerHTML": "⭐ Join 2,400+ successful students.",
+                  "baseStyles": {
+                    "fontFamily": "Plus Jakarta Sans, sans-serif",
+                    "fontSize": "0.9rem",
+                    "color": "#475569",
+                    "marginTop": "15px",
+                    "fontWeight": 600,
+                    "textAlign": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "social_proof",
+          "element": "section",
+          "blockName": "social-proof",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#ffffff",
+            "padding": "40px 0"
+          },
+          "children": [
+            {
+              "blockId": "sp_wrap",
+              "element": "div",
+              "classes": ["mc-reveal"],
+              "baseStyles": { "width": "100%", "maxWidth": "1100px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "sp_label",
+                  "element": "p",
+                  "innerHTML": "Students have been hired by",
+                  "baseStyles": {
+                    "fontFamily": "Plus Jakarta Sans, sans-serif",
+                    "textAlign": "center",
+                    "color": "#475569",
+                    "fontWeight": 600,
+                    "textTransform": "uppercase",
+                    "letterSpacing": "1px",
+                    "marginBottom": "20px",
+                    "fontSize": "0.9rem"
+                  }
+                },
+                {
+                  "blockId": "logo_strip",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "flex",
+                    "justifyContent": "center",
+                    "gap": "40px",
+                    "flexWrap": "wrap",
+                    "padding": "40px 0",
+                    "borderTop": "1px solid #e2e8f0",
+                    "borderBottom": "1px solid #e2e8f0",
+                    "opacity": 0.6,
+                    "filter": "grayscale(100%)"
+                  },
+                  "tabletStyles": { "gap": "24px" },
+                  "children": [
+                    { "blockId": "logo1", "element": "span", "innerHTML": "Google", "baseStyles": { "fontSize": "1.5rem", "fontWeight": 800, "fontFamily": "Georgia, serif" } },
+                    { "blockId": "logo2", "element": "span", "innerHTML": "Spotify", "baseStyles": { "fontSize": "1.5rem", "fontWeight": 800, "fontFamily": "Georgia, serif" } },
+                    { "blockId": "logo3", "element": "span", "innerHTML": "Shopify", "baseStyles": { "fontSize": "1.5rem", "fontWeight": 800, "fontFamily": "Georgia, serif" } },
+                    { "blockId": "logo4", "element": "span", "innerHTML": "Stripe", "baseStyles": { "fontSize": "1.5rem", "fontWeight": 800, "fontFamily": "Georgia, serif" } },
+                    { "blockId": "logo5", "element": "span", "innerHTML": "Webflow", "baseStyles": { "fontSize": "1.5rem", "fontWeight": 800, "fontFamily": "Georgia, serif" } }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "problem",
+          "element": "section",
+          "blockName": "problem",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#f8fafc",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "72px 0" },
+          "children": [
+            {
+              "blockId": "problem_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "1100px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "problem_heading",
+                  "element": "div",
+                  "classes": ["mc-reveal"],
+                  "baseStyles": {},
+                  "children": [
+                    { "blockId": "problem_title", "element": "h2", "innerHTML": "Why you are still stuck.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "clamp(2rem, 4vw, 3rem)", "fontWeight": 800, "lineHeight": "1.2", "letterSpacing": "-0.02em", "textAlign": "center", "marginBottom": "20px" } },
+                    { "blockId": "problem_sub", "element": "p", "innerHTML": "Information is free. Structured, sequential application is what you actually pay for.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "textAlign": "center", "color": "#475569", "fontSize": "1.2rem", "maxWidth": "700px", "margin": "0 auto 50px", "lineHeight": "1.6" } }
+                  ]
+                },
+                {
+                  "blockId": "comparison",
+                  "element": "div",
+                  "classes": ["mc-reveal"],
+                  "baseStyles": { "display": "grid", "gridTemplateColumns": "1fr 1fr", "gap": "30px", "marginTop": "20px" },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    {
+                      "blockId": "diy_card",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "rgba(239, 68, 68, 0.05)",
+                        "border": "1px solid rgba(239, 68, 68, 0.2)",
+                        "padding": "40px",
+                        "borderRadius": "20px"
+                      },
+                      "children": [
+                        { "blockId": "diy_h", "element": "h3", "innerHTML": "The DIY YouTube Method", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.8rem", "fontWeight": 800, "marginBottom": "20px", "paddingBottom": "20px", "borderBottom": "1px solid rgba(239,68,68,0.2)", "color": "#ef4444", "lineHeight": "1.2" } },
+                        {
+                          "blockId": "diy_list",
+                          "element": "ul",
+                          "baseStyles": { "listStyle": "none", "margin": "0", "padding": "0" },
+                          "children": [
+                            { "blockId": "diy1", "element": "li", "innerHTML": "<span class=\"mc-cross\">✕</span> Wasting hours piecing together outdated tutorials.", "baseStyles": { "display": "flex", "gap": "15px", "marginBottom": "20px", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.05rem", "color": "#475569", "alignItems": "flexStart" } },
+                            { "blockId": "diy2", "element": "li", "innerHTML": "<span class=\"mc-cross\">✕</span> No clear roadmap of what to learn first (or next).", "baseStyles": { "display": "flex", "gap": "15px", "marginBottom": "20px", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.05rem", "color": "#475569", "alignItems": "flexStart" } },
+                            { "blockId": "diy3", "element": "li", "innerHTML": "<span class=\"mc-cross\">✕</span> Getting stuck on errors with zero support or feedback.", "baseStyles": { "display": "flex", "gap": "15px", "marginBottom": "20px", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.05rem", "color": "#475569", "alignItems": "flexStart" } },
+                            { "blockId": "diy4", "element": "li", "innerHTML": "<span class=\"mc-cross\">✕</span> Imposter syndrome because you have no real-world projects.", "baseStyles": { "display": "flex", "gap": "15px", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.05rem", "color": "#475569", "alignItems": "flexStart" } }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "course_card",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff",
+                        "border": "1px solid #e2e8f0",
+                        "borderTop": "4px solid #4f46e5",
+                        "boxShadow": "rgba(0, 0, 0, 0.05) 0px 10px 30px",
+                        "padding": "40px",
+                        "borderRadius": "20px"
+                      },
+                      "children": [
+                        { "blockId": "course_h", "element": "h3", "innerHTML": "The Masterclass Method", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.8rem", "fontWeight": 800, "marginBottom": "20px", "paddingBottom": "20px", "borderBottom": "1px solid #e2e8f0", "color": "#4f46e5", "lineHeight": "1.2" } },
+                        {
+                          "blockId": "course_list",
+                          "element": "ul",
+                          "baseStyles": { "listStyle": "none", "margin": "0", "padding": "0" },
+                          "children": [
+                            { "blockId": "course1", "element": "li", "innerHTML": "<span class=\"mc-tick\">✓</span> A linear, A-to-Z curriculum designed for fast comprehension.", "baseStyles": { "display": "flex", "gap": "15px", "marginBottom": "20px", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.05rem", "color": "#475569", "alignItems": "flexStart" } },
+                            { "blockId": "course2", "element": "li", "innerHTML": "<span class=\"mc-tick\">✓</span> Build 5 real-world, portfolio-ready projects as you learn.", "baseStyles": { "display": "flex", "gap": "15px", "marginBottom": "20px", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.05rem", "color": "#475569", "alignItems": "flexStart" } },
+                            { "blockId": "course3", "element": "li", "innerHTML": "<span class=\"mc-tick\">✓</span> Access to a private community and mentor feedback.", "baseStyles": { "display": "flex", "gap": "15px", "marginBottom": "20px", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.05rem", "color": "#475569", "alignItems": "flexStart" } },
+                            { "blockId": "course4", "element": "li", "innerHTML": "<span class=\"mc-tick\">✓</span> Copy-paste client acquisition templates to monetize immediately.", "baseStyles": { "display": "flex", "gap": "15px", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.05rem", "color": "#475569", "alignItems": "flexStart" } }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "curriculum",
+          "element": "section",
+          "blockName": "curriculum",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#ffffff",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "72px 0" },
+          "children": [
+            {
+              "blockId": "cur_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "820px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "cur_heading",
+                  "element": "div",
+                  "classes": ["mc-reveal"],
+                  "baseStyles": {},
+                  "children": [
+                    { "blockId": "cur_title", "element": "h2", "innerHTML": "Inside The Curriculum", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontWeight": 800, "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontSize": "clamp(2rem, 4vw, 3rem)", "textAlign": "center", "marginBottom": "20px" } },
+                    { "blockId": "cur_sub", "element": "p", "innerHTML": "6 Core Modules. 40+ HD Video Lessons. Zero Fluff.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "textAlign": "center", "color": "#475569", "fontSize": "1.2rem", "maxWidth": "700px", "margin": "0 auto 50px", "lineHeight": "1.6" } }
+                  ]
+                },
+                {
+                  "blockId": "module_list",
+                  "element": "div",
+                  "baseStyles": { "display": "flex", "flexDirection": "column", "gap": "20px" },
+                  "children": [
+                    {
+                      "blockId": "mod1",
+                      "element": "div",
+                      "classes": ["mc-reveal"],
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff",
+                        "border": "1px solid #e2e8f0",
+                        "borderRadius": "16px",
+                        "padding": "30px",
+                        "display": "flex",
+                        "gap": "25px",
+                        "transition": "all 0.3s ease",
+                        "hover:transform": "translateX(10px)",
+                        "hover:boxShadow": "0 10px 30px rgba(0, 0, 0, 0.05)",
+                        "hover:borderColor": "#4f46e5"
+                      },
+                      "mobileStyles": { "flexDirection": "column", "gap": "15px" },
+                      "children": [
+                        { "blockId": "m1_num", "element": "div", "innerHTML": "01", "baseStyles": { "backgroundColor": "rgba(79, 70, 229, 0.1)", "color": "#4f46e5", "width": "60px", "height": "60px", "borderRadius": "12px", "display": "flex", "alignItems": "center", "justifyContent": "center", "fontSize": "1.5rem", "fontWeight": 800, "flexShrink": 0, "fontFamily": "Plus Jakarta Sans, sans-serif" } },
+                        {
+                          "blockId": "m1_content",
+                          "element": "div",
+                          "baseStyles": {},
+                          "children": [
+                            { "blockId": "m1_h", "element": "h3", "innerHTML": "The Fundamentals & Foundation", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.4rem", "fontWeight": 800, "marginBottom": "10px", "lineHeight": "1.2" } },
+                            { "blockId": "m1_p", "element": "p", "innerHTML": "We start by stripping away the complex jargon. Learn the core principles, set up your software environment, and master the basic tools you will use daily.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "color": "#475569", "marginBottom": "15px", "fontSize": "1rem" } },
+                            { "blockId": "m1_lessons", "element": "div", "innerHTML": "▶ 8 Video Lessons   📁 2 Worksheets", "baseStyles": { "fontSize": "0.9rem", "fontWeight": 600, "color": "#4f46e5", "display": "flex", "gap": "15px", "fontFamily": "Plus Jakarta Sans, sans-serif" } }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "mod2",
+                      "element": "div",
+                      "classes": ["mc-reveal"],
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff",
+                        "border": "1px solid #e2e8f0",
+                        "borderRadius": "16px",
+                        "padding": "30px",
+                        "display": "flex",
+                        "gap": "25px",
+                        "transition": "all 0.3s ease",
+                        "hover:transform": "translateX(10px)",
+                        "hover:boxShadow": "0 10px 30px rgba(0, 0, 0, 0.05)",
+                        "hover:borderColor": "#4f46e5"
+                      },
+                      "mobileStyles": { "flexDirection": "column", "gap": "15px" },
+                      "children": [
+                        { "blockId": "m2_num", "element": "div", "innerHTML": "02", "baseStyles": { "backgroundColor": "rgba(79, 70, 229, 0.1)", "color": "#4f46e5", "width": "60px", "height": "60px", "borderRadius": "12px", "display": "flex", "alignItems": "center", "justifyContent": "center", "fontSize": "1.5rem", "fontWeight": 800, "flexShrink": 0, "fontFamily": "Plus Jakarta Sans, sans-serif" } },
+                        {
+                          "blockId": "m2_content",
+                          "element": "div",
+                          "baseStyles": {},
+                          "children": [
+                            { "blockId": "m2_h", "element": "h3", "innerHTML": "Advanced Techniques & Workflows", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.4rem", "fontWeight": 800, "marginBottom": "10px", "lineHeight": "1.2" } },
+                            { "blockId": "m2_p", "element": "p", "innerHTML": "Move beyond the basics. Learn the exact speed-workflows and advanced techniques that separate amateurs from top-tier professionals.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "color": "#475569", "marginBottom": "15px", "fontSize": "1rem" } },
+                            { "blockId": "m2_lessons", "element": "div", "innerHTML": "▶ 12 Lessons   📁 1 Cheat Sheet", "baseStyles": { "fontSize": "0.9rem", "fontWeight": 600, "color": "#4f46e5", "display": "flex", "gap": "15px", "fontFamily": "Plus Jakarta Sans, sans-serif" } }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "mod3",
+                      "element": "div",
+                      "classes": ["mc-reveal"],
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff",
+                        "border": "1px solid #e2e8f0",
+                        "borderRadius": "16px",
+                        "padding": "30px",
+                        "display": "flex",
+                        "gap": "25px",
+                        "transition": "all 0.3s ease",
+                        "hover:transform": "translateX(10px)",
+                        "hover:boxShadow": "0 10px 30px rgba(0, 0, 0, 0.05)",
+                        "hover:borderColor": "#4f46e5"
+                      },
+                      "mobileStyles": { "flexDirection": "column", "gap": "15px" },
+                      "children": [
+                        { "blockId": "m3_num", "element": "div", "innerHTML": "03", "baseStyles": { "backgroundColor": "rgba(79, 70, 229, 0.1)", "color": "#4f46e5", "width": "60px", "height": "60px", "borderRadius": "12px", "display": "flex", "alignItems": "center", "justifyContent": "center", "fontSize": "1.5rem", "fontWeight": 800, "flexShrink": 0, "fontFamily": "Plus Jakarta Sans, sans-serif" } },
+                        {
+                          "blockId": "m3_content",
+                          "element": "div",
+                          "baseStyles": {},
+                          "children": [
+                            { "blockId": "m3_h", "element": "h3", "innerHTML": "The Capstone Projects", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.4rem", "fontWeight": 800, "marginBottom": "10px", "lineHeight": "1.2" } },
+                            { "blockId": "m3_p", "element": "p", "innerHTML": "Theory is useless without execution. We build 3 complete, high-end projects from scratch that you can immediately add to your portfolio.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "color": "#475569", "marginBottom": "15px", "fontSize": "1rem" } },
+                            { "blockId": "m3_lessons", "element": "div", "innerHTML": "▶ 15 Lessons   📁 Source Files", "baseStyles": { "fontSize": "0.9rem", "fontWeight": 600, "color": "#4f46e5", "display": "flex", "gap": "15px", "fontFamily": "Plus Jakarta Sans, sans-serif" } }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "mod4",
+                      "element": "div",
+                      "classes": ["mc-reveal"],
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff",
+                        "border": "1px solid #e2e8f0",
+                        "borderRadius": "16px",
+                        "padding": "30px",
+                        "display": "flex",
+                        "gap": "25px",
+                        "transition": "all 0.3s ease",
+                        "hover:transform": "translateX(10px)",
+                        "hover:boxShadow": "0 10px 30px rgba(0, 0, 0, 0.05)",
+                        "hover:borderColor": "#4f46e5"
+                      },
+                      "mobileStyles": { "flexDirection": "column", "gap": "15px" },
+                      "children": [
+                        { "blockId": "m4_num", "element": "div", "innerHTML": "04", "baseStyles": { "backgroundColor": "rgba(79, 70, 229, 0.1)", "color": "#4f46e5", "width": "60px", "height": "60px", "borderRadius": "12px", "display": "flex", "alignItems": "center", "justifyContent": "center", "fontSize": "1.5rem", "fontWeight": 800, "flexShrink": 0, "fontFamily": "Plus Jakarta Sans, sans-serif" } },
+                        {
+                          "blockId": "mod4_content",
+                          "element": "div",
+                          "baseStyles": {},
+                          "children": [
+                            { "blockId": "mod4_h", "element": "h3", "innerHTML": "Client Acquisition & Monetization", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.4rem", "fontWeight": 800, "marginBottom": "10px", "lineHeight": "1.2" } },
+                            { "blockId": "mod4_p", "element": "p", "innerHTML": "How to package your new skills into high-ticket offers, find clients who have money, and run sales calls without feeling like a car salesman.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "color": "#475569", "marginBottom": "15px", "fontSize": "1rem" } },
+                            { "blockId": "mod4_lessons", "element": "div", "innerHTML": "▶ 6 Lessons   📁 Email Scripts", "baseStyles": { "fontSize": "0.9rem", "fontWeight": 600, "color": "#4f46e5", "display": "flex", "gap": "15px", "fontFamily": "Plus Jakarta Sans, sans-serif" } }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "blockId": "cur_cta_wrap",
+                  "element": "div",
+                  "classes": ["mc-reveal"],
+                  "baseStyles": { "textAlign": "center", "marginTop": "50px" },
+                  "children": [
+                    {
+                      "blockId": "cur_cta",
+                      "element": "a",
+                      "blockName": "cta",
+                      "attributes": { "href": "#enroll" },
+                      "baseStyles": {
+                        "display": "inlineFlex",
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "backgroundColor": "#ffffff",
+                        "color": "#0f172a",
+                        "border": "2px solid #e2e8f0",
+                        "padding": "18px 40px",
+                        "fontSize": "1rem",
+                        "fontWeight": 700,
+                        "textDecoration": "none",
+                        "borderRadius": "12px",
+                        "cursor": "pointer",
+                        "fontFamily": "Plus Jakarta Sans, sans-serif",
+                        "hover:backgroundColor": "#e2e8f0"
+                      },
+                      "children": [{ "blockId": "cur_cta_t", "element": "span", "innerHTML": "See Full Syllabus", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif" } }]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "bonuses",
+          "element": "section",
+          "blockName": "bonuses",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#0f172a",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "72px 0" },
+          "children": [
+            {
+              "blockId": "bonus_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "1100px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "bonus_heading",
+                  "element": "div",
+                  "classes": ["mc-reveal"],
+                  "baseStyles": {},
+                  "children": [
+                    { "blockId": "bonus_title", "element": "h2", "innerHTML": "Free Action-Taker Bonuses", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontWeight": 800, "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontSize": "clamp(2rem, 4vw, 3rem)", "textAlign": "center", "marginBottom": "20px", "color": "#ffffff" } },
+                    { "blockId": "bonus_sub", "element": "p", "innerHTML": "Enroll today and get these exclusive resources completely free.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "textAlign": "center", "color": "#94a3b8", "fontSize": "1.2rem", "maxWidth": "700px", "margin": "0 auto 50px", "lineHeight": "1.6" } }
+                  ]
+                },
+                {
+                  "blockId": "bonus_grid",
+                  "element": "div",
+                  "classes": ["mc-reveal"],
+                  "baseStyles": { "display": "grid", "gridTemplateColumns": "repeat(3, 1fr)", "gap": "30px" },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    {
+                      "blockId": "b1",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "rgba(255, 255, 255, 0.05)",
+                        "border": "1px solid rgba(255, 255, 255, 0.1)",
+                        "padding": "30px",
+                        "borderRadius": "16px",
+                        "hover:transform": "translateY(-5px)",
+                        "transition": "all 0.3s ease"
+                      },
+                      "children": [
+                        { "blockId": "b1v", "element": "span", "innerHTML": "Value: $197", "baseStyles": { "display": "inlineBlock", "backgroundColor": "rgba(16, 185, 129, 0.2)", "color": "#10b981", "padding": "5px 12px", "borderRadius": "5px", "fontSize": "0.85rem", "fontWeight": 700, "marginBottom": "15px", "fontFamily": "Plus Jakarta Sans, sans-serif" } },
+                        { "blockId": "b1h", "element": "h3", "innerHTML": "The Notion OS Tracker", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.3rem", "fontWeight": 800, "marginBottom": "15px", "color": "#ffffff", "lineHeight": "1.2" } },
+                        { "blockId": "b1p", "element": "p", "innerHTML": "My personal Notion dashboard template to organize your learning, track client leads, and manage your projects.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "color": "#94a3b8", "fontSize": "0.95rem", "lineHeight": "1.6" } }
+                      ]
+                    },
+                    {
+                      "blockId": "b2",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "rgba(255, 255, 255, 0.05)",
+                        "border": "1px solid rgba(255, 255, 255, 0.1)",
+                        "padding": "30px",
+                        "borderRadius": "16px",
+                        "hover:transform": "translateY(-5px)",
+                        "transition": "all 0.3s ease"
+                      },
+                      "children": [
+                        { "blockId": "b2v", "element": "span", "innerHTML": "Value: $297", "baseStyles": { "display": "inlineBlock", "backgroundColor": "rgba(16, 185, 129, 0.2)", "color": "#10b981", "padding": "5px 12px", "borderRadius": "5px", "fontSize": "0.85rem", "fontWeight": 700, "marginBottom": "15px", "fontFamily": "Plus Jakarta Sans, sans-serif" } },
+                        { "blockId": "b2h", "element": "h3", "innerHTML": "Private Discord Access", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.3rem", "fontWeight": 800, "marginBottom": "15px", "color": "#ffffff", "lineHeight": "1.2" } },
+                        { "blockId": "b2p", "element": "p", "innerHTML": "Get 24/7 access to our private community of 2,000+ creators. Ask questions, get feedback, and network.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "color": "#94a3b8", "fontSize": "0.95rem", "lineHeight": "1.6" } }
+                      ]
+                    },
+                    {
+                      "blockId": "b3",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "rgba(255, 255, 255, 0.05)",
+                        "border": "1px solid rgba(255, 255, 255, 0.1)",
+                        "padding": "30px",
+                        "borderRadius": "16px",
+                        "hover:transform": "translateY(-5px)",
+                        "transition": "all 0.3s ease"
+                      },
+                      "children": [
+                        { "blockId": "b3v", "element": "span", "innerHTML": "Value: $497", "baseStyles": { "display": "inlineBlock", "backgroundColor": "rgba(16, 185, 129, 0.2)", "color": "#10b981", "padding": "5px 12px", "borderRadius": "5px", "fontSize": "0.85rem", "fontWeight": 700, "marginBottom": "15px", "fontFamily": "Plus Jakarta Sans, sans-serif" } },
+                        { "blockId": "b3h", "element": "h3", "innerHTML": "Proposal & Contract Pack", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.3rem", "fontWeight": 800, "marginBottom": "15px", "color": "#ffffff", "lineHeight": "1.2" } },
+                        { "blockId": "b3p", "element": "p", "innerHTML": "Never write a contract from scratch again. Use the exact plug-and-play legal templates I use to close $10k deals.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "color": "#94a3b8", "fontSize": "0.95rem", "lineHeight": "1.6" } }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "instructor",
+          "element": "section",
+          "blockName": "instructor",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#ffffff",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "72px 0" },
+          "children": [
+            {
+              "blockId": "instructor_wrap",
+              "element": "div",
+              "classes": ["mc-reveal"],
+              "baseStyles": {
+                "width": "100%",
+                "maxWidth": "1100px",
+                "margin": "0 auto",
+                "padding": "0 24px",
+                "display": "grid",
+                "gridTemplateColumns": "1fr 1fr",
+                "gap": "60px",
+                "alignItems": "center"
+              },
+              "tabletStyles": { "gridTemplateColumns": "1fr" },
+              "children": [
+                {
+                  "blockId": "instructor_img",
+                  "element": "div",
+                  "baseStyles": {
+                    "borderRadius": "20px",
+                    "overflow": "hidden",
+                    "aspectRatio": "1 / 1",
+                    "boxShadow": "rgb(79, 70, 229) 20px 20px 0, rgba(0, 0, 0, 0.05) 0px 20px 40px"
+                  },
+                  "children": [
+                    {
+                      "blockId": "instructor_img_el",
+                      "element": "img",
+                      "attributes": { "src": "/builder_assets/masterclass/images/instructor.svg", "alt": "Your instructor" },
+                      "baseStyles": { "width": "100%", "height": "100%", "objectFit": "cover", "display": "block", "borderRadius": "20px" }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "instructor_content",
+                  "element": "div",
+                  "baseStyles": { "display": "flex", "flexDirection": "column", "alignItems": "flexStart" },
+                  "children": [
+                    { "blockId": "inst_label", "element": "span", "innerHTML": "Your Instructor", "baseStyles": { "color": "#4f46e5", "fontWeight": 700, "textTransform": "uppercase", "letterSpacing": "1px", "marginBottom": "16px", "fontSize": "0.85rem", "fontFamily": "Plus Jakarta Sans, sans-serif" } },
+                    { "blockId": "inst_h", "element": "h2", "innerHTML": "Hi, I'm Alex Carter.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "2.5rem", "fontWeight": 800, "lineHeight": "1.2", "letterSpacing": "-0.02em", "marginBottom": "20px" } },
+                    { "blockId": "inst_p1", "element": "p", "innerHTML": "Over the past 7 years, I've generated over $1.5M as an independent creator, working with brands like Nike, RedBull, and tech startups.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "color": "#475569", "fontSize": "1.1rem", "marginBottom": "20px", "lineHeight": "1.6" } },
+                    { "blockId": "inst_p2", "element": "p", "innerHTML": "When I started, I spent two years drowning in free YouTube tutorials. I created this Masterclass to be the exact roadmap I wish I had on day one. It skips the theory and focuses entirely on what actually gets you hired and paid.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "color": "#475569", "fontSize": "1.1rem", "lineHeight": "1.6" } }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "testimonials",
+          "element": "section",
+          "blockName": "testimonials",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#f8fafc",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "72px 0" },
+          "children": [
+            {
+              "blockId": "test_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "1100px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "test_heading",
+                  "element": "div",
+                  "classes": ["mc-reveal"],
+                  "baseStyles": {},
+                  "children": [
+                    { "blockId": "test_title", "element": "h2", "innerHTML": "Join 2,400+ Success Stories", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontWeight": 800, "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontSize": "clamp(2rem, 4vw, 3rem)", "textAlign": "center", "marginBottom": "40px" } }
+                  ]
+                },
+                {
+                  "blockId": "test_grid",
+                  "element": "div",
+                  "classes": ["mc-reveal"],
+                  "baseStyles": { "display": "grid", "gridTemplateColumns": "repeat(3, 1fr)", "gap": "24px" },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    {
+                      "blockId": "t1",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff",
+                        "border": "1px solid #e2e8f0",
+                        "borderRadius": "16px",
+                        "padding": "30px",
+                        "hover:transform": "translateY(-5px)",
+                        "transition": "all 0.3s ease",
+                        "boxShadow": "rgba(0, 0, 0, 0.04) 0px 10px 30px"
+                      },
+                      "children": [
+                        { "blockId": "t1s", "element": "div", "innerHTML": "★★★★★", "baseStyles": { "color": "#f59e0b", "marginBottom": "15px", "fontSize": "1.2rem" } },
+                        { "blockId": "t1q", "element": "p", "innerHTML": "\"The ROI on this course is insane. I finished Module 4 on a Tuesday, used the cold email templates on Wednesday, and landed my first $2,500 client by Friday. Unreal.\"", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "color": "#475569", "marginBottom": "20px", "fontSize": "0.95rem", "lineHeight": "1.6" } },
+                        {
+                          "blockId": "t1a",
+                          "element": "div",
+                          "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px" },
+                          "children": [
+                            { "blockId": "t1av", "element": "div", "baseStyles": { "width": "45px", "height": "45px", "borderRadius": "50%", "backgroundColor": "#4f46e5" } },
+                            { "blockId": "t1info", "element": "div", "baseStyles": { "display": "flex", "flexDirection": "column" }, "children": [
+                                { "blockId": "t1n", "element": "h4", "innerHTML": "Jessica M.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1rem", "fontWeight": 800, "margin": "0" } },
+                                { "blockId": "t1r", "element": "span", "innerHTML": "Freelancer", "baseStyles": { "fontSize": "0.8rem", "color": "#475569", "fontFamily": "Plus Jakarta Sans, sans-serif" } }
+                              ] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "t2",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff",
+                        "border": "1px solid #e2e8f0",
+                        "borderRadius": "16px",
+                        "padding": "30px",
+                        "hover:transform": "translateY(-5px)",
+                        "transition": "all 0.3s ease",
+                        "boxShadow": "rgba(0, 0, 0, 0.04) 0px 10px 25px"
+                      },
+                      "children": [
+                        { "blockId": "t2s", "element": "div", "innerHTML": "★★★★★", "baseStyles": { "color": "#f59e0b", "marginBottom": "15px", "fontSize": "1.2rem" } },
+                        { "blockId": "t2q", "element": "p", "innerHTML": "\"I've bought courses that cost 3x as much and delivered half the value. The capstone projects alone taught me more than my 4-year university degree.\"", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "color": "#475569", "marginBottom": "20px", "fontSize": "0.95rem", "lineHeight": "1.6" } },
+                        {
+                          "blockId": "t2a",
+                          "element": "div",
+                          "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px" },
+                          "children": [
+                            { "blockId": "t2av", "element": "div", "baseStyles": { "width": "45px", "height": "45px", "borderRadius": "50%", "backgroundColor": "#0ea5e9" } },
+                            { "blockId": "t2info", "element": "div", "baseStyles": { "display": "flex", "flexDirection": "column" }, "children": [
+                                { "blockId": "t2n", "element": "h4", "innerHTML": "Michael T.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1rem", "fontWeight": 800, "margin": "0" } },
+                                { "blockId": "t2r", "element": "span", "innerHTML": "Career Transitioner", "baseStyles": { "fontSize": "0.8rem", "color": "#475569", "fontFamily": "Plus Jakarta Sans, sans-serif" } }
+                              ] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "t3",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff",
+                        "border": "1px solid #e2e8f0",
+                        "borderRadius": "16px",
+                        "padding": "30px",
+                        "hover:transform": "translateY(-5px)",
+                        "transition": "all 0.3s ease",
+                        "boxShadow": "rgba(0, 0, 0, 0.04) 0px 10px 25px"
+                      },
+                      "children": [
+                        { "blockId": "t3s", "element": "div", "innerHTML": "★★★★★", "baseStyles": { "color": "#f59e0b", "marginBottom": "15px", "fontSize": "1.2rem" } },
+                        { "blockId": "t3q", "element": "p", "innerHTML": "\"The Discord community is the hidden gem here. Getting real-time feedback on my portfolio from Alex and the other students helped me finally launch my site.\"", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "color": "#475569", "marginBottom": "20px", "fontSize": "0.95rem", "lineHeight": "1.6" } },
+                        {
+                          "blockId": "t3a",
+                          "element": "div",
+                          "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px" },
+                          "children": [
+                            { "blockId": "t3av", "element": "div", "baseStyles": { "width": "45px", "height": "45px", "borderRadius": "50%", "backgroundColor": "#10b981" } },
+                            { "blockId": "t3info", "element": "div", "baseStyles": { "display": "flex", "flexDirection": "column" }, "children": [
+                                { "blockId": "t3n", "element": "h4", "innerHTML": "Sarah K.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1rem", "fontWeight": 800, "margin": "0" } },
+                                { "blockId": "t3r", "element": "span", "innerHTML": "Agency Owner", "baseStyles": { "fontSize": "0.8rem", "color": "#475569", "fontFamily": "Plus Jakarta Sans, sans-serif" } }
+                              ] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "enroll",
+          "element": "section",
+          "blockName": "enroll",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#ffffff",
+            "padding": "100px 0",
+            "scrollMarginTop": "20px"
+          },
+          "mobileStyles": { "padding": "72px 0" },
+          "children": [
+            {
+              "blockId": "enroll_wrap",
+              "element": "div",
+              "classes": ["mc-reveal"],
+              "baseStyles": { "width": "100%", "maxWidth": "800px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "offer_stack",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "backgroundColor": "#ffffff",
+                    "border": "2px solid #4f46e5",
+                    "borderRadius": "24px",
+                    "boxShadow": "rgba(79, 70, 229, 0.1) 0px 20px 40px",
+                    "overflow": "hidden"
+                  },
+                  "children": [
+                    {
+                      "blockId": "offer_header",
+                      "element": "div",
+                      "baseStyles": { "backgroundColor": "#4f46e5", "color": "#ffffff", "padding": "30px", "textAlign": "center" },
+                      "children": [
+                        { "blockId": "offer_h", "element": "h3", "innerHTML": "Everything You Get Today", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "2rem", "fontWeight": 800, "lineHeight": "1.2", "margin": "0" } }
+                      ]
+                    },
+                    {
+                      "blockId": "offer_body",
+                      "element": "div",
+                      "baseStyles": { "padding": "40px" },
+                      "children": [
+                        {
+                          "blockId": "offer_list",
+                          "element": "ul",
+                          "baseStyles": { "listStyle": "none", "margin": "0 0 30px", "padding": "0" },
+                          "children": [
+                            { "blockId": "o1", "element": "li", "innerHTML": "<span>The Complete Core Curriculum (40+ Videos)</span><span>$997 Value</span>", "baseStyles": { "display": "flex", "justifyContent": "spaceBetween", "padding": "15px 0", "borderBottom": "1px dashed #e2e8f0", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.05rem" } },
+                            { "blockId": "o2", "element": "li", "innerHTML": "<span>Bonus 1: Notion OS Dashboard</span><span>$197 Value</span>", "baseStyles": { "display": "flex", "justifyContent": "spaceBetween", "padding": "15px 0", "borderBottom": "1px dashed #e2e8f0", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.05rem" } },
+                            { "blockId": "o3", "element": "li", "innerHTML": "<span>Bonus 2: Private Discord Community</span><span>$297 Value</span>", "baseStyles": { "display": "flex", "justifyContent": "spaceBetween", "padding": "15px 0", "borderBottom": "1px dashed #e2e8f0", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.05rem" } },
+                            { "blockId": "o4", "element": "li", "innerHTML": "<span>Bonus 3: Proposal & Contract Pack</span><span>$497 Value</span>", "baseStyles": { "display": "flex", "justifyContent": "spaceBetween", "padding": "15px 0", "borderBottom": "1px dashed #e2e8f0", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.05rem" } },
+                            { "blockId": "o5", "element": "li", "innerHTML": "<span>Lifetime Access & Future Updates</span><span>Priceless</span>", "baseStyles": { "display": "flex", "justifyContent": "spaceBetween", "padding": "15px 0", "borderBottom": "1px dashed #e2e8f0", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.05rem" } },
+                            { "blockId": "o6", "element": "li", "innerHTML": "<span><strong>Total Value:</strong> <span style=\"text-decoration:line-through;color:#ef4444;\">$1,988</span></span>", "baseStyles": { "display": "flex", "justifyContent": "spaceBetween", "padding": "15px 0", "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.2rem", "fontWeight": 700, "borderTop": "2px solid #0f172a" } }
+                          ]
+                        },
+                        {
+                          "blockId": "price_block",
+                          "element": "div",
+                          "baseStyles": { "textAlign": "center", "marginTop": "10px" },
+                          "children": [
+                            { "blockId": "price_label", "element": "p", "innerHTML": "One-Time Payment", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "color": "#475569", "fontWeight": 600, "textTransform": "uppercase", "marginBottom": "8px", "fontSize": "0.9rem", "letterSpacing": "1px" } },
+                            { "blockId": "price_final", "element": "div", "innerHTML": "$397", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "textAlign": "center", "fontSize": "4rem", "fontWeight": 800, "color": "#0f172a", "margin": "20px 0", "lineHeight": "1" } },
+                            {
+                              "blockId": "offer_cta",
+                              "element": "a",
+                              "blockName": "cta",
+                              "attributes": { "href": "#" },
+                              "classes": ["mc-btn", "mc-pulse"],
+                              "baseStyles": {
+                                "display": "flex",
+                                "alignItems": "center",
+                                "justifyContent": "center",
+                                "background": "linear-gradient(135deg, #4f46e5, #0ea5e9)",
+                                "color": "#ffffff",
+                                "padding": "18px 40px",
+                                "fontSize": "1.1rem",
+                                "fontWeight": 700,
+                                "textDecoration": "none",
+                                "borderRadius": "12px",
+                                "boxShadow": "rgba(79, 70, 229, 0.3) 0px 10px 25px",
+                                "border": "none",
+                                "cursor": "pointer",
+                                "width": "100%",
+                                "fontFamily": "Plus Jakarta Sans, sans-serif",
+                                "hover:transform": "translateY(-3px)"
+                              },
+                              "children": [{ "blockId": "offer_cta_t", "element": "span", "innerHTML": "Get Instant Access", "baseStyles": { "position": "relative", "zIndex": 1, "fontFamily": "Plus Jakarta Sans, sans-serif" } }]
+                            }
+                          ]
+                        },
+                        {
+                          "blockId": "guarantee",
+                          "element": "div",
+                          "baseStyles": {
+                            "display": "flex",
+                            "gap": "20px",
+                            "alignItems": "center",
+                            "backgroundColor": "rgba(16, 185, 129, 0.1)",
+                            "border": "1px solid rgba(16, 185, 129, 0.3)",
+                            "padding": "20px",
+                            "borderRadius": "12px",
+                            "marginTop": "30px"
+                          },
+                          "mobileStyles": { "flexDirection": "column", "textAlign": "center" },
+                          "children": [
+                            { "blockId": "guarantee_badge", "element": "div", "innerHTML": "🛡️", "baseStyles": { "fontSize": "2.5rem" } },
+                            {
+                              "blockId": "guarantee_text",
+                              "element": "div",
+                              "baseStyles": {},
+                              "children": [
+                                { "blockId": "guarantee_h", "element": "h4", "innerHTML": "14-Day Money Back Guarantee", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "1.1rem", "fontWeight": 800, "marginBottom": "5px", "lineHeight": "1.2" } },
+                                { "blockId": "guarantee_p", "element": "p", "innerHTML": "Take the course, watch the videos, and build the projects. If you don't feel it's the absolute best investment you've made in your career, email me within 14 days for a full, no-questions-asked refund.", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontSize": "0.9rem", "color": "#475569", "lineHeight": "1.6", "margin": "0" } }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "faq",
+          "element": "section",
+          "blockName": "faq",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#f8fafc",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "72px 0" },
+          "children": [
+            {
+              "blockId": "faq_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "800px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "faq_heading",
+                  "element": "div",
+                  "classes": ["mc-reveal"],
+                  "baseStyles": {},
+                  "children": [
+                    { "blockId": "faq_title", "element": "h2", "innerHTML": "Frequently Asked Questions", "baseStyles": { "fontFamily": "Plus Jakarta Sans, sans-serif", "fontWeight": 800, "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontSize": "clamp(2rem, 4vw, 3rem)", "textAlign": "center", "marginBottom": "40px" } }
+                  ]
+                },
+                {
+                  "blockId": "faq_list",
+                  "element": "div",
+                  "classes": ["mc-reveal"],
+                  "baseStyles": {},
+                  "children": [
+                    {
+                      "blockId": "f1",
+                      "element": "details",
+                      "classes": ["mc-faq"],
+                      "children": [
+                        { "blockId": "f1q", "element": "summary", "classes": ["mc-faq-q"], "innerHTML": "Do I need any prior experience?" },
+                        { "blockId": "f1a", "element": "div", "classes": ["mc-faq-a"], "innerHTML": "No. Module 1 is designed specifically for complete beginners. We start from zero and gradually build up to advanced concepts." }
+                      ]
+                    },
+                    {
+                      "blockId": "f2",
+                      "element": "details",
+                      "classes": ["mc-faq"],
+                      "children": [
+                        { "blockId": "f2q", "element": "summary", "classes": ["mc-faq-q"], "innerHTML": "How long do I have access to the course?" },
+                        { "blockId": "f2a", "element": "div", "classes": ["mc-faq-a"], "innerHTML": "You get lifetime access. Buy it once, and you own it forever, including any future updates or modules I add to the curriculum." }
+                      ]
+                    },
+                    {
+                      "blockId": "f3",
+                      "element": "details",
+                      "classes": ["mc-faq"],
+                      "children": [
+                        { "blockId": "f3q", "element": "summary", "classes": ["mc-faq-q"], "innerHTML": "Do I need to buy expensive software?" },
+                        { "blockId": "f3a", "element": "div", "classes": ["mc-faq-a"], "innerHTML": "No. I specifically teach this curriculum using industry-standard tools that have generous free tiers. You do not need to spend extra money to take this course." }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "sticky_footer",
+          "element": "div",
+          "blockName": "sticky-cta",
+          "classes": ["mc-sticky"],
+          "baseStyles": {
+            "position": "fixed",
+            "bottom": "0",
+            "left": "0",
+            "width": "100%",
+            "backgroundColor": "rgba(255, 255, 255, 0.9)",
+            "backdropFilter": "blur(10px)",
+            "borderTop": "1px solid #e2e8f0",
+            "padding": "15px 24px",
+            "display": "flex",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "gap": "30px",
+            "zIndex": 1000,
+            "boxShadow": "rgba(0, 0, 0, 0.05) 0px -10px 20px"
+          },
+          "tabletStyles": { "gap": "16px", "padding": "12px", "justifyContent": "spaceBetween" },
+          "children": [
+            {
+              "blockId": "st_price",
+              "element": "div",
+              "baseStyles": { "display": "flex", "flexDirection": "column", "textAlign": "right" },
+              "children": [
+                { "blockId": "st_strike", "element": "span", "innerHTML": "$1,988", "baseStyles": { "fontSize": "1rem", "textDecoration": "lineThrough", "color": "#475569", "fontWeight": 500, "fontFamily": "Plus Jakarta Sans, sans-serif" } },
+                { "blockId": "st_price2", "element": "span", "innerHTML": "$397", "baseStyles": { "fontSize": "1.5rem", "fontWeight": 800, "color": "#0f172a", "fontFamily": "Plus Jakarta Sans, sans-serif", "lineHeight": "1.1" } }
+              ]
+            },
+            {
+              "blockId": "st_cta",
+              "element": "a",
+              "blockName": "cta",
+              "attributes": { "href": "#enroll" },
+              "classes": ["mc-btn", "mc-pulse"],
+              "baseStyles": {
+                "display": "inlineFlex",
+                "alignItems": "center",
+                "justifyContent": "center",
+                "background": "linear-gradient(135deg, #4f46e5, #0ea5e9)",
+                "color": "#ffffff",
+                "padding": "13px 30px",
+                "fontSize": "1rem",
+                "fontWeight": 700,
+                "textDecoration": "none",
+                "borderRadius": "12px",
+                "border": "none",
+                "cursor": "pointer",
+                "boxShadow": "rgba(79, 70, 229, 0.3) 0px 10px 25px",
+                "fontFamily": "Plus Jakarta Sans, sans-serif",
+                "hover:transform": "translateY(-2px)"
+              },
+              "children": [{ "blockId": "st_cta_t", "element": "span", "innerHTML": "Enroll Now", "baseStyles": { "position": "relative", "zIndex": 1, "fontFamily": "Plus Jakarta Sans, sans-serif" } }]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

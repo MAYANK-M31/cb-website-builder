@@ -1,0 +1,13 @@
+{
+  "title": "Masterclass",
+  "description": "A high-converting digital course sales page — hero VSL, social proof logos, problem comparison, modules, bonuses, instructor, testimonials, offer stack, FAQ and sticky CTA bar.",
+  "preview": "/builder_assets/masterclass/preview.svg",
+  "categories": ["Education & Courses", "Marketing"],
+  "pages": [
+    {
+      "name": "masterclass",
+      "page_title": "Masterclass",
+      "preview": "/builder_assets/masterclass/preview.svg"
+    }
+  ]
+}

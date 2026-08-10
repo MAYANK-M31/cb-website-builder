@@ -1,0 +1,1001 @@
+{
+  "doctype": "Builder Page",
+  "name": "creatorbase",
+  "page_title": "Creatorbase",
+  "page_name": "Creatorbase",
+  "route": null,
+  "published": 0,
+  "published_at": null,
+  "is_template": 1,
+  "template_group": "creatorbase",
+  "preview": "/builder_assets/creatorbase/preview.svg",
+  "head_html": "<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\" />\n<style>\n.cb-grad{background:linear-gradient(180deg,#ffffff 0%,#a1a1aa 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}\n.cb-reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}\n.cb-reveal.cb-on{opacity:1;transform:translateY(0)}\n.cb-btn{position:relative;overflow:hidden;z-index:1}\n.cb-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent);transition:left .6s ease;z-index:-1}\n.cb-btn:hover::before{left:100%}\n@keyframes cb-pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 15px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}\n.cb-pulse{animation:cb-pulse 2s cubic-bezier(.4,0,.6,1) infinite}\n.cb-ambient{position:absolute;width:600px;height:600px;left:50%;top:0;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.4) 0%,transparent 70%);filter:blur(80px);opacity:.5;pointer-events:none;z-index:0}\n@keyframes cb-spin{100%{transform:rotate(360deg)}}\n.cb-cta-spin{position:relative;overflow:hidden}\n.cb-cta-spin::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg at 50% 50%,transparent 0%,rgba(79,70,229,.12) 50%,transparent 100%);animation:cb-spin 10s linear infinite;pointer-events:none}\n@keyframes cb-slide-up{to{transform:translateY(0)}}\n.cb-sticky{transform:translateY(100%);animation:cb-slide-up .8s cubic-bezier(.16,1,.3,1) forwards 1.5s}\n.cb-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;transition:all .3s ease;z-index:3}\n.cb-wrapper:hover .cb-play{background:#fff;color:#000;transform:translate(-50%,-50%) scale(1.1)}\n.cb-faq{background:#0a0a0f;border:1px solid rgba(255,255,255,.08);border-radius:12px;margin-bottom:12px;overflow:hidden}\n.cb-faq-q{padding:22px 28px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;list-style:none;font-size:17px;font-weight:500;color:#ffffff;text-align:left}\n.cb-faq-q::-webkit-details-marker{display:none}\n.cb-faq-q::after{content:'+';color:#818cf8;font-size:24px;line-height:1;transition:transform .3s;margin-left:16px}\ndetails[open].cb-faq .cb-faq-q::after{transform:rotate(45deg)}\n.cb-faq-a{color:#a1a1aa;font-size:15px;line-height:1.6;padding:0 24px 20px}\n.cb-timer{font-family:monospace;font-size:20px;font-weight:800;color:#ef4444;background:rgba(239,68,68,.12);padding:4px 12px;border-radius:8px;letter-spacing:2px}\n</style>",
+  "body_html": "<script>\ndocument.addEventListener('DOMContentLoaded',function(){\n var r=document.querySelectorAll('.cb-reveal');\n if(!('IntersectionObserver'in window)){r.forEach(function(e){e.classList.add('cb-on');});}\n else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('cb-on');io.unobserve(en.target);}});},{threshold:0.1});\n r.forEach(function(e){io.observe(e);});}\n var t=document.getElementById('cb-timer');\n if(t){var s=15*60;setInterval(function(){s--;if(s<0)s=0;var m=String(Math.floor(s/60)).padStart(2,'0');var ss=String(s%60).padStart(2,'0');t.textContent=m+':'+ss;},1000);}\n});\n</script>",
+  "blocks": [
+    {
+      "blockId": "root",
+      "element": "div",
+      "originalElement": "body",
+      "baseStyles": {
+        "display": "flex",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "width": "100%",
+        "backgroundColor": "#030305",
+        "color": "#ffffff",
+        "fontFamily": "Inter, sans-serif",
+        "lineHeight": "1.6",
+        "overflowX": "hidden",
+        "paddingBottom": "90px"
+      },
+      "children": [
+        {
+          "blockId": "hero",
+          "element": "section",
+          "blockName": "hero",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#030305",
+            "padding": "100px 0 80px",
+            "position": "relative",
+            "textAlign": "center"
+          },
+          "mobileStyles": { "padding": "72px 0 64px" },
+          "children": [
+            { "blockId": "hero_glow", "element": "div", "classes": ["cb-ambient"] },
+            {
+              "blockId": "hero_wrap",
+              "element": "div",
+              "baseStyles": {
+                "width": "100%",
+                "maxWidth": "1100px",
+                "margin": "0 auto",
+                "padding": "0 24px",
+                "position": "relative",
+                "zIndex": 1
+              },
+              "children": [
+                {
+                  "blockId": "hero_title",
+                  "element": "h1",
+                  "innerHTML": "Master the Art of Selling with Creatorbase",
+                  "classes": ["cb-grad", "cb-reveal"],
+                  "baseStyles": {
+                    "fontFamily": "Inter, sans-serif",
+                    "fontSize": "clamp(40px, 6vw, 64px)",
+                    "fontWeight": 800,
+                    "lineHeight": "1.2",
+                    "letterSpacing": "-0.02em",
+                    "maxWidth": "820px",
+                    "margin": "0 auto 24px",
+                    "textAlign": "center"
+                  },
+                  "mobileStyles": { "fontSize": "32px" }
+                },
+                {
+                  "blockId": "hero_sub",
+                  "element": "p",
+                  "innerHTML": "The definitive blueprint for digital creators and SaaS founders to turn attention into predictable revenue.",
+                  "classes": ["cb-reveal"],
+                  "baseStyles": {
+                    "fontFamily": "Inter, sans-serif",
+                    "fontSize": "20px",
+                    "color": "#a1a1aa",
+                    "maxWidth": "620px",
+                    "margin": "0 auto 40px",
+                    "textAlign": "center",
+                    "lineHeight": "1.6"
+                  }
+                },
+                {
+                  "blockId": "hero_cta_wrap",
+                  "element": "div",
+                  "classes": ["cb-reveal"],
+                  "baseStyles": { "display": "flex", "justifyContent": "center" },
+                  "children": [
+                    {
+                      "blockId": "hero_cta",
+                      "element": "a",
+                      "blockName": "cta",
+                      "attributes": { "href": "#pricing" },
+                      "classes": ["cb-btn", "cb-pulse"],
+                      "baseStyles": {
+                        "display": "inlineFlex",
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "gap": "8px",
+                        "padding": "16px 36px",
+                        "backgroundColor": "#ffffff",
+                        "color": "#000000",
+                        "fontFamily": "Inter, sans-serif",
+                        "fontSize": "16px",
+                        "fontWeight": 600,
+                        "borderRadius": "999px",
+                        "textDecoration": "none",
+                        "cursor": "pointer",
+                        "hover:transform": "translateY(-2px) scale(1.02)"
+                      },
+                      "children": [
+                        { "blockId": "hero_cta_t", "element": "span", "innerHTML": "Start with the blueprint", "baseStyles": { "position": "relative", "zIndex": 1, "fontFamily": "Inter, sans-serif" } },
+                        { "blockId": "hero_cta_a", "element": "span", "innerHTML": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg>", "baseStyles": { "position": "relative", "zIndex": 1, "display": "flex" } }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "blockId": "video_wrap",
+                  "element": "div",
+                  "classes": ["cb-wrapper", "cb-reveal"],
+                  "baseStyles": {
+                    "maxWidth": "900px",
+                    "margin": "64px auto 0",
+                    "position": "relative",
+                    "borderRadius": "24px",
+                    "overflow": "hidden",
+                    "border": "1px solid rgba(255, 255, 255, 0.08)",
+                    "aspectRatio": "16 / 9",
+                    "backgroundColor": "#0a0a0f",
+                    "boxShadow": "rgba(0, 0, 0, 0.6) 0px 24px 80px 0px",
+                    "hover:transform": "scale(1.01)"
+                  },
+                  "tabletStyles": { "marginTop": "40px" },
+                  "children": [
+                    {
+                      "blockId": "video_img",
+                      "element": "img",
+                      "attributes": { "src": "/builder_assets/creatorbase/images/video.svg", "alt": "Creatorbase tour" },
+                      "baseStyles": { "width": "100%", "height": "100%", "objectFit": "cover", "opacity": 0.6 }
+                    },
+                    {
+                      "blockId": "play_btn",
+                      "element": "div",
+                      "classes": ["cb-play"],
+                      "innerHTML": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M8 5v14l11-7z\"/></svg>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "intro",
+          "element": "section",
+          "blockName": "intro",
+          "classes": ["cb-reveal"],
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#030305",
+            "padding": "120px 0"
+          },
+          "mobileStyles": { "padding": "80px 0" },
+          "children": [
+            {
+              "blockId": "intro_heading",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "700px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "intro_title",
+                  "element": "h2",
+                  "classes": ["cb-grad"],
+                  "innerHTML": "Why Creators Struggle to Sell",
+                  "baseStyles": {
+                    "fontFamily": "Inter, sans-serif",
+                    "fontWeight": 700,
+                    "lineHeight": "1.2",
+                    "letterSpacing": "-0.02em",
+                    "fontSize": "clamp(32px, 5vw, 48px)",
+                    "textAlign": "center",
+                    "margin": "0 0 32px"
+                  }
+                },
+                { "blockId": "intro_p1", "element": "p", "innerHTML": "You've built the audience. You've written the code. You have a product that genuinely helps people. But when it comes time to ask for the sale, you hesitate.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "color": "#a1a1aa", "marginBottom": "24px", "lineHeight": "1.8", "textAlign": "center" } },
+                { "blockId": "intro_p2", "element": "p", "innerHTML": "Most creators rely on hope marketing — launching a product and hoping the audience buys. Building a sustainable business requires engineering a sales system that converts, without burning out your audience.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "color": "#a1a1aa", "marginBottom": "24px", "lineHeight": "1.8", "textAlign": "center" } },
+                { "blockId": "intro_h3", "element": "h3", "innerHTML": "It's time to shift from creating to capitalizing.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "24px", "color": "#ffffff", "margin": "40px 0 16px", "textAlign": "center" } },
+                { "blockId": "intro_p3", "element": "p", "innerHTML": "This isn't about sleazy tactics. It's about structuring your offers, your funnels, and your backend systems so that selling becomes a natural extension of the value you already provide.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "color": "#a1a1aa", "lineHeight": "1.8", "textAlign": "center" } }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "steps",
+          "element": "section",
+          "blockName": "steps",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#030305",
+            "padding": "120px 0",
+            "borderTop": "1px solid rgba(255, 255, 255, 0.08)"
+          },
+          "mobileStyles": { "padding": "80px 0" },
+          "children": [
+            {
+              "blockId": "steps_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "1100px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "steps_heading",
+                  "element": "div",
+                  "classes": ["cb-reveal"],
+                  "baseStyles": { "textAlign": "center" },
+                  "children": [
+                    { "blockId": "steps_title", "element": "h2", "classes": ["cb-grad"], "innerHTML": "The Creatorbase Framework", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontWeight": 700, "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontSize": "clamp(32px, 5vw, 48px)", "textAlign": "center", "margin": "0 0 16px" } },
+                    { "blockId": "steps_desc", "element": "p", "innerHTML": "A systematic approach to monetizing your digital assets.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "color": "#a1a1aa", "maxWidth": "600px", "margin": "0 auto 48px", "textAlign": "center", "lineHeight": "1.6" } }
+                  ]
+                },
+                {
+                  "blockId": "steps_grid",
+                  "element": "div",
+                  "baseStyles": { "display": "grid", "gridTemplateColumns": "1fr 1fr 1fr", "gap": "24px" },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    {
+                      "blockId": "step1",
+                      "element": "div",
+                      "classes": ["cb-reveal"],
+                      "baseStyles": {
+                        "backgroundColor": "#0a0a0f",
+                        "border": "1px solid rgba(255, 255, 255, 0.08)",
+                        "borderRadius": "16px",
+                        "padding": "40px",
+                        "hover:borderColor": "rgba(255, 255, 255, 0.15)",
+                        "hover:transform": "translateY(-5px)",
+                        "hover:backgroundColor": "#12121a"
+                      },
+                      "children": [
+                        { "blockId": "s1n", "element": "span", "innerHTML": "PHASE 1", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "14px", "fontWeight": 700, "color": "#a1a1aa", "display": "inlineBlock", "marginBottom": "24px", "borderBottom": "2px solid #4f46e5", "paddingBottom": "4px" } },
+                        { "blockId": "s1h", "element": "h4", "innerHTML": "Audience Architecture", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "20px", "fontWeight": 600, "color": "#ffffff", "margin": "0 0 12px" } },
+                        { "blockId": "s1p", "element": "p", "innerHTML": "Structure top-of-funnel content to naturally qualify leads and build a list of high-intent buyers.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa", "lineHeight": "1.6" } }
+                      ]
+                    },
+                    {
+                      "blockId": "step2",
+                      "element": "div",
+                      "classes": ["cb-reveal"],
+                      "baseStyles": {
+                        "backgroundColor": "#0a0a0f",
+                        "border": "1px solid rgba(255, 255, 255, 0.08)",
+                        "borderRadius": "16px",
+                        "padding": "40px",
+                        "hover:borderColor": "rgba(255, 255, 255, 0.15)",
+                        "hover:transform": "translateY(-5px)",
+                        "hover:backgroundColor": "#12121a"
+                      },
+                      "children": [
+                        { "blockId": "s2n", "element": "span", "innerHTML": "PHASE 2", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "14px", "fontWeight": 700, "color": "#a1a1aa", "display": "inlineBlock", "marginBottom": "24px", "borderBottom": "2px solid #4f46e5", "paddingBottom": "4px" } },
+                        { "blockId": "s2h", "element": "h4", "innerHTML": "Offer Engineering", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "20px", "fontWeight": 600, "color": "#ffffff", "margin": "0 0 12px" } },
+                        { "blockId": "s2p", "element": "p", "innerHTML": "Design irresistible offers. Stop competing on price, start competing on value, transformation and exclusivity.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa", "lineHeight": "1.6" } }
+                      ]
+                    },
+                    {
+                      "blockId": "step3",
+                      "element": "div",
+                      "classes": ["cb-reveal"],
+                      "baseStyles": {
+                        "backgroundColor": "#0a0a0f",
+                        "border": "1px solid rgba(255, 255, 255, 0.08)",
+                        "borderRadius": "16px",
+                        "padding": "40px",
+                        "hover:borderColor": "rgba(255, 255, 255, 0.15)",
+                        "hover:transform": "translateY(-5px)",
+                        "hover:backgroundColor": "#12121a"
+                      },
+                      "children": [
+                        { "blockId": "s3n", "element": "span", "innerHTML": "PHASE 3", "baseStyles": { "fontSize": "14px", "fontWeight": 700, "color": "#a1a1aa", "display": "inlineBlock", "marginBottom": "24px", "borderBottom": "2px solid #4f46e5", "paddingBottom": "4px" } },
+                        { "blockId": "s3h", "element": "h4", "innerHTML": "Automated Conversion", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "20px", "fontWeight": 600, "color": "#ffffff", "margin": "0 0 12px" } },
+                        { "blockId": "s3p", "element": "p", "innerHTML": "Deploy high-converting email sequences and backend systems that sell your products 24/7 on autopilot.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa", "lineHeight": "1.6" } }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "split",
+          "element": "section",
+          "blockName": "split",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#030305",
+            "padding": "120px 0"
+          },
+          "mobileStyles": { "padding": "80px 0" },
+          "children": [
+            {
+              "blockId": "split_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "1100px", "margin": "0 auto", "padding": "0 24px", "display": "flex", "flexDirection": "column", "gap": "120px" },
+              "mobileStyles": { "gap": "80px" },
+              "children": [
+                {
+                  "blockId": "row1",
+                  "element": "div",
+                  "classes": ["cb-reveal"],
+                  "baseStyles": {
+                    "display": "grid",
+                    "gridTemplateColumns": "1fr 1fr",
+                    "gap": "80px",
+                    "alignItems": "center"
+                  },
+                  "tabletStyles": { "gridTemplateColumns": "1fr", "gap": "40px" },
+                  "children": [
+                    {
+                      "blockId": "row1_text",
+                      "element": "div",
+                      "baseStyles": { "display": "flex", "flexDirection": "column", "alignItems": "flexStart" },
+                      "children": [
+                        { "blockId": "r1_h2", "element": "h2", "innerHTML": "Stop Guessing. Start Converting.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "36px", "fontWeight": 700, "lineHeight": "1.2", "letterSpacing": "-0.02em", "color": "#ffffff", "margin": "0 0 24px" } },
+                        { "blockId": "r1_p", "element": "p", "innerHTML": "Discover the exact psychological triggers and copywriting frameworks top SaaS founders and creators use to drive millions. We tear down winning campaigns so you can rebuild them for your own products.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "color": "#a1a1aa", "lineHeight": "1.6", "margin": "0 0 32px" } },
+                        {
+                          "blockId": "r1_btn",
+                          "element": "a",
+                          "blockName": "cta",
+                          "attributes": { "href": "#pricing" },
+                          "baseStyles": {
+                            "display": "inlineFlex", "alignItems": "center", "justifyContent": "center", "gap": "8px",
+                            "padding": "16px 36px", "backgroundColor": "transparent", "color": "#ffffff",
+                            "border": "1px solid rgba(255, 255, 255, 0.08)", "backdropFilter": "blur(10px)",
+                            "fontFamily": "Inter, sans-serif", "fontSize": "16px", "fontWeight": 600,
+                            "borderRadius": "999px", "textDecoration": "none", "cursor": "pointer",
+                            "hover:borderColor": "#ffffff", "hover:backgroundColor": "rgba(255, 255, 255, 0.05)",
+                            "hover:transform": "translateY(-2px)"
+                          },
+                          "children": [
+                            {
+                              "blockId": "r1_btn_t",
+                              "element": "span",
+                              "innerHTML": "Explore Modules<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg>",
+                              "baseStyles": { "fontFamily": "Inter, sans-serif", "display": "flex", "alignItems": "center", "gap": "8px", "position": "relative", "zIndex": 1 }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "row1_img",
+                      "element": "div",
+                      "baseStyles": {
+                        "borderRadius": "24px",
+                        "overflow": "hidden",
+                        "border": "1px solid rgba(255, 255, 255, 0.08)",
+                        "aspectRatio": "4 / 3",
+                        "backgroundColor": "#12121a"
+                      },
+                      "children": [
+                        {
+                          "blockId": "row1_img_el",
+                          "element": "img",
+                          "attributes": { "src": "/builder_assets/creatorbase/images/dash.svg", "alt": "Dashboard analytics" },
+                          "baseStyles": { "width": "100%", "height": "100%", "objectFit": "cover", "opacity": 0.85, "hover:transform": "scale(1.05)", "hover:opacity": 1 }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "blockId": "row2",
+                  "element": "div",
+                  "classes": ["cb-reveal"],
+                  "baseStyles": {
+                    "display": "grid",
+                    "gridTemplateColumns": "1fr 1fr",
+                    "gap": "80px",
+                    "alignItems": "center"
+                  },
+                  "tabletStyles": { "gridTemplateColumns": "1fr", "gap": "40px" },
+                  "children": [
+                    {
+                      "blockId": "row2_img",
+                      "element": "div",
+                      "baseStyles": {
+                        "borderRadius": "24px",
+                        "overflow": "hidden",
+                        "border": "1px solid rgba(255, 255, 255, 0.08)",
+                        "aspectRatio": "4 / 3",
+                        "backgroundColor": "#12121a"
+                      },
+                      "tabletStyles": { "order": "2" },
+                      "children": [
+                        {
+                          "blockId": "row2_img_el",
+                          "element": "img",
+                          "attributes": { "src": "/builder_assets/creatorbase/images/team.svg", "alt": "Team collaborating" },
+                          "baseStyles": { "width": "100%", "height": "100%", "objectFit": "cover", "opacity": 0.85, "hover:transform": "scale(1.05)", "hover:opacity": 1 }
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "row2_text",
+                      "element": "div",
+                      "tabletStyles": { "order": "1" },
+                      "baseStyles": { "display": "flex", "flexDirection": "column", "alignItems": "flexStart" },
+                      "children": [
+                        { "blockId": "r2_h2", "element": "h2", "innerHTML": "Build Systems, Not Just Products", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "36px", "fontWeight": 700, "lineHeight": "1.2", "letterSpacing": "-0.02em", "color": "#ffffff", "margin": "0 0 24px" } },
+                        { "blockId": "r2_p", "element": "p", "innerHTML": "A great product with a terrible sales system will fail. Learn to integrate billing, automated onboarding and retention loops that maximize customer lifetime value.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "color": "#a1a1aa", "lineHeight": "1.6", "margin": "0 0 32px" } },
+                        {
+                          "blockId": "r2_btn",
+                          "element": "a",
+                          "blockName": "cta",
+                          "attributes": { "href": "#pricing" },
+                          "baseStyles": {
+                            "display": "inlineFlex", "alignItems": "center", "justifyContent": "center", "gap": "8px",
+                            "padding": "16px 36px", "backgroundColor": "transparent", "color": "#ffffff",
+                            "border": "1px solid rgba(255, 255, 255, 0.08)", "backdropFilter": "blur(10px)",
+                            "fontFamily": "Inter, sans-serif", "fontSize": "16px", "fontWeight": 600,
+                            "borderRadius": "999px", "textDecoration": "none", "cursor": "pointer",
+                            "hover:borderColor": "#ffffff", "hover:backgroundColor": "rgba(255, 255, 255, 0.05)",
+                            "hover:transform": "translateY(-2px)"
+                          },
+                          "children": [
+                            {
+                              "blockId": "r2_btn_t",
+                              "element": "span",
+                              "innerHTML": "See the Systems<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg>",
+                              "baseStyles": { "fontFamily": "Inter, sans-serif", "display": "flex", "alignItems": "center", "gap": "8px", "position": "relative", "zIndex": 1 }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "features",
+          "element": "section",
+          "blockName": "features",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#0a0a0f",
+            "padding": "120px 0",
+            "borderTop": "1px solid rgba(255, 255, 255, 0.08)",
+            "borderBottom": "1px solid rgba(255, 255, 255, 0.08)"
+          },
+          "mobileStyles": { "padding": "80px 0" },
+          "children": [
+            {
+              "blockId": "feat_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "1100px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "feat_heading",
+                  "element": "div",
+                  "classes": ["cb-reveal"],
+                  "baseStyles": { "textAlign": "center" },
+                  "children": [
+                    { "blockId": "feat_title", "element": "h2", "classes": ["cb-grad"], "innerHTML": "What You'll Master", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontWeight": 700, "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontSize": "clamp(32px, 5vw, 48px)", "textAlign": "center", "margin": "0 0 16px" } },
+                    { "blockId": "feat_desc", "element": "p", "innerHTML": "Practical, tactical knowledge you can implement immediately.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "color": "#a1a1aa", "maxWidth": "600px", "margin": "0 auto 48px", "textAlign": "center", "lineHeight": "1.6" } }
+                  ]
+                },
+                {
+                  "blockId": "feat_grid",
+                  "element": "div",
+                  "baseStyles": { "display": "grid", "gridTemplateColumns": "1fr 1fr", "gap": "24px" },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    { "blockId": "f0", "element": "div", "classes": ["cb-reveal"], "baseStyles": { "backgroundColor": "#030305", "border": "1px solid rgba(255,255,255,0.08)", "borderRadius": "16px", "padding": "32px" }, "children": [
+                        { "blockId": "f0h", "element": "h4", "innerHTML": "High-Ticket Closing", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "fontWeight": 600, "color": "#ffffff", "margin": "0 0 8px" } },
+                        { "blockId": "f0p", "element": "p", "innerHTML": "Frameworks for selling premium consulting or enterprise SaaS plans over Zoom, without feeling awkward.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa", "lineHeight": "1.6" } }
+                      ] },
+                    { "blockId": "f1", "element": "div", "classes": ["cb-reveal"], "baseStyles": { "backgroundColor": "#030305", "border": "1px solid rgba(255,255,255,0.08)", "borderRadius": "16px", "padding": "32px" }, "children": [
+                        { "blockId": "f1h", "element": "h4", "innerHTML": "Sales Page Architecture", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "fontWeight": 600, "color": "#ffffff", "margin": "0 0 8px" } },
+                        { "blockId": "f1p", "element": "p", "innerHTML": "The 12-block layout that turns casual readers into eager buyers. Includes templates for Svelte and React.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa", "lineHeight": "1.6" } }
+                      ] },
+                    { "blockId": "f2", "element": "div", "classes": ["cb-reveal"], "baseStyles": { "backgroundColor": "#030305", "border": "1px solid rgba(255,255,255,0.08)", "borderRadius": "16px", "padding": "32px" }, "children": [
+                        { "blockId": "f2h", "element": "h4", "innerHTML": "Email Sequence Mastery", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "fontWeight": 600, "color": "#ffffff", "margin": "0 0 8px" } },
+                        { "blockId": "f2p", "element": "p", "innerHTML": "A 5-day launch sequence that generates urgency and drives action without relying on fake scarcity.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa", "lineHeight": "1.6" } }
+                      ] },
+                    { "blockId": "f3", "element": "div", "classes": ["cb-reveal"], "baseStyles": { "backgroundColor": "#030305", "border": "1px solid rgba(255,255,255,0.08)", "borderRadius": "16px", "padding": "32px" }, "children": [
+                        { "blockId": "f3h", "element": "h4", "innerHTML": "Churn Reduction", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "fontWeight": 600, "color": "#ffffff", "margin": "0 0 8px" } },
+                        { "blockId": "f3p", "element": "p", "innerHTML": "Keep the customers you acquire with automated war onboarding and win-back campaigns.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa", "lineHeight": "1.6" } }
+                      ] }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "curriculum",
+          "element": "section",
+          "blockName": "curriculum",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#030305",
+            "padding": "120px 0"
+          },
+          "mobileStyles": { "padding": "80px 0" },
+          "children": [
+            {
+              "blockId": "cur_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "820px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "cur_heading",
+                  "element": "div",
+                  "classes": ["cb-reveal"],
+                  "baseStyles": { "textAlign": "center" },
+                  "children": [
+                    { "blockId": "cur_title", "element": "h2", "classes": ["cb-grad"], "innerHTML": "Inside the Creatorbase Course", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontWeight": 700, "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontSize": "clamp(32px, 5vw, 48px)", "textAlign": "center", "margin": "0 0 16px" } },
+                    { "blockId": "cur_desc", "element": "p", "innerHTML": "Over 6 hours of dense, actionable video training.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "color": "#a1a1aa", "maxWidth": "600px", "margin": "0 auto 48px", "textAlign": "center", "lineHeight": "1.6" } }
+                  ]
+                },
+                {
+                  "blockId": "cur_list",
+                  "element": "div",
+                  "baseStyles": { "display": "flex", "flexDirection": "column", "gap": "16px" },
+                  "children": [
+                    { "blockId": "c0", "element": "div", "classes": ["cb-reveal"], "baseStyles": { "backgroundColor": "#0a0a0f", "border": "1px solid rgba(255,255,255,0.08)", "borderRadius": "12px", "padding": "24px 32px" }, "children": [
+                        { "blockId": "c0t", "element": "span", "innerHTML": "Module 01", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "12px", "color": "#818cf8", "textTransform": "uppercase", "letterSpacing": "1px", "fontWeight": 600, "marginBottom": "8px", "display": "inlineBlock" } },
+                        { "blockId": "c0h", "element": "h3", "innerHTML": "The Foundation of Digital Selling", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "20px", "fontWeight": 600, "color": "#ffffff", "margin": "0" } },
+                        { "blockId": "c0d", "element": "p", "innerHTML": "Understanding the psychology of the modern buyer — and how to position your offer correctly.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#71717a", "marginTop": "12px", "lineHeight": "1.6" } }
+                      ] },
+                    { "blockId": "c1", "element": "div", "classes": ["cb-reveal"], "baseStyles": { "backgroundColor": "#0a0a0f", "border": "1px solid rgba(255,255,255,0.08)", "borderRadius": "12px", "padding": "24px 32px" }, "children": [
+                        { "blockId": "c1t", "element": "span", "innerHTML": "Module 02", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "12px", "color": "#818cf8", "textTransform": "uppercase", "letterSpacing": "1px", "fontWeight": 600, "marginBottom": "8px", "display": "inlineBlock" } },
+                        { "blockId": "c1h", "element": "h3", "innerHTML": "Crafting the Irresistible Offer", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "20px", "fontWeight": 600, "color": "#ffffff", "margin": "0" } },
+                        { "blockId": "c1d", "element": "p", "innerHTML": "Packaging your skills into a product. Pricing strategies, bonuses, risk reversal and framing.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#71717a", "marginTop": "12px", "lineHeight": "1.6" } }
+                      ] },
+                    { "blockId": "c2", "element": "div", "classes": ["cb-reveal"], "baseStyles": { "backgroundColor": "#0a0a0f", "border": "1px solid rgba(255,255,255,0.08)", "borderRadius": "12px", "padding": "24px 32px" }, "children": [
+                        { "blockId": "c2t", "element": "span", "innerHTML": "Module 03", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "12px", "color": "#818cf8", "textTransform": "uppercase", "letterSpacing": "1px", "fontWeight": 600, "marginBottom": "8px", "display": "inlineBlock" } },
+                        { "blockId": "c2h", "element": "h3", "innerHTML": "Funnel Mechanics & Architecture", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "20px", "fontWeight": 600, "color": "#ffffff", "margin": "0" } },
+                        { "blockId": "c2d", "element": "p", "innerHTML": "Setting up your tech stack, integrating payments, automating delivery and setting up tracking.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#71717a", "marginTop": "12px", "lineHeight": "1.6" } }
+                      ] },
+                    { "blockId": "c3", "element": "div", "classes": ["cb-reveal"], "baseStyles": { "backgroundColor": "#0a0a0f", "border": "1px solid rgba(255,255,255,0.08)", "borderRadius": "12px", "padding": "24px 32px" }, "children": [
+                        { "blockId": "c3t", "element": "span", "innerHTML": "Module 04", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "12px", "color": "#818cf8", "textTransform": "uppercase", "letterSpacing": "1px", "fontWeight": 600, "marginBottom": "8px", "display": "inlineBlock" } },
+                        { "blockId": "c3h", "element": "h3", "innerHTML": "Traffic & Conversion Engines", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "20px", "fontWeight": 600, "color": "#ffffff", "margin": "0" } },
+                        { "blockId": "c3d", "element": "p", "innerHTML": "Driving qualified eyes to your offer — organic content, part... strategic partnerships and scaling with paid ads.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#71717a", "marginTop": "12px", "lineHeight": "1.6" } }
+                      ] }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "testimonials",
+          "element": "section",
+          "blockName": "testimonials",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#030305",
+            "padding": "120px 0"
+          },
+          "mobileStyles": { "padding": "80px 0" },
+          "children": [
+            {
+              "blockId": "ts_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "1100px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "ts_heading",
+                  "element": "div",
+                  "classes": ["cb-reveal"],
+                  "baseStyles": { "textAlign": "center" },
+                  "children": [
+                    { "blockId": "ts_title", "element": "h2", "classes": ["cb-grad"], "innerHTML": "Used by Top Creators", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontWeight": 700, "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontSize": "clamp(32px, 5vw, 48px)", "textAlign": "center", "margin": "0 0 16px" } },
+                    { "blockId": "ts_desc", "element": "p", "innerHTML": "Join hundreds of founders who have scaled their revenue.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "color": "#a1a1aa", "maxWidth": "600px", "margin": "0 auto 48px", "textAlign": "center", "lineHeight": "1.6" } }
+                  ]
+                },
+                {
+                  "blockId": "ts_grid",
+                  "element": "div",
+                  "baseStyles": { "display": "grid", "gridTemplateColumns": "1fr 1fr 1fr", "gap": "24px" },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    { "blockId": "t0", "element": "div", "classes": ["cb-reveal"], "baseStyles": { "backgroundColor": "#0a0a0f", "border": "1px solid rgba(255,255,255,0.08)", "borderRadius": "16px", "padding": "32px" }, "children": [
+                        { "blockId": "t0s", "element": "div", "innerHTML": "★★★★★", "baseStyles": { "color": "#fbbf24", "marginBottom": "16px", "fontSize": "18px" } },
+                        { "blockId": "t0q", "element": "p", "innerHTML": "A great SaaS but zero sales skills. This course completely reworked how I approach landing pages and onboarding. Revenue is up 3x.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "16px", "color": "#a1a1aa", "lineHeight": "1.7", "margin": "0 0 24px" } },
+                        { "blockId": "t0a", "element": "div", "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px" }, "children": [
+                            { "blockId": "t0av", "element": "div", "baseStyles": { "width": "40px", "height": "40px", "borderRadius": "50%", "backgroundColor": "rgba(255,255,255,0.08)" } },
+                            { "blockId": "t0info", "element": "div", "baseStyles": { "display": "flex", "flexDirection": "column" }, "children": [
+                                { "blockId": "t0n", "element": "h5", "innerHTML": "David Chen", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "14px", "fontWeight": 600, "color": "#ffffff", "margin": "0" } },
+                                { "blockId": "t0r", "element": "p", "innerHTML": "Indie hacker", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "12px", "color": "#71717a", "margin": "0" } }
+                              ] }
+                          ] }
+                      ] },
+                    { "blockId": "t1", "element": "div", "classes": ["cb-reveal"], "baseStyles": { "backgroundColor": "#0a0a0f", "border": "1px solid rgba(255,255,255,0.08)", "borderRadius": "16px", "padding": "32px" }, "children": [
+                        { "blockId": "t1s", "element": "div", "innerHTML": "★★★★★", "baseStyles": { "color": "#fbbf24", "marginBottom": "16px", "fontSize": "18px" } },
+                        { "blockId": "t1q", "element": "p", "innerHTML": "The email templates alone paid for the course ten times over during my last launch. No fluff, pure tactical execution.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "16px", "color": "#a1a1aa", "lineHeight": "1.7", "margin": "0 0 24px" } },
+                        { "blockId": "t1a", "element": "div", "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px" }, "children": [
+                            { "blockId": "t1av", "element": "div", "baseStyles": { "width": "40px", "height": "40px", "borderRadius": "50%", "backgroundColor": "rgba(255,255,255,0.08)" } },
+                            { "blockId": "t1info", "element": "div", "baseStyles": { "display": "flex", "flexDirection": "column" }, "children": [
+                                { "blockId": "t1n", "element": "h5", "innerHTML": "Sarah Jenkins", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "14px", "fontWeight": 600, "color": "#ffffff", "margin": "0" } },
+                                { "blockId": "t1r", "element": "p", "innerHTML": "Course creator", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "12px", "color": "#71717a", "margin": "0" } }
+                              ] }
+                          ] }
+                      ] },
+                    { "blockId": "t2", "element": "div", "classes": ["cb-reveal"], "baseStyles": { "backgroundColor": "#0a0a0f", "border": "1px solid rgba(255,255,255,0.08)", "borderRadius": "16px", "padding": "32px" }, "children": [
+                        { "blockId": "t2s", "element": "div", "innerHTML": "★★★★★", "baseStyles": { "color": "#fbbf24", "marginBottom": "16px", "fontSize": "18px" } },
+                        { "blockId": "t2q", "element": "p", "innerHTML": "Finally, a sales course that doesn't feel scammy. Built for builders who want to sell with integrity and automation.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "16px", "color": "#a1a1aa", "lineHeight": "1.7", "margin": "0 0 24px" } },
+                        { "blockId": "t2a", "element": "div", "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px" }, "children": [
+                            { "blockId": "t2av", "element": "div", "baseStyles": { "width": "40px", "height": "40px", "borderRadius": "50%", "backgroundColor": "rgba(255,255,255,0.08)" } },
+                            { "blockId": "t2info", "element": "div", "baseStyles": { "display": "flex", "flexDirection": "column" }, "children": [
+                                { "blockId": "t2n", "element": "h5", "innerHTML": "Marcus T.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "14px", "fontWeight": 600, "color": "#ffffff", "margin": "0" } },
+                                { "blockId": "t2r", "element": "p", "innerHTML": "SaaS founder", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "12px", "color": "#71717a", "margin": "0" } }
+                              ] }
+                          ] }
+                      ] }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "pricing",
+          "element": "section",
+          "blockName": "pricing",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#030305",
+            "padding": "120px 0"
+          },
+          "mobileStyles": { "padding": "80px 0" },
+          "children": [
+            {
+              "blockId": "pr_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "940px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "pr_heading",
+                  "element": "div",
+                  "classes": ["cb-reveal"],
+                  "baseStyles": { "textAlign": "center" },
+                  "children": [
+                    { "blockId": "pr_title", "element": "h2", "classes": ["cb-grad"], "innerHTML": "Choose Your Plan", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontWeight": 700, "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontSize": "clamp(32px, 5vw, 48px)", "textAlign": "center", "margin": "0 0 16px" } },
+                    { "blockId": "pr_desc", "element": "p", "innerHTML": "Get instant lifetime access to the strategies that scale.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "18px", "color": "#a1a1aa", "maxWidth": "600px", "margin": "0 auto 48px", "textAlign": "center", "lineHeight": "1.6" } }
+                  ]
+                },
+                {
+                  "blockId": "price_grid",
+                  "element": "div",
+                  "baseStyles": { "display": "grid", "gridTemplateColumns": "1fr 1fr", "gap": "32px" },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    {
+                      "blockId": "pc0",
+                      "element": "div",
+                      "classes": ["cb-reveal"],
+                      "baseStyles": {
+                        "backgroundColor": "#0a0a0f",
+                        "border": "1px solid rgba(255, 255, 255, 0.08)",
+                        "borderRadius": "24px",
+                        "padding": "48px",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "position": "relative"
+                      },
+                      "children": [
+                        { "blockId": "pt0", "element": "h3", "innerHTML": "Self-Paced Core", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "24px", "fontWeight": 600, "color": "#ffffff", "margin": "0 0 8px" } },
+                        { "blockId": "pd0", "element": "p", "innerHTML": "For creators ready to learn the fundamentals.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa", "margin": "0 0 32px" } },
+                        { "blockId": "price0", "element": "div", "baseStyles": { "display": "flex", "alignItems": "baseline", "gap": "8px", "margin": "0 0 32px", "lineHeight": "1" }, "children": [
+                            { "blockId": "old0", "element": "span", "innerHTML": "$299", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "16px", "color": "#71717a", "fontWeight": 400, "textDecoration": "lineThrough", "marginRight": "8px" } },
+                            { "blockId": "cur0", "element": "span", "innerHTML": "$149", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "48px", "fontWeight": 800, "color": "#ffffff" } }
+                          ] },
+                        { "blockId": "fl0", "element": "ul", "baseStyles": { "listStyle": "none", "margin": "0 0 48px", "padding": "0", "flexGrow": "1" }, "children": [
+                            { "blockId": "fl0_0", "element": "li", "innerHTML": "<span style=\"color:#ffffff;display:inline-flex;margin-right:12px;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 6L9 17l-5-5\"/></svg></span>Full Course Access (4 Modules)", "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px", "marginBottom": "16px", "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa" } },
+                            { "blockId": "fl0_1", "element": "li", "innerHTML": "<span style=\"color:#ffffff;display:inline-flex;margin-right:12px;\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20 6L9 17l-5-5\"/></svg></span>Audio & Video Formats", "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px", "marginBottom": "16px", "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa" } },
+                            { "blockId": "fl0_2", "element": "li", "innerHTML": "<span style=\"color:#ffffff;display:inline-flex;margin-right:12px;\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20 6L9 17l-5-5\"/></svg></span>Lifetime Updates", "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px", "marginBottom": "16px", "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa" } },
+                            { "blockId": "fl0_3", "element": "li", "innerHTML": "<span style=\"color:#ffffff;display:inline-flex;margin-right:12px;\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20 6L9 17l-5-5\"/></svg></span>Course Slides & Notes", "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px", "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa" } }
+                          ] },
+                        {
+                          "blockId": "cb0",
+                          "element": "a",
+                          "blockName": "cta",
+                          "attributes": { "href": "#pricing" },
+                          "baseStyles": {
+                            "display": "flex", "alignItems": "center", "justifyContent": "center", "gap": "8px",
+                            "width": "100%", "padding": "16px 36px", "backgroundColor": "transparent", "color": "#ffffff",
+                            "border": "1px solid rgba(255, 255, 255, 0.08)", "backdropFilter": "blur(10px)",
+                            "fontFamily": "Inter, sans-serif", "fontSize": "16px", "fontWeight": 600,
+                            "borderRadius": "999px", "textDecoration": "none", "cursor": "pointer",
+                            "hover:borderColor": "#ffffff", "hover:backgroundColor": "rgba(255, 255, 255, 0.05)",
+                            "hover:transform": "translateY(-2px)"
+                          },
+                          "children": [{ "blockId": "cb0_t", "element": "span", "innerHTML": "Enroll in Core", "baseStyles": { "fontFamily": "Inter, sans-serif" } }]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "pc1",
+                      "element": "div",
+                      "classes": ["cb-reveal"],
+                      "baseStyles": {
+                        "backgroundColor": "#0a0a0f",
+                        "backgroundImage": "linear-gradient(180deg, rgba(79, 70, 229, 0.1) 0%, #0a0a0f 100%)",
+                        "border": "1px solid rgba(79, 70, 229, 0.3)",
+                        "borderRadius": "24px",
+                        "padding": "48px",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "position": "relative"
+                      },
+                      "children": [
+                        { "blockId": "pt1", "element": "h3", "innerHTML": "Creatorbase Pro", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "24px", "fontWeight": 600, "color": "#ffffff", "margin": "0 0 8px" } },
+                        { "blockId": "pd1", "element": "p", "innerHTML": "For serious founders who want templates and support.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa", "margin": "0 0 32px" } },
+                        { "blockId": "price1", "element": "div", "baseStyles": { "display": "flex", "alignItems": "baseline", "gap": "8px", "margin": "0 0 32px", "lineHeight": "1" }, "children": [
+                            { "blockId": "old1", "element": "span", "innerHTML": "$599", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "16px", "color": "#71717a", "fontWeight": 400, "textDecoration": "lineThrough", "marginRight": "8px" } },
+                            { "blockId": "cur1", "element": "span", "innerHTML": "$299", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "48px", "fontWeight": 800, "color": "#ffffff" } }
+                          ] },
+                        { "blockId": "fl1", "element": "ul", "baseStyles": { "listStyle": "none", "margin": "0 0 48px", "padding": "0", "flexGrow": "1" }, "children": [
+                            { "blockId": "fl1_0", "element": "li", "innerHTML": "<span style=\"color:#ffffff;display:inline-flex;margin-right:12px;\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20 6L9 17l-5-5\"/></svg></span>Everything in Core", "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px", "marginBottom": "16px", "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa" } },
+                            { "blockId": "fl1_1", "element": "li", "innerHTML": "<span style=\"color:#ffffff;display:inline-flex;margin-right:12px;\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20 6L9 17l-5-5\"/></svg></span>Exact Email Sequences", "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px", "marginBottom": "16px", "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa" } },
+                            { "blockId": "fl1_2", "element": "li", "innerHTML": "<span style=\"color:#ffffff;display:inline-flex;margin-right:12px;\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20 6L9 17l-5-5\"/></svg></span>Landing Page Templates", "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px", "marginBottom": "16px", "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa" } },
+                            { "blockId": "fl1_3", "element": "li", "innerHTML": "<span style=\"color:#ffffff;display:inline-flex;margin-right:12px;\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20 6L9 17l-5-5\"/></svg></span>Private Discord Community", "baseStyles": { "display": "flex", "alignItems": "center", "gap": "12px", "fontFamily": "Inter, sans-serif", "fontSize": "15px", "color": "#a1a1aa" } }
+                          ] },
+                        {
+                          "blockId": "cb1",
+                          "element": "a",
+                          "blockName": "cta",
+                          "attributes": { "href": "#pricing" },
+                          "classes": ["cb-btn", "cb-pulse"],
+                          "baseStyles": {
+                            "display": "flex", "alignItems": "center", "justifyContent": "center", "gap": "8px",
+                            "width": "100%", "padding": "16px 36px", "backgroundColor": "#ffffff", "color": "#000000",
+                            "fontFamily": "Inter, sans-serif", "fontSize": "16px", "fontWeight": 600,
+                            "borderRadius": "999px", "textDecoration": "none", "cursor": "pointer",
+                            "hover:transform": "translateY(-2px) scale(1.02)"
+                          },
+                          "children": [{ "blockId": "cb1_t", "element": "span", "innerHTML": "Get Pro Access", "baseStyles": { "fontFamily": "Inter, sans-serif", "position": "relative", "zIndex": 1 } }]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "faq",
+          "element": "section",
+          "blockName": "faq",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#030305",
+            "padding": "120px 0"
+          },
+          "mobileStyles": { "padding": "80px 0" },
+          "children": [
+            {
+              "blockId": "faq_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "800px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                { "blockId": "faq_title", "element": "h2", "classes": ["cb-grad"], "innerHTML": "Frequently Asked Questions", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontWeight": 700, "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontSize": "clamp(32px, 5vw, 48px)", "textAlign": "center", "margin": "0 0 48px" } },
+                {
+                  "blockId": "fa0",
+                  "element": "details",
+                  "classes": ["cb-faq"],
+                  "baseStyles": { "borderRadius": "12px" },
+                  "children": [
+                    { "blockId": "fa0q", "element": "summary", "classes": ["cb-faq-q"], "innerHTML": "Is this for software products or digital courses?" },
+                    { "blockId": "fa0a", "element": "div", "classes": ["cb-faq-a"], "innerHTML": "Both. The psychological principles of selling online apply universally. The frameworks for offer creation and funnel building work for any digital product." }
+                  ]
+                },
+                {
+                  "blockId": "fa1",
+                  "element": "details",
+                  "classes": ["cb-faq"],
+                  "baseStyles": { "borderRadius": "12px" },
+                  "children": [
+                    { "blockId": "fa1q", "element": "summary", "classes": ["cb-faq-q"], "innerHTML": "Do I need a large audience for this to work?" },
+                    { "blockId": "fa1a", "element": "div", "classes": ["cb-faq-a"], "innerHTML": "No. Optimizing your sales process matters more when your audience is small. You learn how to convert highly even with low traffic volume." }
+                  ]
+                },
+                {
+                  "blockId": "fa2",
+                  "element": "details",
+                  "classes": ["cb-faq"],
+                  "baseStyles": { "borderRadius": "12px" },
+                  "children": [
+                    { "blockId": "fa2q", "element": "summary", "classes": ["cb-faq-q"], "innerHTML": "What format is the course delivered in?" },
+                    { "blockId": "fa2a", "element": "div", "classes": ["cb-faq-a"], "innerHTML": "High-quality on-demand video, plus audio-only feeds, written transcripts and notion templates for implementation." }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "final_cta",
+          "element": "section",
+          "blockName": "final-cta",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#030305",
+            "padding": "100px 0 40px"
+          },
+          "children": [
+            {
+              "blockId": "cta_box",
+              "element": "div",
+              "classes": ["cb-cta-spin", "cb-reveal"],
+              "baseStyles": {
+                "width": "100%",
+                "maxWidth": "1100px",
+                "margin": "0 auto",
+                "padding": "80px 40px",
+                "backgroundColor": "#12121a",
+                "backgroundImage": "linear-gradient(145deg, #12121a, #030305)",
+                "border": "1px solid rgba(255, 255, 255, 0.1)",
+                "borderRadius": "24px",
+                "textAlign": "center",
+                "position": "relative",
+                "overflow": "hidden"
+              },
+              "mobileStyles": { "padding": "48px 24px" },
+              "children": [
+                {
+                  "blockId": "cta_h2",
+                  "element": "h2",
+                  "innerHTML": "Stop Building in Silence. Start Selling.",
+                  "baseStyles": {
+                    "fontFamily": "Inter, sans-serif",
+                    "fontSize": "40px",
+                    "fontWeight": 800,
+                    "lineHeight": "1.2",
+                    "letterSpacing": "-0.02em",
+                    "color": "#ffffff",
+                    "margin": "0 0 32px",
+                    "position": "relative",
+                    "zIndex": 1
+                  },
+                  "mobileStyles": { "fontSize": "30px" }
+                },
+                {
+                  "blockId": "cta_btn",
+                  "element": "a",
+                  "blockName": "cta",
+                  "attributes": { "href": "#pricing" },
+                  "classes": ["cb-btn", "cb-pulse"],
+                  "baseStyles": {
+                    "display": "inlineFlex", "alignItems": "center", "justifyContent": "center", "gap": "8px",
+                    "padding": "20px 48px", "backgroundColor": "#ffffff", "color": "#000000",
+                    "fontFamily": "Inter, sans-serif", "fontSize": "18px", "fontWeight": 600,
+                    "borderRadius": "999px", "textDecoration": "none", "cursor": "pointer",
+                    "position": "relative", "zIndex": 1,
+                    "hover:transform": "translateY(-2px) scale(1.02)"
+                  },
+                  "children": [
+                    { "blockId": "cta_btn_t", "element": "span", "innerHTML": "Get Instant Access<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg>", "baseStyles": { "fontFamily": "Inter, sans-serif", "display": "flex", "alignItems": "center", "gap": "8px", "position": "relative", "zIndex": 1 } }
+                  ]
+                },
+                { "blockId": "cta_note", "element": "p", "innerHTML": "14-Day Money-Back Guarantee. No questions asked.", "baseStyles": { "fontFamily": "Inter, sans-serif", "marginTop": "24px", "color": "#71717a", "fontSize": "14px", "position": "relative", "zIndex": 1 } }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "footer",
+          "element": "section",
+          "blockName": "footer",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#030305",
+            "padding": "40px 0 40px",
+            "borderTop": "1px solid rgba(255, 255, 255, 0.08)",
+            "textAlign": "center"
+          },
+          "tabletStyles": { "paddingBottom": "40px" },
+          "children": [
+            {
+              "blockId": "foot_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "1100px", "margin": "0 auto", "padding": "0 24px", "display": "flex", "flexDirection": "column", "alignItems": "center" },
+              "children": [
+                { "blockId": "foot_logo", "element": "div", "innerHTML": "Creatorbase", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "20px", "fontWeight": 700, "color": "#ffffff", "marginBottom": "16px" } },
+                { "blockId": "foot_copy", "element": "p", "innerHTML": "© 2026 Creatorbase. All rights reserved.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "14px", "color": "#71717a", "margin": "0" } },
+                {
+                  "blockId": "foot_links",
+                  "element": "div",
+                  "baseStyles": { "marginTop": "16px", "display": "flex", "justifyContent": "center", "gap": "24px" },
+                  "children": [
+                    { "blockId": "l0", "element": "a", "attributes": { "href": "#" }, "innerHTML": "Terms", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "14px", "color": "#71717a", "textDecoration": "none", "hover:color": "#ffffff" } },
+                    { "blockId": "l1", "element": "a", "attributes": { "href": "#" }, "innerHTML": "Privacy", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "14px", "color": "#71717a", "textDecoration": "none", "hover:color": "#ffffff" } },
+                    { "blockId": "l2", "element": "a", "attributes": { "href": "#" }, "innerHTML": "Contact", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "14px", "color": "#71717a", "textDecoration": "none", "hover:color": "#ffffff" } }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "sticky",
+          "element": "div",
+          "blockName": "sticky-cta",
+          "classes": ["cb-sticky"],
+          "baseStyles": {
+            "position": "fixed",
+            "bottom": "0",
+            "left": "0",
+            "width": "100%",
+            "backgroundColor": "rgba(10, 10, 15, 0.95)",
+            "backdropFilter": "blur(16px)",
+            "borderTop": "1px solid #4f46e5",
+            "padding": "16px 24px",
+            "display": "flex",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "gap": "32px",
+            "zIndex": 1000,
+            "boxShadow": "rgba(0, 0, 0, 0.5) 0px -10px 40px 0px"
+          },
+          "tabletStyles": { "flexDirection": "column", "gap": "12px", "padding": "16px", "textAlign": "center" },
+          "children": [
+            {
+              "blockId": "st_text",
+              "element": "div",
+              "baseStyles": { "display": "flex", "flexDirection": "column", "textAlign": "right" },
+              "tabletStyles": { "textAlign": "center" },
+              "children": [
+                { "blockId": "st_strong", "element": "strong", "innerHTML": "Flash Sale Ends Soon", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "16px", "fontWeight": 700, "color": "#ffffff" } },
+                { "blockId": "st_span", "element": "span", "innerHTML": "Lock in 50% Off Creatorbase Pro", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "14px", "fontWeight": 600, "color": "#818cf8" } }
+              ]
+            },
+            { "blockId": "st_timer", "element": "div", "classes": ["cb-timer"], "attributes": { "id": "cb-timer" }, "innerHTML": "15:00" },
+            {
+              "blockId": "st_btn",
+              "element": "a",
+              "blockName": "cta",
+              "attributes": { "href": "#pricing" },
+              "classes": ["cb-btn", "cb-pulse"],
+              "baseStyles": {
+                "display": "inlineFlex", "alignItems": "center", "justifyContent": "center", "gap": "8px",
+                "padding": "13px 30px", "backgroundColor": "#ffffff", "color": "#000000",
+                "fontFamily": "Inter, sans-serif", "fontSize": "15px", "fontWeight": 600,
+                "borderRadius": "999px", "textDecoration": "none", "cursor": "pointer",
+                "hover:transform": "translateY(-2px) scale(1.02)"
+              },
+              "children": [{ "blockId": "st_btn_t", "element": "span", "innerHTML": "Claim Discount", "baseStyles": { "fontFamily": "Inter, sans-serif", "position": "relative", "zIndex": 1 } }]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

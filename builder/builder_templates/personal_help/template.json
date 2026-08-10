@@ -1,0 +1,13 @@
+{
+  "title": "Personal Help",
+  "description": "A warm, human sales page for personal health & coaching — hero, trust bar, problem, 3-step framework, about, testimonials, pricing and FAQ.",
+  "preview": "/builder_assets/personal_help/preview.svg",
+  "categories": ["Health & Wellness", "Personal Development"],
+  "pages": [
+    {
+      "name": "personal-help",
+      "page_title": "Personal Help",
+      "preview": "/builder_assets/personal_help/preview.svg"
+    }
+  ]
+}

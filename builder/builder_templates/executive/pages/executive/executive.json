@@ -1,0 +1,1168 @@
+{
+  "doctype": "Builder Page",
+  "name": "executive",
+  "page_title": "Executive Advisory",
+  "page_name": "Executive Advisory",
+  "route": null,
+  "published": 0,
+  "published_at": null,
+  "is_template": 1,
+  "template_group": "executive",
+  "preview": "/builder_assets/executive/preview.svg",
+  "head_html": "<link href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap\" rel=\"stylesheet\" />",
+  "blocks": [
+    {
+      "blockId": "root",
+      "element": "div",
+      "originalElement": "body",
+      "baseStyles": {
+        "display": "flex",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "width": "100%",
+        "backgroundColor": "#fafaf9",
+        "color": "#292524",
+        "fontFamily": "Inter, sans-serif",
+        "lineHeight": "1.6",
+        "overflowX": "hidden",
+        "paddingBottom": "80px"
+      },
+      "children": [
+        {
+          "blockId": "topbar",
+          "element": "div",
+          "blockName": "announcement",
+          "innerHTML": "Accepting 3 new private advisory clients for Q3. Applications close Friday.",
+          "baseStyles": {
+            "width": "100%",
+            "backgroundColor": "#1c1917",
+            "color": "#c29b57",
+            "textAlign": "center",
+            "padding": "10px 24px",
+            "fontFamily": "Inter, sans-serif",
+            "fontSize": "0.85rem",
+            "textTransform": "uppercase",
+            "letterSpacing": "2px"
+          }
+        },
+        {
+          "blockId": "hero",
+          "element": "section",
+          "blockName": "hero",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "maxWidth": "1100px",
+            "margin": "0 auto",
+            "padding": "80px 24px ",
+            "textAlign": "center",
+            "borderBottom": "1px solid #e7e5e4"
+          },
+          "children": [
+            {
+              "blockId": "hero_label",
+              "element": "span",
+              "innerHTML": "Executive Leadership Advisory",
+              "baseStyles": {
+                "display": "block",
+                "fontFamily": "Inter, sans-serif",
+                "fontSize": "0.85rem",
+                "fontWeight": 600,
+                "textTransform": "uppercase",
+                "letterSpacing": "2px",
+                "color": "#c29b57",
+                "marginBottom": "20px",
+                "textAlign": "center"
+              }
+            },
+            {
+              "blockId": "hero_title",
+              "element": "h1",
+              "innerHTML": "Scale Your Company.<br><span style=\"color:#c29b57;font-style:italic;\">Reclaim Your Life.</span>",
+              "baseStyles": {
+                "fontFamily": "Cormorant Garamond, serif",
+                "fontSize": "clamp(3.5rem, 6vw, 5.5rem)",
+                "lineHeight": "1.1",
+                "color": "#292524",
+                "margin": "0 0 24px",
+                "textAlign": "center"
+              },
+              "mobileStyles": { "fontSize": "2.8rem" }
+            },
+            {
+              "blockId": "hero_sub",
+              "element": "p",
+              "innerHTML": "You built a successful business, but it became a cage. We help 7 and 8-figure founders install the operational leverage and psychological mastery required to scale revenue while stepping out of the day-to-day.",
+              "baseStyles": {
+                "fontFamily": "Inter, sans-serif",
+                "fontSize": "1.25rem",
+                "color": "#57534e",
+                "maxWidth": "800px",
+                "margin": "0 auto 48px",
+                "fontWeight": 300,
+                "textAlign": "center"
+              }
+            },
+            {
+              "blockId": "vsl_wrap",
+              "element": "div",
+              "baseStyles": {
+                "maxWidth": "900px",
+                "width": "100%",
+                "margin": "0 auto 50px",
+                "aspectRatio": "16 / 9",
+                "backgroundImage": "url(/builder_assets/executive/images/vsl.svg)",
+                "backgroundSize": "cover",
+                "backgroundPosition": "center",
+                "position": "relative",
+                "display": "flex",
+                "alignItems": "center",
+                "justifyContent": "center",
+                "border": "1px solid #e7e5e4",
+                "boxShadow": "rgba(0, 0, 0, 0.08) 0px 30px 60px 0px",
+                "overflow": "hidden"
+              },
+              "children": [
+                {
+                  "blockId": "vsl_overlay",
+                  "element": "div",
+                  "baseStyles": {
+                    "position": "absolute",
+                    "top": "0",
+                    "bottom": "0",
+                    "left": "0",
+                    "right": "0",
+                    "backgroundColor": "rgba(28, 25, 23, 0.4)"
+                  }
+                },
+                {
+                  "blockId": "play_btn",
+                  "element": "div",
+                  "baseStyles": {
+                    "width": "80px",
+                    "height": "80px",
+                    "backgroundColor": "rgba(255, 255, 255, 0.1)",
+                    "backdropFilter": "blur(10px)",
+                    "border": "1px solid rgba(255, 255, 255, 0.5)",
+                    "borderRadius": "50%",
+                    "display": "flex",
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "zIndex": 10,
+                    "cursor": "pointer",
+                    "hover:backgroundColor": "#c29b57",
+                    "hover:borderColor": "#c29b57",
+                    "hover:transform": "scale(1.05)"
+                  },
+                  "children": [
+                    {
+                      "blockId": "play_icon",
+                      "element": "div",
+                      "baseStyles": {
+                        "borderTop": "12px solid transparent",
+                        "borderBottom": "12px solid transparent",
+                        "borderLeft": "20px solid #ffffff",
+                        "marginLeft": "5px"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "blockId": "hero_btn",
+              "element": "a",
+              "blockName": "cta",
+              "attributes": { "href": "#apply" },
+              "baseStyles": {
+                "display": "inlineBlock",
+                "backgroundColor": "#c29b57",
+                "color": "#ffffff",
+                "padding": "18px 40px",
+                "fontFamily": "Inter, sans-serif",
+                "fontSize": "1rem",
+                "fontWeight": 600,
+                "textTransform": "uppercase",
+                "letterSpacing": "1.5px",
+                "textDecoration": "none",
+                "border": "1px solid #c29b57",
+                "textAlign": "center",
+                "cursor": "pointer",
+                "hover:backgroundColor": "transparent",
+                "hover:color": "#c29b57"
+              },
+              "children": [
+                {
+                  "blockId": "hero_btn_t",
+                  "element": "span",
+                  "innerHTML": "Apply For Advisory",
+                  "baseStyles": { "fontFamily": "Inter, sans-serif" }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "logos",
+          "element": "section",
+          "blockName": "press-logos",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "maxWidth": "1100px",
+            "margin": "0 auto",
+            "padding": "40px 24px",
+            "textAlign": "center"
+          },
+          "children": [
+            {
+              "blockId": "logos_row",
+              "element": "div",
+              "baseStyles": {
+                "display": "flex",
+                "justifyContent": "center",
+                "gap": "50px",
+                "flexWrap": "wrap",
+                "fontFamily": "Cormorant Garamond, serif",
+                "fontSize": "1.5rem",
+                "color": "#57534e",
+                "opacity": 0.7,
+                "paddingBottom": "40px",
+                "borderBottom": "1px solid #e7e5e4",
+                "width": "100%"
+              },
+              "tabletStyles": { "gap": "24px" },
+              "children": [
+                { "blockId": "logo1", "element": "span", "innerHTML": "The Wall Street Journal" },
+                { "blockId": "logo2", "element": "span", "innerHTML": "Forbes" },
+                { "blockId": "logo3", "element": "span", "innerHTML": "Harvard Business Review" },
+                { "blockId": "logo4", "element": "span", "innerHTML": "Inc. 5000" }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "paradox",
+          "element": "section",
+          "blockName": "paradox",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "maxWidth": "1100px",
+            "margin": "0 auto",
+            "padding": "100px 24px"
+          },
+          "mobileStyles": { "padding": "64px 24px" },
+          "children": [
+            {
+              "blockId": "paradox_grid",
+              "element": "div",
+              "baseStyles": {
+                "display": "grid",
+                "gridTemplateColumns": "1fr 1fr",
+                "gap": "60px",
+                "alignItems": "center",
+                "width": "100%"
+              },
+              "tabletStyles": { "gridTemplateColumns": "1fr", "gap": "40px" },
+              "children": [
+                {
+                  "blockId": "paradox_left",
+                  "element": "div",
+                  "baseStyles": { "display": "flex", "flexDirection": "column", "alignItems": "flexStart" },
+                  "children": [
+                    {
+                      "blockId": "paradox_label",
+                      "element": "span",
+                      "innerHTML": "The Diagnosis",
+                      "baseStyles": {
+                        "display": "block",
+                        "fontFamily": "Inter, sans-serif",
+                        "fontSize": "0.85rem",
+                        "fontWeight": 600,
+                        "textTransform": "uppercase",
+                        "letterSpacing": "2px",
+                        "color": "#c29b57",
+                        "marginBottom": "20px",
+                        "textAlign": "left"
+                      }
+                    },
+                    {
+                      "blockId": "paradox_title",
+                      "element": "h2",
+                      "innerHTML": "The Success Paradox.",
+                      "baseStyles": {
+                        "fontFamily": "Cormorant Garamond, serif",
+                        "fontSize": "3.2rem",
+                        "lineHeight": "1.1",
+                        "color": "#292524",
+                        "textAlign": "left",
+                        "margin": "0 0 24px"
+                      },
+                      "mobileStyles": { "fontSize": "2.4rem" }
+                    },
+                    {
+                      "blockId": "paradox_p1",
+                      "element": "p",
+                      "innerHTML": "Most business coaching focuses purely on spreadsheets and lead generation. Most life coaching focuses purely on feelings.",
+                      "baseStyles": {
+                        "fontFamily": "Inter, sans-serif",
+                        "color": "#57534e",
+                        "fontSize": "1.15rem",
+                        "fontWeight": 300,
+                        "marginBottom": "20px"
+                      }
+                    },
+                    {
+                      "blockId": "paradox_p2",
+                      "element": "p",
+                      "innerHTML": "As a founder, you know that your operational bottlenecks are directly tied to your psychological bottlenecks. You cannot fix the business without upgrading the leader.",
+                      "baseStyles": {
+                        "fontFamily": "Inter, sans-serif",
+                        "color": "#57534e",
+                        "fontSize": "1.15rem",
+                        "fontWeight": 300
+                      }
+                    },
+                    {
+                      "blockId": "paradox_btn",
+                      "element": "a",
+                      "blockName": "cta",
+                      "attributes": { "href": "#apply" },
+                      "baseStyles": {
+                        "display": "inlineBlock",
+                        "marginTop": "30px",
+                        "backgroundColor": "transparent",
+                        "color": "#1c1917",
+                        "padding": "18px 40px",
+                        "fontFamily": "Inter, sans-serif",
+                        "fontSize": "1rem",
+                        "fontWeight": 600,
+                        "textTransform": "uppercase",
+                        "letterSpacing": "1.5px",
+                        "textDecoration": "none",
+                        "border": "1px solid #1c1917",
+                        "textAlign": "center",
+                        "cursor": "pointer",
+                        "hover:backgroundColor": "#1c1917",
+                        "hover:color": "#ffffff"
+                      },
+                      "children": [
+                        {
+                          "blockId": "paradox_btn_t",
+                          "element": "span",
+                          "innerHTML": "Explore The Solution",
+                          "baseStyles": { "fontFamily": "Inter, sans-serif" }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "blockId": "paradox_box",
+                  "element": "div",
+                  "baseStyles": {
+                    "backgroundColor": "#ffffff",
+                    "padding": "50px",
+                    "border": "1px solid #e7e5e4",
+                    "boxShadow": "rgba(0, 0, 0, 0.03) 0px 10px 30px 0px"
+                  },
+                  "children": [
+                    {
+                      "blockId": "paradox_box_title",
+                      "element": "h3",
+                      "innerHTML": "Does this sound familiar?",
+                      "baseStyles": {
+                        "fontFamily": "Cormorant Garamond, serif",
+                        "fontSize": "2rem",
+                        "lineHeight": "1.1",
+                        "color": "#292524",
+                        "borderBottom": "1px solid #e7e5e4",
+                        "paddingBottom": "20px",
+                        "marginBottom": "20px"
+                      }
+                    },
+                    {
+                      "blockId": "symptom_list",
+                      "element": "ul",
+                      "baseStyles": { "listStyle": "none", "margin": "30px 0 0", "padding": "0" },
+                      "children": [
+                        {
+                          "blockId": "sym0",
+                          "element": "li",
+                          "baseStyles": { "display": "flex", "alignItems": "flexStart", "gap": "15px", "marginBottom": "24px", "paddingBottom": "24px", "borderBottom": "1px solid #e7e5e4" },
+                          "children": [
+                            { "blockId": "s0i", "element": "div", "innerHTML": "✦", "baseStyles": { "color": "#c29b57", "fontSize": "1.2rem", "marginTop": "2px" } },
+                            {
+                              "blockId": "s0b",
+                              "element": "div",
+                              "baseStyles": { "display": "flex", "flexDirection": "column" },
+                              "children": [
+                                { "blockId": "s0t", "element": "h4", "innerHTML": "The Delegation Illusion", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1.05rem", "margin": "0 0 5px", "color": "#292524" } },
+                                { "blockId": "s0d", "element": "p", "innerHTML": "You have a team, but all critical decisions still route through your desk. You are the ultimate bottleneck for growth.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "0.95rem", "color": "#57534e" } }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "blockId": "sym1",
+                          "element": "li",
+                          "baseStyles": { "display": "flex", "alignItems": "flexStart", "gap": "15px", "marginBottom": "24px", "paddingBottom": "24px", "borderBottom": "1px solid #e7e5e4" },
+                          "children": [
+                            { "blockId": "s1i", "element": "div", "innerHTML": "✦", "baseStyles": { "color": "#c29b57", "fontSize": "1.2rem", "marginTop": "2px" } },
+                            {
+                              "blockId": "s1b",
+                              "element": "div",
+                              "baseStyles": { "display": "flex", "flexDirection": "column" },
+                              "children": [
+                                { "blockId": "s1t", "element": "h4", "innerHTML": "Profit vs. Peace", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1.05rem", "margin": "0 0 5px", "color": "#292524" } },
+                                { "blockId": "s1d", "element": "p", "innerHTML": "Your top-line revenue is the highest it's ever been, but your stress levels and personal sacrifices are at an all-time high.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "0.95rem", "color": "#57534e" } }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "blockId": "sym2",
+                          "element": "li",
+                          "baseStyles": { "display": "flex", "alignItems": "flexStart", "gap": "15px", "borderBottom": "1px solid #e7e5e4" },
+                          "children": [
+                            { "blockId": "s2i", "element": "div", "innerHTML": "✦", "baseStyles": { "color": "#c29b57", "fontSize": "1.2rem", "marginTop": "2px" } },
+                            {
+                              "blockId": "s2b",
+                              "element": "div",
+                              "baseStyles": { "display": "flex", "flexDirection": "column" },
+                              "children": [
+                                { "blockId": "s2t", "element": "h4", "innerHTML": "Identity Entanglement", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1.05rem", "margin": "0 0 5px", "color": "#292524" } },
+                                { "blockId": "s2d", "element": "p", "innerHTML": "You don't know who you are outside of the business. The thought of stepping back induces anxiety, not relief.", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "0.95rem", "color": "#57534e" } }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "methodology",
+          "element": "section",
+          "blockName": "methodology",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#1c1917",
+            "color": "#f5f5f4",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "64px 0" },
+          "children": [
+            {
+              "blockId": "method_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "1100px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "method_label",
+                  "element": "span",
+                  "innerHTML": "The Methodology",
+                  "baseStyles": {
+                    "display": "block",
+                    "fontFamily": "Inter, sans-serif",
+                    "fontSize": "0.85rem",
+                    "fontWeight": 600,
+                    "textTransform": "uppercase",
+                    "letterSpacing": "2px",
+                    "color": "#c29b57",
+                    "marginBottom": "20px",
+                    "textAlign": "center"
+                  }
+                },
+                {
+                  "blockId": "method_title",
+                  "element": "h2",
+                  "innerHTML": "The Sovereign Founder Protocol",
+                  "baseStyles": {
+                    "fontFamily": "Cormorant Garamond, serif",
+                    "fontSize": "3.2rem",
+                    "lineHeight": "1.1",
+                    "textAlign": "center",
+                    "color": "#f5f5f4",
+                    "margin": "0 0 24px"
+                  },
+                  "mobileStyles": { "fontSize": "2.4rem" }
+                },
+                {
+                  "blockId": "method_sub",
+                  "element": "p",
+                  "innerHTML": "A holistic, three-pillar framework designed to decouple your time from your company's revenue.",
+                  "baseStyles": {
+                    "fontFamily": "Inter, sans-serif",
+                    "textAlign": "center",
+                    "color": "#a8a29e",
+                    "fontSize": "1.15rem",
+                    "maxWidth": "700px",
+                    "margin": "0 auto 50px",
+                    "fontWeight": 300
+                  }
+                },
+                {
+                  "blockId": "pillar_grid",
+                  "element": "div",
+                  "baseStyles": { "display": "grid", "gridTemplateColumns": "1fr 1fr 1fr", "gap": "30px" },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    {
+                      "blockId": "pillar0",
+                      "element": "div",
+                      "baseStyles": {
+                        "borderTop": "2px solid #c29b57",
+                        "padding": "40px 30px",
+                        "backgroundColor": "rgba(255, 255, 255, 0.02)",
+                        "transition": "all 0.3s ease",
+                        "hover:backgroundColor": "rgba(255, 255, 255, 0.05)",
+                        "hover:transform": "translateY(-5px)"
+                      },
+                      "children": [
+                        { "blockId": "p0n", "element": "div", "innerHTML": "I", "baseStyles": { "fontFamily": "Cormorant Garamond, serif", "fontSize": "3rem", "color": "#44403c", "fontStyle": "italic", "lineHeight": "1", "marginBottom": "20px" } },
+                        { "blockId": "p0t", "element": "h3", "innerHTML": "Psychological Mastery", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1.2rem", "fontWeight": 600, "color": "#c29b57", "margin": "0 0 15px", "letterSpacing": "0.5px" } },
+                        { "blockId": "p0d", "element": "p", "innerHTML": "We identify and dissolve the subconscious limiting beliefs, perfectionism, and control-freak tendencies that force you to micromanage and sabotage your own peace.", "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#a8a29e", "fontSize": "0.95rem", "fontWeight": 300 } }
+                      ]
+                    },
+                    {
+                      "blockId": "pillar1",
+                      "element": "div",
+                      "baseStyles": {
+                        "borderTop": "2px solid #c29b57",
+                        "padding": "40px 30px",
+                        "backgroundColor": "rgba(255, 255, 255, 0.02)",
+                        "hover:backgroundColor": "rgba(255, 255, 255, 0.05)",
+                        "hover:transform": "translateY(-5px)"
+                      },
+                      "children": [
+                        { "blockId": "p1n", "element": "div", "innerHTML": "II", "baseStyles": { "fontFamily": "Cormorant Garamond, serif", "fontSize": "3rem", "color": "#44403c", "fontStyle": "italic", "lineHeight": "1", "marginBottom": "20px" } },
+                        { "blockId": "p1t", "element": "h3", "innerHTML": "Operational Leverage", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1.2rem", "fontWeight": 600, "color": "#c29b57", "margin": "0 0 15px", "letterSpacing": "0.5px" } },
+                        { "blockId": "p1d", "element": "p", "innerHTML": "We transition you from an 'Operator' to a 'Shareholder' — installing elite-level SOPs, executive dashboards and hiring frameworks to build an autonomous leadership team.", "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#a8a29e", "fontSize": "0.95rem", "fontWeight": 300 } }
+                      ]
+                    },
+                    {
+                      "blockId": "pillar2",
+                      "element": "div",
+                      "baseStyles": {
+                        "borderTop": "2px solid #c29b57",
+                        "padding": "40px 30px",
+                        "backgroundColor": "rgba(255, 255, 255, 0.02)",
+                        "hover:backgroundColor": "rgba(255, 255, 255, 0.05)",
+                        "hover:transform": "translateY(-5px)"
+                      },
+                      "children": [
+                        { "blockId": "p2n", "element": "div", "innerHTML": "III", "baseStyles": { "fontFamily": "Cormorant Garamond, serif", "fontSize": "3rem", "color": "#44403c", "fontStyle": "italic", "lineHeight": "1", "marginBottom": "20px" } },
+                        { "blockId": "p2t", "element": "h3", "innerHTML": "Strategic Vision", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1.2rem", "fontWeight": 600, "color": "#c29b57", "margin": "0 0 15px", "letterSpacing": "0.5px" } },
+                        { "blockId": "p2d", "element": "p", "innerHTML": "Once you are removed from the daily firefighting, we realign your company's trajectory with your long-term life goals — building a business that serves you.", "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#a8a29e", "fontSize": "0.95rem", "fontWeight": 300 } }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "advisor",
+          "element": "section",
+          "blockName": "advisor",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "maxWidth": "1100px",
+            "margin": "0 auto",
+            "padding": "100px 24px"
+          },
+          "mobileStyles": { "padding": "64px 24px" },
+          "children": [
+            {
+              "blockId": "advisor_grid",
+              "element": "div",
+              "baseStyles": {
+                "display": "grid",
+                "gridTemplateColumns": "5fr 7fr",
+                "gap": "60px",
+                "alignItems": "center",
+                "width": "100%"
+              },
+              "tabletStyles": { "gridTemplateColumns": "1fr", "gap": "40px" },
+              "children": [
+                {
+                  "blockId": "adv_img",
+                  "element": "div",
+                  "baseStyles": {
+                    "width": "100%",
+                    "aspectRatio": "3 / 4",
+                    "backgroundImage": "url(/builder_assets/executive/images/advisor.svg)",
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center",
+                    "border": "10px solid #ffffff",
+                    "boxShadow": "rgba(0, 0, 0, 0.1) 0px 20px 40px 0px"
+                  }
+                },
+                {
+                  "blockId": "adv_content",
+                  "element": "div",
+                  "baseStyles": { "display": "flex", "flexDirection": "column", "alignItems": "flexStart" },
+                  "children": [
+                    {
+                      "blockId": "adv_label",
+                      "element": "span",
+                      "innerHTML": "Your Advisor",
+                      "baseStyles": {
+                        "display": "block",
+                        "fontFamily": "Inter, sans-serif",
+                        "fontSize": "0.85rem",
+                        "fontWeight": 600,
+                        "textTransform": "uppercase",
+                        "letterSpacing": "2px",
+                        "color": "#c29b57",
+                        "marginBottom": "20px",
+                        "textAlign": "left"
+                      }
+                    },
+                    {
+                      "blockId": "adv_title",
+                      "element": "h2",
+                      "innerHTML": "Hi, I'm Julian Vance.",
+                      "baseStyles": {
+                        "fontFamily": "Cormorant Garamond, serif",
+                        "fontSize": "3.2rem",
+                        "lineHeight": "1.1",
+                        "color": "#292524",
+                        "textAlign": "left",
+                        "margin": "0 0 24px"
+                      },
+                      "mobileStyles": { "fontSize": "2.4rem" }
+                    },
+                    {
+                      "blockId": "adv_p1",
+                      "element": "p",
+                      "innerHTML": "Six years ago, I successfully exited my logistics agency for an 8-figure sum. On paper, I had won the game. In reality, my health was failing, my marriage was on the rocks, and I was entirely burned out.",
+                      "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#57534e", "fontSize": "1.1rem", "marginBottom": "20px", "fontWeight": 300 }
+                    },
+                    {
+                      "blockId": "adv_p2",
+                      "element": "p",
+                      "innerHTML": "I realized that scaling a business is worthless if you destroy yourself in the process.",
+                      "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#57534e", "fontSize": "1.1rem", "marginBottom": "20px", "fontWeight": 300 }
+                    },
+                    {
+                      "blockId": "adv_p3",
+                      "element": "p",
+                      "innerHTML": "I spent the next half-decade mastering behavioral psychology, executive leadership and operational scaling. Today, I act as a confidential advisor to a select portfolio of high-performing founders, helping them double their business while working half the hours.",
+                      "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#57534e", "fontSize": "1.1rem", "marginBottom": "20px", "fontWeight": 300 }
+                    },
+                    {
+                      "blockId": "adv_sign",
+                      "element": "div",
+                      "innerHTML": "Julian Vance",
+                      "baseStyles": {
+                        "fontFamily": "Cormorant Garamond, serif",
+                        "fontSize": "2.5rem",
+                        "color": "#c29b57",
+                        "fontStyle": "italic",
+                        "marginTop": "30px"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "cases",
+          "element": "section",
+          "blockName": "client-outcomes",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#ffffff",
+            "borderTop": "1px solid #e7e5e4",
+            "borderBottom": "1px solid #e7e5e4",
+            "padding": "100px 0"
+          },
+          "mobileStyles": { "padding": "64px 0" },
+          "children": [
+            {
+              "blockId": "cases_wrap",
+              "element": "div",
+              "baseStyles": { "width": "100%", "maxWidth": "1100px", "margin": "0 auto", "padding": "0 24px" },
+              "children": [
+                {
+                  "blockId": "cases_label",
+                  "element": "span",
+                  "innerHTML": "Client Outcomes",
+                  "baseStyles": {
+                    "display": "block",
+                    "fontFamily": "Inter, sans-serif",
+                    "fontSize": "0.85rem",
+                    "fontWeight": 600,
+                    "textTransform": "uppercase",
+                    "letterSpacing": "2px",
+                    "color": "#c29b57",
+                    "marginBottom": "20px",
+                    "textAlign": "center"
+                  }
+                },
+                {
+                  "blockId": "cases_title",
+                  "element": "h2",
+                  "innerHTML": "Results that speak.",
+                  "baseStyles": {
+                    "fontFamily": "Cormorant Garamond, serif",
+                    "fontSize": "3.2rem",
+                    "lineHeight": "1.1",
+                    "color": "#292524",
+                    "textAlign": "center",
+                    "margin": "0 0 40px"
+                  },
+                  "mobileStyles": { "fontSize": "2.4rem" }
+                },
+                {
+                  "blockId": "case_grid",
+                  "element": "div",
+                  "baseStyles": { "display": "grid", "gridTemplateColumns": "1fr 1fr", "gap": "40px" },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    {
+                      "blockId": "case0",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff",
+                        "border": "1px solid #e7e5e4",
+                        "padding": "40px",
+                        "position": "relative"
+                      },
+                      "children": [
+                        {
+                          "blockId": "c0q",
+                          "element": "div",
+                          "innerHTML": "\"Julian didn't just help me scale the agency; he gave me my life back. I took my first 3-week unplugged vacation in 7 years, and the company had its highest-grossing month while I was gone.\"",
+                          "baseStyles": {
+                            "fontFamily": "Cormorant Garamond, serif",
+                            "fontSize": "1.5rem",
+                            "fontStyle": "italic",
+                            "color": "#292524",
+                            "marginBottom": "30px",
+                            "lineHeight": "1.4"
+                          }
+                        },
+                        {
+                          "blockId": "c0m",
+                          "element": "div",
+                          "baseStyles": { "display": "flex", "gap": "30px", "marginBottom": "30px", "paddingBottom": "30px", "borderBottom": "1px solid #e7e5e4" },
+                          "children": [
+                            {
+                              "blockId": "c0m0",
+                              "element": "div",
+                              "baseStyles": { "display": "flex", "flexDirection": "column" },
+                              "children": [
+                                { "blockId": "c0m0v", "element": "strong", "innerHTML": "$2.4M", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1.5rem", "color": "#c29b57" } },
+                                { "blockId": "c0m0l", "element": "span", "innerHTML": "Added ARR", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "0.8rem", "textTransform": "uppercase", "color": "#57534e", "letterSpacing": "1px" } }
+                              ]
+                            },
+                            {
+                              "blockId": "c0m1",
+                              "element": "div",
+                              "baseStyles": { "display": "flex", "flexDirection": "column" },
+                              "children": [
+                                { "blockId": "c0m1v", "element": "strong", "innerHTML": "25 hrs", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1.5rem", "color": "#c29b57" } },
+                                { "blockId": "c0m1l", "element": "span", "innerHTML": "Weekly Time Saved", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "0.8rem", "textTransform": "uppercase", "color": "#57534e", "letterSpacing": "1px" } }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "blockId": "c0a",
+                          "element": "div",
+                          "innerHTML": "David R. — <span style=\"font-weight:400;color:#57534e;\">SaaS Founder</span>",
+                          "baseStyles": { "fontFamily": "Inter, sans-serif", "fontWeight": 600 }
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "case1",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#ffffff",
+                        "border": "1px solid #e7e5e4",
+                        "padding": "40px",
+                        "position": "relative"
+                      },
+                      "children": [
+                        {
+                          "blockId": "c1q",
+                          "element": "div",
+                          "innerHTML": "\"The psychological work we did was harder than any business strategy I've ever implemented, but it was the missing link. Letting go of control allowed my team to step up and the business to finally breathe.\"",
+                          "baseStyles": {
+                            "fontFamily": "Cormorant Garamond, serif",
+                            "fontSize": "1.5rem",
+                            "fontStyle": "italic",
+                            "color": "#292524",
+                            "marginBottom": "30px",
+                            "lineHeight": "1.4"
+                          }
+                        },
+                        {
+                          "blockId": "c1m",
+                          "element": "div",
+                          "baseStyles": { "display": "flex", "gap": "30px", "marginBottom": "30px", "paddingBottom": "30px", "borderBottom": "1px solid #e7e5e4" },
+                          "children": [
+                            {
+                              "blockId": "c1m0",
+                              "element": "div",
+                              "baseStyles": { "display": "flex", "flexDirection": "column" },
+                              "children": [
+                                { "blockId": "c1m0v", "element": "strong", "innerHTML": "140%", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1.5rem", "color": "#c29b57" } },
+                                { "blockId": "c1m0l", "element": "span", "innerHTML": "Profit Margin Increase", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "0.8rem", "textTransform": "uppercase", "color": "#57534e", "letterSpacing": "1px" } }
+                              ]
+                            },
+                            {
+                              "blockId": "c1m1",
+                              "element": "div",
+                              "baseStyles": { "display": "flex", "flexDirection": "column" },
+                              "children": [
+                                { "blockId": "c1m1v", "element": "strong", "innerHTML": "Zero", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "1.5rem", "color": "#c29b57" } },
+                                { "blockId": "c1m1l", "element": "span", "innerHTML": "Weekend Work", "baseStyles": { "fontFamily": "Inter, sans-serif", "fontSize": "0.8rem", "textTransform": "uppercase", "color": "#57534e", "letterSpacing": "1px" } }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "blockId": "c1a",
+                          "element": "div",
+                          "innerHTML": "Sarah M. — <span style=\"font-weight:400;color:#57534e;\">Creative Agency CEO</span>",
+                          "baseStyles": { "fontFamily": "Inter, sans-serif", "fontWeight": 600 }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "apply",
+          "element": "section",
+          "blockName": "apply",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "maxWidth": "1100px",
+            "margin": "0 auto",
+            "padding": "100px 24px"
+          },
+          "mobileStyles": { "padding": "64px 24px" },
+          "children": [
+            {
+              "blockId": "apply_inner",
+              "element": "div",
+              "baseStyles": { "width": "100%" },
+              "children": [
+                {
+                  "blockId": "apply_label",
+                  "element": "span",
+                  "innerHTML": "The Invitation",
+                  "baseStyles": {
+                    "display": "block",
+                    "fontFamily": "Inter, sans-serif",
+                    "fontSize": "0.85rem",
+                    "fontWeight": 600,
+                    "textTransform": "uppercase",
+                    "letterSpacing": "2px",
+                    "color": "#c29b57",
+                    "marginBottom": "20px",
+                    "textAlign": "center"
+                  }
+                },
+                {
+                  "blockId": "apply_title",
+                  "element": "h2",
+                  "innerHTML": "Choose Your Path",
+                  "baseStyles": {
+                    "fontFamily": "Cormorant Garamond, serif",
+                    "fontSize": "3.2rem",
+                    "lineHeight": "1.1",
+                    "color": "#292524",
+                    "textAlign": "center",
+                    "margin": "0 0 24px"
+                  },
+                  "mobileStyles": { "fontSize": "2.4rem" }
+                },
+                {
+                  "blockId": "apply_sub",
+                  "element": "p",
+                  "innerHTML": "Advisory is strictly application-only to ensure caliber and cultural fit within the network.",
+                  "baseStyles": {
+                    "fontFamily": "Inter, sans-serif",
+                    "textAlign": "center",
+                    "color": "#57534e",
+                    "fontSize": "1.15rem",
+                    "maxWidth": "700px",
+                    "margin": "0 auto 50px",
+                    "fontWeight": 300
+                  }
+                },
+                {
+                  "blockId": "invitation_box",
+                  "element": "div",
+                  "baseStyles": {
+                    "maxWidth": "900px",
+                    "margin": "0 auto",
+                    "backgroundColor": "#ffffff",
+                    "border": "1px solid #e7e5e4",
+                    "display": "grid",
+                    "gridTemplateColumns": "1fr 1fr",
+                    "width": "100%"
+                  },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    {
+                      "blockId": "tier0",
+                      "element": "div",
+                      "baseStyles": {
+                        "padding": "50px",
+                        "textAlign": "center",
+                        "borderRight": "1px solid #e7e5e4"
+                      },
+                      "mobileStyles": { "padding": "40px 24px" },
+                      "children": [
+                        { "blockId": "t0_title", "element": "h3", "innerHTML": "The Boardroom", "baseStyles": { "fontFamily": "Cormorant Garamond, serif", "fontSize": "2.2rem", "lineHeight": "1.1", "color": "#292524", "margin": "0 0 15px" } },
+                        { "blockId": "t0_desc", "element": "p", "innerHTML": "An elite, intimate mastermind of 7-figure founders focused on operational scale and leadership development.", "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#57534e", "fontSize": "0.95rem", "marginBottom": "30px" } },
+                        {
+                          "blockId": "t0_feat",
+                          "element": "ul",
+                          "baseStyles": { "listStyle": "none", "textAlign": "left", "marginBottom": "40px", "padding": "0" },
+                          "children": [
+                            { "blockId": "t0f0", "element": "li", "innerHTML": "<span style=\"color:#c29b57;\">✦</span> &nbsp;Bi-weekly group strategy calls", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "10px 0", "borderBottom": "1px solid #e7e5e4", "fontSize": "0.95rem", "color": "#292524" } },
+                            { "blockId": "t0f1", "element": "li", "innerHTML": "<span style=\"color:#c29b57;\">✦</span> &nbsp;Access to the complete SOP library", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "10px 0", "borderBottom": "1px solid #e7e5e4", "fontSize": "0.95rem", "color": "#292524" } },
+                            { "blockId": "t0f2", "element": "li", "innerHTML": "<span style=\"color:#c29b57;\">✦</span> &nbsp;Private WhatsApp channel", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "10px 0", "borderBottom": "1px solid #e7e5e4", "fontSize": "0.95rem", "color": "#292524" } },
+                            { "blockId": "t0f3", "element": "li", "innerHTML": "<span style=\"color:#c29b57;\">✦</span> &nbsp;Quarterly in-person retreats", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "10px 0", "fontSize": "0.95rem", "color": "#292524" } }
+                          ]
+                        },
+                        {
+                          "blockId": "t0_btn",
+                          "element": "a",
+                          "blockName": "cta",
+                          "attributes": { "href": "#apply" },
+                          "baseStyles": {
+                            "display": "flex", "alignItems": "center", "justifyContent": "center",
+                            "width": "100%", "backgroundColor": "transparent", "color": "#1c1917",
+                            "border": "1px solid #1c1917", "fontFamily": "Inter, sans-serif", "fontSize": "1rem",
+                            "fontWeight": 600, "textTransform": "uppercase", "letterSpacing": "1.5px",
+                            "padding": "16px 30px", "textDecoration": "none", "cursor": "pointer",
+                            "hover:backgroundColor": "#1c1917", "hover:color": "#ffffff"
+                          },
+                          "children": [{ "blockId": "t0_btn_t", "element": "span", "innerHTML": "Apply For The Boardroom", "baseStyles": { "fontFamily": "Inter, sans-serif" } }]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "tier1",
+                      "element": "div",
+                      "baseStyles": {
+                        "padding": "50px",
+                        "textAlign": "center",
+                        "backgroundColor": "#1c1917",
+                        "color": "#f5f5f4"
+                      },
+                      "mobile": { "padding": "40px 24px" },
+                      "children": [
+                        { "blockId": "t1_title", "element": "h3", "innerHTML": "Private Advisory", "baseStyles": { "fontFamily": "Cormorant Garamond, serif", "fontSize": "2.2rem", "lineHeight": "1.1", "color": "#c29b57", "margin": "0 0 15px" } },
+                        { "blockId": "t1_desc", "element": "p", "innerHTML": "Confidential, 1-on-1 partnership for rapid scaling and profound personal transformation.", "baseStyles": { "fontFamily": "Inter, sans-serif", "color": "#a8a29e", "fontSize": "0.95rem", "marginBottom": "30px" } },
+                        {
+                          "blockId": "t1_feat",
+                          "element": "ul",
+                          "baseStyles": { "listStyle": "none", "textAlign": "left", "marginBottom": "40px", "padding": "0" },
+                          "children": [
+                            { "blockId": "t1f0", "element": "li", "innerHTML": "<span style=\"color:#c29b57;\">✦</span> &nbsp;Everything in The Boardroom", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "10px 0", "borderBottom": "1px solid #44403c", "fontSize": "0.95rem", "color": "#f5f5f4" } },
+                            { "blockId": "t1f1", "element": "li", "innerHTML": "<span style=\"color:#c29b57;\">✦</span> &nbsp;Bi-weekly private 90-minute sessions", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "10px 0", "borderBottom": "1px solid #44403c", "fontSize": "0.95rem", "color": "#f5f5f4" } },
+                            { "blockId": "t1f2", "element": "li", "innerHTML": "<span style=\"color:#c29b57;\">✦</span> &nbsp;Direct 24/7 Voxer access", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "10px 0", "borderBottom": "1px solid #44403c", "fontSize": "0.95rem", "color": "#f5f5f4" } },
+                            { "blockId": "t1f3", "element": "li", "innerHTML": "<span style=\"color:#c29b57;\">✦</span> &nbsp;Custom operational blueprints", "baseStyles": { "fontFamily": "Inter, sans-serif", "padding": "10px 0", "fontSize": "0.95rem", "color": "#f5f5f4" } }
+                          ]
+                        },
+                        {
+                          "blockId": "t1_btn",
+                          "element": "a",
+                          "blockName": "cta",
+                          "attributes": { "href": "#apply" },
+                          "baseStyles": {
+                            "display": "flex", "alignItems": "center", "justifyContent": "center",
+                            "width": "100%", "backgroundColor": "#c29b57", "color": "#ffffff",
+                            "border": "1px solid #c29b57", "fontFamily": "Inter, sans-serif", "fontSize": "1rem",
+                            "fontWeight": 600, "textTransform": "uppercase", "letterSpacing": "1.5px",
+                            "padding": "16px 30px", "textDecoration": "none", "cursor": "pointer",
+                            "hover:backgroundColor": "transparent", "hover:color": "#c29b57"
+                          },
+                          "children": [{ "blockId": "t1_btn_t", "element": "span", "innerHTML": "Apply For Private Advisory", "baseStyles": { "fontFamily": "Inter, sans-serif" } }]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "faq",
+          "element": "section",
+          "blockName": "faq",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "maxWidth": "1100px",
+            "margin": "0 auto",
+            "padding": "0 24px 100px"
+          },
+          "mobileStyles": { "padding": "0 24px 64px" },
+          "children": [
+            {
+              "blockId": "faq_wrap",
+              "element": "div",
+              "clientScript": {
+                "css": "summary::-webkit-details-marker{display:none}summary::after{content:'+';color:#c29b57;font-family:Inter,sans-serif;font-weight:300;font-size:1.5rem;margin-left:16px}details[open] summary::after{content:'\\2013'}"
+              },
+              "baseStyles": { "width": "100%", "maxWidth": "800px", "margin": "0 auto" },
+              "children": [
+                {
+                  "blockId": "faq_title",
+                  "element": "h2",
+                  "innerHTML": "Clarity & Expectations",
+                  "baseStyles": {
+                    "fontFamily": "Cormorant Garamond, serif",
+                    "fontSize": "3.2rem",
+                    "lineHeight": "1.1",
+                    "color": "#292524",
+                    "textAlign": "center",
+                    "margin": "0 0 40px"
+                  },
+                  "mobileStyles": { "fontSize": "2.4rem" }
+                },
+                {
+                  "blockId": "fa0",
+                  "element": "details",
+                  "baseStyles": { "borderBottom": "1px solid #e7e5e4", "padding": "20px 0", "position": "static" },
+                  "children": [
+                    { "blockId": "fa0q", "element": "summary", "innerHTML": "Is this business consulting or therapy?", "baseStyles": { "fontFamily": "Cormorant Garamond, serif", "fontSize": "1.5rem", "fontWeight": 600, "cursor": "pointer", "listStyle": "none", "display": "flex", "justifyContent": "space-between", "alignItems": "center", "color": "#292524" } },
+                    { "blockId": "fa0a", "element": "div", "innerHTML": "It is neither, yet encompasses both. We do not provide medical therapy, but we do deep psychological work to uncover your operational blind spots — while installing hard, actionable business frameworks to scale revenue. It is holistic advisory.", "baseStyles": { "fontFamily": "Inter, sans-serif", "paddingTop": "20px", "color": "#57534e", "fontWeight": 300, "lineHeight": "1.8" } }
+                  ]
+                },
+                {
+                  "blockId": "fa1",
+                  "element": "details",
+                  "baseStyles": { "borderBottom": "1px solid #e7e5e4", "padding": "20px 0", "position": "static" },
+                  "children": [
+                    { "blockId": "fa1q", "element": "summary", "innerHTML": "What is the criteria for acceptance?", "baseStyles": { "fontFamily": "Cormorant Garamond, serif", "fontSize": "1.5rem", "fontWeight": 600, "cursor": "pointer", "listStyle": "none", "display": "flex", "justifyContent": "space-between", "alignItems": "center", "color": "#292524" } },
+                    { "blockId": "fa1a", "element": "div", "innerHTML": "You must be the founder, CEO or managing partner of an established business generating a minimum of $500k in annual recurring revenue — and entirely coachable, willing to confront uncomfortable truths about your leadership.", "baseStyles": { "fontFamily": "Inter, sans-serif", "paddingTop": "20px", "color": "#57534e", "fontWeight": 300, "lineHeight": "1.8" } }
+                  ]
+                },
+                {
+                  "blockId": "fa2",
+                  "element": "details",
+                  "baseStyles": { "borderBottom": "1px solid #e7e5e4", "padding": "20px 0", "position": "static" },
+                  "children": [
+                    { "blockId": "fa2q", "element": "summary", "innerHTML": "What happens after I submit my application?", "baseStyles": { "fontFamily": "Cormorant Garamond, serif", "fontSize": "1.5rem", "fontWeight": 600, "cursor": "pointer", "listStyle": "none", "display": "flex", "justifyContent": "space-between", "alignItems": "center", "color": "#292524" } },
+                    { "blockId": "fa2a", "element": "div", "innerHTML": "Your application will be personally reviewed. If you meet the preliminary criteria, my team will reach out to schedule a 30-minute Alignment Call — a mutual interview to ensure we are a perfect fit.", "baseStyles": { "fontFamily": "Inter, sans-serif", "paddingTop": "20px", "color": "#57534e", "fontWeight": 300, "lineHeight": "1.8" } }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "sticky",
+          "element": "div",
+          "blockName": "sticky-cta",
+          "baseStyles": {
+            "position": "fixed",
+            "bottom": "0",
+            "left": "0",
+            "width": "100%",
+            "backgroundColor": "rgba(250, 250, 249, 0.95)",
+            "backdropFilter": "blur(10px)",
+            "borderTop": "1px solid #e7e5e4",
+            "padding": "15px 24px",
+            "display": "flex",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "gap": "30px",
+            "zIndex": 1000,
+            "boxShadow": "rgba(0, 0, 0, 0.03) 0px -10px 30px 0px"
+          },
+          "tabletStyles": { "justifyContent": "center", "gap": "16px" },
+          "children": [
+            {
+              "blockId": "sticky_text",
+              "element": "div",
+              "innerHTML": "Ready to step out of the daily operations?",
+              "baseStyles": {
+                "fontFamily": "Cormorant Garamond, serif",
+                "fontSize": "1.4rem",
+                "fontStyle": "italic",
+                "color": "#292524"
+              },
+              "tabletStyles": { "display": "none" }
+            },
+            {
+              "blockId": "sticky_btn",
+              "element": "a",
+              "blockName": "cta",
+              "attributes": { "href": "#apply" },
+              "baseStyles": {
+                "display": "inlineBlock",
+                "backgroundColor": "#c29b57",
+                "color": "#ffffff",
+                "padding": "12px 30px",
+                "fontFamily": "Inter, sans-serif",
+                "fontSize": "0.9rem",
+                "fontWeight": 600,
+                "textTransform": "uppercase",
+                "letterSpacing": "1.5px",
+                "textDecoration": "none",
+                "border": "1px solid #c29b57",
+                "cursor": "pointer",
+                "hover:backgroundColor": "transparent",
+                "hover:color": "#c29b57"
+              },
+              "children": [
+                {
+                  "blockId": "sticky_btn_t",
+                  "element": "span",
+                  "innerHTML": "Submit Application",
+                  "baseStyles": { "fontFamily": "Inter, sans-serif" }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

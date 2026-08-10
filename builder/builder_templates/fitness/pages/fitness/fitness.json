@@ -1,0 +1,2252 @@
+{
+  "doctype": "Builder Page",
+  "name": "fitness",
+  "page_title": "Fitness",
+  "page_name": "Fitness",
+  "route": null,
+  "published": 0,
+  "published_at": null,
+  "is_template": 1,
+  "template_group": "fitness",
+  "preview": "/builder_assets/fitness/preview.svg",
+  "head_html": "<link href=\"https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Oswald:wght@500;700&display=swap\" rel=\"stylesheet\" />\n<style>\nhtml{scroll-behavior:smooth}\n.mq-track{display:inline-flex;flex-direction:row;flex-wrap:nowrap;align-items:center;will-change:transform;animation:marquee 22s linear infinite}\n@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}\n.btn-action{position:relative;overflow:hidden;display:inline-block}\n.btn-action span{position:relative;z-index:2;display:inline-block;transform:skewX(10deg)}\n.btn-action::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:rgba(255,255,255,0.2);transition:left .3s ease;z-index:1}\n.btn-action:hover::before{left:0}\n</style>",
+  "blocks": [
+    {
+      "blockId": "root",
+      "element": "div",
+      "originalElement": "body",
+      "baseStyles": {
+        "display": "flex",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "width": "100%",
+        "backgroundColor": "#050505",
+        "color": "#ffffff",
+        "fontFamily": "Montserrat, sans-serif",
+        "lineHeight": "1.6",
+        "overflowX": "hidden",
+        "paddingBottom": "80px"
+      },
+      "children": [
+        {
+          "blockId": "hero",
+          "element": "section",
+          "blockName": "hero",
+          "baseStyles": {
+            "position": "relative",
+            "minHeight": "100vh",
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "textAlign": "center",
+            "width": "100%",
+            "backgroundImage": "linear-gradient(to bottom, rgba(5, 5, 5, 0.3), rgba(5, 5, 5, 1)), url(/builder_assets/fitness/images/hero.svg)",
+            "backgroundSize": "cover",
+            "backgroundPosition": "center",
+            "backgroundRepeat": "noRepeat",
+            "paddingTop": "80px"
+          },
+          "children": [
+            {
+              "blockId": "hero_content",
+              "element": "div",
+              "baseStyles": {
+                "position": "relative",
+                "zIndex": 10,
+                "maxWidth": "900px",
+                "display": "flex",
+                "flexDirection": "column",
+                "alignItems": "center",
+                "padding": "0 24px"
+              },
+              "children": [
+                {
+                  "blockId": "hero_title",
+                  "element": "h1",
+                  "innerHTML": "Forge Your <span style=\"color:#ff3300\">Ultimate</span> Physique",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "textTransform": "uppercase",
+                    "fontSize": "clamp(4rem, 8vw, 7rem)",
+                    "lineHeight": "1.1",
+                    "textAlign": "center",
+                    "color": "#ffffff",
+                    "margin": "0 0 20px",
+                    "textShadow": "4px 4px 0px #000"
+                  },
+                  "mobileStyles": {
+                    "fontSize": "3.5rem"
+                  }
+                },
+                {
+                  "blockId": "hero_sub",
+                  "element": "p",
+                  "innerHTML": "No cookie-cutter plans. No BS. Just elite-level training, dialed-in nutrition, and ruthless accountability to build the body you deserve.",
+                  "baseStyles": {
+                    "fontFamily": "Montserrat, sans-serif",
+                    "fontSize": "1.3rem",
+                    "color": "#dddddd",
+                    "margin": "0 0 40px",
+                    "fontWeight": 500,
+                    "textTransform": "uppercase",
+                    "letterSpacing": "1px",
+                    "textAlign": "center"
+                  }
+                },
+                {
+                  "blockId": "hero_btn",
+                  "element": "a",
+                  "blockName": "cta",
+                  "attributes": {
+                    "href": "#apply"
+                  },
+                  "classes": [
+                    "btn-action"
+                  ],
+                  "baseStyles": {
+                    "backgroundColor": "#ff3300",
+                    "color": "#ffffff",
+                    "padding": "20px 45px",
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontSize": "1.5rem",
+                    "fontWeight": 700,
+                    "textTransform": "uppercase",
+                    "textDecoration": "none",
+                    "letterSpacing": "2px",
+                    "transform": "skewX(-10deg)",
+                    "boxShadow": "rgba(255, 51, 0, 0.2) 0px 10px 20px 0px",
+                    "hover:backgroundColor": "#cc2900",
+                    "hover:transform": "skewX(-10deg) translateY(-3px)",
+                    "hover:boxShadow": "rgba(255, 51, 0, 0.4) 0px 15px 30px 0px"
+                  },
+                  "children": [
+                    {
+                      "blockId": "hero_btn_t",
+                      "element": "span",
+                      "innerHTML": "Apply For The Program",
+                      "baseStyles": {
+                        "display": "inlineBlock",
+                        "transform": "skewX(10deg)",
+                        "position": "relative",
+                        "zIndex": 2,
+                        "fontFamily": "Oswald, sans-serif",
+                        "color": "#ffffff"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "marquee",
+          "element": "div",
+          "blockName": "marquee",
+          "baseStyles": {
+            "width": "100%",
+            "backgroundColor": "#ff3300",
+            "padding": "15px 0",
+            "overflow": "hidden",
+            "whiteSpace": "nowrap",
+            "position": "relative",
+            "transform": "rotate(-2deg)",
+            "marginTop": "-30px",
+            "zIndex": 20,
+            "borderTop": "3px solid #000000",
+            "borderBottom": "3px solid #000000"
+          },
+          "children": [
+            {
+              "blockId": "mq_track",
+              "element": "div",
+              "classes": [
+                "mq-track"
+              ],
+              "children": [
+                {
+                  "blockId": "mq0",
+                  "element": "span",
+                  "innerHTML": "NO EXCUSES",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq0d",
+                  "element": "span",
+                  "innerHTML": "&#8226;",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq1",
+                  "element": "span",
+                  "innerHTML": "DO THE WORK",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq1d",
+                  "element": "span",
+                  "innerHTML": "&#8226;",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq2",
+                  "element": "span",
+                  "innerHTML": "EAT CLEAN",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq2d",
+                  "element": "span",
+                  "innerHTML": "&#8226;",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq3",
+                  "element": "span",
+                  "innerHTML": "TRAIN DIRTY",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq3d",
+                  "element": "span",
+                  "innerHTML": "&#8226;",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq4",
+                  "element": "span",
+                  "innerHTML": "DEMAND MORE",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq4d",
+                  "element": "span",
+                  "innerHTML": "&#8226;",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq5",
+                  "element": "span",
+                  "innerHTML": "STAY HARD",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq5d",
+                  "element": "span",
+                  "innerHTML": "&#8226;",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq6",
+                  "element": "span",
+                  "innerHTML": "NO EXCUSES",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq6d",
+                  "element": "span",
+                  "innerHTML": "&#8226;",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq7",
+                  "element": "span",
+                  "innerHTML": "DO THE WORK",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq7d",
+                  "element": "span",
+                  "innerHTML": "&#8226;",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq8",
+                  "element": "span",
+                  "innerHTML": "EAT CLEAN",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq8d",
+                  "element": "span",
+                  "innerHTML": "&#8226;",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq9",
+                  "element": "span",
+                  "innerHTML": "TRAIN DIRTY",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq9d",
+                  "element": "span",
+                  "innerHTML": "&#8226;",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq10",
+                  "element": "span",
+                  "innerHTML": "DEMAND MORE",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq10d",
+                  "element": "span",
+                  "innerHTML": "&#8226;",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq11",
+                  "element": "span",
+                  "innerHTML": "STAY HARD",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                },
+                {
+                  "blockId": "mq11d",
+                  "element": "span",
+                  "innerHTML": "&#8226;",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "fontSize": "1.5rem",
+                    "letterSpacing": "2px",
+                    "color": "#000000",
+                    "margin": "0 22px"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "truth",
+          "element": "section",
+          "blockName": "truth",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#050505",
+            "padding": "100px 0",
+            "borderBottom": "1px solid #222222"
+          },
+          "mobileStyles": {
+            "padding": "64px 0"
+          },
+          "children": [
+            {
+              "blockId": "truth_wrap",
+              "element": "div",
+              "baseStyles": {
+                "width": "100%",
+                "maxWidth": "1200px",
+                "margin": "0 auto",
+                "padding": "0 24px",
+                "display": "grid",
+                "gridTemplateColumns": "1fr 1fr",
+                "gap": "50px",
+                "alignItems": "center"
+              },
+              "tabletStyles": {
+                "gridTemplateColumns": "1fr"
+              },
+              "children": [
+                {
+                  "blockId": "truth_img",
+                  "element": "div",
+                  "baseStyles": {
+                    "width": "100%",
+                    "height": "500px",
+                    "backgroundImage": "url(/builder_assets/fitness/images/truth.svg)",
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center",
+                    "filter": "grayscale(100%) contrast(1.2)",
+                    "borderBottom": "8px solid #ff3300"
+                  },
+                  "mobileStyles": {
+                    "height": "320px"
+                  }
+                },
+                {
+                  "blockId": "truth_col",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "alignItems": "flexStart"
+                  },
+                  "tabletStyles": {
+                    "alignItems": "flexStart",
+                    "textAlign": "left"
+                  },
+                  "children": [
+                    {
+                      "blockId": "truth_title",
+                      "element": "h2",
+                      "innerHTML": "Stop Wasting Your <span style=\"color:#ff3300\">Potential</span>",
+                      "baseStyles": {
+                        "fontFamily": "Oswald, sans-serif",
+                        "fontWeight": 700,
+                        "textTransform": "uppercase",
+                        "fontSize": "3.5rem",
+                        "lineHeight": "1.1",
+                        "color": "#ffffff",
+                        "textAlign": "left",
+                        "letterSpacing": "1px",
+                        "margin": "0 0 20px"
+                      },
+                      "mobileStyles": {
+                        "fontSize": "2.4rem"
+                      }
+                    },
+                    {
+                      "blockId": "truth_sub",
+                      "element": "p",
+                      "innerHTML": "You are putting in the hours at the gym, but you still look the exact same as you did 12 months ago. Why? Because your protocol is broken.",
+                      "baseStyles": {
+                        "fontFamily": "Montserrat, sans-serif",
+                        "fontSize": "1.1rem",
+                        "color": "#888888",
+                        "lineHeight": "1.6",
+                        "margin": "0 0 20px"
+                      }
+                    },
+                    {
+                      "blockId": "bs_list",
+                      "element": "ul",
+                      "baseStyles": {
+                        "listStyle": "none",
+                        "margin": "30px 0 0",
+                        "padding": "0"
+                      },
+                      "children": [
+                        {
+                          "blockId": "bs0",
+                          "element": "li",
+                          "innerHTML": "<span style=\"color:#ff3300;font-size:1.5rem;font-weight:900;margin-right:15px;\">&#10005;</span>Guessing your macros and eating \u201cintuitively\u201d.",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "fontSize": "1.2rem",
+                            "fontWeight": 700,
+                            "padding": "15px 0",
+                            "borderBottom": "1px solid #222222",
+                            "display": "flex",
+                            "alignItems": "center",
+                            "gap": "15px",
+                            "color": "#ffffff"
+                          }
+                        },
+                        {
+                          "blockId": "bs1",
+                          "element": "li",
+                          "innerHTML": "<span style=\"color:#ff3300;font-size:1.5rem;font-weight:900;\">&#10005;</span>Program hopping every time you see a new trend",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "fontSize": "1.2rem",
+                            "fontWeight": 700,
+                            "padding": "15px 0",
+                            "borderBottom": "1px solid #222222",
+                            "display": "flex",
+                            "alignItems": "center",
+                            "gap": "15px",
+                            "color": "#ffffff"
+                          }
+                        },
+                        {
+                          "blockId": "bs2",
+                          "element": "li",
+                          "innerHTML": "<span style=\"color:#ff3300;font-size:1.5rem;font-weight:900;\">&#10005;</span>Relying on motivation instead of disciplined systems",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "fontSize": "1.2rem",
+                            "fontWeight": 700,
+                            "padding": "15px 0",
+                            "borderBottom": "1px solid #222222",
+                            "display": "flex",
+                            "alignItems": "center",
+                            "gap": "15px",
+                            "color": "#ffffff"
+                          }
+                        },
+                        {
+                          "blockId": "bs3",
+                          "element": "li",
+                          "innerHTML": "<span style=\"color:#ff3300;font-size:1.5rem;font-weight:900;\">&#10005;</span>Failing to track progressive overload",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "fontSize": "1.2rem",
+                            "fontWeight": 700,
+                            "padding": "15px 0",
+                            "borderBottom": "1px solid #222222",
+                            "display": "flex",
+                            "alignItems": "center",
+                            "gap": "15px",
+                            "color": "#ffffff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "truth_cta_wrap",
+                      "element": "div",
+                      "baseStyles": {
+                        "marginTop": "40px"
+                      },
+                      "children": [
+                        {
+                          "blockId": "truth_btn",
+                          "element": "a",
+                          "blockName": "cta",
+                          "attributes": {
+                            "href": "#apply"
+                          },
+                          "classes": [
+                            "btn-action"
+                          ],
+                          "baseStyles": {
+                            "backgroundColor": "#ff3300",
+                            "color": "#ffffff",
+                            "padding": "20px 45px",
+                            "fontFamily": "Oswald, sans-serif",
+                            "fontSize": "1.5rem",
+                            "fontWeight": 700,
+                            "textTransform": "uppercase",
+                            "textDecoration": "none",
+                            "letterSpacing": "2px",
+                            "transform": "skewX(-10deg)",
+                            "boxShadow": "rgba(255, 51, 0, 0.2) 0px 10px 20px 0px",
+                            "hover:backgroundColor": "#cc2900",
+                            "hover:transform": "skewX(-10deg) translateY(-3px)"
+                          },
+                          "children": [
+                            {
+                              "blockId": "truth_btn_t",
+                              "element": "span",
+                              "innerHTML": "Fix Your Protocol",
+                              "baseStyles": {
+                                "display": "inlineBlock",
+                                "transform": "skewX(10deg)",
+                                "position": "relative",
+                                "zIndex": 2,
+                                "fontFamily": "Oswald, sans-serif",
+                                "color": "#ffffff"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "protocol",
+          "element": "section",
+          "blockName": "protocol",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#050505",
+            "padding": "100px 0",
+            "borderBottom": "1px solid #222222"
+          },
+          "mobileStyles": {
+            "padding": "64px 0"
+          },
+          "children": [
+            {
+              "blockId": "protocol_wrap",
+              "element": "div",
+              "baseStyles": {
+                "width": "100%",
+                "maxWidth": "1200px",
+                "margin": "0 auto",
+                "padding": "0 24px"
+              },
+              "children": [
+                {
+                  "blockId": "protocol_title",
+                  "element": "h2",
+                  "innerHTML": "The <span style=\"color:#ff3300\">Ironclad</span> System",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "textTransform": "uppercase",
+                    "fontSize": "3.5rem",
+                    "lineHeight": "1.1",
+                    "color": "#ffffff",
+                    "textAlign": "center",
+                    "letterSpacing": "1px",
+                    "margin": "0 0 20px"
+                  },
+                  "mobileStyles": {
+                    "fontSize": "2.4rem"
+                  }
+                },
+                {
+                  "blockId": "protocol_sub",
+                  "element": "p",
+                  "innerHTML": "A customized, science-backed approach designed specifically for your body, your lifestyle, and your goals.",
+                  "baseStyles": {
+                    "fontFamily": "Montserrat, sans-serif",
+                    "textAlign": "center",
+                    "color": "#888888",
+                    "fontSize": "1.1rem",
+                    "lineHeight": "1.6",
+                    "maxWidth": "600px",
+                    "margin": "0 auto 50px",
+                    "fontWeight": 500
+                  }
+                },
+                {
+                  "blockId": "protocol_grid",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "grid",
+                    "gridTemplateColumns": "1fr 1fr 1fr",
+                    "gap": "30px"
+                  },
+                  "tabletStyles": {
+                    "gridTemplateColumns": "1fr"
+                  },
+                  "children": [
+                    {
+                      "blockId": "proto1",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#121212",
+                        "padding": "40px 30px",
+                        "border": "1px solid #222222",
+                        "borderTop": "4px solid #ff3300",
+                        "hover:transform": "translateY(-10px)",
+                        "hover:backgroundColor": "#1a1a1a"
+                      },
+                      "children": [
+                        {
+                          "blockId": "p1_icon",
+                          "element": "div",
+                          "innerHTML": "01",
+                          "baseStyles": {
+                            "fontFamily": "Oswald, sans-serif",
+                            "fontWeight": 900,
+                            "fontSize": "3rem",
+                            "color": "#ff3300",
+                            "margin": "0 0 20px"
+                          }
+                        },
+                        {
+                          "blockId": "p1_title",
+                          "element": "h3",
+                          "innerHTML": "Hypertrophy Training",
+                          "baseStyles": {
+                            "fontFamily": "Oswald, sans-serif",
+                            "fontWeight": 700,
+                            "textTransform": "uppercase",
+                            "fontSize": "2rem",
+                            "color": "#ffffff",
+                            "margin": "0 0 15px"
+                          }
+                        },
+                        {
+                          "blockId": "p1_desc",
+                          "element": "p",
+                          "innerHTML": "Custom lifting blocks designed to maximize muscle protein synthesis. Exactly what to lift, how many reps, and how long to rest.",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "color": "#888888",
+                            "fontSize": "1rem",
+                            "lineHeight": "1.6"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "proto2",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#121212",
+                        "padding": "40px 30px",
+                        "border": "1px solid #222222",
+                        "borderTop": "4px solid #ff3300",
+                        "hover:transform": "translateY(-10px)",
+                        "hover:backgroundColor": "#1a1a1a"
+                      },
+                      "children": [
+                        {
+                          "blockId": "p2_icon",
+                          "element": "div",
+                          "innerHTML": "02",
+                          "baseStyles": {
+                            "fontFamily": "Oswald, sans-serif",
+                            "fontWeight": 900,
+                            "fontSize": "3rem",
+                            "color": "#ff3300",
+                            "margin": "0 0 20px"
+                          }
+                        },
+                        {
+                          "blockId": "p2_title",
+                          "element": "h3",
+                          "innerHTML": "Precision Nutrition",
+                          "baseStyles": {
+                            "fontFamily": "Oswald, sans-serif",
+                            "fontWeight": 700,
+                            "textTransform": "uppercase",
+                            "fontSize": "2rem",
+                            "color": "#ffffff",
+                            "margin": "0 0 15px"
+                          }
+                        },
+                        {
+                          "blockId": "p2_desc",
+                          "element": "p",
+                          "innerHTML": "Macro-nutrient mapping that fuels your performance and strips body fat, without completely giving up the foods you enjoy.",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "color": "#888888",
+                            "fontSize": "1rem",
+                            "lineHeight": "1.6"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "proto3",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#121212",
+                        "padding": "40px 30px",
+                        "border": "1px solid #222222",
+                        "borderTop": "4px solid #ff3300",
+                        "hover:transform": "translateY(-10px)",
+                        "hover:backgroundColor": "#1a1a1a"
+                      },
+                      "children": [
+                        {
+                          "blockId": "p3_icon",
+                          "element": "div",
+                          "innerHTML": "03",
+                          "baseStyles": {
+                            "fontFamily": "Oswald, sans-serif",
+                            "fontWeight": 900,
+                            "fontSize": "3rem",
+                            "color": "#ff3300",
+                            "margin": "0 0 20px"
+                          }
+                        },
+                        {
+                          "blockId": "p3_title",
+                          "element": "h3",
+                          "innerHTML": "1-On-1 Accountability",
+                          "baseStyles": {
+                            "fontFamily": "Oswald, sans-serif",
+                            "fontWeight": 700,
+                            "textTransform": "uppercase",
+                            "fontSize": "2rem",
+                            "color": "#ffffff",
+                            "margin": "0 0 15px"
+                          }
+                        },
+                        {
+                          "blockId": "p3_desc",
+                          "element": "p",
+                          "innerHTML": "Weekly video check-ins, form reviews, and 24/7 direct access to me. If you slack off, I will call you out.",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "color": "#888888",
+                            "fontSize": "1rem",
+                            "lineHeight": "1.6"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "arsenal",
+          "element": "section",
+          "blockName": "arsenal",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#050505",
+            "padding": "0 0 100px",
+            "borderBottom": "1px solid #222222"
+          },
+          "mobileStyles": {
+            "padding": "0 0 64px"
+          },
+          "children": [
+            {
+              "blockId": "arsenal_wrap",
+              "element": "div",
+              "baseStyles": {
+                "width": "100%",
+                "maxWidth": "1200px",
+                "margin": "0 auto",
+                "padding": "60px 24px 0"
+              },
+              "children": [
+                {
+                  "blockId": "arsenal_title",
+                  "element": "h2",
+                  "innerHTML": "The <span style=\"color:#ff3300\">Arsenal</span>",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "textTransform": "uppercase",
+                    "fontSize": "3.5rem",
+                    "lineHeight": "1.1",
+                    "color": "#ffffff",
+                    "textAlign": "center",
+                    "letterSpacing": "1px",
+                    "margin": "0 0 20px"
+                  },
+                  "mobileStyles": {
+                    "fontSize": "2.4rem"
+                  }
+                },
+                {
+                  "blockId": "arsenal_sub",
+                  "element": "p",
+                  "innerHTML": "Everything you need to dominate. Nothing you don't.",
+                  "baseStyles": {
+                    "fontFamily": "Montserrat, sans-serif",
+                    "textAlign": "center",
+                    "color": "#888888",
+                    "fontSize": "1.1rem",
+                    "lineHeight": "1.6",
+                    "maxWidth": "600px",
+                    "margin": "0 auto 50px",
+                    "fontWeight": 500
+                  }
+                },
+                {
+                  "blockId": "arsenal_grid",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "grid",
+                    "gridTemplateColumns": "1fr 1fr",
+                    "gap": "40px"
+                  },
+                  "tabletStyles": {
+                    "gridTemplateColumns": "1fr"
+                  },
+                  "children": [
+                    {
+                      "blockId": "ars0",
+                      "element": "div",
+                      "baseStyles": {
+                        "display": "flex",
+                        "alignItems": "flexStart",
+                        "gap": "20px",
+                        "backgroundColor": "#121212",
+                        "padding": "30px",
+                        "border": "1px solid #222222",
+                        "borderLeft": "4px solid #888888",
+                        "hover:borderLeftColor": "#ff3300",
+                        "hover:backgroundColor": "#181818"
+                      },
+                      "children": [
+                        {
+                          "blockId": "ars0_icon",
+                          "element": "div",
+                          "innerHTML": "💊",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "fontSize": "2.5rem",
+                            "color": "#ff3300",
+                            "lineHeight": "1"
+                          }
+                        },
+                        {
+                          "blockId": "ars0_body",
+                          "element": "div",
+                          "baseStyles": {
+                            "display": "flex",
+                            "flexDirection": "column"
+                          },
+                          "children": [
+                            {
+                              "blockId": "ars0_title",
+                              "element": "h4",
+                              "innerHTML": "Supplement Stack Guide",
+                              "baseStyles": {
+                                "fontFamily": "Oswald, sans-serif",
+                                "fontWeight": 700,
+                                "textTransform": "uppercase",
+                                "fontSize": "1.5rem",
+                                "color": "#ffffff",
+                                "margin": "0 0 10px"
+                              }
+                            },
+                            {
+                              "blockId": "ars0_desc",
+                              "element": "p",
+                              "innerHTML": "Stop wasting money on useless pre-workouts and fat burners. Get the exact, science-backed supplement protocol to optimize recovery and hormone levels.",
+                              "baseStyles": {
+                                "fontFamily": "Montserrat, sans-serif",
+                                "color": "#888888",
+                                "fontSize": "1rem",
+                                "lineHeight": "1.6"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "ars1",
+                      "element": "div",
+                      "baseStyles": {
+                        "display": "flex",
+                        "alignItems": "flexStart",
+                        "gap": "20px",
+                        "backgroundColor": "#121212",
+                        "padding": "30px",
+                        "border": "1px solid #222222",
+                        "borderLeft": "4px solid #888888",
+                        "hover:borderLeftColor": "#ff3300",
+                        "hover:backgroundColor": "#181818"
+                      },
+                      "children": [
+                        {
+                          "blockId": "ars1_icon",
+                          "element": "div",
+                          "innerHTML": "🎥",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "fontSize": "2.5rem",
+                            "color": "#ff3300",
+                            "lineHeight": "1"
+                          }
+                        },
+                        {
+                          "blockId": "ars1_body",
+                          "element": "div",
+                          "baseStyles": {
+                            "display": "flex",
+                            "flexDirection": "column"
+                          },
+                          "children": [
+                            {
+                              "blockId": "ars1_title",
+                              "element": "h4",
+                              "innerHTML": "Form Correction Vault",
+                              "baseStyles": {
+                                "fontFamily": "Oswald, sans-serif",
+                                "fontWeight": 700,
+                                "textTransform": "uppercase",
+                                "fontSize": "1.5rem",
+                                "color": "#ffffff",
+                                "margin": "0 0 10px"
+                              }
+                            },
+                            {
+                              "blockId": "ars1_desc",
+                              "element": "p",
+                              "innerHTML": "Send in your lifting videos. I break them down frame by frame to maximize tension and protect your joints from injury.",
+                              "baseStyles": {
+                                "fontFamily": "Montserrat, sans-serif",
+                                "color": "#888888",
+                                "fontSize": "1rem",
+                                "lineHeight": "1.6"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "ars2",
+                      "element": "div",
+                      "baseStyles": {
+                        "display": "flex",
+                        "alignItems": "flexStart",
+                        "gap": "20px",
+                        "backgroundColor": "#121212",
+                        "padding": "30px",
+                        "border": "1px solid #222222",
+                        "borderLeft": "4px solid #888888",
+                        "hover:borderLeftColor": "#ff3300",
+                        "hover:backgroundColor": "#181818"
+                      },
+                      "children": [
+                        {
+                          "blockId": "ars2_icon",
+                          "element": "div",
+                          "innerHTML": "🧠",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "fontSize": "2.5rem",
+                            "color": "#ff3300",
+                            "lineHeight": "1"
+                          }
+                        },
+                        {
+                          "blockId": "ars2_body",
+                          "element": "div",
+                          "baseStyles": {
+                            "display": "flex",
+                            "flexDirection": "column"
+                          },
+                          "children": [
+                            {
+                              "blockId": "ars2_title",
+                              "element": "h4",
+                              "innerHTML": "Mindset Re-Wiring",
+                              "baseStyles": {
+                                "fontFamily": "Oswald, sans-serif",
+                                "fontWeight": 700,
+                                "textTransform": "uppercase",
+                                "fontSize": "1.5rem",
+                                "color": "#ffffff",
+                                "margin": "0 0 10px"
+                              }
+                            },
+                            {
+                              "blockId": "ars2_desc",
+                              "element": "p",
+                              "innerHTML": "Physical weakness stems from mental weakness. Access my private audio modules built to kill excuses and build relentless discipline.",
+                              "baseStyles": {
+                                "fontFamily": "Montserrat, sans-serif",
+                                "color": "#888888",
+                                "fontSize": "1rem",
+                                "lineHeight": "1.6"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "ars3",
+                      "element": "div",
+                      "baseStyles": {
+                        "display": "flex",
+                        "alignItems": "flexStart",
+                        "gap": "20px",
+                        "backgroundColor": "#121212",
+                        "padding": "30px",
+                        "border": "1px solid #222222",
+                        "borderLeft": "4px solid #888888",
+                        "hover:borderLeftColor": "#ff3300",
+                        "hover:backgroundColor": "#181818"
+                      },
+                      "children": [
+                        {
+                          "blockId": "ars3_icon",
+                          "element": "div",
+                          "innerHTML": "🛒",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "fontSize": "2.5rem",
+                            "color": "#ff3300",
+                            "lineHeight": "1"
+                          }
+                        },
+                        {
+                          "blockId": "ars3_body",
+                          "element": "div",
+                          "baseStyles": {
+                            "display": "flex",
+                            "flexDirection": "column"
+                          },
+                          "children": [
+                            {
+                              "blockId": "ars3_title",
+                              "element": "h4",
+                              "innerHTML": "No-BS Grocery Matrix",
+                              "baseStyles": {
+                                "fontFamily": "Oswald, sans-serif",
+                                "fontWeight": 700,
+                                "textTransform": "uppercase",
+                                "fontSize": "1.5rem",
+                                "color": "#ffffff",
+                                "margin": "0 0 10px"
+                              }
+                            },
+                            {
+                              "blockId": "ars3_desc",
+                              "element": "p",
+                              "innerHTML": "Exactly what to buy, how to prep it, and how to order smart when eating out so you never blow your macros when life gets chaotic.",
+                              "baseStyles": {
+                                "fontFamily": "Montserrat, sans-serif",
+                                "color": "#888888",
+                                "fontSize": "1rem",
+                                "lineHeight": "1.6"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "stats",
+          "element": "section",
+          "blockName": "stats",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#ff3300",
+            "color": "#000000",
+            "padding": "80px 0",
+            "textAlign": "center"
+          },
+          "mobileStyles": {
+            "padding": "56px 0"
+          },
+          "children": [
+            {
+              "blockId": "stats_wrap",
+              "element": "div",
+              "baseStyles": {
+                "width": "100%",
+                "maxWidth": "1200px",
+                "margin": "0 auto",
+                "padding": "0 24px",
+                "display": "grid",
+                "gridTemplateColumns": "1fr 1fr 1fr 1fr",
+                "gap": "20px"
+              },
+              "tabletStyles": {
+                "gridTemplateColumns": "1fr 1fr"
+              },
+              "mobileStyles": {
+                "gridTemplateColumns": "1fr"
+              },
+              "children": [
+                {
+                  "blockId": "stat0",
+                  "element": "div",
+                  "baseStyles": {
+                    "textAlign": "center"
+                  },
+                  "children": [
+                    {
+                      "blockId": "stat0_v",
+                      "element": "h4",
+                      "innerHTML": "500+",
+                      "baseStyles": {
+                        "fontFamily": "Oswald, sans-serif",
+                        "fontWeight": 700,
+                        "fontSize": "4rem",
+                        "lineHeight": "1",
+                        "color": "#000000",
+                        "margin": "0 0 5px"
+                      }
+                    },
+                    {
+                      "blockId": "stat0_l",
+                      "element": "p",
+                      "innerHTML": "Athletes Transformed",
+                      "baseStyles": {
+                        "fontFamily": "Montserrat, sans-serif",
+                        "fontSize": "1.1rem",
+                        "fontWeight": 900,
+                        "textTransform": "uppercase",
+                        "color": "#000000",
+                        "margin": "0"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "stat1",
+                  "element": "div",
+                  "baseStyles": {
+                    "textAlign": "center"
+                  },
+                  "children": [
+                    {
+                      "blockId": "stat1_v",
+                      "element": "h4",
+                      "innerHTML": "10k",
+                      "baseStyles": {
+                        "fontFamily": "Oswald, sans-serif",
+                        "fontWeight": 700,
+                        "fontSize": "4rem",
+                        "lineHeight": "1",
+                        "color": "#000000",
+                        "margin": "0 0 5px"
+                      }
+                    },
+                    {
+                      "blockId": "stat1_l",
+                      "element": "p",
+                      "innerHTML": "Lbs of Fat Destroyed",
+                      "baseStyles": {
+                        "fontFamily": "Montserrat, sans-serif",
+                        "fontSize": "1.1rem",
+                        "fontWeight": 900,
+                        "textTransform": "uppercase",
+                        "color": "#000000",
+                        "margin": "0"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "stat2",
+                  "element": "div",
+                  "baseStyles": {
+                    "textAlign": "center"
+                  },
+                  "children": [
+                    {
+                      "blockId": "stat2_v",
+                      "element": "h4",
+                      "innerHTML": "98%",
+                      "baseStyles": {
+                        "fontFamily": "Oswald, sans-serif",
+                        "fontWeight": 700,
+                        "fontSize": "4rem",
+                        "lineHeight": "1",
+                        "color": "#000000",
+                        "margin": "0 0 5px"
+                      }
+                    },
+                    {
+                      "blockId": "stat2_l",
+                      "element": "p",
+                      "innerHTML": "Success Rate",
+                      "baseStyles": {
+                        "fontFamily": "Montserrat, sans-serif",
+                        "fontSize": "1.1rem",
+                        "fontWeight": 900,
+                        "textTransform": "uppercase",
+                        "color": "#000000",
+                        "margin": "0"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "stat3",
+                  "element": "div",
+                  "baseStyles": {
+                    "textAlign": "center"
+                  },
+                  "children": [
+                    {
+                      "blockId": "stat3_v",
+                      "element": "h4",
+                      "innerHTML": "24/7",
+                      "baseStyles": {
+                        "fontFamily": "Oswald, sans-serif",
+                        "fontWeight": 700,
+                        "fontSize": "4rem",
+                        "lineHeight": "1",
+                        "color": "#000000",
+                        "margin": "0 0 5px"
+                      }
+                    },
+                    {
+                      "blockId": "stat3_l",
+                      "element": "p",
+                      "innerHTML": "Support Access",
+                      "baseStyles": {
+                        "fontFamily": "Montserrat, sans-serif",
+                        "fontSize": "1.1rem",
+                        "fontWeight": 900,
+                        "textTransform": "uppercase",
+                        "color": "#000000",
+                        "margin": "0"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "results",
+          "element": "section",
+          "blockName": "results",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#050505",
+            "padding": "100px 0",
+            "borderBottom": "1px solid #222222"
+          },
+          "mobileStyles": {
+            "padding": "64px 0"
+          },
+          "children": [
+            {
+              "blockId": "results_wrap",
+              "element": "div",
+              "baseStyles": {
+                "width": "100%",
+                "maxWidth": "1200px",
+                "margin": "0 auto",
+                "padding": "0 24px"
+              },
+              "children": [
+                {
+                  "blockId": "results_title",
+                  "element": "h2",
+                  "innerHTML": "Battle-Tested <span style=\"color:#ff3300\">Results</span>",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "textTransform": "uppercase",
+                    "fontSize": "3.5rem",
+                    "lineHeight": "1.1",
+                    "color": "#ffffff",
+                    "textAlign": "center",
+                    "letterSpacing": "1px",
+                    "margin": "0 0 20px"
+                  },
+                  "mobileStyles": {
+                    "fontSize": "2.4rem"
+                  }
+                },
+                {
+                  "blockId": "results_sub",
+                  "element": "p",
+                  "innerHTML": "Real athletes. Undeniable transformations. The proof is in the protocol.",
+                  "baseStyles": {
+                    "fontFamily": "Montserrat, sans-serif",
+                    "textAlign": "center",
+                    "color": "#888888",
+                    "fontSize": "1.1rem",
+                    "lineHeight": "1.6",
+                    "maxWidth": "600px",
+                    "margin": "0 auto 50px",
+                    "fontWeight": 500
+                  }
+                },
+                {
+                  "blockId": "test_grid",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "grid",
+                    "gridTemplateColumns": "1fr 1fr",
+                    "gap": "30px"
+                  },
+                  "tabletStyles": {
+                    "gridTemplateColumns": "1fr"
+                  },
+                  "children": [
+                    {
+                      "blockId": "test1",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#121212",
+                        "padding": "40px",
+                        "border": "1px solid #222222",
+                        "position": "relative"
+                      },
+                      "children": [
+                        {
+                          "blockId": "t1_quote",
+                          "element": "div",
+                          "innerHTML": "&#8222;",
+                          "baseStyles": {
+                            "fontFamily": "Oswald, sans-serif",
+                            "position": "absolute",
+                            "top": "20px",
+                            "right": "20px",
+                            "fontSize": "4rem",
+                            "color": "#222222",
+                            "lineHeight": "1"
+                          }
+                        },
+                        {
+                          "blockId": "t1_text",
+                          "element": "p",
+                          "innerHTML": "\u201cI was stuck at 200lbs for two years, convinced I just had bad genetics. Within 12 weeks on this protocol, I dropped down to 182lbs, exposed my abs for the first time in my life, and my bench press went UP. The accountability is absolutely unmatched.\u201d",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "fontSize": "1.1rem",
+                            "fontStyle": "italic",
+                            "color": "#ffffff",
+                            "margin": "0 0 25px",
+                            "position": "relative",
+                            "zIndex": 1,
+                            "lineHeight": "1.6"
+                          }
+                        },
+                        {
+                          "blockId": "t1_author",
+                          "element": "div",
+                          "baseStyles": {
+                            "display": "flex",
+                            "alignItems": "center",
+                            "gap": "15px",
+                            "borderTop": "1px solid #222222",
+                            "paddingTop": "20px"
+                          },
+                          "children": [
+                            {
+                              "blockId": "t1_ab",
+                              "element": "div",
+                              "baseStyles": {
+                                "display": "flex",
+                                "flexDirection": "column"
+                              },
+                              "children": [
+                                {
+                                  "blockId": "t1_an",
+                                  "element": "h4",
+                                  "innerHTML": "Marcus T.",
+                                  "baseStyles": {
+                                    "fontFamily": "Oswald, sans-serif",
+                                    "fontSize": "1.3rem",
+                                    "color": "#ffffff",
+                                    "margin": "0"
+                                  }
+                                },
+                                {
+                                  "blockId": "t1_ar",
+                                  "element": "div",
+                                  "innerHTML": "Dropped 18 lbs fat",
+                                  "baseStyles": {
+                                    "fontFamily": "Oswald, sans-serif",
+                                    "fontWeight": 700,
+                                    "fontSize": "1.1rem",
+                                    "letterSpacing": "1px",
+                                    "color": "#ff3300",
+                                    "textTransform": "uppercase",
+                                    "marginTop": "4px"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "test2",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#121212",
+                        "padding": "40px",
+                        "border": "1px solid #222222",
+                        "position": "relative"
+                      },
+                      "children": [
+                        {
+                          "blockId": "t2_quote",
+                          "element": "div",
+                          "innerHTML": "&#8221;",
+                          "baseStyles": {
+                            "fontFamily": "Oswald, sans-serif",
+                            "position": "absolute",
+                            "top": "20px",
+                            "right": "20px",
+                            "fontSize": "4rem",
+                            "color": "#222222",
+                            "lineHeight": "1"
+                          }
+                        },
+                        {
+                          "blockId": "t2_text",
+                          "element": "p",
+                          "innerHTML": "\u201cBefore this program, I was program hopping and exhausted. The custom macro plan and form corrections completely changed the game. I packed on pure muscle and finally feel like I have command over my own body. Stop thinking and just apply.\u201d",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "fontSize": "1.1rem",
+                            "fontStyle": "italic",
+                            "color": "#ffffff",
+                            "margin": "0 0 25px",
+                            "position": "relative",
+                            "zIndex": 1,
+                            "lineHeight": "1.6"
+                          }
+                        },
+                        {
+                          "blockId": "t2_author",
+                          "element": "div",
+                          "baseStyles": {
+                            "display": "flex",
+                            "alignItems": "center",
+                            "gap": "15px",
+                            "borderTop": "1px solid #222222",
+                            "paddingTop": "20px"
+                          },
+                          "children": [
+                            {
+                              "blockId": "t2_ab",
+                              "element": "div",
+                              "baseStyles": {
+                                "display": "flex",
+                                "flexDirection": "column"
+                              },
+                              "children": [
+                                {
+                                  "blockId": "t2_an",
+                                  "element": "h4",
+                                  "innerHTML": "David R.",
+                                  "baseStyles": {
+                                    "fontFamily": "Oswald, sans-serif",
+                                    "fontSize": "1.3rem",
+                                    "color": "#ffffff",
+                                    "margin": "0"
+                                  }
+                                },
+                                {
+                                  "blockId": "t2_ar",
+                                  "element": "div",
+                                  "innerHTML": "Gained 12 lbs muscle",
+                                  "baseStyles": {
+                                    "fontFamily": "Oswald, sans-serif",
+                                    "fontWeight": 700,
+                                    "fontSize": "1.1rem",
+                                    "letterSpacing": "1px",
+                                    "color": "#ff3300",
+                                    "textTransform": "uppercase",
+                                    "marginTop": "4px"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "apply",
+          "element": "section",
+          "blockName": "apply",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#050505",
+            "padding": "100px 0",
+            "borderBottom": "1px solid #222222"
+          },
+          "mobileStyles": {
+            "padding": "64px 0"
+          },
+          "children": [
+            {
+              "blockId": "apply_wrap",
+              "element": "div",
+              "baseStyles": {
+                "width": "100%",
+                "maxWidth": "1200px",
+                "margin": "0 auto",
+                "padding": "0 24px"
+              },
+              "children": [
+                {
+                  "blockId": "apply_title",
+                  "element": "h2",
+                  "innerHTML": "Commit To <span style=\"color:#ff3300\">Greatness</span>",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "textTransform": "uppercase",
+                    "fontSize": "3.5rem",
+                    "lineHeight": "1.1",
+                    "color": "#ffffff",
+                    "textAlign": "center",
+                    "letterSpacing": "1px",
+                    "margin": "0 0 20px"
+                  },
+                  "mobileStyles": {
+                    "fontSize": "2.4rem"
+                  }
+                },
+                {
+                  "blockId": "apply_sub",
+                  "element": "p",
+                  "innerHTML": "I only work with individuals who are ready to put the work in. If you are looking for a magic pill, leave this page.",
+                  "baseStyles": {
+                    "fontFamily": "Montserrat, sans-serif",
+                    "textAlign": "center",
+                    "color": "#888888",
+                    "fontSize": "1.1rem",
+                    "lineHeight": "1.6",
+                    "maxWidth": "600px",
+                    "margin": "0 auto 50px",
+                    "fontWeight": 500
+                  }
+                },
+                {
+                  "blockId": "pricing_box",
+                  "element": "div",
+                  "baseStyles": {
+                    "backgroundColor": "#121212",
+                    "maxWidth": "800px",
+                    "margin": "0 auto",
+                    "border": "1px solid #222222",
+                    "padding": "60px",
+                    "textAlign": "center",
+                    "position": "relative",
+                    "width": "100%"
+                  },
+                  "mobileStyles": {
+                    "padding": "40px 20px"
+                  },
+                  "children": [
+                    {
+                      "blockId": "pricing_bar",
+                      "element": "div",
+                      "baseStyles": {
+                        "position": "absolute",
+                        "top": "0",
+                        "left": "0",
+                        "width": "100%",
+                        "height": "5px",
+                        "backgroundColor": "#ff3300"
+                      }
+                    },
+                    {
+                      "blockId": "apply_box_title",
+                      "element": "h3",
+                      "innerHTML": "Elite 90-Day Transformation",
+                      "baseStyles": {
+                        "fontFamily": "Oswald, sans-serif",
+                        "fontWeight": 700,
+                        "textTransform": "uppercase",
+                        "fontSize": "2rem",
+                        "color": "#ffffff",
+                        "margin": "0"
+                      }
+                    },
+                    {
+                      "blockId": "price_tag",
+                      "element": "div",
+                      "baseStyles": {
+                        "display": "flex",
+                        "alignItems": "baseline",
+                        "justifyContent": "center",
+                        "gap": "10px",
+                        "margin": "20px 0",
+                        "lineHeight": "1"
+                      },
+                      "children": [
+                        {
+                          "blockId": "price_val",
+                          "element": "span",
+                          "innerHTML": "$1,200",
+                          "baseStyles": {
+                            "fontFamily": "Oswald, sans-serif",
+                            "fontSize": "5rem",
+                            "fontWeight": 700,
+                            "color": "#ff3300"
+                          }
+                        },
+                        {
+                          "blockId": "price_suf",
+                          "element": "span",
+                          "innerHTML": "/ 12 weeks",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "fontSize": "1.5rem",
+                            "color": "#888888",
+                            "textTransform": "uppercase"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "deliverables",
+                      "element": "ul",
+                      "baseStyles": {
+                        "listStyle": "none",
+                        "textAlign": "left",
+                        "maxWidth": "400px",
+                        "margin": "30px auto",
+                        "padding": "0"
+                      },
+                      "children": [
+                        {
+                          "blockId": "del0",
+                          "element": "li",
+                          "innerHTML": "<span style=\"color:#ff3300;font-weight:900;margin-right:10px;\">&#10003;</span>Custom Training App Access",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "padding": "10px 0",
+                            "fontWeight": 600,
+                            "display": "flex",
+                            "alignItems": "center",
+                            "gap": "10px",
+                            "color": "#ffffff",
+                            "fontSize": "1rem"
+                          }
+                        },
+                        {
+                          "blockId": "del1",
+                          "element": "li",
+                          "innerHTML": "<span style=\"color:#ff3300;font-weight:900;\">&#10003;</span>Personalized Macro & Meal Plan",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "padding": "10px 0",
+                            "fontWeight": 600,
+                            "display": "flex",
+                            "alignItems": "center",
+                            "gap": "10px",
+                            "color": "#ffffff",
+                            "fontSize": "1rem"
+                          }
+                        },
+                        {
+                          "blockId": "del2",
+                          "element": "li",
+                          "innerHTML": "<span style=\"color:#ff3300;font-weight:900;\">&#10003;</span>Weekly Loom Video Check-ins",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "padding": "10px 0",
+                            "fontWeight": 600,
+                            "display": "flex",
+                            "alignItems": "center",
+                            "gap": "10px",
+                            "color": "#ffffff",
+                            "fontSize": "1rem"
+                          }
+                        },
+                        {
+                          "blockId": "del3",
+                          "element": "li",
+                          "innerHTML": "<span style=\"color:#ff3300;font-weight:900;\">&#10003;</span>Exercise Form Analysis",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "padding": "10px 0",
+                            "fontWeight": 600,
+                            "display": "flex",
+                            "alignItems": "center",
+                            "gap": "10px",
+                            "color": "#ffffff",
+                            "fontSize": "1rem"
+                          }
+                        },
+                        {
+                          "blockId": "del4",
+                          "element": "li",
+                          "innerHTML": "<span style=\"color:#ff3300;font-weight:900;\">&#10003;</span>Direct WhatsApp Access to Me",
+                          "baseStyles": {
+                            "fontFamily": "Montserrat, sans-serif",
+                            "padding": "10px 0",
+                            "fontWeight": 600,
+                            "display": "flex",
+                            "alignItems": "center",
+                            "gap": "10px",
+                            "color": "#ffffff",
+                            "fontSize": "1rem"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "apply_btn",
+                      "element": "a",
+                      "blockName": "cta",
+                      "attributes": {
+                        "href": "#apply"
+                      },
+                      "classes": [
+                        "btn-action"
+                      ],
+                      "baseStyles": {
+                        "display": "inlineFlex",
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "width": "100%",
+                        "maxWidth": "400px",
+                        "marginTop": "20px",
+                        "backgroundColor": "#ff3300",
+                        "color": "#ffffff",
+                        "padding": "20px 45px",
+                        "fontFamily": "Oswald, sans-serif",
+                        "fontSize": "1.5rem",
+                        "fontWeight": 700,
+                        "textTransform": "uppercase",
+                        "textDecoration": "none",
+                        "letterSpacing": "2px",
+                        "transform": "skewX(-10deg)",
+                        "boxShadow": "rgba(255, 51, 0, 0.2) 0px 10px 20px 0px",
+                        "hover:backgroundColor": "#cc2900",
+                        "hover:transform": "skewX(-10deg) translateY(-3px)"
+                      },
+                      "children": [
+                        {
+                          "blockId": "apply_btn_t",
+                          "element": "span",
+                          "innerHTML": "Apply For Coaching",
+                          "baseStyles": {
+                            "display": "inlineBlock",
+                            "transform": "skewX(10deg)",
+                            "position": "relative",
+                            "zIndex": 2,
+                            "fontFamily": "Oswald, sans-serif",
+                            "color": "#ffffff"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "faq",
+          "element": "section",
+          "blockName": "faq",
+          "baseStyles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "width": "100%",
+            "backgroundColor": "#050505",
+            "padding": "100px 0",
+            "borderBottom": "1px solid #222222"
+          },
+          "mobileStyles": {
+            "padding": "64px 0"
+          },
+          "children": [
+            {
+              "blockId": "faq_wrap",
+              "element": "div",
+              "clientScript": {
+                "css": "summary::-webkit-details-marker{display:none}summary::after{content:\"+\";color:#ff3300;font-size:1.5rem;font-weight:900;margin-left:12px}details[open] summary::after{content:\"-\"}"
+              },
+              "baseStyles": {
+                "width": "100%",
+                "maxWidth": "800px",
+                "margin": "0 auto",
+                "padding": "0 24px"
+              },
+              "children": [
+                {
+                  "blockId": "faq_title",
+                  "element": "h2",
+                  "innerHTML": "No <span style=\"color:#ff3300\">Confusion</span>",
+                  "baseStyles": {
+                    "fontFamily": "Oswald, sans-serif",
+                    "fontWeight": 700,
+                    "textTransform": "uppercase",
+                    "fontSize": "3rem",
+                    "lineHeight": "1.1",
+                    "color": "#ffffff",
+                    "textAlign": "center",
+                    "letterSpacing": "1px",
+                    "margin": "0 0 40px"
+                  },
+                  "mobileStyles": {
+                    "fontSize": "2.2rem"
+                  }
+                },
+                {
+                  "blockId": "fd0",
+                  "element": "details",
+                  "baseStyles": {
+                    "backgroundColor": "#121212",
+                    "border": "1px solid #222222",
+                    "margin": "0 0 15px"
+                  },
+                  "children": [
+                    {
+                      "blockId": "fd0s",
+                      "element": "summary",
+                      "innerHTML": "Do I need access to a full commercial gym?",
+                      "baseStyles": {
+                        "fontFamily": "Oswald, sans-serif",
+                        "padding": "20px",
+                        "fontSize": "1.3rem",
+                        "fontWeight": 500,
+                        "cursor": "pointer",
+                        "listStyle": "none",
+                        "display": "flex",
+                        "justifyContent": "space-between",
+                        "alignItems": "center",
+                        "textTransform": "uppercase",
+                        "letterSpacing": "1px",
+                        "color": "#ffffff"
+                      }
+                    },
+                    {
+                      "blockId": "fd0c",
+                      "element": "div",
+                      "innerHTML": "Yes. To maximize hypertrophy and progressive overload, you need access to barbells, dumbbells, and standard cable machines. This is not a bodyweight home-workout program.",
+                      "baseStyles": {
+                        "fontFamily": "Montserrat, sans-serif",
+                        "padding": "0 20px 20px",
+                        "color": "#888888",
+                        "borderTop": "1px solid #222222",
+                        "marginTop": "10px",
+                        "paddingTop": "20px",
+                        "lineHeight": "1.6"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "fd1",
+                  "element": "details",
+                  "baseStyles": {
+                    "backgroundColor": "#121212",
+                    "border": "1px solid #222222",
+                    "margin": "0 0 15px"
+                  },
+                  "children": [
+                    {
+                      "blockId": "fd1s",
+                      "element": "summary",
+                      "innerHTML": "I have a busy schedule. Will this work for me?",
+                      "baseStyles": {
+                        "fontFamily": "Oswald, sans-serif",
+                        "padding": "20px",
+                        "fontSize": "1.3rem",
+                        "fontWeight": 500,
+                        "cursor": "pointer",
+                        "listStyle": "none",
+                        "display": "flex",
+                        "justifyContent": "space-between",
+                        "alignItems": "center",
+                        "textTransform": "uppercase",
+                        "letterSpacing": "1px",
+                        "color": "#ffffff"
+                      }
+                    },
+                    {
+                      "blockId": "fd1c",
+                      "element": "div",
+                      "innerHTML": "Absolutely. The program is tailored to your lifestyle. Whether you can train 3 days a week or 6 days a week, the volume and nutrition protocols are adjusted to fit your exact availability.",
+                      "baseStyles": {
+                        "fontFamily": "Montserrat, sans-serif",
+                        "padding": "0 20px 20px",
+                        "color": "#888888",
+                        "borderTop": "1px solid #222222",
+                        "marginTop": "10px",
+                        "paddingTop": "20px",
+                        "lineHeight": "1.6"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "fd2",
+                  "element": "details",
+                  "baseStyles": {
+                    "backgroundColor": "#121212",
+                    "border": "1px solid #222222",
+                    "margin": "0"
+                  },
+                  "children": [
+                    {
+                      "blockId": "fd2s",
+                      "element": "summary",
+                      "innerHTML": "Is the meal plan going to be boring chicken and rice?",
+                      "baseStyles": {
+                        "fontFamily": "Oswald, sans-serif",
+                        "padding": "20px",
+                        "fontSize": "1.3rem",
+                        "fontWeight": 500,
+                        "cursor": "pointer",
+                        "listStyle": "none",
+                        "display": "flex",
+                        "justifyContent": "space-between",
+                        "alignItems": "center",
+                        "textTransform": "uppercase",
+                        "letterSpacing": "1px",
+                        "color": "#ffffff"
+                      }
+                    },
+                    {
+                      "blockId": "fd2c",
+                      "element": "div",
+                      "innerHTML": "No. I teach you how to track macros and incorporate foods you actually enjoy. Adherence is the #1 driver of results. If you hate the diet, you won't stick to it. We build a sustainable model.",
+                      "baseStyles": {
+                        "fontFamily": "Montserrat, sans-serif",
+                        "padding": "0 20px 20px",
+                        "color": "#888888",
+                        "borderTop": "1px solid #222222",
+                        "marginTop": "10px",
+                        "paddingTop": "20px",
+                        "lineHeight": "1.6"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "sticky",
+          "element": "div",
+          "blockName": "sticky-bar",
+          "baseStyles": {
+            "position": "fixed",
+            "bottom": "0",
+            "left": "0",
+            "width": "100%",
+            "backgroundColor": "rgba(5, 5, 5, 0.95)",
+            "borderTop": "2px solid #ff3300",
+            "padding": "15px 24px",
+            "display": "flex",
+            "justifyContent": "space-between",
+            "alignItems": "center",
+            "zIndex": 1000
+          },
+          "tabletStyles": {
+            "justifyContent": "center",
+            "gap": "16px",
+            "flexDirection": "column"
+          },
+          "children": [
+            {
+              "blockId": "sticky_text",
+              "element": "div",
+              "innerHTML": "Ready to do the work? <span style=\"color:#ff3300\">Spots are strictly limited.</span>",
+              "baseStyles": {
+                "fontFamily": "Oswald, sans-serif",
+                "fontSize": "1.5rem",
+                "textTransform": "uppercase",
+                "letterSpacing": "1px",
+                "color": "#ffffff"
+              },
+              "tabletStyles": {
+                "display": "none"
+              }
+            },
+            {
+              "blockId": "sticky_btn",
+              "element": "a",
+              "blockName": "cta",
+              "attributes": {
+                "href": "#apply"
+              },
+              "classes": [
+                "btn-action"
+              ],
+              "baseStyles": {
+                "display": "inlineBlock",
+                "backgroundColor": "#ff3300",
+                "color": "#ffffff",
+                "padding": "10px 30px",
+                "fontFamily": "Oswald, sans-serif",
+                "fontSize": "1.2rem",
+                "fontWeight": 700,
+                "textTransform": "uppercase",
+                "letterSpacing": "2px",
+                "transform": "skewX(-10deg)",
+                "textDecoration": "none",
+                "hover:backgroundColor": "#cc2900",
+                "hover:transform": "skewX(-10deg) translateY(-3px)"
+              },
+              "children": [
+                {
+                  "blockId": "sticky_btn_t",
+                  "element": "span",
+                  "innerHTML": "Claim Your Spot",
+                  "baseStyles": {
+                    "display": "inlineBlock",
+                    "transform": "skewX(10deg)",
+                    "position": "relative",
+                    "zIndex": 2,
+                    "fontFamily": "Oswald, sans-serif",
+                    "color": "#ffffff"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Fitness",
+  "description": "A bold, high-converting personal-training sales page — full-bleed hero, marquee, harsh-truth checklist, protocol cards, benefits arsenal, stats band, testimonials, pricing and FAQ.",
+  "preview": "/builder_assets/fitness/preview.svg",
+  "categories": ["Fitness & Health", "Coaching"],
+  "pages": [
+    {
+      "name": "fitness",
+      "page_title": "Fitness",
+      "preview": "/builder_assets/fitness/preview.svg"
+    }
+  ]
+}
