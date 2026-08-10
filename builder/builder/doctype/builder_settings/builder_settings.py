@@ -7,6 +7,7 @@ from frappe.utils import get_files_path
 from frappe.utils.caching import redis_cache
 from frappe.website.utils import clear_cache
 
+from builder.cache_sync import enqueue_purge, get_site_subdomain
 from builder.utils import has_page_read, has_page_write
 
 
@@ -42,6 +43,23 @@ class BuilderSettings(Document):
 		if self.has_value_changed("disable_auto_dark_mode"):
 			# Clear cache for all pages since this is a global setting
 			clear_cache()
+		# Global settings (head_html, body_html, scripts, home page, theme) affect
+		# every rendered page, so invalidate the edge cache for the whole site.
+		enqueue_purge(self.site_purge_routes(), site=get_site_subdomain())
+
+	def site_purge_routes(self):
+		routes = [
+			page.get("route")
+			for page in frappe.get_all("Builder Page", filters={"published": 1}, fields=["route"])
+			if page.get("route")
+		]
+		previous = self.get_doc_before_save()
+		if previous and previous.get("home_page"):
+			routes.append(previous.get("home_page"))
+		if self.home_page:
+			routes.append(self.home_page)
+		routes.append("/")
+		return routes
 
 	def handle_script_update(self, attribute, script_type, extension, folder_name):
 		if self.has_value_changed(attribute):

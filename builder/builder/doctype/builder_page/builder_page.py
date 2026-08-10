@@ -33,6 +33,7 @@ from builder.builder.doctype.builder_snapshot.builder_snapshot import (
 	take_snapshot,
 )
 from builder.builder.doctype.user_font.user_font import get_all_user_fonts
+from builder.cache_sync import enqueue_purge, get_site_subdomain
 from builder.export_import_standard_page import export_page_as_standard
 from builder.hooks import builder_path
 from builder.html_preview_image import generate_preview
@@ -226,6 +227,13 @@ class BuilderPage(WebsiteGenerator):
 		):
 			self.clear_route_cache()
 
+		if self.has_value_changed("route"):
+			previous = self.get_doc_before_save()
+			old_route = previous.get("route") if previous else None
+			if old_route and old_route != self.route:
+				# The old route no longer resolves to this page; drop its cached copy too.
+				enqueue_purge([old_route, self.route or "/", "/"], site=get_site_subdomain())
+
 		if self.has_value_changed("published") and not self.published:
 			# if this is homepage then clear homepage from builder settings
 			if frappe.get_cached_value("Builder Settings", "Builder Settings", "home_page") == self.route:
@@ -306,6 +314,9 @@ class BuilderPage(WebsiteGenerator):
 		# Optionally sync the published page to CreatorBase (publish status + URL).
 		self._sync_to_creatorbase()
 
+		# Drop the stale Cloudflare edge-cache copy of this page's route.
+		self.purge_cache()
+
 		return self.route
 
 	def _sync_to_creatorbase(self):
@@ -344,6 +355,7 @@ class BuilderPage(WebsiteGenerator):
 		self.published = 0
 		self.save()
 		capture("builder_page_unpublished", "builder")
+		self.purge_cache()
 
 	@frappe.whitelist()
 	def create_manual_snapshot(self, label: str | None = None):
@@ -615,6 +627,18 @@ class BuilderPage(WebsiteGenerator):
 	def is_home_page(self):
 		"""Check if this page is set as the home page in Builder Settings."""
 		return frappe.get_cached_value("Builder Settings", "Builder Settings", "home_page") == self.route
+
+	def cache_routes(self):
+		"""URLs whose Cloudflare edge-cache entry changes when this page's live
+		content changes: its own route plus the site root (this page may serve as
+		the configured home page)."""
+		routes = [self.route or "/"]
+		if routes[0] != "/":
+			routes.append("/")
+		return routes
+
+	def purge_cache(self):
+		enqueue_purge(self.cache_routes(), site=get_site_subdomain())
 
 
 def replace_component_in_blocks(blocks, target_component, replace_with) -> list[dict]:
