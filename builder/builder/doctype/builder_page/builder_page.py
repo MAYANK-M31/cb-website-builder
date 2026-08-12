@@ -329,7 +329,8 @@ class BuilderPage(WebsiteGenerator):
 		import requests
 		try:
 			uuid = self.name
-			host = frappe.local.request.host if frappe.local.request else None
+			request = getattr(frappe.local, "request", None)
+			host = request.host if request else None
 			scheme = "https" if host and "creatorbase.live" in host else "http"
 			base = f"{scheme}://{host}" if host else ""
 			# Dev sites run on a non-443 port (8008) — include it when the host

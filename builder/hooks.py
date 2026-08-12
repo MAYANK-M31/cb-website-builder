@@ -194,7 +194,13 @@ scheduler_events = {
 # Server-side SSO: when the builder page is requested with ?creatorbase_token=,
 # log the creator in before the response is served so the embedded iframe's first
 # API calls are already authenticated (no "you do not have permission" race).
-before_request = ["builder.auth.sso_before_request"]
+before_request = [
+    "builder.auth.sso_before_request",
+    # Older frappe benches lack frappe.utils.telemetry.pulse.client.boot_config
+    # (used by the frappe-ui telemetry plugin); expose a self-gating shim so the
+    # RPC returns {"enabled": false} instead of 500ing on every builder boot.
+    "builder.pulse_compat.ensure_pulse_boot_config",
+]
 
 # Per-request bearer auth: cookies are blocked inside the cross-site dashboard
 # iframe, so authenticate each API call from the Authorization header using the

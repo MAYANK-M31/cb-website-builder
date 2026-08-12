@@ -24,7 +24,8 @@ def _decode_token(token: str) -> dict | None:
 
 
 def _resolve_site_subdomain() -> str | None:
-	host = frappe.local.request.host.split(":")[0] if frappe.local.request else ""
+	request = getattr(frappe.local, "request", None)
+	host = request.host.split(":")[0] if request else ""
 	# A creator's site is named after their subdomain: {sub}.creatorbase.live (prod)
 	# or {sub}.localhost (dev). The first label is the subdomain.
 	if not host:
