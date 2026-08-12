@@ -11,6 +11,15 @@ PURGE_URL_TMPL = "https://api.cloudflare.com/client/v4/zones/{zone_id}/purge_cac
 PURGE_BATCH_SIZE = 30
 PUBLIC_DOMAIN = "creatorbase.live"
 
+_logger = None
+
+
+def _log():
+	global _logger
+	if _logger is None:
+		_logger = frappe.logger("builder.cache_sync", allow_site=True)
+	return _logger
+
 
 def get_site_subdomain() -> str | None:
 	"""First label of the current request host, e.g. `mayank` from
@@ -60,20 +69,33 @@ def build_page_urls(routes: Iterable[str], origin: str) -> list[str]:
 def purge_page_urls(routes: Iterable[str], site: str, origin: str | None = None) -> None:
 	"""Delete the given page routes for a site from the Cloudflare edge cache.
 	Configured via CLOUDFLARE_API_TOKEN (Zone->Cache Purge) and CLOUDFLARE_ZONE_ID."""
+	log = _log()
+	log.info("[cache_sync] purge_page_urls start site=%s origin=%s routes=%s", site, origin, list(routes or []))
 	origin = origin or build_purge_origin(site)
 	if not origin:
 		frappe.log_error(f"Edge-cache purge skipped: no public origin for site={site}", "builder.cache_sync")
+		log.warning("[cache_sync] purge skipped: no public origin for site=%s", site)
 		return
 	urls = build_page_urls(routes, origin)
 	if not urls:
+		log.warning("[cache_sync] purge skipped: no urls derived from routes=%s", list(routes or []))
 		return
 	token = os.environ.get("CLOUDFLARE_API_TOKEN", "")
 	zone_id = os.environ.get("CLOUDFLARE_ZONE_ID", "")
+	log.info(
+		"[cache_sync] purging %d url(s) site=%s origin=%s token=%s zone_id=%s",
+		len(urls),
+		site,
+		origin,
+		bool(token),
+		zone_id,
+	)
 	if not token or not zone_id:
 		frappe.log_error(
 			"Edge-cache purge skipped: CLOUDFLARE_API_TOKEN/CLOUDFLARE_ZONE_ID not set in container env",
 			"builder.cache_sync",
 		)
+		log.warning("[cache_sync] purge skipped: CLOUDFLARE_API_TOKEN or CLOUDFLARE_ZONE_ID not set")
 		return
 	endpoint = PURGE_URL_TMPL.format(zone_id=zone_id)
 	for i in range(0, len(urls), PURGE_BATCH_SIZE):
@@ -84,6 +106,7 @@ def purge_page_urls(routes: Iterable[str], site: str, origin: str | None = None)
 			json={"files": batch},
 			timeout=30,
 		)
+		log.info("[cache_sync] batch %d/%d -> %s (bytes len=%d)", i // PURGE_BATCH_SIZE + 1, len(urls) // PURGE_BATCH_SIZE + 1, resp.status_code, len(resp.content))
 		if not resp.ok:
 			frappe.log_error(
 				f"Edge-cache purge failed {resp.status_code}: {resp.text[:500]}", "builder.cache_sync"
@@ -93,9 +116,11 @@ def purge_page_urls(routes: Iterable[str], site: str, origin: str | None = None)
 def enqueue_purge(routes: Iterable[str], site: str | None = None) -> None:
 	"""Queue an edge-cache purge after the current transaction commits. The site and
 	public origin are captured here because background jobs lose `frappe.local.request`."""
+	log = _log()
 	site = site or get_site_subdomain()
 	routes = [route for route in routes or [] if route]
 	if not site or not routes:
+		log.warning("[cache_sync] enqueue skipped: site=%s routes=%s", site, list(routes))
 		return
 	host = ""
 	request = getattr(frappe.local, "request", None)
@@ -107,12 +132,19 @@ def enqueue_purge(routes: Iterable[str], site: str | None = None) -> None:
 			f"Edge-cache purge skipped: no public origin for site={site} host={host}",
 			"builder.cache_sync",
 		)
+		log.warning("[cache_sync] enqueue skipped: no public origin site=%s host=%s", site, host)
 		return
-	frappe.enqueue(
-		"builder.cache_sync.purge_page_urls",
-		routes=routes,
-		site=site,
-		origin=origin,
-		queue="short",
-		enqueue_after_commit=True,
-	)
+	log.info("[cache_sync] enqueuing purge site=%s host=%s origin=%s routes=%s", site, host, origin, routes)
+	try:
+		job = frappe.enqueue(
+			"builder.cache_sync.purge_page_urls",
+			routes=routes,
+			site=site,
+			origin=origin,
+			queue="short",
+			enqueue_after_commit=True,
+		)
+		log.info("[cache_sync] purge enqueued job=%s queue=%s", getattr(job, "id", None), getattr(job, "origin", None))
+	except Exception as e:
+		frappe.log_error(f"Edge-cache purge enqueue failed: {e}", "builder.cache_sync")
+		log.exception("[cache_sync] purge enqueue raised")

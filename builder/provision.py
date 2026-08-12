@@ -36,6 +36,20 @@ def site_creator_id(subdomain: str, prod: int) -> int | None:
         return None
 
 
+def creator_id_from_db_name(db_name: str | None) -> int | None:
+    """Derive the creator id from the standard DB name `creatorbase_frappe_<id>`.
+
+    Serves as a fallback when an interrupted provision never wrote
+    `creatorbase_creator_id` into site_config but the per-creator DB already
+    exists (the DB is always named by creator id)."""
+    if not db_name or not db_name.startswith("creatorbase_frappe_"):
+        return None
+    try:
+        return int(db_name[len("creatorbase_frappe_"):]) or None
+    except ValueError:
+        return None
+
+
 def db_exists(db_name: str | None) -> bool:
     """Whether the site's Postgres database actually exists on the shared server.
 
@@ -195,8 +209,9 @@ def status(subdomain: str = "", prod: int = 0) -> dict:
     can survive a dropped/reset DB, and in that state the site is broken (every
     request 500s on connect), so it must not be reported as ready.
 
-    When the DB is missing but a `.provisioned` marker remains (DB dropped after
-    first provisioning), a re-provision is launched in the background so the site
+    When the site dir exists but is not fully provisioned (DB dropped while the
+    `.provisioned` marker remains, or provisioning was interrupted before the
+    marker was written), a re-provision is launched in the background so the site
     heals itself on the caller's next poll."""
     if not authorized():
         frappe.throw("Unauthorized", frappe.PermissionError)
@@ -205,8 +220,11 @@ def status(subdomain: str = "", prod: int = 0) -> dict:
     marker = exists and os.path.isfile(site_marker(subdomain, prod))
     db_ok = db_exists(db) if db else False
 
-    if exists and not db_ok and not os.path.exists(lock_path(subdomain, prod)):
-        creator_id = site_creator_id(subdomain, prod)
+    # Self-heal whenever the site dir exists but isn't fully provisioned (marker
+    # or DB missing) and nothing is already in-flight. Covers both a dropped DB
+    # (marker survives) and an interrupted provision that never wrote the marker.
+    if exists and not (marker and db_ok) and not os.path.exists(lock_path(subdomain, prod)):
+        creator_id = site_creator_id(subdomain, prod) or creator_id_from_db_name(db)
         if creator_id:
             lock = lock_path(subdomain, prod)
             if acquire_lock(lock):
@@ -215,7 +233,7 @@ def status(subdomain: str = "", prod: int = 0) -> dict:
                 except Exception:
                     release_lock(lock)
                     frappe.log_error(
-                        f"Failed to start DB-repair provision for {subdomain}", "builder.provision_status"
+                        f"Failed to start repair provision for {subdomain}", "builder.provision_status"
                     )
 
     return {
