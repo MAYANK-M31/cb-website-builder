@@ -1,6 +1,7 @@
 import json
 import os
 import subprocess
+import time
 
 import frappe
 import jwt
@@ -13,6 +14,12 @@ SITES_ROOT = "/home/frappe/frappe-bench/sites"
 PROVISION_MARKER = ".provisioned"
 LOCK_SUFFIX = ".provision.lock"
 LOG_DIR = "/tmp/provision-logs"
+
+# A provision lock older than this is considered stale even if its recorded pid
+# happens to be alive (pid reuse, or a lock left behind by a pre-`echo $$` run
+# that recorded the long-lived RPC worker pid). Fresh provisioning takes minutes,
+# never hours, so this only fires for genuinely orphaned locks.
+LOCK_MAX_AGE = 3600
 
 
 def site_config(subdomain: str, prod: int) -> dict:
@@ -140,6 +147,26 @@ def pid_alive(pid: int) -> bool:
     return True
 
 
+def lock_held(path: str) -> bool:
+    """Whether a provision lock is still held by a live process.
+
+    The lock file is stamped by provision_site.sh with the *script's* own pid
+    (echo $$), so a lock whose recorded pid is dead means the script was killed
+    mid-run (container restart, OOM, SIGKILL) and the lock is stale — the site
+    must not be reported as "provisioning" forever and should self-heal. An
+    older-than-LOCK_MAX_AGE lock is stale even if the pid looks alive (pid reuse,
+    or a pre-`echo $$` lock holding the RPC worker's pid)."""
+    if not os.path.exists(path):
+        return False
+    try:
+        age = time.time() - os.path.getmtime(path)
+        with open(path) as f:
+            pid = int(f.read().strip() or 0)
+    except (OSError, ValueError):
+        return False
+    return pid > 0 and pid_alive(pid) and age < LOCK_MAX_AGE
+
+
 def acquire_lock(path: str) -> bool:
     """Atomically claim the provisioning lock. Returns False when another
     provision is already running (a stale lock from a dead pid is reclaimed)."""
@@ -152,14 +179,9 @@ def acquire_lock(path: str) -> bool:
         except FileExistsError:
             if attempt:
                 return False
-            try:
-                with open(path) as f:
-                    pid = int(f.read().strip() or 0)
-            except (OSError, ValueError):
-                pid = 0
-            if pid and pid_alive(pid):
+            if lock_held(path):
                 return False
-            # stale lock from a crashed worker — reclaim it
+            # stale lock from a killed provision — reclaim it
             try:
                 os.remove(path)
             except OSError:
@@ -219,14 +241,15 @@ def status(subdomain: str = "", prod: int = 0) -> dict:
     db = site_db_name(subdomain, prod)
     marker = exists and os.path.isfile(site_marker(subdomain, prod))
     db_ok = db_exists(db) if db else False
+    lock = lock_path(subdomain, prod)
 
     # Self-heal whenever the site dir exists but isn't fully provisioned (marker
-    # or DB missing) and nothing is already in-flight. Covers both a dropped DB
-    # (marker survives) and an interrupted provision that never wrote the marker.
-    if exists and not (marker and db_ok) and not os.path.exists(lock_path(subdomain, prod)):
+    # or DB missing) and no provision is actually running. A stale lock left by a
+    # killed provision script (dead pid) is reclaimed rather than treated as
+    # in-flight, so the site can't sit in "provisioning" forever.
+    if exists and not (marker and db_ok) and not lock_held(lock):
         creator_id = site_creator_id(subdomain, prod) or creator_id_from_db_name(db)
         if creator_id:
-            lock = lock_path(subdomain, prod)
             if acquire_lock(lock):
                 try:
                     spawn_provision(subdomain, creator_id, prod, lock)
@@ -240,7 +263,7 @@ def status(subdomain: str = "", prod: int = 0) -> dict:
         "exists": exists,
         "ready": exists and marker and db_ok,
         "ready_marker": marker,
-        "provisioning": os.path.exists(lock_path(subdomain, prod)),
+        "provisioning": lock_held(lock),
         "site": site_name(subdomain, prod),
         "db_name": db,
         "db_exists": db_ok,
