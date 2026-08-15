@@ -420,7 +420,7 @@ def local_template_groups() -> list[dict]:
 		"executive": "https://preview.creatorbase.live/templates/executive",
 		"fitness": "https://preview.creatorbase.live/templates/fitness",
 		"masterclass": "https://preview.creatorbase.live/templates/masterclass",
-		"personal_help": "http://preview.creatorbase.live/pages/personelhelp",
+		"personal_help": "http://preview.creatorbase.live/templates/personelhelp",
 		"creatorbase": "https://preview.creatorbase.live/templates/creatorbase",
 	}
 
