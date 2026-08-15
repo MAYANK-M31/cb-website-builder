@@ -412,8 +412,25 @@ def local_template_groups() -> list[dict]:
 	work without the hub."""
 	from builder.template_sync import get_all_group_manifests
 
+	# Pre-rendered static live URLs, same mechanism the hub templates use — the
+	# frontend iframes these directly instead of doing a slow DB render per view.
+	# Order matters for the gallery: elevate first, creatorbase last.
+	LIVE_URLS = {
+		"elevate": "https://preview.creatorbase.live/templates/elevate",
+		"executive": "https://preview.creatorbase.live/templates/executive",
+		"fitness": "https://preview.creatorbase.live/templates/fitness",
+		"masterclass": "https://preview.creatorbase.live/templates/masterclass",
+		"personal_help": "http://preview.creatorbase.live/pages/personelhelp",
+		"creatorbase": "https://preview.creatorbase.live/templates/creatorbase",
+	}
+
+	manifests = get_all_group_manifests()
+	folders = [f for f in LIVE_URLS if f in manifests] + [f for f in manifests if f not in LIVE_URLS]
+
 	groups = []
-	for folder, manifest in get_all_group_manifests().items():
+	for folder in folders:
+		manifest = manifests[folder]
+		live_url = LIVE_URLS.get(folder)
 		groups.append(
 			{
 				"name": folder,
@@ -426,6 +443,7 @@ def local_template_groups() -> list[dict]:
 						"name": page.get("name"),
 						"page_title": page.get("page_title") or page.get("name"),
 						"preview": page.get("preview"),
+						"live_url": live_url,
 					}
 					for page in manifest.get("pages") or []
 					if isinstance(page, dict) and page.get("name")

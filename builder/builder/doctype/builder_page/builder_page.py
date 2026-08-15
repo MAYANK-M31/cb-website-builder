@@ -466,6 +466,19 @@ class BuilderPage(WebsiteGenerator):
 				context.base_url = frappe.utils.get_url(frappe.local.request.path or self.route)
 			else:
 				context.base_url = frappe.utils.get_url(self.route)
+			# Keep every relative asset (reset.css, images, fonts) resolving against
+			# the origin the browser actually reached. get_url() can leak a dev
+			# port or the wrong vhost (e.g. `preview.creatorbase.live:8000`) into
+			# <base>, silently breaking the preview's assets. Prefer the forwarded
+			# gateway host and drop any port, falling back to get_url().
+			scheme = frappe.get_request_header("X-Forwarded-Proto", "")
+			forwarded_host = frappe.get_request_header("X-Forwarded-Host", "")
+			request_host = frappe.get_request_header("Host", "")
+			host = (forwarded_host or request_host or "").split(":")[0]
+			if scheme and host:
+				base_path = context.base_url.split("//", 1)[-1]
+				base_path = base_path[base_path.find("/"):] if "/" in base_path else ""
+				context.base_url = f"{scheme}://{host}{base_path}"
 
 		context.update(page_data)
 
