@@ -98,15 +98,18 @@ def purge_page_urls(routes: Iterable[str], site: str, origin: str | None = None)
 		log.warning("[cache_sync] purge skipped: CLOUDFLARE_API_TOKEN or CLOUDFLARE_ZONE_ID not set")
 		return
 	endpoint = PURGE_URL_TMPL.format(zone_id=zone_id)
+	log.info("[cache_sync] POST endpoint=%s", endpoint)
 	for i in range(0, len(urls), PURGE_BATCH_SIZE):
 		batch = urls[i : i + PURGE_BATCH_SIZE]
+		payload = {"files": batch}
+		log.info("[cache_sync] SENDING batch %d/%d files=%s", i // PURGE_BATCH_SIZE + 1, len(urls) // PURGE_BATCH_SIZE + 1, payload)
 		resp = requests.post(
 			endpoint,
 			headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
-			json={"files": batch},
+			json=payload,
 			timeout=30,
 		)
-		log.info("[cache_sync] batch %d/%d -> %s (bytes len=%d)", i // PURGE_BATCH_SIZE + 1, len(urls) // PURGE_BATCH_SIZE + 1, resp.status_code, len(resp.content))
+		log.info("[cache_sync] RESP status=%s body=%s", resp.status_code, resp.text[:800])
 		if not resp.ok:
 			frappe.log_error(
 				f"Edge-cache purge failed {resp.status_code}: {resp.text[:500]}", "builder.cache_sync"
