@@ -231,7 +231,10 @@ class BuilderPage(WebsiteGenerator):
 			previous = self.get_doc_before_save()
 			old_route = previous.get("route") if previous else None
 			if old_route and old_route != self.route:
-				# The old route no longer resolves to this page; drop its cached copy too.
+				# The old route no longer resolves to this page; drop both the
+				# rendered-page cache (website_page/page_context hash keys) and the
+				# edge-cache copy for the removed route.
+				clear_cache(old_route)
 				enqueue_purge([old_route, self.route or "/", "/"], site=get_site_subdomain())
 
 		if self.has_value_changed("published") and not self.published:

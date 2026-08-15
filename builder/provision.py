@@ -340,10 +340,24 @@ def create_homepage(subdomain: str = "", prod: int = 0, template_page: str | Non
     from builder.api import create_page_from_local_template
 
     new_page = create_page_from_local_template(page_name)
+    # create_page_from_local_template stores the template's content in
+    # draft_blocks and leaves blocks="[]" (the default). Publishing by setting
+    # `published=1` directly (like publish()) would leave the live page blank,
+    # so move the content into blocks before flipping the flag.
+    home_doc = frappe.get_doc("Builder Page", new_page)
+    if home_doc.draft_blocks:
+        home_doc.blocks = home_doc.draft_blocks
+        home_doc.draft_blocks = None
     frappe.db.set_value(
         "Builder Page",
         new_page,
-        {"route": HOMEPAGE_ROUTE, "published": 1, "published_at": frappe.utils.now()},
+        {
+            "route": HOMEPAGE_ROUTE,
+            "published": 1,
+            "published_at": frappe.utils.now(),
+            "blocks": home_doc.blocks,
+            "draft_blocks": None,
+        },
         update_modified=False,
     )
     frappe.db.set_value("Builder Settings", "Builder Settings", "home_page", HOMEPAGE_ROUTE, update_modified=False)
