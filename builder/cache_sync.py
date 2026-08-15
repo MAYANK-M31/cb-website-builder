@@ -1,11 +1,16 @@
 # Copyright (c) 2026, CreatorBase and contributors
 # For license information, please see license.txt
 
+import logging
 import os
 from collections.abc import Iterable
 
 import frappe
 import requests
+
+# NOTE: Frappe's default effective level is ERROR in prod and this build never
+# reads the `logging` site config, so purge logs would be silently dropped.
+# `_log()` below forces INFO on this specific logger (not globally).
 
 PURGE_URL_TMPL = "https://api.cloudflare.com/client/v4/zones/{zone_id}/purge_cache"
 PURGE_BATCH_SIZE = 30
@@ -18,6 +23,7 @@ def _log():
 	global _logger
 	if _logger is None:
 		_logger = frappe.logger("builder.cache_sync", allow_site=True)
+		_logger.setLevel(logging.INFO)
 	return _logger
 
 
