@@ -1,0 +1,13 @@
+{
+  "title": "Elevate ⭐",
+  "description": "Premium creator homepage — warm editorial aesthetic, hero with portrait panel, featured offers, about, social proof, newsletter and final CTA. Powered by creator-specific offer and content data.",
+  "preview": "/builder_assets/elevate/preview.svg",
+  "categories": ["Marketing", "Business"],
+  "pages": [
+    {
+      "name": "elevate",
+      "page_title": "Elevate ⭐",
+      "preview": "/builder_assets/elevate/preview.svg"
+    }
+  ]
+}

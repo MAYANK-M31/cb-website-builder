@@ -1,0 +1,2097 @@
+{
+  "doctype": "Builder Page",
+  "name": "elevate",
+  "page_title": "Elevate ⭐",
+  "page_name": "Elevate ⭐",
+  "route": null,
+  "published": 0,
+  "published_at": null,
+  "is_template": 1,
+  "template_group": "elevate",
+  "preview": "/builder_assets/elevate/preview.svg",
+  "head_html": "<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap\" rel=\"stylesheet\" />\n<style>\nhtml{scroll-behavior:smooth}\nbody::before{content:\"\";position:fixed;inset:0;pointer-events:none;opacity:.22;z-index:-1;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E\")}\n</style>",
+  "body_html": "<script>\nconst menu=document.querySelector('.menu');\nconst nav=document.querySelector('.navlinks');\nmenu?.addEventListener('click',()=>{\n  const open=nav.style.display==='flex';\n  nav.style.display=open?'':'flex';\n  if(!open){\n    nav.style.position='absolute';nav.style.top='67px';nav.style.left='13px';nav.style.right='13px';\n    nav.style.padding='16px';nav.style.border='1px solid #e5dfd8';nav.style.borderRadius='18px';\n    nav.style.background='#fff';nav.style.flexDirection='column';nav.style.alignItems='flex-start';\n    nav.style.boxShadow='0 18px 50px rgba(0,0,0,.08)';\n  }\n});\nnav?.addEventListener('click',e=>{if(e.target.closest('a'))nav.style.display=''});\n</script>",
+  "blocks": [
+    {
+      "blockId": "root",
+      "element": "div",
+      "originalElement": "body",
+      "baseStyles": {
+        "width": "100%",
+        "backgroundColor": "#f6f3ee",
+        "color": "#101012",
+        "fontFamily": "Inter, sans-serif",
+        "lineHeight": "1.5"
+      },
+      "children": [
+        {
+          "blockId": "announcement",
+          "element": "div",
+          "blockName": "announcement",
+          "innerHTML": "New: <span style=\"color:#c9a8ff\">My free Creator Playbook</span> is live — grab a copy →",
+          "baseStyles": {
+            "display": "block",
+            "width": "100%",
+            "backgroundColor": "#15131a",
+            "color": "#f9f6f0",
+            "textAlign": "center",
+            "padding": "9px 14px",
+            "fontSize": "11px",
+            "letterSpacing": "0.01em",
+            "fontFamily": "Inter, sans-serif"
+          }
+        },
+        {
+          "blockId": "header",
+          "element": "header",
+          "blockName": "header",
+          "baseStyles": {
+            "display": "flex",
+            "width": "100%",
+            "justifyContent": "center",
+            "position": "sticky",
+            "top": "0",
+            "zIndex": 40,
+            "backgroundColor": "rgba(246, 243, 238, 0.86)",
+            "backdropFilter": "blur(20px)",
+            "borderBottom": "1px solid rgba(229, 223, 216, 0.8)"
+          },
+          "children": [
+            {
+              "blockId": "navbar",
+              "element": "div",
+              "blockName": "navbar",
+              "baseStyles": {
+                "display": "flex",
+                "alignItems": "center",
+                "justifyContent": "space-between",
+                "gap": "25px",
+                "height": "78px",
+                "width": "min(1220px, calc(100% - 48px))",
+                "margin": "0 auto",
+                "position": "relative"
+              },
+              "mobileStyles": {
+                "height": "67px",
+                "width": "min(1220px, calc(100% - 26px))"
+              },
+              "children": [
+                {
+                  "blockId": "logo",
+                  "element": "a",
+                  "blockName": "logo",
+                  "attributes": { "href": "#hero" },
+                  "baseStyles": {
+                    "display": "flex",
+                    "alignItems": "center",
+                    "gap": "10px",
+                    "fontWeight": 900,
+                    "fontSize": "16px",
+                    "letterSpacing": "-0.055em",
+                    "color": "#101012",
+                    "textDecoration": "none",
+                    "fontFamily": "Inter, sans-serif"
+                  },
+                  "children": [
+                    {
+                      "blockId": "logo_mark",
+                      "element": "span",
+                      "innerHTML": "A",
+                      "baseStyles": {
+                        "display": "grid",
+                        "placeItems": "center",
+                        "width": "35px",
+                        "height": "35px",
+                        "borderRadius": "11px",
+                        "color": "#ffffff",
+                        "backgroundColor": "#8c4ff9",
+                        "backgroundImage": "linear-gradient(135deg, #b58cff, #7440d8)",
+                        "boxShadow": "0 9px 25px rgba(140, 79, 249, 0.2)",
+                        "fontFamily": "Inter, sans-serif"
+                      }
+                    },
+                    {
+                      "blockId": "logo_text",
+                      "element": "span",
+                      "innerHTML": "Alex Carter",
+                      "baseStyles": { "fontFamily": "Inter, sans-serif" }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "navlinks",
+                  "element": "nav",
+                  "blockName": "nav-links",
+                  "classes": ["navlinks"],
+                  "baseStyles": {
+                    "display": "flex",
+                    "alignItems": "center",
+                    "gap": "31px",
+                    "color": "#726c68",
+                    "fontSize": "12px",
+                    "fontFamily": "Inter, sans-serif"
+                  },
+                  "mobileStyles": { "display": "none" },
+                  "children": [
+                    {
+                      "blockId": "navlink_work",
+                      "element": "a",
+                      "innerHTML": "Work",
+                      "attributes": { "href": "#work" },
+                      "baseStyles": {
+                        "color": "#726c68",
+                        "textDecoration": "none",
+                        "hover:color": "#101012",
+                        "fontFamily": "Inter, sans-serif"
+                      }
+                    },
+                    {
+                      "blockId": "navlink_about",
+                      "element": "a",
+                      "innerHTML": "About",
+                      "attributes": { "href": "#about" },
+                      "baseStyles": {
+                        "color": "#726c68",
+                        "textDecoration": "none",
+                        "hover:color": "#101012",
+                        "fontFamily": "Inter, sans-serif"
+                      }
+                    },
+                    {
+                      "blockId": "navlink_results",
+                      "element": "a",
+                      "innerHTML": "Results",
+                      "attributes": { "href": "#proof" },
+                      "baseStyles": {
+                        "color": "#726c68",
+                        "textDecoration": "none",
+                        "hover:color": "#101012",
+                        "fontFamily": "Inter, sans-serif"
+                      }
+                    },
+                    {
+                      "blockId": "navlink_replace",
+                      "element": "a",
+                      "innerHTML": "Journal",
+                      "attributes": { "href": "#journal" },
+                      "baseStyles": {
+                        "color": "#726c68",
+                        "textDecoration": "none",
+                        "hover:color": "#101012",
+                        "fontFamily": "Inter, sans-serif"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "navright",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "flex",
+                    "gap": "9px",
+                    "alignItems": "center"
+                  },
+                  "mobileStyles": { "display": "none" },
+                  "children": [
+                    {
+                      "blockId": "nav_cta_resource",
+                      "element": "a",
+                      "blockName": "cta",
+                      "attributes": { "href": "#work" },
+                      "innerHTML": "Explore offers",
+                      "baseStyles": {
+                        "display": "inlineFlex",
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "gap": "8px",
+                        "padding": "12px 17px",
+                        "borderRadius": "14px",
+                        "fontSize": "12px",
+                        "fontWeight": 850,
+                        "border": "1px solid #e5dfd8",
+                        "backgroundColor": "#ffffff",
+                        "color": "#101012",
+                        "textDecoration": "none",
+                        "cursor": "pointer",
+                        "transition": "0.22s ease",
+                        "hover:transform": "translateY(-2px)",
+                        "fontFamily": "Inter, sans-serif"
+                      }
+                    },
+                    {
+                      "blockId": "nav_cta_main",
+                      "element": "a",
+                      "blockName": "cta",
+                      "attributes": { "href": "#work" },
+                      "innerHTML": "Work with me",
+                      "baseStyles": {
+                        "display": "inlineFlex",
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "gap": "8px",
+                        "padding": "12px 17px",
+                        "borderRadius": "14px",
+                        "fontSize": "12px",
+                        "fontWeight": 850,
+                        "border": "1px solid transparent",
+                        "backgroundColor": "#101012",
+                        "color": "#ffffff",
+                        "textDecoration": "none",
+                        "cursor": "pointer",
+                        "transition": "0.22s ease",
+                        "hover:transform": "translateY(-2px)",
+                        "fontFamily": "Inter, sans-serif"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "menu_btn",
+                  "element": "button",
+                  "innerHTML": "☰",
+                  "classes": ["menu"],
+                  "attributes": { "aria-label": "Open menu" },
+                  "baseStyles": {
+                    "display": "none",
+                    "border": "0",
+                    "backgroundColor": "transparent",
+                    "fontSize": "22px",
+                    "color": "#101012",
+                    "cursor": "pointer"
+                  },
+                  "mobileStyles": { "display": "flex" }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "hero",
+          "element": "section",
+          "blockName": "hero",
+          "attributes": { "id": "hero" },
+          "baseStyles": {
+            "display": "flex",
+            "width": "100%",
+            "justifyContent": "center",
+            "padding": "55px 0 76px"
+          },
+          "mobileStyles": { "paddingTop": "42px" },
+          "children": [
+            {
+              "blockId": "hero_container",
+              "element": "div",
+              "baseStyles": {
+                "width": "min(1220px, calc(100% - 48px))",
+                "margin": "0 auto"
+              },
+              "mobileStyles": {
+                "width": "min(1220px, calc(100% - 26px))"
+              },
+              "children": [
+                {
+                  "blockId": "hero_top",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "flex",
+                    "justifyContent": "space-between",
+                    "alignItems": "flex-end",
+                    "gap": "25px",
+                    "marginBottom": "26px"
+                  },
+                  "tabletStyles": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start"
+                  },
+                  "children": [
+                    {
+                      "blockId": "hero_intro",
+                      "element": "div",
+                      "baseStyles": {
+                        "maxWidth": "770px",
+                        "fontFamily": "Inter, sans-serif"
+                      },
+                      "children": [
+                        {
+                          "blockId": "hero_kicker",
+                          "element": "span",
+                          "innerHTML": "Creator · Coach · Educator",
+                          "baseStyles": {
+                            "display": "block",
+                            "fontSize": "10px",
+                            "fontWeight": 900,
+                            "letterSpacing": "0.16em",
+                            "textTransform": "uppercase",
+                            "color": "#7b6d63",
+                            "fontFamily": "Inter, sans-serif"
+                          }
+                        },
+                        {
+                          "blockId": "hero_title",
+                          "element": "h1",
+                          "innerHTML": "Ideas, <em style=\"font-style:italic;color:#8c4ff9\">experience</em> &amp; a little obsession with getting better.",
+                          "baseStyles": {
+                            "fontFamily": "Georgia, serif",
+                            "fontWeight": 500,
+                            "fontSize": "clamp(57px, 8vw, 108px)",
+                            "lineHeight": "0.86",
+                            "letterSpacing": "-0.075em",
+                            "margin": "14px 0 18px"
+                          },
+                          "mobileStyles": { "fontSize": "55px" }
+                        },
+                        {
+                          "blockId": "hero_sub",
+                          "element": "p",
+                          "innerHTML": "I'm Alex — I help ambitious people get better at what they care about, through coaching, education, products and everything I learn along the way.",
+                          "baseStyles": {
+                            "fontSize": "16px",
+                            "lineHeight": "1.72",
+                            "color": "#77716d",
+                            "maxWidth": "670px",
+                            "fontFamily": "Inter, sans-serif"
+                          }
+                        },
+                        {
+                          "blockId": "hero_cta",
+                          "element": "div",
+                          "baseStyles": {
+                            "display": "flex",
+                            "gap": "10px",
+                            "marginTop": "23px",
+                            "flexWrap": "wrap"
+                          },
+                          "children": [
+                            {
+                              "blockId": "hero_cta_primary",
+                              "element": "a",
+                              "blockName": "cta",
+                              "attributes": { "href": "#work" },
+                              "innerHTML": "Explore my work ↗",
+                              "baseStyles": {
+                                "display": "inlineFlex",
+                                "alignItems": "center",
+                                "justifyContent": "center",
+                                "gap": "8px",
+                                "padding": "12px 17px",
+                                "borderRadius": "14px",
+                                "fontSize": "12px",
+                                "fontWeight": 850,
+                                "border": "1px solid transparent",
+                                "backgroundColor": "#8c4ff9",
+                                "color": "#ffffff",
+                                "boxShadow": "0 12px 30px rgba(140, 79, 249, 0.24)",
+                                "textDecoration": "none",
+                                "cursor": "pointer",
+                                "transition": "0.22s ease",
+                                "hover:transform": "translateY(-2px)"
+                              }
+                            },
+                            {
+                              "blockId": "hero_cta_secondary",
+                              "element": "a",
+                              "blockName": "cta",
+                              "attributes": { "href": "#about" },
+                              "innerHTML": "Meet Alex",
+                              "baseStyles": {
+                                "display": "inlineFlex",
+                                "alignItems": "center",
+                                "justifyContent": "center",
+                                "gap": "8px",
+                                "padding": "12px 17px",
+                                "borderRadius": "14px",
+                                "fontSize": "12px",
+                                "fontWeight": 850,
+                                "border": "1px solid #e5dfd8",
+                                "backgroundColor": "#ffffff",
+                                "color": "#101012",
+                                "textDecoration": "none",
+                                "cursor": "pointer",
+                                "transition": "0.22s ease",
+                                "hover:transform": "translateY(-2px)"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "hero_note",
+                      "element": "div",
+                      "innerHTML": "Sharing what I learn about business, creativity, markets and building a life around work that matters.",
+                      "baseStyles": {
+                        "width": "220px",
+                        "textAlign": "right",
+                        "fontSize": "10px",
+                        "color": "#77716d",
+                        "lineHeight": "1.5",
+                        "fontFamily": "Inter, sans-serif"
+                      },
+                      "tabletStyles": {
+                        "textAlign": "left",
+                        "width": "auto"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "hero_stage",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "grid",
+                    "gridTemplateColumns": "1.35fr 0.65fr",
+                    "gap": "14px",
+                    "marginTop": "48px"
+                  },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "mobileStyles": { "marginTop": "32px" },
+                  "children": [
+                    {
+                      "blockId": "hero_media",
+                      "element": "div",
+                      "blockName": "media",
+                      "baseStyles": {
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "minHeight": "680px",
+                        "borderRadius": "32px",
+                        "position": "relative",
+                        "overflow": "hidden",
+                        "backgroundImage": "radial-gradient(circle at 22% 15%, rgba(255, 255, 255, 0.75), transparent 17%), radial-gradient(circle at 84% 32%, rgba(218, 192, 255, 0.4), transparent 25%), linear-gradient(145deg, #e8dbff 0%, #b88bf5 47%, #6a34cc 100%)"
+                      },
+                      "tabletStyles": { "minHeight": "560px" },
+                      "mobileStyles": { "minHeight": "470px" },
+                      "children": [
+                        {
+                          "blockId": "hero_media_frame",
+                          "element": "div",
+                          "baseStyles": {
+                            "position": "absolute",
+                            "top": "24px",
+                            "left": "24px",
+                            "right": "24px",
+                            "bottom": "24px",
+                            "border": "1px solid rgba(255, 255, 255, 0.4)",
+                            "borderRadius": "27px"
+                          }
+                        },
+                        {
+                          "blockId": "hero_photo_label",
+                          "element": "div",
+                          "baseStyles": {
+                            "position": "absolute",
+                            "left": "30px",
+                            "top": "30px",
+                            "backgroundColor": "rgba(255, 255, 255, 0.88)",
+                            "borderRadius": "16px",
+                            "padding": "13px 14px",
+                            "backdropFilter": "blur(10px)",
+                            "fontFamily": "Inter, sans-serif"
+                          },
+                          "children": [
+                            {
+                              "blockId": "hero_photo_label_tag",
+                              "element": "small",
+                              "innerHTML": "BASED IN",
+                              "baseStyles": {
+                                "display": "block",
+                                "color": "#8b837d",
+                                "fontSize": "9px",
+                                "fontWeight": 800,
+                                "letterSpacing": "0.08em"
+                              }
+                            },
+                            {
+                              "blockId": "hero_photo_label_val",
+                              "element": "strong",
+                              "innerHTML": "New York · Worldwide",
+                              "baseStyles": {
+                                "display": "block",
+                                "fontSize": "15px",
+                                "marginTop": "2px",
+                                "color": "#101012"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "blockId": "hero_person",
+                          "element": "div",
+                          "baseStyles": {
+                            "position": "absolute",
+                            "left": "23%",
+                            "right": "11%",
+                            "bottom": "-2%",
+                            "height": "82%",
+                            "borderRadius": "47% 47% 10% 10%",
+                            "backgroundImage": "radial-gradient(circle at 50% 20%, #f2c3a5 0 9%, transparent 9.5%), radial-gradient(circle at 50% 13%, #2f2526 0 15%, transparent 15.5%), linear-gradient(145deg, #ffffff 0 44%, #211c26 44% 100%)"
+                          }
+                        },
+                        {
+                          "blockId": "hero_caption",
+                          "element": "div",
+                          "baseStyles": {
+                            "position": "absolute",
+                            "left": "31px",
+                            "bottom": "29px",
+                            "color": "#ffffff",
+                            "maxWidth": "290px",
+                            "fontFamily": "Inter, sans-serif"
+                          },
+                          "children": [
+                            {
+                              "blockId": "hero_caption_title",
+                              "element": "b",
+                              "innerHTML": "Build. Learn. Share. Repeat.",
+                              "baseStyles": {
+                                "display": "block",
+                                "fontFamily": "Georgia, serif",
+                                "fontSize": "33px",
+                                "lineHeight": "1",
+                                "letterSpacing": "-0.04em"
+                              }
+                            },
+                            {
+                              "blockId": "hero_caption_text",
+                              "element": "span",
+                              "innerHTML": "Personal brand, products and practical ideas for ambitious people.",
+                              "baseStyles": {
+                                "display": "block",
+                                "fontSize": "11px",
+                                "opacity": 0.78,
+                                "marginTop": "8px"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "hero_side",
+                      "element": "div",
+                      "baseStyles": {
+                        "display": "grid",
+                        "gridTemplateRows": "1fr 1fr",
+                        "gap": "14px"
+                      },
+                      "mobileStyles": { "gridTemplateRows": "auto auto" },
+                      "children": [
+                        {
+                          "blockId": "side_card_dark",
+                          "element": "div",
+                          "baseStyles": {
+                            "borderRadius": "28px",
+                            "overflow": "hidden",
+                            "position": "relative",
+                            "padding": "25px",
+                            "backgroundColor": "#17151b",
+                            "color": "#ffffff",
+                            "fontFamily": "Inter, sans-serif"
+                          },
+                          "children": [
+                            {
+                              "blockId": "side_card_dark_kicker",
+                              "element": "span",
+                              "innerHTML": "Featured",
+                              "baseStyles": {
+                                "display": "block",
+                                "fontSize": "10px",
+                                "fontWeight": 900,
+                                "letterSpacing": "0.16em",
+                                "textTransform": "uppercase",
+                                "color": "#d2b8ff"
+                              }
+                            },
+                            {
+                              "blockId": "side_card_dark_title",
+                              "element": "h3",
+                              "innerHTML": "The Creator Lab",
+                              "baseStyles": {
+                                "margin": "11px 0 0",
+                                "fontSize": "29px",
+                                "lineHeight": "1.02",
+                                "letterSpacing": "-0.055em",
+                                "color": "#ffffff"
+                              }
+                            },
+                            {
+                              "blockId": "side_card_dark_desc",
+                              "element": "p",
+                              "innerHTML": "A hands-on program for turning knowledge, skills and audience into a real business.",
+                              "baseStyles": {
+                                "fontSize": "11px",
+                                "lineHeight": "1.7",
+                                "color": "#aaa3ad",
+                                "margin": "13px 0 0",
+                                "maxWidth": "230px"
+                              }
+                            },
+                            {
+                              "blockId": "mini_stat",
+                              "element": "div",
+                              "baseStyles": {
+                                "position": "absolute",
+                                "right": "23px",
+                                "top": "24px",
+                                "textAlign": "right"
+                              },
+                              "children": [
+                                {
+                                  "blockId": "mini_stat_val",
+                                  "element": "strong",
+                                  "innerHTML": "2K+",
+                                  "baseStyles": {
+                                    "display": "block",
+                                    "fontSize": "30px",
+                                    "letterSpacing": "-0.06em",
+                                    "color": "#ffffff"
+                                  }
+                                },
+                                {
+                                  "blockId": "mini_stat_lbl",
+                                  "element": "span",
+                                  "innerHTML": "members",
+                                  "baseStyles": {
+                                    "display": "block",
+                                    "fontSize": "9px",
+                                    "color": "#9c959f"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "blockId": "side_arrow_dark",
+                              "element": "span",
+                              "innerHTML": "↗",
+                              "baseStyles": {
+                                "position": "absolute",
+                                "right": "21px",
+                                "bottom": "19px",
+                                "width": "34px",
+                                "height": "34px",
+                                "borderRadius": "50%",
+                                "display": "grid",
+                                "placeItems": "center",
+                                "backgroundColor": "#26212d",
+                                "color": "#ffffff",
+                                "fontSize": "14px"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "blockId": "side_card_light",
+                          "element": "div",
+                          "baseStyles": {
+                            "borderRadius": "28px",
+                            "overflow": "hidden",
+                            "position": "relative",
+                            "padding": "25px",
+                            "backgroundColor": "#ffffff",
+                            "border": "1px solid #e5dfd8",
+                            "fontFamily": "Inter, sans-serif"
+                          },
+                          "children": [
+                            {
+                              "blockId": "side_card_light_kicker",
+                              "element": "span",
+                              "innerHTML": "This week's idea",
+                              "baseStyles": {
+                                "display": "block",
+                                "fontSize": "10px",
+                                "fontWeight": 800,
+                                "letterSpacing": "0.08em",
+                                "textTransform": "uppercase",
+                                "color": "#8b837d"
+                              }
+                            },
+                            {
+                              "blockId": "side_card_light_title",
+                              "element": "h3",
+                              "innerHTML": "Stop building a bigger audience. Build a better reason to buy.",
+                              "baseStyles": {
+                                "margin": "11px 0 0",
+                                "fontSize": "29px",
+                                "lineHeight": "1.02",
+                                "letterSpacing": "-0.055em",
+                                "color": "#101012"
+                              }
+                            },
+                            {
+                              "blockId": "side_card_light_desc",
+                              "element": "p",
+                              "innerHTML": "Read the latest note from the journal.",
+                              "baseStyles": {
+                                "fontSize": "11px",
+                                "lineHeight": "1.7",
+                                "color": "#77716d",
+                                "margin": "13px 0 0",
+                                "maxWidth": "230px"
+                              }
+                            },
+                            {
+                              "blockId": "side_image_decor",
+                              "element": "div",
+                              "baseStyles": {
+                                "position": "absolute",
+                                "right": "-10px",
+                                "bottom": "-12px",
+                                "width": "48%",
+                                "height": "54%",
+                                "borderRadius": "30px 0 0 0",
+                                "backgroundImage": "linear-gradient(155deg, #dccdff, #8c4ff9 65%, #5d28ba)",
+                                "opacity": 0.88
+                              }
+                            },
+                            {
+                              "blockId": "side_arrow_light",
+                              "element": "span",
+                              "innerHTML": "→",
+                              "baseStyles": {
+                                "position": "absolute",
+                                "right": "21px",
+                                "bottom": "19px",
+                                "width": "34px",
+                                "height": "34px",
+                                "borderRadius": "50%",
+                                "display": "grid",
+                                "placeItems": "center",
+                                "backgroundColor": "#f1eaff",
+                                "color": "#8c4ff9",
+                                "fontSize": "14px"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "trust",
+          "element": "div",
+          "blockName": "trust",
+          "baseStyles": {
+            "display": "flex",
+            "width": "100%",
+            "justifyContent": "center",
+            "borderTop": "1px solid #e5dfd8",
+            "borderBottom": "1px solid #e5dfd8",
+            "backgroundColor": "#fbfaf8"
+          },
+          "children": [
+            {
+              "blockId": "trust_inner",
+              "element": "div",
+              "baseStyles": {
+                "display": "flex",
+                "justifyContent": "space-between",
+                "gap": "25px",
+                "alignItems": "center",
+                "padding": "19px 0",
+                "flexWrap": "wrap",
+                "width": "min(1220px, calc(100% - 48px))",
+                "margin": "0 auto",
+                "fontFamily": "Inter, sans-serif"
+              },
+              "mobileStyles": {
+                "width": "min(1220px, calc(100% - 26px))"
+              },
+              "children": [
+                {
+                  "blockId": "trust_label",
+                  "element": "span",
+                  "innerHTML": "What people know me for",
+                  "baseStyles": {
+                    "fontSize": "10px",
+                    "textTransform": "uppercase",
+                    "letterSpacing": "0.14em",
+                    "fontWeight": 900,
+                    "color": "#9a918a"
+                  }
+                },
+                {
+                  "blockId": "trust_items",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "flex",
+                    "gap": "30px",
+                    "flexWrap": "wrap",
+                    "fontSize": "11px",
+                    "color": "#68615c",
+                    "fontWeight": 700
+                  },
+                  "children": [
+                    { "blockId": "t0", "element": "span", "innerHTML": "✦ Creator education", "baseStyles": { "fontFamily": "Inter, sans-serif" } },
+                    { "blockId": "t1", "element": "span", "innerHTML": "✦ Business strategy", "baseStyles": { "fontFamily": "Inter, sans-serif" } },
+                    { "blockId": "t2", "element": "span", "innerHTML": "✦ Markets &amp; investing", "baseStyles": { "fontFamily": "Inter, sans-serif" } },
+                    { "blockId": "t3", "element": "span", "innerHTML": "✦ Digital products", "baseStyles": { "fontFamily": "Inter, sans-serif" } },
+                    { "blockId": "t4", "element": "span", "innerHTML": "✦ Personal growth", "baseStyles": { "fontFamily": "Inter, sans-serif" } }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "work",
+          "element": "section",
+          "blockName": "featured",
+          "attributes": { "id": "work" },
+          "baseStyles": {
+            "display": "flex",
+            "width": "100%",
+            "justifyContent": "center",
+            "padding": "95px 0",
+            "backgroundColor": "#ffffff",
+            "fontFamily": "Inter, sans-serif"
+          },
+          "mobileStyles": { "padding": "74px 0" },
+          "children": [
+            {
+              "blockId": "work_container",
+              "element": "div",
+              "baseStyles": {
+                "width": "min(1220px, calc(100% - 48px))",
+                "margin": "0 auto"
+              },
+              "mobileStyles": {
+                "width": "min(1220px, calc(100% - 26px))"
+              },
+              "children": [
+                {
+                  "blockId": "work_head",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "flex",
+                    "justifyContent": "space-between",
+                    "alignItems": "flex-end",
+                    "gap": "28px",
+                    "marginBottom": "35px"
+                  },
+                  "tabletStyles": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start"
+                  },
+                  "children": [
+                    {
+                      "blockId": "work_head_title",
+                      "element": "div",
+                      "baseStyles": { "fontFamily": "Inter, sans-serif" },
+                      "children": [
+                        {
+                          "blockId": "work_kicker",
+                          "element": "span",
+                          "innerHTML": "Work with me",
+                          "baseStyles": {
+                            "display": "block",
+                            "fontSize": "10px",
+                            "fontWeight": 900,
+                            "letterSpacing": "0.16em",
+                            "textTransform": "uppercase",
+                            "color": "#7b6d63"
+                          }
+                        },
+                        {
+                          "blockId": "work_title",
+                          "element": "h2",
+                          "innerHTML": "Learn from me. Work with me. Or just follow along.",
+                          "baseStyles": {
+                            "fontFamily": "Georgia, serif",
+                            "fontSize": "clamp(39px, 5vw, 62px)",
+                            "lineHeight": "0.96",
+                            "fontWeight": 500,
+                            "letterSpacing": "-0.06em",
+                            "margin": "10px 0 0",
+                            "color": "#101012"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "work_desc",
+                      "element": "p",
+                      "innerHTML": "A creator homepage should make the creator's ecosystem feel obvious without turning it into a catalogue.",
+                      "baseStyles": {
+                        "maxWidth": "460px",
+                        "color": "#77716d",
+                        "fontSize": "14px",
+                        "lineHeight": "1.72"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "work_grid",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "grid",
+                    "gridTemplateColumns": "1fr 1fr",
+                    "gap": "15px"
+                  },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    {
+                      "blockId": "offer_primary",
+                      "element": "div",
+                      "blockName": "offer",
+                      "baseStyles": {
+                        "minHeight": "470px",
+                        "borderRadius": "28px",
+                        "position": "relative",
+                        "overflow": "hidden",
+                        "padding": "28px",
+                        "backgroundColor": "#8c4ff9",
+                        "backgroundImage": "linear-gradient(145deg, #e9dcff, #b88df7 50%, #7540d8)",
+                        "color": "#ffffff",
+                        "fontFamily": "Inter, sans-serif"
+                      },
+                      "mobileStyles": { "minHeight": "430px" },
+                      "children": [
+                        {
+                          "blockId": "offer_primary_label",
+                          "element": "span",
+                          "innerHTML": "Flagship course",
+                          "baseStyles": {
+                            "display": "block",
+                            "fontSize": "9px",
+                            "fontWeight": 900,
+                            "letterSpacing": "0.14em",
+                            "textTransform": "uppercase",
+                            "opacity": 0.78
+                          }
+                        },
+                        {
+                          "blockId": "offer_primary_title",
+                          "element": "h3",
+                          "innerHTML": "The Creator Business Blueprint",
+                          "baseStyles": {
+                            "fontFamily": "Georgia, serif",
+                            "fontSize": "49px",
+                            "fontWeight": 500,
+                            "lineHeight": "0.95",
+                            "letterSpacing": "-0.06em",
+                            "maxWidth": "440px",
+                            "margin": "18px 0",
+                            "color": "#ffffff"
+                          }
+                        },
+                        {
+                          "blockId": "offer_primary_desc",
+                          "element": "p",
+                          "innerHTML": "Build an offer, audience and simple system for making money from what you know.",
+                          "baseStyles": {
+                            "fontSize": "12px",
+                            "lineHeight": "1.7",
+                            "maxWidth": "370px",
+                            "opacity": 0.8
+                          }
+                        },
+                        {
+                          "blockId": "offer_primary_decor",
+                          "element": "div",
+                          "baseStyles": {
+                            "position": "absolute",
+                            "right": "-25px",
+                            "bottom": "-30px",
+                            "width": "58%",
+                            "height": "56%",
+                            "borderRadius": "34px 0 0 0",
+                            "backgroundColor": "rgba(255, 255, 255, 0.16)",
+                            "border": "1px solid rgba(255, 255, 255, 0.25)"
+                          }
+                        },
+                        {
+                          "blockId": "offer_primary_bottom",
+                          "element": "div",
+                          "baseStyles": {
+                            "position": "absolute",
+                            "left": "28px",
+                            "right": "28px",
+                            "bottom": "26px",
+                            "display": "flex",
+                            "justifyContent": "space-between",
+                            "alignItems": "center",
+                            "gap": "10px"
+                          },
+                          "children": [
+                            {
+                              "blockId": "offer_primary_price",
+                              "element": "span",
+                              "innerHTML": "$149",
+                              "baseStyles": {
+                                "fontSize": "20px",
+                                "fontWeight": 900,
+                                "letterSpacing": "-0.04em",
+                                "color": "#ffffff"
+                              }
+                            },
+                            {
+                              "blockId": "offer_primary_btn",
+                              "element": "a",
+                              "blockName": "cta",
+                              "attributes": { "href": "#work" },
+                              "innerHTML": "Explore course →",
+                              "baseStyles": {
+                                "display": "inlineFlex",
+                                "alignItems": "center",
+                                "justifyContent": "center",
+                                "gap": "8px",
+                                "padding": "12px 17px",
+                                "borderRadius": "14px",
+                                "fontSize": "12px",
+                                "fontWeight": 850,
+                                "border": "1px solid #e5dfd8",
+                                "backgroundColor": "#ffffff",
+                                "color": "#101012",
+                                "textDecoration": "none",
+                                "cursor": "pointer",
+                                "transition": "0.22s ease",
+                                "hover:transform": "translateY(-2px)"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "offer_secondary",
+                      "element": "div",
+                      "blockName": "offer",
+                      "baseStyles": {
+                        "minHeight": "470px",
+                        "borderRadius": "28px",
+                        "position": "relative",
+                        "overflow": "hidden",
+                        "padding": "28px",
+                        "backgroundColor": "#f4efe8",
+                        "color": "#101012",
+                        "fontFamily": "Inter, sans-serif"
+                      },
+                      "mobileStyles": { "minHeight": "430px" },
+                      "children": [
+                        {
+                          "blockId": "offer_secondary_label",
+                          "element": "span",
+                          "innerHTML": "1:1 advisory",
+                          "baseStyles": {
+                            "display": "block",
+                            "fontSize": "9px",
+                            "fontWeight": 900,
+                            "letterSpacing": "0.14em",
+                            "textTransform": "uppercase",
+                            "opacity": 0.78
+                          }
+                        },
+                        {
+                          "blockId": "offer_secondary_title",
+                          "element": "h3",
+                          "innerHTML": "Strategy Sessions for ambitious creators.",
+                          "baseStyles": {
+                            "fontFamily": "Georgia, serif",
+                            "fontSize": "49px",
+                            "fontWeight": 500,
+                            "lineHeight": "0.95",
+                            "letterSpacing": "-0.06em",
+                            "maxWidth": "440px",
+                            "margin": "18px 0",
+                            "color": "#101012"
+                          }
+                        },
+                        {
+                          "blockId": "offer_secondary_desc",
+                          "element": "p",
+                          "innerHTML": "Bring me the problem. Leave with a clearer decision, stronger plan and next move.",
+                          "baseStyles": {
+                            "fontSize": "12px",
+                            "lineHeight": "1.7",
+                            "maxWidth": "370px",
+                            "opacity": 0.8
+                          }
+                        },
+                        {
+                          "blockId": "offer_secondary_decor",
+                          "element": "div",
+                          "baseStyles": {
+                            "position": "absolute",
+                            "right": "-25px",
+                            "bottom": "-30px",
+                            "width": "58%",
+                            "height": "56%",
+                            "borderRadius": "34px 0 0 0",
+                            "backgroundImage": "linear-gradient(155deg, #d8cec1, #af9c89)"
+                          }
+                        },
+                        {
+                          "blockId": "offer_secondary_bottom",
+                          "element": "div",
+                          "baseStyles": {
+                            "position": "absolute",
+                            "left": "28px",
+                            "right": "28px",
+                            "bottom": "26px",
+                            "display": "flex",
+                            "justifyContent": "space-between",
+                            "alignItems": "center",
+                            "gap": "10px"
+                          },
+                          "children": [
+                            {
+                              "blockId": "offer_secondary_price",
+                              "element": "span",
+                              "innerHTML": "$199 / session",
+                              "baseStyles": {
+                                "fontSize": "20px",
+                                "fontWeight": 900,
+                                "letterSpacing": "-0.04em",
+                                "color": "#101012"
+                              }
+                            },
+                            {
+                              "blockId": "offer_secondary_btn",
+                              "element": "a",
+                              "blockName": "cta",
+                              "attributes": { "href": "#about" },
+                              "innerHTML": "Book a session →",
+                              "baseStyles": {
+                                "display": "inlineFlex",
+                                "alignItems": "center",
+                                "justifyContent": "center",
+                                "gap": "8px",
+                                "padding": "12px 17px",
+                                "borderRadius": "14px",
+                                "fontSize": "12px",
+                                "fontWeight": 850,
+                                "border": "1px solid transparent",
+                                "backgroundColor": "#101012",
+                                "color": "#ffffff",
+                                "textDecoration": "none",
+                                "cursor": "pointer",
+                                "transition": "0.22s ease",
+                                "hover:transform": "translateY(-2px)"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "about",
+          "element": "section",
+          "blockName": "about",
+          "attributes": { "id": "about" },
+          "baseStyles": {
+            "display": "flex",
+            "width": "100%",
+            "justifyContent": "center",
+            "padding": "95px 0",
+            "backgroundColor": "#f2eee7",
+            "fontFamily": "Inter, sans-serif"
+          },
+          "mobileStyles": { "padding": "74px 0" },
+          "children": [
+            {
+              "blockId": "about_container",
+              "element": "div",
+              "baseStyles": {
+                "display": "grid",
+                "gridTemplateColumns": "0.88fr 1.12fr",
+                "gap": "68px",
+                "alignItems": "center",
+                "width": "min(1220px, calc(100% - 48px))",
+                "margin": "0 auto"
+              },
+              "tabletStyles": { "gridTemplateColumns": "1fr" },
+              "mobileStyles": {
+                "width": "min(1220px, calc(100% - 26px))"
+              },
+              "children": [
+                {
+                  "blockId": "about_media",
+                  "element": "div",
+                  "blockName": "media",
+                  "baseStyles": {
+                    "minHeight": "630px",
+                    "borderRadius": "30px",
+                    "overflow": "hidden",
+                    "position": "relative",
+                    "backgroundColor": "#8c4ff9",
+                    "backgroundImage": "linear-gradient(155deg, #d6c3ef, #a77ae8 52%, #6631bd)"
+                  },
+                  "mobileStyles": { "minHeight": "440px" },
+                  "children": [
+                    {
+                      "blockId": "about_person",
+                      "element": "div",
+                      "baseStyles": {
+                        "position": "absolute",
+                        "left": "16%",
+                        "right": "15%",
+                        "bottom": "-6%",
+                        "height": "80%",
+                        "borderRadius": "47% 47% 10% 10%",
+                        "backgroundImage": "radial-gradient(circle at 50% 19%, #efc1a3 0 9%, transparent 9.5%), radial-gradient(circle at 50% 12%, #302425 0 15%, transparent 15.5%), linear-gradient(145deg, #faf7ff 0 45%, #1d1822 45%)"
+                      }
+                    },
+                    {
+                      "blockId": "about_badge",
+                      "element": "div",
+                      "baseStyles": {
+                        "position": "absolute",
+                        "left": "20px",
+                        "bottom": "20px",
+                        "backgroundColor": "rgba(255, 255, 255, 0.9)",
+                        "backdropFilter": "blur(10px)",
+                        "padding": "15px 16px",
+                        "borderRadius": "18px"
+                      },
+                      "children": [
+                        {
+                          "blockId": "about_badge_num",
+                          "element": "strong",
+                          "innerHTML": "8+ years",
+                          "baseStyles": {
+                            "display": "block",
+                            "fontSize": "28px",
+                            "letterSpacing": "-0.06em",
+                            "color": "#101012"
+                          }
+                        },
+                        {
+                          "blockId": "about_badge_text",
+                          "element": "span",
+                          "innerHTML": "learning, building &amp; sharing online",
+                          "baseStyles": {
+                            "display": "block",
+                            "color": "#77716d",
+                            "fontSize": "10px"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "blockId": "about_body",
+                  "element": "div",
+                  "baseStyles": { "fontFamily": "Inter, sans-serif" },
+                  "children": [
+                    {
+                      "blockId": "about_kicker",
+                      "element": "span",
+                      "innerHTML": "The person behind the page",
+                      "baseStyles": {
+                        "display": "block",
+                        "fontSize": "10px",
+                        "fontWeight": 900,
+                        "letterSpacing": "0.16em",
+                        "textTransform": "uppercase",
+                        "color": "#7b6d63"
+                      }
+                    },
+                    {
+                      "blockId": "about_copy",
+                      "element": "p",
+                      "innerHTML": "I'm not here to pretend I have everything figured out. I'm here to share what has worked, what hasn't, and what I'm learning next.",
+                      "baseStyles": {
+                        "fontFamily": "Georgia, serif",
+                        "fontSize": "29px",
+                        "lineHeight": "1.2",
+                        "letterSpacing": "-0.045em",
+                        "maxWidth": "620px",
+                        "color": "#101012",
+                        "margin": "0 0 20px"
+                      }
+                    },
+                    {
+                      "blockId": "about_paragraph",
+                      "element": "p",
+                      "innerHTML": "My work sits at the intersection of business, creativity and personal growth. Over the years, I've built products, worked with hundreds of people, experimented with different business models, and turned the best lessons into things that are actually useful.",
+                      "baseStyles": {
+                        "color": "#77716d",
+                        "fontSize": "13px",
+                        "lineHeight": "1.78",
+                        "marginTop": "20px",
+                        "maxWidth": "610px"
+                      }
+                    },
+                    {
+                      "blockId": "about_points",
+                      "element": "div",
+                      "baseStyles": {
+                        "display": "grid",
+                        "gridTemplateColumns": "1fr 1fr",
+                        "gap": "15px",
+                        "marginTop": "27px"
+                      },
+                      "tabletStyles": { "gridTemplateColumns": "1fr" },
+                      "children": [
+                        {
+                          "blockId": "pt0",
+                          "element": "div",
+                          "baseStyles": {
+                            "padding": "17px",
+                            "backgroundColor": "#ffffff",
+                            "border": "1px solid #e5dfd8",
+                            "borderRadius": "17px"
+                          },
+                          "children": [
+                            { "blockId": "pt0t", "element": "strong", "innerHTML": "Practical thinking", "baseStyles": { "display": "block", "fontSize": "12px", "color": "#101012" } },
+                            { "blockId": "pt0d", "element": "span", "innerHTML": "Clear frameworks instead of motivational fluff.", "baseStyles": { "display": "block", "fontSize": "10px", "color": "#77716d", "lineHeight": "1.55", "marginTop": "5px" } }
+                          ]
+                        },
+                        {
+                          "blockId": "pt1",
+                          "element": "div",
+                          "baseStyles": {
+                            "padding": "17px",
+                            "backgroundColor": "#ffffff",
+                            "border": "1px solid #e5dfd8",
+                            "borderRadius": "17px"
+                          },
+                          "children": [
+                            { "blockId": "pt1t", "element": "strong", "innerHTML": "Real experiments", "baseStyles": { "display": "block", "fontSize": "12px", "color": "#101012" } },
+                            { "blockId": "pt1d", "element": "span", "innerHTML": "Lessons from things actually built and tested.", "baseStyles": { "display": "block", "fontSize": "10px", "color": "#77716d", "lineHeight": "1.55", "marginTop": "5px" } }
+                          ]
+                        },
+                        {
+                          "blockId": "pt2",
+                          "element": "div",
+                          "baseStyles": {
+                            "padding": "17px",
+                            "backgroundColor": "#ffffff",
+                            "border": "1px solid #e5dfd8",
+                            "borderRadius": "17px"
+                          },
+                          "children": [
+                            { "blockId": "pt2t", "element": "strong", "innerHTML": "Long-term game", "baseStyles": { "display": "block", "fontSize": "12px", "color": "#101012" } },
+                            { "blockId": "pt2d", "element": "span", "innerHTML": "Build skills, relationships and assets that compound.", "baseStyles": { "display": "block", "fontSize": "10px", "color": "#77716d", "lineHeight": "1.55", "marginTop": "5px" } }
+                          ]
+                        },
+                        {
+                          "blockId": "pt3",
+                          "element": "div",
+                          "baseStyles": {
+                            "padding": "17px",
+                            "backgroundColor": "#ffffff",
+                            "border": "1px solid #e5dfd8",
+                            "borderRadius": "17px"
+                          },
+                          "children": [
+                            { "blockId": "pt3t", "element": "strong", "innerHTML": "Stay curious", "baseStyles": { "display": "block", "fontSize": "12px", "color": "#101012" } },
+                            { "blockId": "pt3d", "element": "span", "innerHTML": "Always learning, always exploring what's next.", "baseStyles": { "display": "block", "fontSize": "10px", "color": "#77716d", "lineHeight": "1.55", "marginTop": "5px" } }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "about_cta",
+                      "element": "a",
+                      "blockName": "cta",
+                      "attributes": { "href": "#about" },
+                      "innerHTML": "Read my full story →",
+                      "baseStyles": {
+                        "display": "inlineFlex",
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "gap": "8px",
+                        "marginTop": "23px",
+                        "padding": "12px 17px",
+                        "borderRadius": "14px",
+                        "fontSize": "12px",
+                        "fontWeight": 850,
+                        "border": "1px solid transparent",
+                        "backgroundColor": "#101012",
+                        "color": "#ffffff",
+                        "textDecoration": "none",
+                        "cursor": "pointer",
+                        "transition": "0.22s ease",
+                        "hover:transform": "translateY(-2px)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "proof",
+          "element": "section",
+          "blockName": "social-proof",
+          "attributes": { "id": "proof" },
+          "baseStyles": {
+            "display": "flex",
+            "width": "100%",
+            "justifyContent": "center",
+            "padding": "95px 0",
+            "backgroundColor": "#ffffff",
+            "fontFamily": "Inter, sans-serif"
+          },
+          "mobileStyles": { "padding": "74px 0" },
+          "children": [
+            {
+              "blockId": "proof_container",
+              "element": "div",
+              "baseStyles": {
+                "width": "min(1220px, calc(100% - 48px))",
+                "margin": "0 auto"
+              },
+              "mobileStyles": {
+                "width": "min(1220px, calc(100% - 26px))"
+              },
+              "children": [
+                {
+                  "blockId": "proof_head",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "flex",
+                    "justifyContent": "space-between",
+                    "alignItems": "flex-end",
+                    "gap": "28px",
+                    "marginBottom": "35px"
+                  },
+                  "tabletStyles": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start"
+                  },
+                  "children": [
+                    {
+                      "blockId": "proof_head_title",
+                      "element": "div",
+                      "children": [
+                        {
+                          "blockId": "proof_kicker",
+                          "element": "span",
+                          "innerHTML": "A few receipts",
+                          "baseStyles": {
+                            "display": "block",
+                            "fontSize": "10px",
+                            "fontWeight": 900,
+                            "letterSpacing": "0.16em",
+                            "textTransform": "uppercase",
+                            "color": "#7b6d63"
+                          }
+                        },
+                        {
+                          "blockId": "proof_title",
+                          "element": "h2",
+                          "innerHTML": "The work speaks louder.",
+                          "baseStyles": {
+                            "fontFamily": "Georgia, serif",
+                            "fontSize": "clamp(39px, 5vw, 62px)",
+                            "lineHeight": "0.96",
+                            "fontWeight": 500,
+                            "letterSpacing": "-0.06em",
+                            "margin": "10px 0 0",
+                            "color": "#101012"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "proof_desc",
+                      "element": "p",
+                      "innerHTML": "Testimonials, outcomes and community signals can sit naturally inside the creator's story.",
+                      "baseStyles": {
+                        "maxWidth": "460px",
+                        "color": "#77716d",
+                        "fontSize": "14px",
+                        "lineHeight": "1.72"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "quote_grid",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "grid",
+                    "gridTemplateColumns": "1.15fr 0.85fr",
+                    "gap": "15px"
+                  },
+                  "tabletStyles": { "gridTemplateColumns": "1fr" },
+                  "children": [
+                    {
+                      "blockId": "big_quote",
+                      "element": "div",
+                      "baseStyles": {
+                        "backgroundColor": "#17151b",
+                        "color": "#ffffff",
+                        "borderRadius": "27px",
+                        "padding": "36px",
+                        "minHeight": "410px",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "justifyContent": "space-between"
+                      },
+                      "children": [
+                        {
+                          "blockId": "big_quote_mark",
+                          "element": "span",
+                          "innerHTML": "“",
+                          "baseStyles": {
+                            "fontSize": "55px",
+                            "color": "#b68cff",
+                            "lineHeight": "0.7"
+                          }
+                        },
+                        {
+                          "blockId": "big_quote_text",
+                          "element": "blockquote",
+                          "innerHTML": "Alex has that rare ability to take something complicated, strip away the noise, and make the next step obvious.",
+                          "baseStyles": {
+                            "fontFamily": "Georgia, serif",
+                            "fontSize": "39px",
+                            "lineHeight": "1.03",
+                            "letterSpacing": "-0.055em",
+                            "margin": "18px 0",
+                            "color": "#ffffff"
+                          },
+                          "mobileStyles": { "fontSize": "31px" }
+                        },
+                        {
+                          "blockId": "big_quote_attr",
+                          "element": "small",
+                          "innerHTML": "— Maya R., founder &amp; creator · 4-year community member",
+                          "baseStyles": {
+                            "fontSize": "10px",
+                            "color": "#9f98a2"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "quote_side",
+                      "element": "div",
+                      "baseStyles": {
+                        "display": "grid",
+                        "gridTemplateRows": "1fr 1fr",
+                        "gap": "15px"
+                      },
+                      "children": [
+                        {
+                          "blockId": "stat1",
+                          "element": "div",
+                          "blockName": "stat",
+                          "baseStyles": {
+                            "borderRadius": "27px",
+                            "padding": "29px",
+                            "backgroundColor": "#f2ece5",
+                            "position": "relative",
+                            "overflow": "hidden"
+                          },
+                          "children": [
+                            {
+                              "blockId": "stat1_val",
+                              "element": "strong",
+                              "innerHTML": "12.4K",
+                              "baseStyles": {
+                                "display": "block",
+                                "fontSize": "56px",
+                                "lineHeight": "1",
+                                "letterSpacing": "-0.07em",
+                                "color": "#101012"
+                              }
+                            },
+                            {
+                              "blockId": "stat1_lbl",
+                              "element": "span",
+                              "innerHTML": "weekly newsletter readers",
+                              "baseStyles": {
+                                "display": "block",
+                                "color": "#77716d",
+                                "fontSize": "11px",
+                                "marginTop": "6px"
+                              }
+                            },
+                            {
+                              "blockId": "stat1_orb",
+                              "element": "div",
+                              "baseStyles": {
+                                "position": "absolute",
+                                "right": "-20px",
+                                "bottom": "-25px",
+                                "width": "130px",
+                                "height": "130px",
+                                "borderRadius": "50%",
+                                "backgroundColor": "#d6c2ff"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "blockId": "stat2",
+                          "element": "div",
+                          "blockName": "stat",
+                          "baseStyles": {
+                            "borderRadius": "27px",
+                            "padding": "29px",
+                            "backgroundColor": "#ffffff",
+                            "border": "1px solid #e5dfd8",
+                            "position": "relative",
+                            "overflow": "hidden"
+                          },
+                          "children": [
+                            {
+                              "blockId": "stat2_val",
+                              "element": "strong",
+                              "innerHTML": "2,000+",
+                              "baseStyles": {
+                                "display": "block",
+                                "fontSize": "56px",
+                                "lineHeight": "1",
+                                "letterSpacing": "-0.07em",
+                                "color": "#101012"
+                              }
+                            },
+                            {
+                              "blockId": "stat2_lbl",
+                              "element": "span",
+                              "innerHTML": "people inside the community",
+                              "baseStyles": {
+                                "display": "block",
+                                "color": "#77716d",
+                                "fontSize": "11px",
+                                "marginTop": "6px"
+                              }
+                            },
+                            {
+                              "blockId": "stat2_orb",
+                              "element": "div",
+                              "baseStyles": {
+                                "position": "absolute",
+                                "right": "-20px",
+                                "bottom": "-25px",
+                                "width": "130px",
+                                "height": "130px",
+                                "borderRadius": "50%",
+                                "backgroundColor": "#dff3ea"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "newsletter",
+          "element": "section",
+          "blockName": "newsletter",
+          "baseStyles": {
+            "display": "flex",
+            "width": "100%",
+            "justifyContent": "center",
+            "padding": "95px 0",
+            "backgroundColor": "#15131a",
+            "color": "#ffffff",
+            "fontFamily": "Inter, sans-serif"
+          },
+          "mobileStyles": { "padding": "74px 0" },
+          "children": [
+            {
+              "blockId": "newsletter_container",
+              "element": "div",
+              "baseStyles": {
+                "display": "grid",
+                "gridTemplateColumns": "1fr 1fr",
+                "gap": "60px",
+                "alignItems": "center",
+                "width": "min(1220px, calc(100% - 48px))",
+                "margin": "0 auto"
+              },
+              "tabletStyles": { "gridTemplateColumns": "1fr" },
+              "mobileStyles": {
+                "width": "min(1220px, calc(100% - 26px))"
+              },
+              "children": [
+                {
+                  "blockId": "newsletter_copy",
+                  "element": "div",
+                  "children": [
+                    {
+                      "blockId": "newsletter_kicker",
+                      "element": "span",
+                      "innerHTML": "The weekly note",
+                      "baseStyles": {
+                        "display": "block",
+                        "fontSize": "10px",
+                        "fontWeight": 900,
+                        "letterSpacing": "0.16em",
+                        "textTransform": "uppercase",
+                        "color": "#c7a8ff"
+                      }
+                    },
+                    {
+                      "blockId": "newsletter_title",
+                      "element": "h2",
+                      "innerHTML": "One idea. One lesson. One thing worth thinking about.",
+                      "baseStyles": {
+                        "fontFamily": "Georgia, serif",
+                        "fontWeight": 500,
+                        "fontSize": "clamp(40px, 5vw, 62px)",
+                        "lineHeight": "0.92",
+                        "letterSpacing": "-0.065em",
+                        "margin": "10px 0 16px",
+                        "color": "#ffffff"
+                      }
+                    },
+                    {
+                      "blockId": "newsletter_desc",
+                      "element": "p",
+                      "innerHTML": "Join 12,400+ people getting my best ideas on business, markets, creativity and building a more intentional life.",
+                      "baseStyles": {
+                        "fontSize": "13px",
+                        "color": "#aaa4ae",
+                        "maxWidth": "490px",
+                        "lineHeight": "1.7"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "blockId": "newsletter_form_col",
+                  "element": "div",
+                  "children": [
+                    {
+                      "blockId": "newsletter_form",
+                      "element": "form",
+                      "blockName": "form",
+                      "attributes": { "onsubmit": "return false" },
+                      "baseStyles": {
+                        "display": "flex",
+                        "alignItems": "center",
+                        "backgroundColor": "#242028",
+                        "border": "1px solid #3b3640",
+                        "borderRadius": "18px",
+                        "padding": "9px",
+                        "gap": "8px"
+                      },
+                      "mobileStyles": {
+                        "flexDirection": "column",
+                        "gap": "8px",
+                        "backgroundColor": "transparent",
+                        "border": "0",
+                        "padding": "0",
+                        "alignItems": "stretch"
+                      },
+                      "children": [
+                        {
+                          "blockId": "newsletter_input",
+                          "element": "input",
+                          "attributes": {
+                            "type": "email",
+                            "placeholder": "Your email address",
+                            "aria-label": "Email address"
+                          },
+                          "baseStyles": {
+                            "flex": "1",
+                            "minWidth": "0",
+                            "backgroundColor": "transparent",
+                            "border": "0",
+                            "outline": "0",
+                            "color": "#ffffff",
+                            "padding": "12px",
+                            "fontSize": "12px",
+                            "fontFamily": "Inter, sans-serif"
+                          },
+                          "mobileStyles": {
+                            "backgroundColor": "#242028",
+                            "border": "1px solid #3b3640",
+                            "borderRadius": "13px",
+                            "flex": "none"
+                          }
+                        },
+                        {
+                          "blockId": "newsletter_btn",
+                          "element": "button",
+                          "blockName": "cta",
+                          "innerHTML": "Join the list →",
+                          "baseStyles": {
+                            "display": "inlineFlex",
+                            "alignItems": "center",
+                            "justifyContent": "center",
+                            "gap": "8px",
+                            "padding": "12px 17px",
+                            "borderRadius": "14px",
+                            "fontSize": "12px",
+                            "fontWeight": 850,
+                            "border": "1px solid transparent",
+                            "backgroundColor": "#8c4ff9",
+                            "color": "#ffffff",
+                            "boxShadow": "0 12px 30px rgba(140, 79, 249, 0.24)",
+                            "cursor": "pointer",
+                            "transition": "0.22s ease",
+                            "hover:transform": "translateY(-2px)",
+                            "whiteSpace": "nowrap"
+                          },
+                          "mobileStyles": { "width": "100%" }
+                        }
+                      ]
+                    },
+                    {
+                      "blockId": "newsletter_note",
+                      "element": "span",
+                      "innerHTML": "No spam. No daily notifications. Just the good stuff.",
+                      "baseStyles": {
+                        "display": "block",
+                        "fontSize": "9px",
+                        "color": "#77717b",
+                        "marginTop": "9px"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "final",
+          "element": "section",
+          "blockName": "final-cta",
+          "baseStyles": {
+            "display": "flex",
+            "width": "100%",
+            "justifyContent": "center",
+            "textAlign": "center",
+            "backgroundColor": "#ffffff",
+            "padding": "105px 0 115px",
+            "fontFamily": "Inter, sans-serif"
+          },
+          "children": [
+            {
+              "blockId": "final_container",
+              "element": "div",
+              "baseStyles": {
+                "width": "min(1220px, calc(100% - 48px))",
+                "margin": "0 auto"
+              },
+              "mobileStyles": {
+                "width": "min(1220px, calc(100% - 26px))"
+              },
+              "children": [
+                {
+                  "blockId": "final_kicker",
+                  "element": "span",
+                  "innerHTML": "Start exploring",
+                  "baseStyles": {
+                    "fontSize": "10px",
+                    "fontWeight": 900,
+                    "letterSpacing": "0.16em",
+                    "textTransform": "uppercase",
+                    "color": "#7b6d63"
+                  }
+                },
+                {
+                  "blockId": "final_title",
+                  "element": "h2",
+                  "innerHTML": "Stay a while. There's probably something here for you.",
+                  "baseStyles": {
+                    "fontFamily": "Georgia, serif",
+                    "fontWeight": 500,
+                    "fontSize": "clamp(39px, 5vw, 62px)",
+                    "lineHeight": "0.96",
+                    "letterSpacing": "-0.06em",
+                    "maxWidth": "820px",
+                    "margin": "10px auto 15px",
+                    "color": "#101012"
+                  }
+                },
+                {
+                  "blockId": "final_desc",
+                  "element": "p",
+                  "innerHTML": "Explore the work, read the ideas, join the community, or find the next thing I'm building.",
+                  "baseStyles": {
+                    "maxWidth": "560px",
+                    "margin": "0 auto",
+                    "color": "#77716d",
+                    "fontSize": "14px",
+                    "lineHeight": "1.7"
+                  }
+                },
+                {
+                  "blockId": "final_actions",
+                  "element": "div",
+                  "baseStyles": {
+                    "display": "flex",
+                    "justifyContent": "center",
+                    "gap": "10px",
+                    "flexWrap": "wrap",
+                    "marginTop": "25px"
+                  },
+                  "children": [
+                    {
+                      "blockId": "final_cta_primary",
+                      "element": "a",
+                      "blockName": "cta",
+                      "attributes": { "href": "#work" },
+                      "innerHTML": "Explore the work →",
+                      "baseStyles": {
+                        "display": "inlineFlex",
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "gap": "8px",
+                        "padding": "12px 17px",
+                        "borderRadius": "14px",
+                        "fontSize": "12px",
+                        "fontWeight": 850,
+                        "border": "1px solid transparent",
+                        "backgroundColor": "#101012",
+                        "color": "#ffffff",
+                        "textDecoration": "none",
+                        "cursor": "pointer",
+                        "transition": "0.22s ease",
+                        "hover:transform": "translateY(-2px)"
+                      }
+                    },
+                    {
+                      "blockId": "final_cta_secondary",
+                      "element": "a",
+                      "blockName": "cta",
+                      "attributes": { "href": "#journal" },
+                      "innerHTML": "Read the journal",
+                      "baseStyles": {
+                        "display": "inlineFlex",
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "gap": "8px",
+                        "padding": "12px 17px",
+                        "borderRadius": "14px",
+                        "fontSize": "12px",
+                        "fontWeight": 850,
+                        "border": "1px solid #e5dfd8",
+                        "backgroundColor": "#ffffff",
+                        "color": "#101012",
+                        "textDecoration": "none",
+                        "cursor": "pointer",
+                        "transition": "0.22s ease",
+                        "hover:transform": "translateY(-2px)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "blockId": "footer_block",
+          "element": "footer",
+      "blockName": "footer",
+      "baseStyles": {
+        "display": "flex",
+        "width": "100%",
+        "justifyContent": "center",
+        "backgroundColor": "#fbfaf8",
+        "borderTop": "1px solid #e5dfd8",
+        "padding": "30px 0 38px",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "children": [
+        {
+          "blockId": "footer_inner",
+          "element": "div",
+          "baseStyles": {
+            "display": "flex",
+            "flexWrap": "wrap",
+            "alignItems": "center",
+            "justifyContent": "space-between",
+            "gap": "20px",
+            "width": "min(1220px, calc(100% - 48px))",
+            "margin": "0 auto"
+          },
+          "mobileStyles": {
+            "flexDirection": "column",
+            "alignItems": "flex-start",
+            "width": "min(1220px, calc(100% - 26px))"
+          },
+          "children": [
+            {
+              "blockId": "footer_logo",
+              "element": "a",
+              "attributes": { "href": "#hero" },
+              "baseStyles": {
+                "display": "flex",
+                "alignItems": "center",
+                "gap": "10px",
+                "fontWeight": 900,
+                "fontSize": "16px",
+                "letterSpacing": "-0.055em",
+                "color": "#101012",
+                "textDecoration": "none"
+              },
+              "children": [
+                {
+                  "blockId": "footer_logo_mark",
+                  "element": "span",
+                  "innerHTML": "A",
+                  "baseStyles": {
+                    "display": "grid",
+                    "placeItems": "center",
+                    "width": "31px",
+                    "height": "31px",
+                    "borderRadius": "10px",
+                    "fontSize": "11px",
+                    "color": "#ffffff",
+                    "backgroundColor": "#8c4ff9",
+                    "backgroundImage": "linear-gradient(135deg, #b58cff, #7440d8)"
+                  }
+                },
+                {
+                  "blockId": "footer_logo_text",
+                  "element": "span",
+                  "innerHTML": "Alex Carter"
+                }
+              ]
+            },
+            {
+              "blockId": "footer_links",
+              "element": "div",
+              "baseStyles": {
+                "display": "flex",
+                "gap": "18px",
+                "color": "#77716d",
+                "fontSize": "10px",
+                "flexWrap": "wrap"
+              },
+              "children": [
+                { "blockId": "f0", "element": "a", "attributes": { "href": "#" }, "innerHTML": "Instagram", "baseStyles": { "color": "#77716d", "textDecoration": "none", "fontFamily": "Inter, sans-serif" } },
+                { "blockId": "f1", "element": "a", "attributes": { "href": "#" }, "innerHTML": "YouTube", "baseStyles": { "color": "#77716d", "textDecoration": "none", "fontFamily": "Inter, sans-serif" } },
+                { "blockId": "f2", "element": "a", "attributes": { "href": "#" }, "innerHTML": "X", "baseStyles": { "color": "#77716d", "textDecoration": "none", "fontFamily": "Inter, sans-serif" } },
+                { "blockId": "f3", "element": "a", "attributes": { "href": "#" }, "innerHTML": "Terms", "baseStyles": { "color": "#77716d", "textDecoration": "none", "fontFamily": "Inter, sans-serif" } },
+                { "blockId": "f4", "element": "a", "attributes": { "href": "#" }, "innerHTML": "Privacy", "baseStyles": { "color": "#77716d", "textDecoration": "none", "fontFamily": "Inter, sans-serif" } }
+              ]
+            },
+            {
+              "blockId": "footer_copyright",
+              "element": "small",
+              "innerHTML": "© 2026 Alex Carter",
+              "baseStyles": {
+                "fontSize": "9px",
+                "color": "#9a928c"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+  ]
+}

@@ -70,7 +70,7 @@
 								:src="
 									pageStore.activePage?.favicon ||
 									builderSettings.doc?.favicon ||
-									'/assets/builder/images/frappe_black.png'
+									'/assets/builder/frontend/builder_logo.png'
 								"
 								alt="Favicon"
 								class="size-6 rounded" />

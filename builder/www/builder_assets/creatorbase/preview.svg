@@ -1,29 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
   <rect width="1600" height="900" fill="#030305"/>
-  <g opacity="0.4">
-    <circle cx="100" cy="100" r="120" fill="#4f46e5" opacity="0.25"/>
-    <circle cx="1500" cy="800" r="140" fill="#4f46e5" opacity="0.2"/>
-  </g>
-  <rect x="220" y="90" width="900" height="70" rx="10" fill="url(#t)" opacity="0.6"/>
-  <rect x="300" y="180" width="420" height="30" rx="8" fill="#22222c"/>
-  <rect x="220" y="250" width="1160" height="60" rx="10" fill="#14141f"/>
-  <rect x="220" y="340" width="360" height="140" rx="14" fill="#0a0a0f"/>
-  <rect x="600" y="340" width="360" height="140" rx="14" fill="#0a0a0f"/>
-  <rect x="980" y="340" width="400" height="140" rx="14" fill="#0a0a0f"/>
-  <rect x="250" y="365" width="200" height="22" rx="6" fill="#1c1c2e"/>
-  <rect x="250" y="400" width="270" height="16" rx="6" fill="#28283a"/>
-  <rect x="630" y="365" width="200" height="22" rx="6" fill="#1c1c2e"/>
-  <rect x="630" y="400" width="270" height="16" rx="6" fill="#28283a"/>
-  <rect x="1010" y="365" width="200" height="22" rx="6" fill="#1c1c2e"/>
-  <rect x="1010" y="400" width="270" height="16" rx="6" fill="#28283a"/>
-  <rect x="220" y="540" width="560" height="20" rx="8" fill="#1c1c2e"/>
-  <rect x="980" y="540" width="400" height="20" rx="8" fill="#1c1c2e"/>
-  <rect x="580" y="640" width="440" height="70" rx="35" fill="#ffffff"/>
-  <rect x="700" y="668" width="180" height="16" rx="8" fill="#030305" opacity="0.85"/>
-  <defs>
-    <linearGradient id="t" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffffff"/>
-      <stop offset="1" stop-color="#71717a"/>
-    </linearGradient>
-  </defs>
+  <circle cx="120" cy="110" r="150" fill="#4f46e5" opacity="0.25"/>
+  <circle cx="1510" cy="820" r="180" fill="#4f46e5" opacity="0.22"/>
+
+  <text x="800" y="150" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="72" fill="#ffffff">Master the Art of Selling</text>
+  <text x="800" y="232" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="72" fill="#a1a1aa">with Creatorbase</text>
+  <text x="800" y="292" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#a1a1aa">The definitive blueprint for digital creators and SaaS founders</text>
+  <text x="800" y="322" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#a1a1aa">to turn attention into predictable revenue.</text>
+
+  <rect x="645" y="360" width="310" height="60" rx="30" fill="#ffffff"/>
+  <text x="800" y="399" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="18" fill="#030305">Start with the blueprint →</text>
+
+  <rect x="260" y="460" width="1080" height="330" rx="20" fill="#0a0a0f" stroke="#26263a" stroke-width="2"/>
+  <circle cx="800" cy="550" r="60" fill="#4f46e5"/>
+  <path d="M784 522 l52 28 -52 28 Z" fill="#ffffff"/>
+  <rect x="300" y="700" width="140" height="14" rx="7" fill="#2a2a3a"/>
+  <rect x="460" y="700" width="80" height="14" rx="7" fill="#2a2a3a"/>
 </svg>

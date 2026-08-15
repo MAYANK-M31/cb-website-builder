@@ -90,7 +90,6 @@ export interface SsoResult {
 // endpoint returns the session, which we re-inject same-origin.
 export async function frappeSsoLogin(token: string): Promise<SsoResult> {
 	if (!token) return { ok: false };
-	persistToken(token);
 	try {
 		const headers: Record<string, string> = { "Content-Type": "application/json" };
 		const csrf = csrfToken();
@@ -101,11 +100,26 @@ export async function frappeSsoLogin(token: string): Promise<SsoResult> {
 			headers,
 			body: JSON.stringify({ token }),
 		});
-		if (!res.ok) return { ok: false, error: res.status };
+		if (!res.ok) {
+			// Only keep a token the server actually accepted. A rejected or stale
+			// token (e.g. a previous creator's, after dashboard logout) must not
+			// survive in localStorage — otherwise the next reload re-authenticates
+			// with it and lands on a blank/403 page instead of the login screen.
+			if (typeof localStorage !== "undefined") {
+				localStorage.removeItem(TOKEN_KEY);
+			}
+			applyFrappeAuth(null);
+			return { ok: false, error: res.status };
+		}
 		const body = await res.json();
+		persistToken(token);
 		reinjectSession(body?.message || {});
 		return { ok: true };
 	} catch (e) {
+		if (typeof localStorage !== "undefined") {
+			localStorage.removeItem(TOKEN_KEY);
+		}
+		applyFrappeAuth(null);
 		return { ok: false, error: e };
 	}
 }

@@ -210,7 +210,17 @@ const usePageStore = defineStore("pageStore", {
 				.then(async () => {
 					this.activePage = await this.fetchActivePage(this.selectedPage as string);
 					this.snapshotsVersion++;
-					this.showPublishedWebappLink();
+					const url = this.publishedWebappUrl();
+					toast.success("Published successfully", {
+						description: "Changes may take a few minutes to reflect on the live site.",
+						duration: 8000,
+						action: url
+							? {
+									label: "Open live page",
+									onClick: () => window.open(url, "_blank"),
+								}
+							: undefined,
+					});
 					if (openInBrowser) {
 						this.openPageInBrowser(this.activePage as BuilderPage);
 					}
@@ -219,19 +229,10 @@ const usePageStore = defineStore("pageStore", {
 
 		// After publish, surface the live CreatorBase webapp link (requires the
 		// dashboard to have handed over auth via postMessage).
-		showPublishedWebappLink() {
+		publishedWebappUrl() {
 			const { subdomain } = getCreatorAuth();
-			if (!subdomain) return;
-			const url = getWebappPageUrl(this.activePage?.route ?? this.route, subdomain);
-			if (!url) return;
-			toast.success("Published successfully", {
-				description: url,
-				duration: 8000,
-				action: {
-					label: "Open live page",
-					onClick: () => window.open(url, "_blank"),
-				},
-			});
+			if (!subdomain) return "";
+			return getWebappPageUrl(this.activePage?.route ?? this.route, subdomain) ?? "";
 		},
 
 		async revertChanges() {

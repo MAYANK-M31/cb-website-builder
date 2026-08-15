@@ -1,18 +1,89 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#6f6254" flood-opacity="0.14"/>
+    </filter>
+    <clipPath id="heroClip">
+      <rect x="980" y="105" width="470" height="610" rx="235"/>
+    </clipPath>
+    <linearGradient id="cardFade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f7f2ec"/>
+    </linearGradient>
+  </defs>
+
   <rect width="1600" height="900" fill="#fdfbf7"/>
-  <rect x="120" y="120" width="640" height="44" rx="22" fill="#f3efea"/>
-  <rect x="120" y="190" width="920" height="120" rx="16" fill="#b28451" opacity="0.55"/>
-  <rect x="120" y="340" width="640" height="60" rx="16" fill="#ece7db"/>
-  <rect x="120" y="430" width="860" height="60" rx="16" fill="#ece7db"/>
-  <rect x="1180" y="130" width="300" height="90" rx="18" fill="#f3efea"/>
-  <rect x="1180" y="240" width="300" height="90" rx="18" fill="#f3efea"/>
-  <rect x="1180" y="350" width="300" height="90" rx="18" fill="#f3efea"/>
-  <rect x="120" y="700" width="420" height="120" rx="18" fill="#f3efea"/>
-  <rect x="570" y="700" width="420" height="120" rx="18" fill="#f3efea"/>
-  <rect x="1060" y="700" width="420" height="120" rx="18" fill="#ece7db"/>
-  <rect x="200" y="740" width="260" height="16" rx="8" fill="#b28451" opacity="0.6"/>
-  <rect x="650" y="740" width="260" height="16" rx="8" fill="#b28451" opacity="0.6"/>
-  <rect x="1140" y="740" width="260" height="16" rx="8" fill="#b28451" opacity="0.6"/>
-  <rect x="0" y="830" width="1600" height="70" fill="#f3efea"/>
-  <rect x="700" y="850" width="260" height="30" rx="15" fill="#b28451"/>
+
+  <!-- Left content -->
+  <rect x="110" y="105" width="520" height="44" rx="22" fill="#f3efea"/>
+  <text x="370" y="134" text-anchor="middle"
+        font-family="sans-serif" font-weight="600" font-size="16" fill="#7a6a53">
+    Personal Health Coaching
+  </text>
+
+  <text x="110" y="220" font-family="serif" font-weight="700" font-size="60" fill="#2c2a28">
+    Feel like yourself
+  </text>
+  <text x="110" y="295" font-family="serif" font-weight="700" font-size="60" fill="#8a9a86">
+    again
+  </text>
+
+  <text x="112" y="350" font-family="sans-serif" font-size="18" fill="#6f6a63">
+    One-on-one health coaching that meets you
+  </text>
+  <text x="112" y="378" font-family="sans-serif" font-size="18" fill="#6f6a63">
+    where you are — and helps you get unstuck.
+  </text>
+
+  <!-- Properly centered CTA -->
+  <rect x="112" y="414" width="290" height="60" rx="30" fill="#b28451"/>
+  <text x="257" y="444" text-anchor="middle"
+        dominant-baseline="middle"
+        font-family="sans-serif" font-weight="600" font-size="18" fill="#ffffff">
+    Book a free intro call
+  </text>
+
+  <!-- Right profile / hero section -->
+  <g filter="url(#shadow)">
+    <rect x="960" y="85" width="510" height="650" rx="255" fill="#eee7df"/>
+    <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iMTAwMCIgdmlld0JveD0iMCAwIDgwMCAxMDAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYjI4NDUxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzhhOWE4NiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIxMDAwIiBmaWxsPSJ1cmwoI2JnKSIvPgogIDxjaXJjbGUgY3g9IjQwMCIgY3k9IjI2MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjM1Ii8+CiAgPHBhdGggZD0iTTAgNzYwIFEyMDAgNjAwIDQyMCA2NDAgVDgyMCA2MjAgTDgyMCAxMDAwIEwwIDEwMDAgWiIgZmlsbD0iI2ZkZmJmNyIgb3BhY2l0eT0iMC45Ii8+Cjwvc3ZnPg=="
+           x="980" y="105" width="470" height="610"
+           preserveAspectRatio="xMidYMid slice"
+           clip-path="url(#heroClip)"/>
+  </g>
+
+  <!-- Profile info card -->
+  <g filter="url(#shadow)">
+    <rect x="900" y="625" width="390" height="150" rx="24" fill="url(#cardFade)"/>
+    <circle cx="950" cy="700" r="42" fill="#d9b99a"/>
+    <circle cx="950" cy="700" r="42" fill="none" stroke="#caa888" stroke-width="3"/>
+    <circle cx="950" cy="687" r="12" fill="#f7e8dc"/>
+    <path d="M926 721 Q950 697 974 721" fill="#f7e8dc"/>
+
+    <text x="1010" y="680" font-family="sans-serif" font-weight="700"
+          font-size="18" fill="#2c2a28">Your Health Coach</text>
+    <text x="1010" y="708" font-family="sans-serif" font-size="14"
+          fill="#6f6a63">Personal guidance, practical habits,</text>
+    <text x="1010" y="730" font-family="sans-serif" font-size="14"
+          fill="#6f6a63">and support built around you.</text>
+  </g>
+
+  <!-- Small decorative badge -->
+  <g filter="url(#shadow)">
+    <rect x="1295" y="145" width="155" height="52" rx="26" fill="#ffffff"/>
+    <circle cx="1322" cy="171" r="7" fill="#8a9a86"/>
+    <text x="1340" y="177" font-family="sans-serif" font-weight="600"
+          font-size="13" fill="#5f665b">1:1 Coaching</text>
+  </g>
+
+  <!-- Trust strip -->
+  <rect x="0" y="800" width="1600" height="100" fill="#f3efea"/>
+  <text x="800" y="833" text-anchor="middle"
+        font-family="sans-serif" font-size="13" font-weight="600" fill="#8d8578">
+    TRUSTED BY CREATORS AND FAMILIES
+  </text>
+  <text x="800" y="865" text-anchor="middle"
+        font-family="serif" font-size="20" fill="#a8957a">
+    InnerWell · CalmWeek · Sage+Co · Hearth
+  </text>
 </svg>

@@ -1,18 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
   <rect width="1600" height="900" fill="#050505"/>
-  <rect x="0" y="0" width="1600" height="300" fill="#101010"/>
-  <rect x="220" y="90" width="700" height="70" rx="4" fill="#ff3300"/>
-  <rect x="430" y="200" width="280" height="34" rx="4" fill="#333333"/>
-  <rect x="80" y="350" width="440" height="120" fill="#161616"/>
-  <rect x="80" y="370" width="300" height="18" rx="4" fill="#3a3a3a"/>
-  <rect x="80" y="400" width="360" height="16" rx="4" fill="#2a2a2a"/>
-  <rect x="80" y="430" width="340" height="16" rx="4" fill="#2a2a2a"/>
-  <rect x="80" y="520" width="300" height="60" fill="#ff3300"/>
-  <rect x="960" y="350" width="300" height="60" fill="#ff3300"/>
-  <rect x="960" y="430" width="300" height="60" fill="#ff3300"/>
-  <g stroke="#333333" stroke-width="6">
-    <rect x="440" y="120" width="30" height="120" fill="#ff3300" stroke="none"/>
-  </g>
-  <rect x="120" y="680" width="320" height="60" fill="#ff3300"/>
+  <rect x="0" y="0" width="1600" height="330" fill="#0c0c0c"/>
+
+  <text x="90" y="150" font-family="sans-serif" font-weight="800" font-size="80" letter-spacing="1" fill="#ffffff">FORGE YOUR</text>
+  <text x="90" y="250" font-family="sans-serif" font-weight="800" font-size="80" letter-spacing="1" fill="#ff3300">ULTIMATE PHYSIQUE</text>
+  <text x="93" y="286" font-family="sans-serif" font-size="18" fill="#9a9a9a">No cookie-cutter plans. No BS. Just elite 1:1 coaching.</text>
+
+  <rect x="90" y="320" width="340" height="62" fill="#ff3300"/>
+  <text x="260" y="361" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="22" letter-spacing="2" fill="#ffffff">APPLY FOR THE PROGRAM</text>
+
+  <rect x="0" y="410" width="1600" height="50" fill="#ff3300"/>
+  <text x="40" y="443" font-family="sans-serif" font-weight="800" font-size="20" letter-spacing="6" fill="#ffffff">NO EXCUSES   DO THE WORK   EAT CLEAN   TRAIN DIRTY</text>
+
+  <rect x="90" y="510" width="460" height="120" fill="#161616"/>
+  <rect x="90" y="510" width="6" height="120" fill="#ff3300"/>
+  <circle cx="130" cy="545" r="12" fill="none" stroke="#ff3300" stroke-width="3"/>
+  <path d="M125 545 l4 4 7 -8" fill="none" stroke="#ff3300" stroke-width="3"/>
+  <rect x="155" y="537" width="360" height="12" rx="6" fill="#3a3a3a"/>
+  <rect x="155" y="559" width="300" height="12" rx="6" fill="#2a2a2a"/>
+  <rect x="155" y="581" width="320" height="12" rx="6" fill="#2a2a2a"/>
+
+  <rect x="600" y="510" width="460" height="120" fill="#161616"/>
+  <rect x="600" y="510" width="6" height="120" fill="#ff3300"/>
+  <circle cx="640" cy="545" r="12" fill="none" stroke="#ff3300" stroke-width="3"/>
+  <path d="M635 545 l4 4 7 -8" fill="none" stroke="#ff3300" stroke-width="3"/>
+  <rect x="665" y="537" width="360" height="12" rx="6" fill="#3a3a3a"/>
+  <rect x="665" y="559" width="300" height="12" rx="6" fill="#2a2a2a"/>
+  <rect x="665" y="581" width="320" height="12" rx="6" fill="#2a2a2a"/>
+
+  <rect x="1110" y="510" width="400" height="120" fill="#161616"/>
+  <rect x="1110" y="510" width="6" height="120" fill="#ff3300"/>
+  <circle cx="1150" cy="545" r="12" fill="none" stroke="#ff3300" stroke-width="3"/>
+  <path d="M1145 545 l4 4 7 -8" fill="none" stroke="#ff3300" stroke-width="3"/>
+  <rect x="1175" y="537" width="300" height="12" rx="6" fill="#3a3a3a"/>
+  <rect x="1175" y="559" width="250" height="12" rx="6" fill="#2a2a2a"/>
+  <rect x="1175" y="581" width="280" height="12" rx="6" fill="#2a2a2a"/>
+
   <rect x="0" y="880" width="1600" height="20" fill="#ff3300"/>
 </svg>

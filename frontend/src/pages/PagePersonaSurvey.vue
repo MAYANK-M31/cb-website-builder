@@ -114,7 +114,7 @@ const questions: {
 			{ value: "search", label: "Search (Google)" },
 			{ value: "youtube", label: "YouTube" },
 			{ value: "friend", label: "Friend / colleague" },
-			{ value: "frappe_ecosystem", label: "Frappe / ERPNext" },
+			{ value: "frappe_ecosystem", label: "CreatorBase" },
 			{ value: "social", label: "Social media" },
 			{ value: "other", label: "Other" },
 		],

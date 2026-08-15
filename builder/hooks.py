@@ -1,7 +1,7 @@
 import frappe
 
 app_name = "builder"
-app_title = "Frappe Builder"
+app_title = "CreatorBase Builder"
 app_publisher = "Frappe Technologies Pvt Ltd"
 app_description = "An easier way to build web pages for your needs!"
 app_email = "suraj@frappe.io"

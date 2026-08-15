@@ -93,7 +93,7 @@ HOMEPAGE_ROUTE = ""
 
 # Shipped template groups (builder/builder_templates/). The first group whose
 # template page synced into this site is used to seed the home page.
-DEFAULT_TEMPLATE_GROUPS = ("creatorbase", "masterclass", "executive", "fitness", "personal_help")
+DEFAULT_TEMPLATE_GROUPS = ("creatorbase", "masterclass", "executive", "fitness", "personal_help", "elevate")
 
 
 def provision_token() -> str | None:

@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
   <rect width="1600" height="900" fill="#f8fafc"/>
-  <rect x="0" y="0" width="1600" height="70" fill="#0f172a"/>
-  <rect x="620" y="28" width="360" height="18" rx="4" fill="#334155"/>
-  <rect x="400" y="130" width="220" height="40" rx="20" fill="#e0e7ff"/>
-  <rect x="430" y="138" width="160" height="24" rx="8" fill="#4f46e5" opacity="0.6"/>
-  <rect x="230" y="200" width="1140" height="70" rx="10" fill="url(#t)"/>
-  <rect x="330" y="295" width="520" height="28" rx="8" fill="#94a3b8"/>
-  <rect x="200" y="360" width="1200" height="300" rx="20" fill="#0f172a"/>
-  <rect x="760" y="490" width="80" height="80" rx="40" fill="#4f46e5"/>
-  <rect x="520" y="720" width="560" height="70" rx="35" fill="#4f46e5"/>
-  <rect x="700" y="748" width="200" height="16" rx="8" fill="#ffffff" opacity="0.85"/>
-  <defs>
-    <linearGradient id="t" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#4f46e5"/>
-      <stop offset="1" stop-color="#0ea5e9"/>
-    </linearGradient>
-  </defs>
+
+  <rect x="0" y="0" width="1600" height="60" fill="#0f172a"/>
+  <text x="800" y="38" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#ffffff">🚀 Spring Cohort Registration is currently <tspan fill="#f59e0b">OPEN — Closes in 3 Days.</tspan></text>
+
+  <rect x="628" y="92" width="344" height="44" rx="22" fill="#e0e7ff"/>
+  <text x="800" y="121" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="16" fill="#4f46e5">The Complete Masterclass</text>
+
+  <text x="800" y="198" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="52" fill="#4f46e5">Stop Guessing. Start Building.</text>
+  <text x="800" y="258" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="52" fill="#0ea5e9">Become a Top 1% Creator.</text>
+  <text x="800" y="318" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#64748b">A proven, step-by-step curriculum to master content creation</text>
+  <text x="800" y="344" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#64748b">and turn your audience into real income.</text>
+
+  <rect x="250" y="375" width="1100" height="320" rx="20" fill="#0f172a"/>
+  <circle cx="800" cy="535" r="52" fill="#4f46e5"/>
+  <path d="M788 509 l38 26 -38 26 Z" fill="#ffffff"/>
+  <rect x="290" y="645" width="60" height="12" rx="6" fill="#334155"/>
 </svg>

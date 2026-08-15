@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"_-b0CpVZje\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Open <strong>Frappe Builder</strong>\",\"col\":4}}]",
+ "content": "[{\"id\":\"_-b0CpVZje\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Open <strong>CreatorBase Builder</strong>\",\"col\":4}}]",
  "creation": "2024-03-28 15:59:44.392585",
  "custom_blocks": [],
  "docstatus": 0,
@@ -11,7 +11,7 @@
  "idx": 0,
  "indicator_color": "green",
  "is_hidden": 0,
- "label": "Frappe Builder",
+ "label": "CreatorBase Builder",
  "links": [],
  "modified": "2024-03-28 16:06:49.469091",
  "modified_by": "Administrator",
@@ -35,10 +35,10 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Open <strong>Frappe Builder</strong>",
+   "label": "Open <strong>CreatorBase Builder</strong>",
    "type": "URL",
    "url": "/builder"
   }
  ],
- "title": "Frappe Builder"
+ "title": "CreatorBase Builder"
 }

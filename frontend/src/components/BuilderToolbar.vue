@@ -141,7 +141,7 @@
 				<iframe
 					class="h-[60vh] w-full rounded-sm"
 					src="https://www.youtube-nocookie.com/embed/videoseries?si=8NvOFXFq6ntafauO&amp;controls=0&amp;list=PL3lFfCEoMxvwZsBfCgk6vLKstZx204xe3"
-					title="Frappe Builder - Get Started"
+					title="CreatorBase Builder - Get Started"
 					frameborder="0"
 					allowfullscreen></iframe>
 			</template>
