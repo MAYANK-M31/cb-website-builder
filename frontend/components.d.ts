@@ -64,7 +64,6 @@ declare module 'vue' {
     DashboardContent: typeof import('./src/components/DashboardContent.vue')['default']
     DashboardHead: typeof import('./src/components/DashboardHead.vue')['default']
     DashboardSidebar: typeof import('./src/components/DashboardSidebar.vue')['default']
-    DashboardToolbar: typeof import('./src/components/DashboardToolbar.vue')['default']
     DataLoaderBlock: typeof import('./src/components/DataLoaderBlock.vue')['default']
     Dialog: typeof import('./src/components/Controls/Dialog.vue')['default']
     DimensionInput: typeof import('./src/components/DimensionInput.vue')['default']
