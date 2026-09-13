@@ -342,7 +342,7 @@ class BuilderPage(WebsiteGenerator):
 			return
 		import requests
 		try:
-				uuid = self.name
+			uuid = self.name
 			request = getattr(frappe.local, "request", None)
 			host = request.host if request else None
 			if host and "creatorbase.live" in host:
