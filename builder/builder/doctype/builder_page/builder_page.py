@@ -11,6 +11,15 @@ import bs4 as bs
 import frappe
 import frappe.utils
 from frappe.utils import now, set_request
+
+# Strip :8000/:8008 (and any port) for creatorbase.live hosts — prevents
+# https://site.creatorbase.live:8000/files/... in og:image / canonical
+# when the request Host header carries the dev port.
+def _strip_creatorbase_port(url: str) -> str:
+	if not url or "creatorbase.live" not in url:
+		return url
+	# Remove :8000, :8008, :3000, :5173 etc for creatorbase.live only
+	return re.sub(r"(https?://[^/]*creatorbase\.live):\d+", r"\1", url)
 from frappe.utils.caching import redis_cache
 from frappe.utils.jinja import render_template
 from frappe.utils.telemetry import capture
@@ -92,11 +101,13 @@ class BuilderPageRenderer(DocumentPage):
 			return
 		context = getattr(self, "context", frappe._dict())
 		if self.doc.is_home_page():
-			context["canonical_url"] = frappe.utils.get_url()
+			context["canonical_url"] = _strip_creatorbase_port(frappe.utils.get_url())
 		elif self.doc.canonical_url:
-			context["canonical_url"] = render_template(self.doc.canonical_url, context)
+			context["canonical_url"] = _strip_creatorbase_port(
+				render_template(self.doc.canonical_url, context)
+			)
 		else:
-			context["canonical_url"] = frappe.utils.get_url(self.path)
+			context["canonical_url"] = _strip_creatorbase_port(frappe.utils.get_url(self.path))
 		self.context = context
 
 	def set_missing_values(self):
@@ -331,18 +342,21 @@ class BuilderPage(WebsiteGenerator):
 			return
 		import requests
 		try:
-			uuid = self.name
+				uuid = self.name
 			request = getattr(frappe.local, "request", None)
 			host = request.host if request else None
+			if host and "creatorbase.live" in host:
+				host = host.split(":")[0]
 			scheme = "https" if host and "creatorbase.live" in host else "http"
 			base = f"{scheme}://{host}" if host else ""
+			base = _strip_creatorbase_port(base)
 			# Dev sites run on a non-443 port (8008) — include it when the host
-			# header doesn't already carry one.
-			if base and scheme == "http" and ":" not in host:
+			# header doesn't already carry one and is not creatorbase.live
+			if base and scheme == "http" and ":" not in (host or "") and "creatorbase.live" not in (host or ""):
 				base = f"{base}:8008"
 			route = self.route or "/"
 			normalized_route = route if route.startswith("/") else f"/{route}"
-			published_url = f"{base}{normalized_route}" if base else None
+			published_url = _strip_creatorbase_port(f"{base}{normalized_route}") if base else None
 			resp = requests.post(
 				f"{endpoint}/sales-pages/{uuid}/publish",
 				headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
@@ -496,12 +510,35 @@ class BuilderPage(WebsiteGenerator):
 		if not page_data:
 			page_data = {}
 
+		def _clean_image(url):
+			if not url:
+				return url
+			# If image is already absolute with host:port, strip dev port for creatorbase.live
+			url = _strip_creatorbase_port(url)
+			# If image is absolute http(s)://..., ensure no port remains
+			# If relative, make absolute via get_url then strip port
+			if url.startswith("/"):
+				url = _strip_creatorbase_port(frappe.utils.get_url(url))
+			elif url.startswith("http"):
+				url = _strip_creatorbase_port(url)
+			return url
+
 		metatags = {
 			"title": self.page_title or "My Page",
 			"description": self.meta_description or self.page_title,
-			"image": self.meta_image or self.preview,
+			"image": _clean_image(self.meta_image or self.preview),
 		}
+		# Page-data metatags may also contain image with port (e.g. from frontend window.location.origin)
+		for k, v in list(page_data.get("metatags", {}).items()):
+			if isinstance(v, str) and ("creatorbase.live" in v or v.startswith("/files") or v.startswith("http")):
+				page_data["metatags"][k] = _strip_creatorbase_port(v) if "creatorbase.live" in v else v
+				# Also handle relative /files -> absolute without port
+				if v.startswith("/files"):
+					page_data["metatags"][k] = _clean_image(v)
 		metatags.update(page_data.get("metatags", {}))
+		# Final safety: strip port from whatever image ended up as
+		if metatags.get("image"):
+			metatags["image"] = _strip_creatorbase_port(metatags["image"])
 		context.metatags = metatags
 
 	def set_favicon(self, context):
