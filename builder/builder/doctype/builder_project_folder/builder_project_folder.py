@@ -46,6 +46,6 @@ def is_system_activity():
 		frappe.flags.in_import
 		or frappe.flags.in_patch
 		or frappe.flags.in_migrate
-		or frappe.in_test
+		or getattr(frappe, "in_test", False)
 		or frappe.flags.in_install
 	)
