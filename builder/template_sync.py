@@ -86,10 +86,20 @@ def sync_builder_templates(app="builder", publish=False):
 		# isolate each group so one group's failure (e.g. a stale document lock
 		# from clear_page_cache) can't abort the rest of the catalog
 		try:
-			groups_pages[group] = sync_builder_template_group(group, app=app, publish=publish)
+			pages, had_errors = sync_builder_template_group(group, app=app, publish=publish)
+			groups_pages[group] = pages
+			if had_errors:
+				# a group with partial failures keeps its previously-synced pages:
+				# drop it from reconciliation so transient import errors never wipe
+				# pages that simply failed to re-import this run.
+				del groups_pages[group]
+				print(f"  ! template group {group} had errors — kept existing pages, skipped reconcile")
 		except Exception:
 			frappe.log_error(title=f"Failed to sync template group {group}")
 			print(f"  ! skipped template group {group} (see error log)")
+			import traceback
+
+			traceback.print_exc()
 
 	reconcile_deleted_templates(groups_pages)
 
@@ -99,10 +109,13 @@ def sync_builder_template_group(group, app="builder", publish=False):
 
 	Mirrors one iteration of `sync_builder_templates` so a page's group can be
 	synced on demand — sites provisioned before a group was added have the on-disk
-	manifest (and thus the picker entry) but not the DB page."""
+	manifest (and thus the picker entry) but not the DB page.
+
+	Returns (page_names, had_errors) so callers can skip reconciliation for
+	partially-failed groups instead of wiping pages that failed to re-import."""
 	group_path = os.path.join(get_templates_root(app), safe_segment(group))
 	if not os.path.isdir(group_path):
-		return []
+		return [], False
 	make_records(os.path.join(group_path, "variables"))
 	make_records(os.path.join(group_path, "components"))
 	make_records(os.path.join(group_path, "client_scripts"))
@@ -120,20 +133,38 @@ def get_group_for_page(page_name, app="builder"):
 
 
 def import_template_pages(pages_path, group, publish=False):
-	"""Import page fixtures of a group and re-stamp template invariants."""
+	"""Import page fixtures of a group and re-stamp template invariants.
+
+	Each page is isolated so one corrupt fixture can't abort the group.
+	Returns (page_names, had_errors)."""
 	page_names = []
+	had_errors = False
 	if not os.path.isdir(pages_path):
-		return page_names
+		return page_names, had_errors
 
 	for fname in sorted(os.listdir(pages_path)):
-		safe_fname = safe_segment(fname)
+		try:
+			safe_fname = safe_segment(fname)
+		except Exception:
+			had_errors = True
+			print(f"  ! unsafe fixture name {fname} in group {group} — skipping")
+			continue
 		page_file = os.path.join(pages_path, safe_fname, f"{safe_fname}.json")
 		if not os.path.isfile(page_file):
 			continue
-		with open(page_file, encoding="utf-8") as f:  # nosemgrep
-			fixture = frappe.parse_json(f.read())
-		page_name = fixture.get("name") or fname
-		import_file_by_path(page_file)
+		try:
+			with open(page_file, encoding="utf-8") as f:  # nosemgrep
+				fixture = frappe.parse_json(f.read())
+			page_name = fixture.get("name") or fname
+			import_file_by_path(page_file)
+		except Exception:
+			had_errors = True
+			frappe.log_error(title=f"Failed to import template page {fname} in group {group}")
+			print(f"  ! failed to import template page {fname} in group {group} (see error log)")
+			import traceback
+
+			traceback.print_exc()
+			continue
 		if frappe.db.exists("Builder Page", page_name):
 			# import_file_by_path skips files whose db timestamp is newer, so
 			# enforce the invariants (and the committed preview) directly.
@@ -148,7 +179,7 @@ def import_template_pages(pages_path, group, publish=False):
 				values["preview"] = fixture["preview"]
 			frappe.db.set_value("Builder Page", page_name, values, update_modified=False)
 			page_names.append(page_name)
-	return page_names
+	return page_names, had_errors
 
 
 def reconcile_deleted_templates(groups_pages):

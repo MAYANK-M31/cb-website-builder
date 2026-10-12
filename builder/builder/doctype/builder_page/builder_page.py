@@ -1066,6 +1066,12 @@ def add_inner_html_content(tag: bs.Tag, block: dict, state: dict, ancestor_font:
 		# Ensure inner_content is a string before passing to BeautifulSoup
 		if not isinstance(inner_content, (str, bytes)):
 			inner_content = str(inner_content)
+		if isinstance(inner_content, str) and "<" not in inner_content:
+			# Plain text (no markup): appending directly avoids BeautifulSoup's
+			# MarkupResemblesLocatorWarning for filename-like strings and skips
+			# tag scans that can't match anything without elements.
+			tag.append(inner_content)
+			return
 		inner_soup = bs.BeautifulSoup(inner_content, "html.parser")
 		set_fonts_from_html(inner_soup, state["font_map"])
 		set_italics_from_html(inner_soup, state["font_map"], ancestor_font)
