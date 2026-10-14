@@ -364,3 +364,67 @@ def create_homepage(subdomain: str = "", prod: int = 0, template_page: str | Non
     frappe.db.commit()
     frappe.clear_cache()
     return {"ok": True, "created": True, "page": new_page, "route": "/", "from_template": page_name}
+
+
+def repair_published_blank_pages() -> dict:
+    """Move draft content live on published pages that render blank.
+
+    Pages seeded by older provisioning (or cloned from a base template built
+    before the draft->blocks move) can be `published=1` with live `blocks`
+    empty while `draft_blocks` holds the content. The builder preview renders
+    drafts, so the page looks fine in the editor, but the public route serves
+    an empty page — until any save in the builder materializes the blocks.
+
+    Repair is exactly what that save does: move drafts into blocks, drop the
+    local render caches and purge the edge cache for the fixed routes.
+
+    Not whitelisted: internal provision hook (bench-mounted, Administrator),
+    like create_homepage.
+    """
+    fixed = []
+    pages = frappe.get_all(
+        "Builder Page",
+        filters={"published": 1},
+        fields=["name", "route", "blocks", "draft_blocks"],
+    )
+    for page in pages:
+        try:
+            blocks = frappe.parse_json(page.get("blocks") or "[]")
+        except Exception:
+            blocks = None
+        if blocks:
+            continue
+        drafts = page.get("draft_blocks")
+        if not drafts:
+            continue
+        try:
+            if not frappe.parse_json(drafts):
+                continue
+        except Exception:
+            continue
+        frappe.db.set_value(
+            "Builder Page",
+            page["name"],
+            {"blocks": drafts, "draft_blocks": None},
+            update_modified=False,
+        )
+        fixed.append({"page": page["name"], "route": page.get("route") or "/"})
+    if fixed:
+        frappe.db.commit()
+        frappe.clear_cache()
+        try:
+            from builder.builder.doctype.builder_page.builder_page import clear_cache as clear_route
+
+            for item in fixed:
+                try:
+                    clear_route(item["route"])
+                except Exception:
+                    pass
+        except Exception:
+            pass
+        try:
+            doc = frappe.get_doc("Builder Page", fixed[0]["page"])
+            doc.purge_cache()
+        except Exception:
+            pass
+    return {"ok": True, "fixed": fixed}
