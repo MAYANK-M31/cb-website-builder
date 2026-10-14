@@ -501,6 +501,7 @@ async function uploadUserFont(
 		const uploadedFile = await fileUploadHandler.upload(file, {
 			private: false,
 			folder: "Home/Builder Uploads/Fonts",
+			upload_endpoint: "/api/method/builder.api.upload_builder_asset",
 		});
 
 		// Load the font

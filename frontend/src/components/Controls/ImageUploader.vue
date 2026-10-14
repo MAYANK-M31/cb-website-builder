@@ -1,6 +1,11 @@
 <template>
 	<FileUploader
 		:file-types="image_type"
+		:uploadArgs="{
+			private: false,
+			folder: 'Home/Builder Uploads',
+			upload_endpoint: '/api/method/builder.api.upload_builder_asset',
+		}"
 		class="text-base"
 		@success="
 			(file: FileDoc) => {
